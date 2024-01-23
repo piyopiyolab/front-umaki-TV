@@ -1,0 +1,30 @@
+@use "../../styles/mixins" as mxn;
+
+.input {
+  &__wrapper {
+    @include mxn.flex("column", "nowrap");
+    @include mxn.flex-p("start", "center");
+    
+    &:focus-within {
+      transform: translateY(2px);
+    }
+  } 
+
+  &__label {
+    left: 0px;
+  }
+
+  &__input {
+    background-color: var(--gray);
+    border-radius: var(--rounded);
+    border: 2px solid var(--white);
+    width: 100%;
+    min-height: 4rem;
+    margin-bottom: var(--m-4);
+    color: var(--white);
+    padding-left: var(--p-4);
+    &:focus{
+      outline: none;
+    }
+  }
+}

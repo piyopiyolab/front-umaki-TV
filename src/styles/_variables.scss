@@ -1,0 +1,67 @@
+:root {
+  // Colors
+  --gradient-bg: linear-gradient(to bottom, #190420, #3a044d);
+  --bg-dark: #190420;
+ 
+
+  --white: rgba(255, 255, 255, 0.8);
+  --shadow-color: rgba(0, 0, 0, 0.7);
+  --purple-light: #E487FB;
+  --purple-dark: #3c1053;
+  --gray: #ACA6AD;
+
+
+
+  // Radius
+  --rounded: 4px;
+  --rounded-md: 10px;
+  --rounded-lg: 20px;
+  --rounded-full: 40px;
+ 
+
+  // Padding
+  --p-1: 0.8rem;
+  --p-2: 1.6rem;
+  --p-3: 2.4rem;
+  --p-4: 3.2rem;
+  --p-5: 4.8rem;
+  --p-6: 6.4rem;
+
+
+  //Margin
+  --m-1: 0.8rem;
+  --m-2: 1.6rem;
+  --m-3: 2.4rem;
+  --m-4: 3.2rem;
+  --m-5: 4.8rem;
+  --m-6: 6.4rem;
+
+  //Gap
+  --gap-1: 0.4rem;
+ --gap-2:0.8rem;
+ --gap-3:5rem;
+ --gap-4: 4rem;
+ --gap-5:10rem;
+
+  // Container
+  --container-width: 96.4rem;
+  --container-padding: var(--padding-l);
+
+  // Fonts
+  --text-xs: calc(0.8rem + 0.6vmin);
+  --text-sm: calc(1rem + 0.6vmin);
+  --text-md: calc(1.2rem + 0.6vmin);
+  --text-lg: calc(1.4rem + 0.6vmin);
+  --text-xl: calc(1.8rem + 0.6vmin);
+  --text-xxl: calc(2.4rem + 0.6vmin);
+
+  --font-weight-thin: 100;
+  --font-weight-extra-light: 200;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semi-bold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extra-bold: 800;
+  --font-weight-black: 900;
+}

@@ -1,0 +1,104 @@
+///Font
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+
+html {
+  display: flex;
+  font-size: 62.5%;
+  min-height: 100%;
+  flex-direction: column;
+  color:white;
+  font-family: 'Poppins', sans-serif;
+
+}
+a {
+  color: var(--purple-light);
+}
+body {
+  flex: 1 0;
+  display: flex;
+  line-height: 1.618;
+  flex-direction: column;
+  font-size: var(--font-size-medium);
+  -webkit-font-smoothing: antialiased;
+  background: var(--gradient-bg);
+}
+
+*[class*="adaptative-img"] {
+  position: relative;
+}
+
+*[class*="adaptative-img"] > img {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.adaptative-img--cover > img {
+  object-fit: cover;
+}
+
+.adaptative-img--contain > img {
+  object-fit: contain;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+ul li {
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+h1 {
+  font-size: var(--font-size-huge);
+}
+
+.button,
+.input {
+  font-size: var(--font-size-small);
+}
+
+.label {
+  font-size: var(--font-size-small);
+}
+
+.card {
+  border-radius: var(--basic-radius);
+  box-shadow: 6px 6px 0 var(--shadow-color), 0 0 0 2px var(--shadow-color);
+}
+
+.padding-s {
+  padding: var(--padding-s);
+}
+
+.padding-m {
+  padding: var(--padding-m);
+}
+
+.padding-l {
+  padding: var(--padding-l);
+}
+
+.padding-xl {
+  padding: var(--padding-xl);
+}
+
+.padding-xxl {
+  padding: var(--padding-xxl);
+}
