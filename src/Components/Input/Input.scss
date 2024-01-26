@@ -3,7 +3,7 @@
 .input {
   &__wrapper {
     @include mxn.flex("column", "nowrap");
-    @include mxn.flex-p("start", "center");
+    @include mxn.flex-p("center", "start");
     
     &:focus-within {
       transform: translateY(2px);

@@ -1,0 +1,41 @@
+@use "../../styles/mixins" as mxn;
+
+
+
+.header {
+
+    &__container {
+        @include mxn.container;
+        @include mxn.flex('column', 'nowrap');
+        @include mxn.flex-p('center', 'center');
+
+
+        &__logo {
+            align-self: start;
+    position: relative;
+    left: -2rem;
+    img {
+        max-width: 23rem;
+    }
+        }
+       
+
+
+
+        &__greetings {
+            img {
+                max-width: 12rem;
+                left: 3rem;
+                position: relative;
+            }
+
+            &__text> h1 span:nth-child(2) {
+                margin-left: var(--m-2);
+                font-style: italic;             
+            }
+        }
+
+    }
+
+   
+}

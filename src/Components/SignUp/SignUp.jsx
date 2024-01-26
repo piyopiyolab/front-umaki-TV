@@ -85,7 +85,7 @@ function SignUp() {
                 text={"Log-In"}
             />
 
-            <p>You already have an account ? <a href="">Log-in</a></p>
+            <p>You already have an account ? <a href="/log-in">Log-in</a></p>
         </form>
     )
 }

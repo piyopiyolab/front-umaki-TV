@@ -52,6 +52,7 @@ function LogIn() {
             <Input id={"password"}
                 label="Password"
                 type={"password"}
+                className="kikoo"
                 value={form.password}
                 required
                 onChange={(e) => handleChange(e.target.value, "password")} />
@@ -63,7 +64,7 @@ function LogIn() {
                 text={"Log-In"}
             />
 
-            <p>You don't have an account ? <a href="">Sign-up</a></p>
+            <p className="text-center m-2">You don't have an account ? <a href="/sign-up">Sign-up</a></p>
         </form>
     )
 }
