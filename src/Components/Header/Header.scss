@@ -1,0 +1,43 @@
+@use "../../styles/mixins" as mxn;
+
+.header__nav  {
+     @include mxn.flex('row', 'nowrap');
+     @include mxn.flex-p('space-between', 'center');
+@include mxn.media-query(780px){
+
+    @include mxn.flex-p('start', 'center');
+
+}
+button {
+    background-color: transparent;
+}
+
+
+    .hidden {
+        display: none;
+    }
+   
+
+    &__logoContainer {
+        max-width: 10rem;
+        position: relative;
+        top: 7px;
+        margin-right: var(--m-2)
+    }
+
+    &__menu {
+         @include mxn.flex('row', 'nowrap');
+         @include mxn.flex-p('center', 'end');
+         gap: var(--gap-2);
+
+        &__item {
+
+            img {
+                max-width: 2rem;
+            }
+
+        }
+    }
+
+
+}

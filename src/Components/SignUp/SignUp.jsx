@@ -78,7 +78,7 @@ function SignUp() {
 
             {showAvatar ? (
                 <div>
-                    <p>coucou</p>
+
                 </div>
             ) : null}
 
@@ -102,7 +102,7 @@ function SignUp() {
                 text={"Log-In"}
             />
 
-            <p>You already have an account ? <a href="/log-in">Log-in</a></p>
+            <p className='text-center m-2'>You already have an account ? <a href="/log-in">Log-in</a></p>
         </form>
     )
 }

@@ -36,4 +36,16 @@ const postRequest = async (url, body = {}, token = null) => {
     return await request(url, config);
 };
 
-export { postRequest };
+
+
+const getRequest = async (url, token = null) => {
+    const config = {
+        method: 'GET',
+        headers: { 'Content-type': 'application/json; charset=UTF-8' },
+    };
+
+    if (token) config.headers.Authorization = token;
+
+    return await request(url, config);
+};
+export { postRequest, getRequest };

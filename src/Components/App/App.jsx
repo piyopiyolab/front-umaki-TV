@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import SignUp from '../SignUp/SignUp';
 import LogInPage from '../../Layouts/LogInPage';
 import SignUpPage from '../../Layouts/SignUpPage';
+import HomePage from '../../Layouts/HomePage';
 
 function App() {
     return (
@@ -24,6 +25,14 @@ function App() {
                             element={
                                 <>
                                     <SignUpPage />
+                                </>
+                            }
+                        />
+                        <Route
+                            path="/"
+                            element={
+                                <>
+                                    <HomePage />
                                 </>
                             }
                         />
