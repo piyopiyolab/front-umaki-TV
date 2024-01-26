@@ -14,8 +14,8 @@
 }
 
 @mixin flex-p($justify-content: "center", $align-items: "space-between") {
-  justify-content: #{$align-items};
-  align-items: #{$justify-content};
+  justify-content: #{$justify-content};
+  align-items: #{$align-items};
 }
 
 
@@ -37,8 +37,8 @@
 
 
 //Media queries
-@mixin media-query($size) {
-  @media screen and (min-width: $size) {
+@mixin media-query($size: "780px") {
+  @media screen and (min-width: #{$size}) {
     @content;
   }
 }
