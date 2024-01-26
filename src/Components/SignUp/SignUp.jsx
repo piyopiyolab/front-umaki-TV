@@ -16,6 +16,9 @@ function SignUp() {
 
     })
 
+
+    const [showAvatar, setShowAvatar] = useState(false);
+
     //const [loading, setLoading] = useState('false');
 
 
@@ -39,7 +42,7 @@ function SignUp() {
     }
 
     return (
-        <form className="form-connexion" onSubmit={handleSubmit}>
+        <form className="signup__form" onSubmit={handleSubmit}>
 
 
             <Input id={"email"}
@@ -57,13 +60,27 @@ function SignUp() {
                 onChange={(e) => handleChange(e.target.value, "pseudo")} />
 
 
-
+            {/* 
             <Input id={"avatar"}
                 label="Avatar"
                 type={"file"}
                 value={form.avatar}
                 required
-                onChange={(e) => handleChange(e.target.value, "avatar")} />
+                onChange={(e) => handleChange(e.target.value, "avatar")} /> */}
+
+            <Button
+                text="Choose your avatar"
+                onClick={(e) => {
+                    handleChange(e.target.value, "avatar");
+                    setShowAvatar(!showAvatar);
+                }}
+                value={form.avatar} />
+
+            {showAvatar ? (
+                <div>
+                    <p>coucou</p>
+                </div>
+            ) : null}
 
             <Input id={"password"}
                 label="Password"

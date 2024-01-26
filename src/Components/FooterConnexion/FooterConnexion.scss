@@ -2,30 +2,35 @@
 
 
 .footer__connexion {
-    padding: var(--p-2);
-    margin: var(--m-3);
+
+
+
     span {
         color: var(--purple-light);
     }
     p {
         margin: var(--m-2);
     }
-    
-    &__wrapper {
-        @include mxn.flex('row', 'nowrap');
-        @include mxn.flex-p('center', 'center');
-        gap: var(--gap-2);
-        margin-top : var(--m-5);
-       
-        &__bar {
-            background: var(--gray);
-            width: 5rem;
-            height: .7rem;
-            border-radius: var(--rounded);
-        }
-        &:hover {
-            background-color: var(--white);
-        }
-    }
+  
+        padding: var(--p-2);
+        margin: var(--m-3);
+
+            &__wrapper {
+                @include mxn.flex('row', 'nowrap');
+                @include mxn.flex-p('center', 'center');
+                gap: var(--gap-2);
+                margin-top : var(--m-5);
+            
+                &__bar {
+                    background: var(--gray);
+                    width: 5rem;
+                    height: .7rem;
+                    border-radius: var(--rounded);
+                }
+                &:hover {
+                    background-color: var(--white);
+                }
+            }
+  
 
 }

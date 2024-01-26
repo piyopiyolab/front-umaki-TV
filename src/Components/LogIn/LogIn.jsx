@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useState } from "react";
 import Button from "../Button/Button";
 import Input from "../Input/Input";
+import './LogIn.scss';
 
 
 
@@ -39,7 +40,7 @@ function LogIn() {
 
 
     return (
-        <form className="form-connexion" onSubmit={handleSubmit}>
+        <form className="login__form" onSubmit={handleSubmit}>
 
 
             <Input id={"email"}

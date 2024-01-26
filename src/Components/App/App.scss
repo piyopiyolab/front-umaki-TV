@@ -5,9 +5,4 @@
   padding: var(--p-3);
   font-size: var(--text-sm);
 
-  @include mxn.media-query("780px") {
-    @include mxn.container;
-    padding: var(--p-3);
-    font-size: var(--text-lg);
-  }
 }

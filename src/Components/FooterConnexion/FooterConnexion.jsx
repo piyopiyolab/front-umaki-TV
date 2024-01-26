@@ -1,4 +1,5 @@
 import "./FooterConnexion.scss"
+import komodo from "../../assets/komodo-demon-slayer.svg"
 
 function FooterConnexion() {
     return (
@@ -14,6 +15,7 @@ function FooterConnexion() {
                     <div className="footer__connexion__wrapper__bar"></div>
                     <div className="footer__connexion__wrapper__bar"></div>
                 </div>
+
             </div>
 
         </>

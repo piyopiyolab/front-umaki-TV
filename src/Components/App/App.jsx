@@ -2,7 +2,8 @@ import './App.scss'
 import React from 'react';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import SignUp from '../SignUp/SignUp';
-import LogInPage from '../../Layouts/LogInPage/LogInPage';
+import LogInPage from '../../Layouts/LogInPage';
+import SignUpPage from '../../Layouts/SignUpPage';
 
 function App() {
     return (
@@ -22,8 +23,7 @@ function App() {
                             path="/sign-up"
                             element={
                                 <>
-                                    <h1>Sign-up, and start track your viewing progress !</h1>
-                                    <SignUp />
+                                    <SignUpPage />
                                 </>
                             }
                         />
