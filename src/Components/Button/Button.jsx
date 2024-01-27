@@ -1,15 +1,15 @@
 import "./button.scss";
 
 const Button = (props) => {
-    const { onClick, text, type, color, disabled } = props;
+    const { onClick, text, type, disabled, className } = props;
 
     return (
         <button
             type={type || "button"}
             disabled={disabled}
-            className="button"
+            className={className ? `button ${className}` : 'button'}
+
             onClick={onClick}
-            style={{ [`--btn-bg`]: color }}
         >
             {text}
         </button>

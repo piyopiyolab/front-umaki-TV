@@ -6,11 +6,11 @@ const Input = (props) => {
     // Determine which placeholder to display
     const getPlaceholder = () => {
         if (type === "email") {
-            return "youremail@gmail.com";
+            return "captainmonkey@monkey.corp";
         } else if (type === "password") {
             return "******";
         } else if (type === "text" && id === "pseudo") {
-            return "Captain Nemo";
+            return "Captain Banana Monkey";
         } else {
             return "";
         }

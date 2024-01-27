@@ -1,5 +1,40 @@
+@use '../../styles/mixins' as mxn;
+
 
 .signup__form {
     max-width: 500px;
     margin: 0 auto;
+
+
+    &__buttonAvatar {
+        &:hover {
+            background-color: var(--purple-dark);
+                @include mxn.transition(background-color .5s );
+        }
+    }
 }
+
+
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: var(--m-4) 0;
+    &__item {
+            max-width: 12rem;
+            margin: 0 auto;
+            display: block;
+            border-radius: 100%;
+            padding: var(--p-1);
+            box-shadow: 0 0 0 1px transparent;
+            background-color: var(--purple-light);
+            
+            &:hover {
+                box-shadow: 0 0 0 5px var(--white);
+                    @include mxn.transition(box-shadow 0.2s ease-in-out);
+            }
+    
+    }
+}
+
