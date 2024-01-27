@@ -3,6 +3,7 @@
 .header__nav  {
      @include mxn.flex('row', 'nowrap');
      @include mxn.flex-p('space-between', 'center');
+     
 @include mxn.media-query(780px){
 
     @include mxn.flex-p('start', 'center');

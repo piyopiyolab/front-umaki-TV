@@ -21,11 +21,11 @@ function Header() {
                 <div className="header__nav__logoContainer">
                     <img src={logo} alt="logo umaki.TV" />
                 </div>
-                <ul className={`${showMenu ? "flex" : "hidden"} header__nav__menu`}>
+                <ul className={` header__nav__menu`}>
                     <li className="header__nav__menu__item">
                         <a href="/">
                             <img src={homeIcon} alt="icon home" />
-                            Home</a>
+                            <p>Home</p></a>
                     </li>
                     <li className="header__nav__menu__item">
                         <a href="/">
@@ -46,10 +46,7 @@ function Header() {
 
                 <button
                     onClick={() => setShowMenu(!showMenu)}>
-                    <img
 
-                        src={showMenu ? close : hamburger}
-                        title={showMenu ? "hide menu" : "show menu"} alt="icone menu" />
                 </button>
             </nav>
 
