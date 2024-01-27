@@ -4,6 +4,8 @@ import Input from "../Input/Input";
 import { signUpThunk } from "../../redux/thunk/thunk.post.signup"
 import { useDispatch, useSelector } from 'react-redux'
 import { useState } from "react";
+import avatar1 from '/images/avatar/avatar1.png';
+
 
 function SignUp() {
 
@@ -77,8 +79,9 @@ function SignUp() {
                 value={form.avatar} />
 
             {showAvatar ? (
-                <div>
-                    <p>coucou</p>
+                <div className='grid'>
+                    <img src={avatar1} alt="" className='grid-item' />
+
                 </div>
             ) : null}
 
