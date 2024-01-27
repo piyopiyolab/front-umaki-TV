@@ -1,9 +1,7 @@
 import { HelmetProvider, Helmet } from "react-helmet-async"
 import FooterConnexion from "../Components/FooterConnexion/FooterConnexion"
-import HeaderConnexion from "../Components/Header/HeaderConnexion"
+import HeaderConnexion from "../Components/HeaderConnexion/HeaderConnexion"
 import LogIn from "../Components/LogIn/LogIn"
-
-
 
 
 

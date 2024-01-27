@@ -1,5 +1,5 @@
 import FooterConnexion from "../Components/FooterConnexion/FooterConnexion"
-import HeaderConnexion from "../Components/Header/HeaderConnexion"
+import HeaderConnexion from "../Components/HeaderConnexion/HeaderConnexion"
 import SignUp from "../Components/SignUp/SignUp"
 
 import { Helmet, HelmetProvider } from 'react-helmet-async';
