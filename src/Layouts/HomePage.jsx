@@ -8,8 +8,8 @@ function HomePage() {
         <>
             <HelmetProvider>
                 <Helmet>
-                    <title>Sign-up Page- Umaki.TV </title>
-                    <meta name='description' content='Welcome to Umaki.TV, create your account to start tracking your viewing progress !' />
+                    <title>Welcome to HomePage- Umaki.TV </title>
+                    <meta name='description' content='Welcome to Umaki.TV, start by creating your account or log-in to start tracking your viewing progress !' />
                 </Helmet>
             </HelmetProvider>
             <Header />

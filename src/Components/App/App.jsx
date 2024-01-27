@@ -1,7 +1,6 @@
 import './App.scss'
 import React from 'react';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import SignUp from '../SignUp/SignUp';
 import LogInPage from '../../Layouts/LogInPage';
 import SignUpPage from '../../Layouts/SignUpPage';
 import HomePage from '../../Layouts/HomePage';
