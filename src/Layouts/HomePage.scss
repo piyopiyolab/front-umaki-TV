@@ -1,16 +1,22 @@
 @use "../styles/mixins" as mxn;
 
-.body {
-    @include mxn.flex('row', 'wrap');
+.trending-animes {
+    @include mxn.flex('colum', 'wrap');
     @include mxn.flex-p('center', 'center');
     gap: var(--gap-3);
     max-width:1200px;
+
+ &__headings {
+    h2, h3 {
+        text-align: center;
+      }
+
+
+      h3 {
+        color: var(--gray);
+        font-size: var(--text-sm);
+        line-height: 3;
+      }
+ }
 }
 
-.body {
-    &__title2 {
-
-            text-align: center;
-      
-    }
-}

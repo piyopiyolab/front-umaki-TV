@@ -2,6 +2,7 @@ import { HelmetProvider, Helmet } from "react-helmet-async"
 import Header from "../Components/Header/Header"
 import Card from "../Components/Card/Card"
 import "./HomePage.scss"
+import Footer from "../Components/Footer/Footer"
 
 
 function HomePage() {
@@ -15,10 +16,15 @@ function HomePage() {
             </HelmetProvider>
             <Header />
 
-            <body className="body">
-                <h2 className="body__title2">Trending last days ...</h2>
+            <section className="trending-animes">
+                <div className="trending-animes__headings">
+                    <h2 >Trending last days ...</h2>
+                    <h3> Check out latest and trending animes today ! </h3>
+                </div>
                 <Card />
-            </body>
+            </section>
+
+            <Footer />
         </>
     )
 }

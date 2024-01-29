@@ -40,6 +40,7 @@ function Card() {
                             <h1>{animeID.title_english}</h1>
                             <div className="wrapper__card__animeInfo__tags">
                                 {animeID.genres.map((genreID) => (
+                                    // Ajout de la clé ci-dessous
                                     <span key={genreID.id}>{genreID.name}</span>
                                 ))}
                             </div>
@@ -47,14 +48,13 @@ function Card() {
                                 <p>{animeID.favorites}</p>
                                 <p>
                                     <img src={episodesIcon} alt="episodes icon" />
-                                    {animeID.episodes} episodes</p>
+                                    {animeID.episodes} episodes
+                                </p>
                             </div>
-
-
-                            <a href="" class="wrapper__card__btn">Read More <img src={arrowIcon} alt="read more btn" /></a>
+                            <a href="" className="wrapper__card__btn">
+                                Read More <img src={arrowIcon} alt="read more btn" />
+                            </a>
                         </div>
-
-
                     </div>
                 ))}
             </div>

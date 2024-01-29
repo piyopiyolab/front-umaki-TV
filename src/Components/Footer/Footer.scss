@@ -1,0 +1,34 @@
+
+@use "../../styles/mixins.scss" as mxn;
+
+.footer {
+ 
+    padding-top: var(--p-3) ;
+    color: var(--gray);
+ 
+
+
+
+    &__socials {
+        @include mxn.flex('row', 'nowrap');
+        @include mxn.flex-p('center', 'center');
+        gap: var(--gap-2);
+  
+        a {
+            img {
+                max-width: 3rem;
+                display: block;
+            }
+        }
+    }
+
+    img {
+        max-width: 4rem;
+        display: block;
+        margin: 0 auto;
+    }
+
+    &:last-child{
+        padding-top: 5rem;
+    }
+}
