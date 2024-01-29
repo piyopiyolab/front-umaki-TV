@@ -12,6 +12,11 @@ html {
 
 }
 a {
+  color: var(--white);
+  text-decoration: none;
+}
+
+.active {
   color: var(--purple-light);
 }
 body {

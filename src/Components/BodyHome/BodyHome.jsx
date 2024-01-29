@@ -15,15 +15,14 @@ function BodyHome() {
 
         }, []);
 
-    const topAnimeData = useSelector((state) => state.topAnime);
-    const isLoading = useSelector((state) => state.loading);
+    const { data, loading } = useSelector((state) => state.animeSlice);
 
-    if (isLoading) {
+    if (loading) {
         return <img src={spinner} alt="Loading..." />;
     }
 
-    console.log("isLoading:", isLoading);
-    console.log("topAnimeData:", topAnimeData);
+    console.log("isLoading:", loading);
+    console.log("topAnimeData:", data);
     return (
         <>
             <div className="bodyHome__container">

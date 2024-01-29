@@ -6,51 +6,58 @@ import heartIcon from '../../assets/icons/heart-icon.svg'
 import genreIcon from '../../assets/icons/genre-icon.svg'
 import homeIcon from '../../assets/icons/home-icon.svg'
 import flammeIcon from '../../assets/icons/flame-icon.svg'
-
-
 import { useState } from "react"
 
 function Header() {
-    const [showMenu, setShowMenu] = useState(false);
 
+    const [showNavbar, setShowNavbar] = useState(false);
+
+    const handleShowNavbar = () => {
+        setShowNavbar(!showNavbar);
+    };
 
 
     return (
         <>
             <nav className="header__nav">
                 <div className="header__nav__logoContainer">
-                    <img src={logo} alt="logo umaki.TV" />
+                    <img src={logo} className='logo' alt="logo umaki.TV" />
                 </div>
-                <ul className={`${showMenu ? "flex" : "hidden"} header__nav__menu`}>
-                    <li className="header__nav__menu__item">
-                        <a href="/">
-                            <img src={homeIcon} alt="icon home" />
-                            Home</a>
-                    </li>
-                    <li className="header__nav__menu__item">
-                        <a href="/">
-                            <img src={heartIcon} alt="favorite icon" />
-                            Favorite</a>
-                    </li>
-                    <li className="header__nav__menu__item">
-                        <a href="/">
-                            <img src={genreIcon} alt="Genre icon" />
-                            Genre</a>
-                    </li>
-                    <li className="header__nav__menu__item">
-                        <img src={flammeIcon} alt="latest icon" />
+                <div className="header__nav__menu">
+                    <ul>
+                        <li className={` ${showNavbar && "active"}`}>
+                            <a href="/">
+                                <img src={homeIcon} alt="icon home" />
+                                <span>Home</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/">
+                                <img src={heartIcon} alt="favorite icon" />
+                                <span>Favorite</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/">
+                                <img src={genreIcon} alt="Genre icon" />
+                                <span>Genre</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/">
+                                <img src={flammeIcon} alt="latest icon" />
 
-                        <a href="/">Latest</a>
-                    </li>
-                </ul>
+                                <span>Latest</span></a>
+                        </li>
+                    </ul>
 
+                    {/* icon mobile menu */}
+                </div>
+                {/* 
                 <button
-                    onClick={() => setShowMenu(!showMenu)}>
-                    <img
+                    onClick={() => setShowMenu(!showMenu)}>Clic
 
-                        src={showMenu ? close : hamburger}
-                        title={showMenu ? "hide menu" : "show menu"} alt="icone menu" />
-                </button>
+                </button> */}
             </nav>
 
 
