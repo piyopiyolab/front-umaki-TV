@@ -11,6 +11,13 @@
   --gray: #ACA6AD;
 
 
+  //Width
+--w-full: 100%;
+--w-sm:640px;
+--w-md:768px;
+--w-lg:1024px;
+--w-xl:1280px;
+--w-2xl:1536px;
 
   // Radius
   --rounded: 4px;
@@ -48,8 +55,8 @@
   --container-padding: var(--p-2);
 
   // Fonts
-  --text-xs: calc(0.8rem + 0.6vmin);
-  --text-sm: calc(1rem + 0.6vmin);
+  --text-xs: calc(0.75rem + 0.6vmin);
+  --text-sm: calc(0.875rem + 0.6vmin);
   --text-md: calc(1.2rem + 0.6vmin);
   --text-lg: calc(1.4rem + 0.6vmin);
   --text-xl: calc(1.8rem + 0.6vmin);

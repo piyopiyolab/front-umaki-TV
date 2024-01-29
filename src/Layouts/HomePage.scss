@@ -1,0 +1,16 @@
+@use "../styles/mixins" as mxn;
+
+.body {
+    @include mxn.flex('row', 'wrap');
+    @include mxn.flex-p('center', 'center');
+    gap: var(--gap-3);
+    max-width:1200px;
+}
+
+.body {
+    &__title2 {
+
+            text-align: center;
+      
+    }
+}

@@ -5,7 +5,7 @@
 .header {
 
     &__container {
-        @include mxn.container;
+      
         @include mxn.flex('column', 'nowrap');
         @include mxn.flex-p('center', 'center');
 

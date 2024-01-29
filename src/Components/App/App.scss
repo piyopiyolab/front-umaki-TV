@@ -1,8 +1,13 @@
 @use "../../styles/mixins" as mxn;
 
 .container {
-  @include mxn.container;
-  padding: var(--p-3);
-  font-size: var(--text-sm);
+  font-size: var(--text-md);
+  padding: 0 var(--p-2);
+
+  @include mxn.media-query("780px") {
+    @include mxn.container;
+
+  }
+
 
 }

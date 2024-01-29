@@ -5,13 +5,14 @@ import genreIcon from '../../assets/icons/genre-icon.svg'
 import homeIcon from '../../assets/icons/home-icon.svg'
 import flammeIcon from '../../assets/icons/flame-icon.svg'
 import hamburger from '../../assets/icons/hamburger-solid.svg'
+import close from '../../assets/icons/close.svg'
 
 import { useState } from "react"
 
 function Header() {
 
     const [showMobileNav, setShowMobileNav] = useState(false);
-    const [mobileMenu, setMobileMenu] = useState(false)
+    const [mobileMenu, setMobileMenu] = useState(true)
 
     const handleShowMobileNav = () => {
         console.log('show/hide menumobile')
@@ -28,9 +29,29 @@ function Header() {
                 </div>
                 <div className="header__nav__menu">
                     {/* icon mobile menu */}
-                    <img
-                        onClick={handleShowMobileNav}
-                        src={hamburger} alt="icon mobile" className="icon header__nav__menu_icon" />
+
+
+
+                    {
+                        !mobileMenu ? (
+                            <img
+                                onClick={handleShowMobileNav}
+                                src={hamburger}
+                                alt="icon mobile"
+                                className="icon header__nav__menu_icon"
+                            />
+                        ) : (
+                            <img
+                                onClick={handleShowMobileNav}
+                                src={close}
+                                alt="icon close mobile"
+                                className="icon header__nav__menu_icon"
+                            />
+                        )
+                    }
+
+
+
 
                     <ul className={mobileMenu ? "visible" : "hidden"}>
                         <li>

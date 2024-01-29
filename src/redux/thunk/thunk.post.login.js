@@ -8,6 +8,7 @@ export const logInThunk = (form) => async (dispatch, getState) => {
 
     console.log(data)
     dispatch(setData(data.user))
+    localStorage.setItem('accessToken', data.token);
 
 
 

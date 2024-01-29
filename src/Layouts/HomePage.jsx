@@ -1,6 +1,7 @@
 import { HelmetProvider, Helmet } from "react-helmet-async"
 import Header from "../Components/Header/Header"
-import BodyHome from "../Components/BodyHome/BodyHome"
+import Card from "../Components/Card/Card"
+import "./HomePage.scss"
 
 
 function HomePage() {
@@ -13,7 +14,11 @@ function HomePage() {
                 </Helmet>
             </HelmetProvider>
             <Header />
-            <BodyHome />
+
+            <body className="body">
+                <h2 className="body__title2">Trending last days ...</h2>
+                <Card />
+            </body>
         </>
     )
 }
