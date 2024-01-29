@@ -1,7 +1,9 @@
 @use "../../styles/mixins" as mxn;
 
 
-
+.hidden {
+    display: none!important;;
+}
 
 .header__nav  {
      @include mxn.flex('row', 'nowrap');
@@ -32,6 +34,13 @@
     }
 
     &__menu {
+
+        &__icon{
+            @include mxn.media-query("780px") {
+                display: none;
+            }
+
+        }
         ul {
             @include mxn.flex('column', 'nowrap');
             @include mxn.media-query('780px') {

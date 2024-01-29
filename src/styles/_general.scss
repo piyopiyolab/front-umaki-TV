@@ -19,6 +19,8 @@ a {
 .active {
   color: var(--purple-light);
 }
+
+
 body {
   flex: 1 0;
   display: flex;
@@ -103,7 +105,10 @@ h1 {
 }
 
 
-//Margin
+.icon {
+  max-width: 5rem;
+  display: block;
+}
 
 
 //padding

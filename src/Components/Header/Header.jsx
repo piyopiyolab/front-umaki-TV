@@ -1,20 +1,23 @@
 import "./Header.scss"
-import hamburger from '../../assets/icons/hamburger.svg'
-import close from '../../assets/icons/close.svg'
 import logo from '../../assets/umaki.tv-logo.svg'
 import heartIcon from '../../assets/icons/heart-icon.svg'
 import genreIcon from '../../assets/icons/genre-icon.svg'
 import homeIcon from '../../assets/icons/home-icon.svg'
 import flammeIcon from '../../assets/icons/flame-icon.svg'
+import hamburger from '../../assets/icons/hamburger-solid.svg'
+
 import { useState } from "react"
 
 function Header() {
 
-    const [showNavbar, setShowNavbar] = useState(false);
+    const [showMobileNav, setShowMobileNav] = useState(false);
+    const [mobileMenu, setMobileMenu] = useState(false)
 
-    const handleShowNavbar = () => {
-        setShowNavbar(!showNavbar);
+    const handleShowMobileNav = () => {
+        console.log('show/hide menumobile')
+        setMobileMenu(!mobileMenu);
     };
+
 
 
     return (
@@ -24,11 +27,16 @@ function Header() {
                     <img src={logo} className='logo' alt="logo umaki.TV" />
                 </div>
                 <div className="header__nav__menu">
-                    <ul>
-                        <li className={` ${showNavbar && "active"}`}>
+                    {/* icon mobile menu */}
+                    <img
+                        onClick={handleShowMobileNav}
+                        src={hamburger} alt="icon mobile" className="icon header__nav__menu_icon" />
+
+                    <ul className={mobileMenu ? "visible" : "hidden"}>
+                        <li>
                             <a href="/">
                                 <img src={homeIcon} alt="icon home" />
-                                <span>Home</span>
+                                <span className="active">Home</span>
                             </a>
                         </li>
                         <li>
@@ -51,7 +59,8 @@ function Header() {
                         </li>
                     </ul>
 
-                    {/* icon mobile menu */}
+
+
                 </div>
                 {/* 
                 <button
