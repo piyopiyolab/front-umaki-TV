@@ -41,7 +41,14 @@ function FavoritePage() {
 
 
 
-
+            <div>
+                {data.map((id) => (
+                    <div key={id.anime_id}>
+                        <span>{id.anime_id}</span>
+                        <span>{id.anime_state}</span>
+                    </div>
+                ))}
+            </div>
             <Footer />
 
 
