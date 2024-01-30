@@ -4,7 +4,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     loading: false,
     data: undefined,
-    error: false
+    error: false,
+    loggedIn: false,
 }
 
 
@@ -41,6 +42,12 @@ export const userSlice = createSlice({
                 error: false,
             }
         },
+        setLoggedInStatus: (state, action) => {
+            return {
+                ...state,
+                loggedIn: action.payload,
+            }
+        },
 
 
 
@@ -49,5 +56,5 @@ export const userSlice = createSlice({
 
 
 
-export const { setData, addLoading, removeLoading, addError, removeError } = userSlice.actions
+export const { setData, addLoading, removeLoading, addError, removeError, setLoggedInStatus } = userSlice.actions
 export default userSlice.reducer

@@ -25,7 +25,7 @@ function Header() {
         <>
             <nav className="header__nav">
                 <div className="header__nav__logoContainer">
-                    <img src={logo} className='logo' alt="logo umaki.TV" />
+                    <a href="/"><img src={logo} className='logo' alt="logo umaki.TV" /></a>
                 </div>
                 <div className="header__nav__menu">
                     {/* icon mobile menu */}

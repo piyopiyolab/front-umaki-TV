@@ -3,9 +3,10 @@
 .container {
   font-size: var(--text-md);
   padding: 0 var(--p-2);
+  @include mxn.container;
 
   @include mxn.media-query("780px") {
-    @include mxn.container;
+    max-width: 1260px!important;
 
   }
 

@@ -45,7 +45,8 @@ function Card() {
                                 ))}
                             </div>
                             <div className="wrapper__card__animeInfo__stats">
-                                <p>{animeID.favorites}</p>
+                                <p>  <img src={heartIcon} alt="episodes icon" />
+                                    {animeID.favorites}</p>
                                 <p>
                                     <img src={episodesIcon} alt="episodes icon" />
                                     {animeID.episodes} episodes
