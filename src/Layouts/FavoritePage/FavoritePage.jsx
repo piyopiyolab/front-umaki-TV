@@ -2,22 +2,29 @@ import "./FavoritePage.scss"
 import Footer from "../../Components/Footer/Footer"
 import Header from "../../Components/Header/Header"
 import { HelmetProvider, Helmet } from "react-helmet-async"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { useEffect } from "react"
 import { getUserList } from "../../redux/thunk/thunk.get.userList"
-
-
+import spinner from '../../assets/spinner.svg'
 
 function FavoritePage() {
 
-
     const dispatch = useDispatch();
+    const { data, loading, error } = useSelector((state) => state.userSlice);
+
 
     useEffect(() => {
+
         dispatch(getUserList());
-    }, []);
 
+    }, [])
 
+    if (loading) {
+        return <img src={spinner} alt="Loading..." className="loader" />;
+    }
+    if (error) {
+        return <p>An error has occurred</p>;
+    }
 
     return (
         <>
@@ -31,6 +38,7 @@ function FavoritePage() {
 
 
             <Header />
+
 
 
 

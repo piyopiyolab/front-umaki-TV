@@ -11,21 +11,23 @@ export const getUserList = () => async (dispatch, getState) => {
     dispatch(addLoading());
 
 
-
     const response = await getRequest("http://localhost:9001/user/dashboard", token);
     const data = response.data
 
     if (response.error) {
         console.error("Error favorite user's List:", error);
+        dispatch(removeLoading())
         dispatch(addError());
     }
 
 
-    dispatch(setData(data.user))
+    dispatch(setData(data.data))
+    console.log(data.data)
+
 
     // Remove Loading  
     dispatch(removeLoading())
 
-    console.log(data)
+
 
 }

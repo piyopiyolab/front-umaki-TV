@@ -29,6 +29,18 @@ export const animeSlice = createSlice({
                 loading: false,
             };
         },
+        addError: (state) => {
+            return {
+                ...state,
+                error: true,
+            }
+        },
+        removeError: (state) => {
+            return {
+                ...state,
+                error: false,
+            }
+        },
 
 
 
@@ -38,5 +50,5 @@ export const animeSlice = createSlice({
 
 
 
-export const { setData, addLoading, removeLoading } = animeSlice.actions
+export const { setData, addLoading, removeLoading, addError, removeError } = animeSlice.actions
 export default animeSlice.reducer
