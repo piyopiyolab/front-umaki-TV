@@ -1,8 +1,8 @@
 import { HelmetProvider, Helmet } from "react-helmet-async"
-import Header from "../Components/Header/Header"
-import Card from "../Components/Card/Card"
+import Card from "../../Components/Card/Card"
 import "./HomePage.scss"
-import Footer from "../Components/Footer/Footer"
+import Footer from "../../Components/Footer/Footer"
+import Header from "../../Components/Header/Header"
 
 
 function HomePage() {
@@ -14,6 +14,8 @@ function HomePage() {
                     <meta name='description' content='Welcome to Umaki.TV, start by creating your account or log-in to start tracking your viewing progress !' />
                 </Helmet>
             </HelmetProvider>
+
+
             <Header />
 
             <section className="trending-animes">

@@ -29,7 +29,18 @@ export const userSlice = createSlice({
                 loading: false,
             };
         },
-
+        addError: (state) => {
+            return {
+                ...state,
+                error: true,
+            }
+        },
+        removeError: (state) => {
+            return {
+                ...state,
+                error: false,
+            }
+        },
 
 
 
@@ -38,5 +49,5 @@ export const userSlice = createSlice({
 
 
 
-export const { setData, addLoading, removeLoading } = userSlice.actions
+export const { setData, addLoading, removeLoading, addError, removeError } = userSlice.actions
 export default userSlice.reducer

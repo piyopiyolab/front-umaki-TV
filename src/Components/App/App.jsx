@@ -3,7 +3,8 @@ import React from 'react';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import LogInPage from '../../Layouts/LogInPage';
 import SignUpPage from '../../Layouts/SignUpPage';
-import HomePage from '../../Layouts/HomePage';
+import HomePage from '../../Layouts/HomePage/HomePage';
+import FavoritePage from '../../Layouts/FavoritePage/FavoritePage';
 
 function App() {
     return (
@@ -32,6 +33,14 @@ function App() {
                             element={
                                 <>
                                     <HomePage />
+                                </>
+                            }
+                        />
+                        <Route
+                            path="/favorite"
+                            element={
+                                <>
+                                    <FavoritePage />
                                 </>
                             }
                         />

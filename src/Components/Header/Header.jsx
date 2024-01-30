@@ -60,7 +60,7 @@ function Header() {
                             </a>
                         </li>
                         <li>
-                            <a href="/">
+                            <a href="/favorite">
                                 <img src={heartIcon} className="icon" alt="favorite icon" />
                                 <span>Favorite</span>
                             </a>

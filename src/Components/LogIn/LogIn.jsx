@@ -1,5 +1,5 @@
 import { logInThunk } from "../../redux/thunk/thunk.post.login"
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { useState } from "react";
 import Button from "../Button/Button";
 import Input from "../Input/Input";
