@@ -18,8 +18,6 @@ export const topanimeThunk = () => async (dispatch, getState) => {
     } catch (error) {
         console.error("Error get API Jikan:", error);
         dispatch(addError());
-    } finally {
-        dispatch(removeLoading());
     }
 
 };

@@ -4,22 +4,28 @@ import { getRequest } from "../../API/api";
 
 export const getUserList = () => async (dispatch, getState) => {
 
-    try {
-        dispatch(addLoading());
-        const token = localStorage.getItem('accessToken');
-        const response = await getRequest("http://localhost:9001/user/dashboard", token);
-        const data = response.data
+
+    const token = localStorage.getItem('accessToken');
+
+    //Loading => Await response 
+    dispatch(addLoading());
 
 
-        dispatch(setData(data.user))
-    }
 
-    catch (error) {
+    const response = await getRequest("http://localhost:9001/user/dashboard", token);
+    const data = response.data
+
+    if (response.error) {
         console.error("Error favorite user's List:", error);
         dispatch(addError());
-
-    } finally {
-        dispatch(removeLoading());
     }
+
+
+    dispatch(setData(data.user))
+
+    // Remove Loading  
+    dispatch(removeLoading())
+
+    console.log(data)
 
 }

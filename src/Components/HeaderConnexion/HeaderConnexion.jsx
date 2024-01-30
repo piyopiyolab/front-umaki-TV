@@ -8,7 +8,9 @@ function HeaderConnexion() {
         <>
             <div className="header__container">
                 <div className="header__container__logo">
-                    <img src={logo} className="header__container__logo" alt="logo" />
+                    <a href="/">
+                        <img src={logo} className="header__container__logo" alt="logo" />
+                    </a>
 
                 </div>
 
