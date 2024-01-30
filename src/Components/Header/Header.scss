@@ -35,12 +35,15 @@
 
     &__menu {
 
-        img {
-            @include mxn.media-query("780px") {
-                display: none;
 
+        &__icon-close {
+            @include mxn.media-query('780px') {
+                display: none!important;
             }
         }
+
+    
+        
        
         
         ul {
@@ -52,10 +55,12 @@
                 width: 9rem;
                 min-width: min-content;
                 margin-bottom: var(--m-1);
+                margin-right: var(--m-1);
             
               a {
                 @include mxn.flex('row', 'nowrap');
                 @include mxn.flex-p('start', 'center');
+                
                 img {
                     max-width: 1.7rem;
                     margin-right: 1rem;   
@@ -64,11 +69,11 @@
               
             }
           }
-        }
+        
     }
             
 
         
     
-
+}
 

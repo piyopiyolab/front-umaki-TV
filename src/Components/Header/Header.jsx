@@ -31,21 +31,20 @@ function Header() {
                     {/* icon mobile menu */}
 
 
-
                     {
                         !mobileMenu ? (
                             <img
                                 onClick={handleShowMobileNav}
                                 src={hamburger}
                                 alt="icon mobile"
-                                className="icon header__nav__menu_icon"
+                                className="icon header__nav__menu__icon-open"
                             />
                         ) : (
                             <img
                                 onClick={handleShowMobileNav}
                                 src={close}
                                 alt="icon close mobile"
-                                className="icon header__nav__menu_icon"
+                                className="icon header__nav__menu__icon-close"
                             />
                         )
                     }
@@ -53,28 +52,28 @@ function Header() {
 
 
 
-                    <ul className={mobileMenu ? "visible" : "hidden"}>
+                    <ul className={mobileMenu ? "" : "hidden"}>
                         <li>
                             <a href="/">
-                                <img src={homeIcon} alt="icon home" />
+                                <img src={homeIcon} className="icon" alt="icon home" />
                                 <span className="active">Home</span>
                             </a>
                         </li>
                         <li>
                             <a href="/">
-                                <img src={heartIcon} alt="favorite icon" />
+                                <img src={heartIcon} className="icon" alt="favorite icon" />
                                 <span>Favorite</span>
                             </a>
                         </li>
                         <li>
                             <a href="/">
-                                <img src={genreIcon} alt="Genre icon" />
+                                <img src={genreIcon} className="icon" alt="Genre icon" />
                                 <span>Genre</span>
                             </a>
                         </li>
                         <li>
                             <a href="/">
-                                <img src={flammeIcon} alt="latest icon" />
+                                <img src={flammeIcon} className="icon" alt="latest icon" />
 
                                 <span>Latest</span></a>
                         </li>
