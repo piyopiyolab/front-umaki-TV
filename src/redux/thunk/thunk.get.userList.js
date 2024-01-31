@@ -12,6 +12,8 @@ export const getUserList = () => async (dispatch, getState) => {
 
 
     const response = await getRequest("http://localhost:9001/user/dashboard", token);
+
+    //const data = response.data
     const data = response.data.data.response.result
 
     if (response.error) {
