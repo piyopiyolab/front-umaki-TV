@@ -9,6 +9,10 @@ import spinner from '../../assets/spinner.svg'
 import arrowIcon from "../../assets/icons/arrowr-icon.svg"
 import episodesIcon from "../../assets/icons/episodes-icon.svg"
 import heartIcon from "../../assets/icons/heart-icon.svg"
+import chibi from "/images/404-umaki-tv.png"
+import Button from "../../Components/Button/Button"
+
+
 
 
 function HomePage() {
@@ -26,6 +30,18 @@ function HomePage() {
     if (loading) {
         return <img src={spinner} alt="Loading..." className="loader" />;
     }
+
+
+    //error API
+    let errorTxt =
+        <div>
+
+            <img src={chibi} alt='chibi error umaki.tv' />
+            <p className="text-center">Oops, something went wrong...</p>
+            <Button
+                onClick={() => { dispatch(topanimeThunk()) }}
+                text="Please, try again" />
+        </div>
 
 
 
@@ -47,49 +63,30 @@ function HomePage() {
                     <h2 >Trending last days ...</h2>
                     <h3> Check out latest and trending animes today ! </h3>
                 </div>
-                <section>
-                    <h2>On Going</h2>
+
+                <div className="wrapper">
                     {data?.length > 0 ? (
-                        <div>
-                            {data.map((id) => (
-                                // Afficher uniquement si id.anime_state est "on_going"
-                                id.anime_state === "watched" && (
-                                    <div key={id.anime_id}>
-                                        <img src={id.media} alt={id.title} />
-                                        <span>{id.title}</span>
-                                        <span>{id.anime_state}</span>
-                                    </div>
-                                )
-                            ))}
-                        </div>
-                    ) : (
-                        <p>No data, please add animes</p>
-                    )}
-                </section>
-                {data?.length > 0 ? (
+                        data.map((d) => (
 
 
-
-                    <div className="wrapper">
-                        {data.map((animeID) => (
-                            <article key={animeID.mal_id} className="wrapper__card">
+                            <article key={d.mal_id} className="wrapper__card">
                                 <div className="wrapper__card__animeImg">
-                                    <img src={animeID.images.webp.large_image_url} alt="" />
+                                    <img src={d.images.webp.large_image_url} alt="" />
                                 </div>
                                 <div className="wrapper__card__animeInfo">
-                                    <h1>{animeID.title_english}</h1>
+                                    <h1>{d.title_english}</h1>
                                     <div className="wrapper__card__animeInfo__tags">
-                                        {animeID.genres.map((genreID) => (
+                                        {d.genres.map((genre) => (
                                             // Ajout de la clé ci-dessous
-                                            <span key={genreID.id}>{genreID.name}</span>
+                                            <span key={genre.mal_id}>{genre.name}</span>
                                         ))}
                                     </div>
                                     <div className="wrapper__card__animeInfo__stats">
                                         <p>  <img src={heartIcon} alt="episodes icon" />
-                                            {animeID.favorites}</p>
+                                            {d.favorites}</p>
                                         <p>
                                             <img src={episodesIcon} alt="episodes icon" />
-                                            {animeID.episodes} episodes
+                                            {d.episodes} episodes
                                         </p>
                                     </div>
                                     <a href="" className="wrapper__card__btn">
@@ -97,14 +94,17 @@ function HomePage() {
                                     </a>
                                 </div>
                             </article>
-                        ))}
-                    </div>
-                ) : (
-                    <p>No data, please try again</p>
-                )}
 
 
-            </section>
+                        ))
+
+
+                    ) : (
+                        errorTxt
+                    )}
+
+                </div>
+            </section >
 
             <Footer />
         </>

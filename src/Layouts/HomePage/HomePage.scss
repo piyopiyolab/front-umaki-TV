@@ -1,7 +1,7 @@
 @use "../../styles/mixins" as mxn;
 
 .trending-animes {
-    @include mxn.flex('colum', 'wrap');
+    @include mxn.flex('column', 'wrap');
     @include mxn.flex-p('center', 'center');
     gap: var(--gap-3);
     max-width:1200px;

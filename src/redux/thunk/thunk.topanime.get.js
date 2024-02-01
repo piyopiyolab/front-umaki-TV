@@ -16,12 +16,13 @@ export const topanimeThunk = () => async (dispatch, getState) => {
     }
 
 
-
-    dispatch(setData(data.data))
-    console.log(data.data)
-
     // Remove Loading  
     dispatch(removeLoading())
+
+    dispatch(setData(data.data))
+
+
+
 
 
 };

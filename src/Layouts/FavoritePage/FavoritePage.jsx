@@ -44,15 +44,15 @@ function FavoritePage() {
 
             {data?.length > 0 ? (
 
-                data.map((id) => (
+                data.map((d) => (
                     // Afficher uniquement si id.anime_state est "on_going"
-                    id.anime_state === "on_going" && (
-                        <section>
+                    d.anime_state === "on_going" && (
+                        <section key={d.anime_id} className="wrapper__card" >
                             <h2>On Going</h2>
                             <div>
-                                <div key={id.anime_id}>
-                                    <img src={id.media} alt={id.title} />
-                                    <span>{id.title}</span>
+                                <div>
+                                    <img src={d.media} alt={d.title} />
+                                    <span >{d.title}</span>
 
                                 </div>
                             </div>
@@ -70,15 +70,14 @@ function FavoritePage() {
 
             {data?.length > 0 ? (
 
-                data.map((id) => (
-                    // Afficher uniquement si id.anime_state est "on_going"
-                    id.anime_state === "to_see" && (
-                        <section>
+                data.map((d) => (
+                    d.anime_state === "to_see" && (
+                        <section key={d.anime_id} className="wrapper__card">
                             <h2>To see</h2>
                             <div>
-                                <div key={id.anime_id}>
-                                    <img src={id.media} alt={id.title} />
-                                    <span>{id.title}</span>
+                                <div key={d.anime_id}>
+                                    <img src={d.media} alt={d.title} />
+                                    <span>{d.title}</span>
 
                                 </div>
                             </div>
@@ -95,15 +94,15 @@ function FavoritePage() {
 
             {data?.length > 0 ? (
 
-                data.map((id) => (
+                data.map((d) => (
 
-                    id.anime_state === "watched" && (
-                        <section>
+                    d.anime_state === "watched" && (
+                        <section key={d.anime_id} className="wrapper__card">
                             <h2>Watched</h2>
                             <div>
-                                <div key={id.anime_id}>
-                                    <img src={id.media} alt={id.title} />
-                                    <span>{id.title}</span>
+                                <div key={d.anime_id}>
+                                    <img src={d.media} alt={d.title} />
+                                    <span>{d.title}</span>
 
                                 </div>
                             </div>
