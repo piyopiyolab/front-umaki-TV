@@ -15,13 +15,27 @@ function FavoritePage() {
     const dispatch = useDispatch();
     const { data, loading, error } = useSelector((state) => state.userSlice);
 
+    const [selectedFilter, setSelectedFilter] = useState('watched');
+    const [animeLists, setAnimeLists] = useState();
+
+
 
     //API request
     useEffect(() => {
 
         dispatch(getUserList());
-
+        setAnimeLists(data)
+        dispatch(getUserList());
     }, [])
+
+
+    //Set animeList from API Request for filter function
+    useEffect(() => {
+        setAnimeLists(data)
+        console.log('data for filter', animeLists)
+    }, [data]);
+
+
 
 
     //Error handler
@@ -39,9 +53,22 @@ function FavoritePage() {
             <img src={chibi} alt='chibi error umaki.tv' />
             <p className="text-center">Oops, something went wrong...</p>
             <Button
-                onClick={() => { dispatch(topanimeThunk()) }}
+                onClick={() => { dispatch(getUserList()) }}
                 text="Please, try again" />
         </div>
+
+
+
+
+    //Filter function
+    const handleFilterChange = (filter) => {
+        setSelectedFilter(filter);
+
+    };
+
+
+    const filteredAnimeList = animeLists.filter(anime => anime.anime_state === selectedFilter);
+
 
 
     return (
@@ -58,7 +85,6 @@ function FavoritePage() {
             <Header />
 
 
-            {/* Anime State on going*/}
             <h1 className="text-center">Welcome to your Library 100% anime</h1>
             <div>
                 {/* Boutons de filtre */}
@@ -69,78 +95,24 @@ function FavoritePage() {
 
 
 
-            {data?.length > 0 ? (
 
-                data.map((d) => (
-                    // Afficher uniquement si id.anime_state est "on_going"
-                    d.anime_state === "on_going" && (
-                        <section key={d.anime_id} className="wrapper__card" >
-                            <h2>On Going</h2>
-                            <div>
-                                <div>
-                                    <img src={d.media} alt={d.title} />
-                                    <span >{d.title}</span>
+            {/* Anime State List */}
+            <h2>Anime List - {selectedFilter}</h2>
 
-                                </div>
-                            </div>
-                        </section>
-                    )
-                ))
 
+            {filteredAnimeList?.length > 0 ? (
+
+                <ul>
+                    {filteredAnimeList.map(anime => (
+                        <li key={anime.anime_id}>{anime.title}</li>
+                    ))}
+                </ul>
 
             ) : (
                 errorTxt
-            )}
+            )
 
-
-            {/* Anime State to See */}
-
-            {data?.length > 0 ? (
-
-                data.map((d) => (
-                    d.anime_state === "to_see" && (
-                        <section key={d.anime_id} className="wrapper__card">
-                            <h2>To see</h2>
-                            <div>
-                                <div key={d.anime_id}>
-                                    <img src={d.media} alt={d.title} />
-                                    <span>{d.title}</span>
-
-                                </div>
-                            </div>
-                        </section>
-                    )
-                ))
-
-
-            ) : (
-                <p>No data, please add animes</p>
-            )}
-
-            {/* Anime State Watched */}
-
-            {data?.length > 0 ? (
-
-                data.map((d) => (
-
-                    d.anime_state === "watched" && (
-                        <section key={d.anime_id} className="wrapper__card">
-                            <h2>Watched</h2>
-                            <div>
-                                <div key={d.anime_id}>
-                                    <img src={d.media} alt={d.title} />
-                                    <span>{d.title}</span>
-
-                                </div>
-                            </div>
-                        </section>
-                    )
-                ))
-
-
-            ) : (
-                <p>No data, please add animes</p>
-            )}
+            }
 
 
             <Footer />

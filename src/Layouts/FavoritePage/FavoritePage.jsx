@@ -22,18 +22,16 @@ function FavoritePage() {
 
     //API request
     useEffect(() => {
-
         dispatch(getUserList());
-        setAnimeLists(data)
     }, [])
 
 
     //Set animeList from API Request for filter function
     useEffect(() => {
+        if (!data) return;
         setAnimeLists(data)
         console.log('data for filter', animeLists)
     }, [data]);
-
 
 
 
@@ -52,7 +50,7 @@ function FavoritePage() {
             <img src={chibi} alt='chibi error umaki.tv' />
             <p className="text-center">Oops, something went wrong...</p>
             <Button
-                onClick={() => { dispatch(topanimeThunk()) }}
+                onClick={() => { dispatch(getUserList()) }}
                 text="Please, try again" />
         </div>
 
@@ -65,8 +63,6 @@ function FavoritePage() {
 
     };
 
-
-    //const filteredAnimeList = animeLists.filter(anime => anime.anime_state === selectedFilter);
 
 
 
@@ -98,8 +94,8 @@ function FavoritePage() {
             {/* Anime State List */}
             <h2>Anime List - {selectedFilter}</h2>
 
-
-            {/* {filteredAnimeList?.length > 0 ? (
+            {/* 
+            {filteredAnimeList?.length > 0 ? (
 
                 <ul>
                     {filteredAnimeList.map(anime => (
