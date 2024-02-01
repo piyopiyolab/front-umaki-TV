@@ -1,10 +1,10 @@
 import './App.scss'
-import React from 'react';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import LogInPage from '../../Layouts/LogInPage';
 import SignUpPage from '../../Layouts/SignUpPage';
 import HomePage from '../../Layouts/HomePage/HomePage';
 import FavoritePage from '../../Layouts/FavoritePage/FavoritePage';
+import { APP_ROUTES } from '../../constants/routes.constants';
 
 function App() {
     return (
@@ -13,7 +13,7 @@ function App() {
                 <BrowserRouter>
                     <Routes>
                         <Route
-                            path="/log-in"
+                            path={APP_ROUTES.LOG_IN}
                             element={
                                 <>
                                     <LogInPage />
@@ -21,7 +21,7 @@ function App() {
                             }
                         />
                         <Route
-                            path="/sign-up"
+                            path={APP_ROUTES.SIGN_UP}
                             element={
                                 <>
                                     <SignUpPage />
@@ -29,7 +29,7 @@ function App() {
                             }
                         />
                         <Route
-                            path="/"
+                            path={APP_ROUTES.HOME}
                             element={
                                 <>
                                     <HomePage />
@@ -37,11 +37,20 @@ function App() {
                             }
                         />
                         <Route
-                            path="/favorite"
+                            path={APP_ROUTES.FAVORITE}
                             element={
                                 <>
                                     <FavoritePage />
                                 </>
+                            }
+                        />
+                        <Route
+                            path={"*"}
+                            element={
+                                <main style={{ padding: "1rem" }}>
+                                    <p>404 error</p>
+                                    <p>There's nothing here!</p>
+                                </main>
                             }
                         />
                     </Routes>

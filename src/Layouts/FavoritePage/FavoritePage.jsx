@@ -8,12 +8,16 @@ import { getUserList } from "../../redux/thunk/thunk.get.userList"
 import spinner from '../../assets/spinner.svg'
 import sadChibi from "/images/nolist-sad-anime.png"
 import Button from "../../Components/Button/Button"
-
+import { APP_ROUTES } from "../../constants/routes.constants"
+import { useNavigate } from "react-router-dom";
 
 function FavoritePage() {
 
     const dispatch = useDispatch();
-    const { data, loading, error } = useSelector((state) => state.userSlice);
+    const navigate = useNavigate();
+
+
+    const { data, loading, error, loggedIn } = useSelector((state) => state.userSlice);
 
     const [selectedFilter, setSelectedFilter] = useState('watched');
     const [animeLists, setAnimeLists] = useState([]);
@@ -42,6 +46,15 @@ function FavoritePage() {
     if (error) {
         return <p>An error has occurred</p>;
     }
+
+    //Redirect
+    const handleRedirectToSignup = () => {
+        navigate(APP_ROUTES.SIGN_UP, { replace: true });
+    };
+
+    const handleRedirectLogIn = () => {
+        navigate(APP_ROUTES.LOG_IN, { replace: true });
+    };
 
     //error display
     let errorTxt =
@@ -86,49 +99,65 @@ function FavoritePage() {
                     <h1>Your collection</h1>
                     <h2>Check out your favorite animes</h2>
                 </div>
-                <div className="your-collection__lists"></div>
-                <div className="your-collection__lists__filters">
-                    {/* Boutons de filtre */}
-                    <p
-                        className={selectedFilter === 'on_going' ? 'filtered' : ''}
-                        onClick={() => handleFilterChange('on_going')}>Continue</p>
-                    <p
-                        className={selectedFilter === 'watched' ? 'filtered' : ''}
-                        onClick={() => handleFilterChange('watched')}>Watched</p>
-                    <p
-                        className={selectedFilter === 'to_see' ? 'filtered' : ''}
-                        onClick={() => handleFilterChange('to_see')}>To See</p>
-                </div>
 
 
 
 
-                {/* Anime State List */}
+                {/* DISPLAYED LIST IF LOGGED */}
 
+                {loggedIn ? (
+                    <div className="your-collection__lists">
+                        <div className="your-collection__lists__filters">
+                            {/* filters controls */}
+                            <p
+                                className={selectedFilter === 'on_going' ? 'filtered' : ''}
+                                onClick={() => handleFilterChange('on_going')}>
+                                Continue
+                            </p>
+                            <p
+                                className={selectedFilter === 'watched' ? 'filtered' : ''}
+                                onClick={() => handleFilterChange('watched')}>
+                                Watched
+                            </p>
+                            <p
+                                className={selectedFilter === 'to_see' ? 'filtered' : ''}
+                                onClick={() => handleFilterChange('to_see')}>
+                                To See
+                            </p>
+                        </div>
 
-                {filteredAnimeList?.length > 0 ? (
-
-
-
-                    filteredAnimeList.map(anime => (
-                        <article key={anime.anime_id} className="your-collection__lists__card">
-
-                            <div className="your-collection__lists__card__banner">
-                                <img src={anime.media} alt={anime.title} />
-
-                            </div>
-                            <h3 className="text-center">{anime.title}</h3>
-                        </article>
-
-                    ))
-
-
-
+                        {/* Anime State List */}
+                        {filteredAnimeList?.length > 0 ? (
+                            filteredAnimeList.map(anime => (
+                                <article key={anime.anime_id} className="your-collection__lists__card">
+                                    <div className="your-collection__lists__card__banner">
+                                        <img src={anime.media} alt={anime.title} />
+                                    </div>
+                                    <h3 className="text-center">{anime.title}</h3>
+                                </article>
+                            ))
+                        ) : (
+                            errorTxt
+                        )}
+                    </div>
                 ) : (
-                    errorTxt
-                )
+                    // If not logged in, show a button
+                    <div className="your-collection__lists__log-out">
+                        <Button
+                            onClick={handleRedirectToSignup}
+                            text="Créer son compte"
+                        />
+                        <Button
+                            onClick={handleRedirectLogIn}
+                            text="Se connecter"
+                        />
 
-                }
+                    </div>
+                )}
+
+
+
+
 
             </section>
             <Footer />

@@ -105,7 +105,7 @@ function SignUp() {
                 text={"Log-In"}
             />
 
-            <p className='text-center m-2'>You already have an account ? <a href="/log-in">Log-in</a></p>
+            <p className='text-center m-2'>You already have an account ? <a href="/connexion/log-in">Log-in</a></p>
         </form>
     )
 }

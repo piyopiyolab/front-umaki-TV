@@ -7,6 +7,7 @@ import './LogIn.scss';
 
 
 
+
 function LogIn() {
 
 
@@ -65,7 +66,7 @@ function LogIn() {
                 text={"Log-In"}
             />
 
-            <p className="text-center m-2">You don't have an account ? <a href="/sign-up">Sign-up</a></p>
+            <p className="text-center m-2">You don't have an account ? <a href="/connexion/sign-up">Sign-up</a></p>
         </form>
     )
 }
