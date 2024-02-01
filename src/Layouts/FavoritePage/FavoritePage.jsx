@@ -99,12 +99,20 @@ function FavoritePage() {
             <h2>Anime List - {selectedFilter}</h2>
 
 
+            {/* {filteredAnimeList?.length > 0 ? (
 
-            {/* <ul>
-                {filteredAnimeList.map(anime => (
-                    <li key={anime.anime_id}>{anime.title}</li>
-                ))}
-            </ul> */}
+                <ul>
+                    {filteredAnimeList.map(anime => (
+                        <li key={anime.anime_id}>{anime.title}</li>
+                    ))}
+                </ul>
+
+            ) : (
+                errorTxt
+            )
+
+            } */}
+
 
             <Footer />
 
