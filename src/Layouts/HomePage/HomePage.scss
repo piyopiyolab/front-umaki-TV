@@ -7,12 +7,13 @@
     max-width:1200px;
 
  &__headings {
-    h2, h3 {
+    h1, h2 {
         text-align: center;
+        line-height: 0;
       }
 
 
-      h3 {
+      h2 {
         color: var(--gray);
         font-size: var(--text-sm);
         line-height: 3;

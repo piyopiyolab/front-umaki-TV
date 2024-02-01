@@ -23,9 +23,11 @@ function HomePage() {
             dispatch(topanimeThunk());
 
 
+
         }, []);
 
     const { data, loading } = useSelector((state) => state.animeSlice);
+    const [isButtonEnabled, setIsButtonEnabled] = useState(true);
 
     if (loading) {
         return <img src={spinner} alt="Loading..." className="loader" />;
@@ -39,7 +41,15 @@ function HomePage() {
             <img src={chibi} alt='chibi error umaki.tv' />
             <p className="text-center">Oops, something went wrong...</p>
             <Button
-                onClick={() => { dispatch(topanimeThunk()) }}
+                onClick={() => {
+                    setIsButtonEnabled(false);
+                    dispatch(topanimeThunk())
+
+                    setTimeout(() => {
+                        setIsButtonEnabled(true);
+                    }, 1200);
+                }}
+                disabled={!isButtonEnabled}
                 text="Please, try again" />
         </div>
 
@@ -60,8 +70,8 @@ function HomePage() {
 
             <section className="trending-animes">
                 <div className="trending-animes__headings">
-                    <h2 >Trending last days ...</h2>
-                    <h3> Check out latest and trending animes today ! </h3>
+                    <h1 >Trending last days ...</h1>
+                    <h2> Check out latest and trending animes today ! </h2>
                 </div>
 
                 <div className="wrapper">

@@ -6,6 +6,7 @@ export const getUserList = () => async (dispatch, getState) => {
 
 
     const token = localStorage.getItem('accessToken');
+    const isLoggedIn = !!token;
 
     //Loading => Await response 
     dispatch(addLoading());
@@ -15,6 +16,7 @@ export const getUserList = () => async (dispatch, getState) => {
 
     //const data = response.data
     const data = response.data.data.response.result
+    dispatch(setLoggedInStatus(isLoggedIn));
 
 
     if (response.error) {
@@ -25,7 +27,7 @@ export const getUserList = () => async (dispatch, getState) => {
 
 
     dispatch(setData(data))
-    console.log(data)
+
 
 
     // Remove Loading  

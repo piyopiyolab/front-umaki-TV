@@ -84,35 +84,46 @@ function FavoritePage() {
             <Header />
 
 
-            <h1 className="text-center">Welcome to your Library 100% anime</h1>
-            <div>
-                {/* Boutons de filtre */}
-                <button onClick={() => handleFilterChange('on_going')}>Continue</button>
-                <button onClick={() => handleFilterChange('watched')}>Watched</button>
-                <button onClick={() => handleFilterChange('to_see')}>To See</button>
+            <div className="your-collection">
+
+                <div className="your-collection__headings">
+
+                    <h1>Your collection</h1>
+                    <h2>Check out your favorite animes</h2>
+                </div>
+
+                <div className="your-collection__lists">
+                    <div className="your-collection__lists__filters">
+                        {/* Boutons de filtre */}
+                        <p onClick={() => handleFilterChange('on_going')}>Continue</p>
+                        <p onClick={() => handleFilterChange('watched')}>Watched</p>
+                        <p onClick={() => handleFilterChange('to_see')}>To See</p>
+                    </div>
+
+
+
+
+                    {/* Anime State List */}
+                    <h2>Anime List - {selectedFilter}</h2>
+
+
+                    {filteredAnimeList?.length > 0 ? (
+
+                        <ul>
+                            {filteredAnimeList.map(anime => (
+                                <li key={anime.anime_id}>{anime.title}</li>
+                            ))}
+                        </ul>
+
+                    ) : (
+                        errorTxt
+                    )
+
+                    }
+
+
+                </div>
             </div>
-
-
-
-
-            {/* Anime State List */}
-            <h2>Anime List - {selectedFilter}</h2>
-
-
-            {filteredAnimeList?.length > 0 ? (
-
-                <ul>
-                    {filteredAnimeList.map(anime => (
-                        <li key={anime.anime_id}>{anime.title}</li>
-                    ))}
-                </ul>
-
-            ) : (
-                errorTxt
-            )
-
-            }
-
 
             <Footer />
 

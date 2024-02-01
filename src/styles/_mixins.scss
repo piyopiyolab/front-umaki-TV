@@ -45,9 +45,39 @@
 
 
 
+// Reset btn
+
+@mixin btn-reset {
+  &:focus {
+    outline: none; // Supprime la bordure d'accentuation sur le focus
+  }
+
+  &,
+  &:hover,
+  &:active {
+    border: none;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    overflow: visible;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    line-height: normal;
+    -webkit-font-smoothing: inherit;
+    -moz-osx-font-smoothing: inherit;
+    -webkit-appearance: none;
+  }
+
+  // Remove excess padding and border in Firefox 4+
+  &::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+  }
+}
 
 
-//Reset
+//Reset input
 @mixin input-reseter {
   &:-webkit-autofill,
   &:-webkit-autofill:hover,
