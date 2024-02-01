@@ -6,8 +6,8 @@ export const getUserList = () => async (dispatch, getState) => {
 
 
     const token = localStorage.getItem('accessToken');
-    const isLoggedIn = !!token;
-
+    //const isLoggedIn = !!token;
+    const isLoggedIn = false;
     //Loading => Await response 
     dispatch(addLoading());
 

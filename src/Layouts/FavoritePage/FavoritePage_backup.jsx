@@ -46,6 +46,7 @@ function FavoritePage() {
     //error display
     let errorTxt =
         <div>
+
             <img src={chibi} alt='chibi error umaki.tv' />
             <p className="text-center">Oops, something went wrong...</p>
             <Button
@@ -88,21 +89,16 @@ function FavoritePage() {
                 <div className="your-collection__lists"></div>
                 <div className="your-collection__lists__filters">
                     {/* Boutons de filtre */}
-                    <p
-                        className={selectedFilter === 'on_going' ? 'filtered' : ''}
-                        onClick={() => handleFilterChange('on_going')}>Continue</p>
-                    <p
-                        className={selectedFilter === 'watched' ? 'filtered' : ''}
-                        onClick={() => handleFilterChange('watched')}>Watched</p>
-                    <p
-                        className={selectedFilter === 'to_see' ? 'filtered' : ''}
-                        onClick={() => handleFilterChange('to_see')}>To See</p>
+                    <p onClick={() => handleFilterChange('on_going')}>Continue</p>
+                    <p onClick={() => handleFilterChange('watched')}>Watched</p>
+                    <p onClick={() => handleFilterChange('to_see')}>To See</p>
                 </div>
 
 
 
 
                 {/* Anime State List */}
+                <h2>Anime List - {selectedFilter}</h2>
 
 
                 {filteredAnimeList?.length > 0 ? (
