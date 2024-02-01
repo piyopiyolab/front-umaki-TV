@@ -16,7 +16,7 @@ function FavoritePage() {
     const { data, loading, error } = useSelector((state) => state.userSlice);
 
     const [selectedFilter, setSelectedFilter] = useState('watched');
-    const [animeLists, setAnimeLists] = useState();
+    const [animeLists, setAnimeLists] = useState([]);
 
 
 
@@ -28,6 +28,8 @@ function FavoritePage() {
 
     //Set animeList from API Request for filter function
     useEffect(() => {
+
+
         if (!data) return;
         setAnimeLists(data)
         console.log('data for filter', animeLists)
@@ -63,6 +65,8 @@ function FavoritePage() {
 
     };
 
+    const filteredAnimeList = animeLists.filter(anime => anime.anime_state === selectedFilter);
+
 
 
 
@@ -94,7 +98,7 @@ function FavoritePage() {
             {/* Anime State List */}
             <h2>Anime List - {selectedFilter}</h2>
 
-            {/* 
+
             {filteredAnimeList?.length > 0 ? (
 
                 <ul>
@@ -107,7 +111,7 @@ function FavoritePage() {
                 errorTxt
             )
 
-            } */}
+            }
 
 
             <Footer />
