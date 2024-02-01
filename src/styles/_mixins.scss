@@ -36,6 +36,7 @@
 }
 
 
+
 //Media queries
 @mixin media-query($size: "780px") {
   @media screen and (min-width: #{$size}) {
@@ -51,8 +52,15 @@
   &:hover,
   &:focus {
     outline: none;
+    @include transition(background-color);
+  background-color: var(--purple-dark);
+
   }
   &:active {
+    transform: translateY(2px);
+  }
+
+  &:focus-within {
     transform: translateY(2px);
   }
   border: none;
@@ -91,6 +99,7 @@
     -webkit-font-smoothing: inherit;
     -moz-osx-font-smoothing: inherit;
     -webkit-appearance: none;
+    appearance: none;
   }
 
   // Remove excess padding and border in Firefox 4+
@@ -119,6 +128,7 @@
   /* Firefox */
   &[type="number"] {
     -moz-appearance: textfield;
+    appearance: textfiled;
   }
   /* Safari */
   &[type="number"]::-webkit-inner-spin-button,

@@ -9,7 +9,7 @@ import spinner from '../../assets/spinner.svg'
 import arrowIcon from "../../assets/icons/arrowr-icon.svg"
 import episodesIcon from "../../assets/icons/episodes-icon.svg"
 import heartIcon from "../../assets/icons/heart-icon.svg"
-import chibi from "/images/404-umaki-tv.png"
+import chibi from "/images/chocked-umaki-anime.png"
 import Button from "../../Components/Button/Button"
 
 

@@ -43,9 +43,9 @@ function FavoritePage() {
     if (loading) {
         return <img src={spinner} alt="Loading..." className="loader" />;
     }
-    if (error) {
-        return <p>An error has occurred</p>;
-    }
+    // if (error) {
+    //     return <p>An error has occurred</p>;
+    // }
 
     //Redirect
     const handleRedirectToSignup = () => {
@@ -55,6 +55,17 @@ function FavoritePage() {
     const handleRedirectLogIn = () => {
         navigate(APP_ROUTES.LOG_IN, { replace: true });
     };
+
+    //No anime in List display 
+    let errorAnimeTxt =
+        <div className="error-txt">
+            <img src={sadChibi} alt='chibi error umaki.tv' />
+            <p className="text-center">You don't have any animes in your list yet.</p>
+            <Button
+                onClick={() => { }}
+                text="add an anime"
+            />
+        </div>
 
     //error display
     let errorTxt =
@@ -66,7 +77,6 @@ function FavoritePage() {
                 text="add an anime"
             />
         </div>
-
 
 
 
@@ -105,7 +115,7 @@ function FavoritePage() {
 
                 {/* DISPLAYED LIST IF LOGGED */}
 
-                {loggedIn ? (
+                {loggedIn && (
                     <div className="your-collection__lists">
                         <div className="your-collection__lists__filters">
                             {/* filters controls */}
@@ -137,24 +147,34 @@ function FavoritePage() {
                                 </article>
                             ))
                         ) : (
-                            errorTxt
+                            errorAnimeTxt
                         )}
-                    </div>
-                ) : (
-                    // If not logged in, show a button
-                    <div className="your-collection__lists__log-out">
-                        <Button
-                            onClick={handleRedirectToSignup}
-                            text="Créer son compte"
-                        />
-                        <Button
-                            onClick={handleRedirectLogIn}
-                            text="Se connecter"
-                        />
-
                     </div>
                 )}
 
+                {error && (
+                    <p>Error</p>
+                )}
+
+                {loggedIn === false && (
+
+                    <>
+                        <h3 className="text-center">Ready to start ?</h3>
+                        <div className="your-collection__lists__log-out">
+                            <Button
+                                onClick={handleRedirectToSignup}
+                                text="Create your account"
+                            />
+                            <Button
+                                onClick={handleRedirectLogIn}
+                                text="Log-in"
+                            />
+
+                        </div>
+
+                    </>
+
+                )}
 
 
 

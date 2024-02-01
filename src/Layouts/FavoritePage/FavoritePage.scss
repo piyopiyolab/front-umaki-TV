@@ -47,6 +47,21 @@
     &__lists {
 
 
+        &__log-out {
+            @include mxn.flex('row', 'nowrap');
+       
+            width: 45%!important;
+            gap: var(--gap-3);
+            margin: 0 auto;
+
+            & button:last-of-type {
+                background-color: transparent!important;
+                border: solid 2px var(--purple-light);
+            }
+            
+        }
+
+     
         &__filters {
            @include mxn.flex('row');
          
