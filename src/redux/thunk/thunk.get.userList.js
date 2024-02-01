@@ -16,6 +16,7 @@ export const getUserList = () => async (dispatch, getState) => {
     //const data = response.data
     const data = response.data.data.response.result
 
+
     if (response.error) {
         console.error("Error favorite user's List:", error);
         dispatch(removeLoading())
