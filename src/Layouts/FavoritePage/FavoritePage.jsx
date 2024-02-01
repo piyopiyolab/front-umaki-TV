@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { useEffect, useState } from "react"
 import { getUserList } from "../../redux/thunk/thunk.get.userList"
 import spinner from '../../assets/spinner.svg'
-import chibi from "/images/404-umaki-tv.png"
+import sadChibi from "/images/nolist-sad-anime.png"
 import Button from "../../Components/Button/Button"
 
 
@@ -45,12 +45,13 @@ function FavoritePage() {
 
     //error display
     let errorTxt =
-        <div>
-            <img src={chibi} alt='chibi error umaki.tv' />
-            <p className="text-center">Oops, something went wrong...</p>
+        <div className="error-txt">
+            <img src={sadChibi} alt='chibi error umaki.tv' />
+            <p className="text-center">You don't have any animes in your list yet.</p>
             <Button
-                onClick={() => { dispatch(topanimeThunk()) }}
-                text="Please, try again" />
+                onClick={() => { }}
+                text="add an anime"
+            />
         </div>
 
 
@@ -80,7 +81,7 @@ function FavoritePage() {
 
             <Header />
 
-            <div className="your-collection">
+            <section className="your-collection">
                 <div className="your-collection__headings">
                     <h1>Your collection</h1>
                     <h2>Check out your favorite animes</h2>
@@ -107,11 +108,21 @@ function FavoritePage() {
 
                 {filteredAnimeList?.length > 0 ? (
 
-                    <ul>
-                        {filteredAnimeList.map(anime => (
-                            <li key={anime.anime_id}>{anime.title}</li>
-                        ))}
-                    </ul>
+
+
+                    filteredAnimeList.map(anime => (
+                        <article key={anime.anime_id} className="your-collection__lists__card">
+
+                            <div className="your-collection__lists__card__banner">
+                                <img src={anime.media} alt={anime.title} />
+
+                            </div>
+                            <h3 className="text-center">{anime.title}</h3>
+                        </article>
+
+                    ))
+
+
 
                 ) : (
                     errorTxt
@@ -119,7 +130,7 @@ function FavoritePage() {
 
                 }
 
-            </div>
+            </section>
             <Footer />
 
 

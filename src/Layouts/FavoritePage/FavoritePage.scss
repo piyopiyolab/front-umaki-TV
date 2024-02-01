@@ -23,9 +23,7 @@
   
 
 .your-collection {
-  
-   
-
+ 
     &__headings {
         @include mxn.flex('column', 'wrap');
         @include mxn.flex-p('center', 'center');
@@ -58,18 +56,31 @@
 
           p {
             border-bottom: 2px solid transparent;
+            margin-bottom: var(--m-6);
+
             &:hover {
                 @include mxn.transition(color);
-                color:var(--purple-light);
-
-               
+                color:var(--purple-light);               
                }
 
               
           }
         }
 
+
+        &__card {
+            max-width: 28rem;
+            width: var(--w-md);
+            min-height: 20rem;
+            background:rgba(60, 16, 83, 0.2);
+            border-radius: var(--rounded-md);
+            padding: var(--p-2)
+        }
+
          }
+
+
+
 }
 
 

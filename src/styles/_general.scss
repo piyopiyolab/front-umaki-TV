@@ -20,6 +20,22 @@ a {
   color: var(--purple-light);
 }
 
+.error-txt {
+  width: 100%;
+  p {
+    margin-bottom: var(--m-2);
+  }
+  img {
+    max-width: 30rem;
+    margin: 0 auto;
+    display: block;
+  }
+  button {
+    max-width: 50%;
+    margin:0 auto;
+    display: block;
+  }
+}
 
 body {
   flex: 1 0;
