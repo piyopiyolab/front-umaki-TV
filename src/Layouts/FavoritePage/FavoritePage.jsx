@@ -20,43 +20,19 @@ function FavoritePage() {
 
 
 
-    // //API request
-    // useEffect(() => {
-
-    //     dispatch(getUserList());
-    //     setAnimeLists(data)
-    //     console.log('data for filter', animeLists)
-
-    // }, [])
-
-
-    // //Set animeList from API Request for filter function
-    // useEffect(() => {
-    //     if (data) {
-    //         setAnimeLists(data);
-    //     }
-    // }, [data]);
-
-    // Test
-    const test = async () => {
-        try {
-            await dispatch(getUserList());
-            setAnimeLists(data);
-            console.log('data for filter', animeLists);
-        } catch (error) {
-            console.error('Error fetching data:', error);
-        }
-
-    }
-
-
+    //API request
     useEffect(() => {
-        test();
-    }, []);
+
+        dispatch(getUserList());
+        setAnimeLists(data)
+    }, [])
 
 
-    // End test
-
+    //Set animeList from API Request for filter function
+    useEffect(() => {
+        setAnimeLists(data)
+        console.log('data for filter', animeLists)
+    }, [data]);
 
 
 
@@ -80,10 +56,17 @@ function FavoritePage() {
                 text="Please, try again" />
         </div>
 
+
+
+
     //Filter function
     const handleFilterChange = (filter) => {
         setSelectedFilter(filter);
+
     };
+
+
+    //const filteredAnimeList = animeLists.filter(anime => anime.anime_state === selectedFilter);
 
 
 
@@ -116,12 +99,12 @@ function FavoritePage() {
             <h2>Anime List - {selectedFilter}</h2>
 
 
+
             {/* <ul>
-                {animeLists.map(anime => (
+                {filteredAnimeList.map(anime => (
                     <li key={anime.anime_id}>{anime.title}</li>
                 ))}
             </ul> */}
-
 
             <Footer />
 
