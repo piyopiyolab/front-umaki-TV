@@ -29,6 +29,7 @@ function HomePage() {
         }, []);
 
     const { data, loading } = useSelector((state) => state.animeSlice);
+
     const [isButtonEnabled, setIsButtonEnabled] = useState(true);
 
     if (loading) {

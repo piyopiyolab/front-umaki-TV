@@ -4,7 +4,7 @@ import { HelmetProvider, Helmet } from "react-helmet-async"
 import Header from '../../Components/Header/Header';
 import Footer from '../../Components/Footer/Footer';
 import { useParams } from "react-router-dom";
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { getAnimeIDThunk } from '../../redux/thunk/thunk.get.animeID';
 import spinner from '../../assets/spinner.svg'
 import Button from '../../Components/Button/Button';
@@ -20,16 +20,18 @@ function AnimeDetails() {
     useEffect(() => {
 
         dispatch(getAnimeIDThunk(animeID))
-
-    }, [])
+        console.log(data)
+    }, [animeID])
 
 
     //Set animeList from API Request for filter function
     useEffect(() => {
 
+
         if (!data) return;
         setanimeDetails(data)
-        console.log('data for filter', animeLists)
+
+        console.log('animeDetails :', animeDetails)
     }, [data]);
 
 
@@ -58,29 +60,32 @@ function AnimeDetails() {
 
 
 
-            {data.length > 0 && (
+            {animeDetails && (
 
                 <div className="anime-details">
+
                     <div className='anime-details__hero'>
-                        <img src={data.images.webp.large_image_url} alt={data.title} />
+                        {animeDetails?.images?.webp && (
+                            <img src={animeDetails.images.webp.large_image_url} alt={animeDetails.title} />
+                        )}
                         <div className="anime-details__hero__r">
                             <div className='anime-details__hero__r__date-info'>
-                                <p className={data.status === 'Currently Airing' ? 'airing' : 'finished'}>
-                                    {data.status}
+                                <p className={animeDetails.status === 'Currently Airing' ? 'airing' : 'finished'}>
+                                    {animeDetails.status}
                                 </p>
-                                <p>{`${data.season.charAt(0).toUpperCase() + data.season.slice(1)} ${data.year}`}</p>
+                                <p>{`${animeDetails.season.charAt(0).toUpperCase() + animeDetails.season.slice(1)} ${animeDetails.year}`}</p>
                             </div>
                             <div className='anime-details__hero__r__main'>
                                 <div>
 
-                                    <p>{data.title_japanese}</p>
-                                    <p>{data.title}</p>
+                                    <p>{animeDetails.title_japanese}</p>
+                                    <p>{animeDetails.title}</p>
 
                                 </div>
-                                <span>{data.rating}</span>
-                                <h1>{data.title_english}</h1>
+                                <span>{animeDetails.rating}</span>
+                                <h1>{animeDetails.title_english}</h1>
                                 <p>
-                                    {data.genres.map((genre) => genre.name).join(', ')}
+                                    {animeDetails.genres.map((genre) => genre.name).join(', ')}
                                 </p>
                                 <Button text="Add to your list" />
                             </div>
@@ -89,6 +94,7 @@ function AnimeDetails() {
                 </div>
 
             )}
+
 
 
 
