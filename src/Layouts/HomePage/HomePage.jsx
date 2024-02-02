@@ -11,12 +11,15 @@ import episodesIcon from "../../assets/icons/episodes-icon.svg"
 import heartIcon from "../../assets/icons/heart-icon.svg"
 import chibi from "/images/chocked-umaki-anime.png"
 import Button from "../../Components/Button/Button"
-
-
+import { useNavigate } from "react-router-dom"
+import { APP_ROUTES } from "../../constants/routes.constants"
+import { getAnimeIDThunk } from "../../redux/thunk/thunk.get.animeID"
+import { getUserList } from "../../redux/thunk/thunk.get.userList"
 
 
 function HomePage() {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     useEffect(
         () => {
@@ -54,6 +57,15 @@ function HomePage() {
         </div>
 
 
+
+    // Redirection Read More
+    const handleReadMoreClick = (animeID) => {
+
+        dispatch(getAnimeIDThunk(animeID))
+
+        navigate(`${APP_ROUTES.ANIME_DETAILS}/${animeID}`);
+
+    }
 
 
     return (
@@ -99,7 +111,9 @@ function HomePage() {
                                             {d.episodes} episodes
                                         </p>
                                     </div>
-                                    <a href="" className="wrapper__card__btn">
+                                    <a
+                                        onClick={() => handleReadMoreClick(d.mal_id)}
+                                        className="wrapper__card__btn">
                                         Read More <img src={arrowIcon} alt="read more btn" />
                                     </a>
                                 </div>

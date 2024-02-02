@@ -5,6 +5,7 @@ import SignUpPage from '../../Layouts/SignUpPage';
 import HomePage from '../../Layouts/HomePage/HomePage';
 import FavoritePage from '../../Layouts/FavoritePage/FavoritePage';
 import { APP_ROUTES } from '../../constants/routes.constants';
+import AnimeDetails from '../../Layouts/AnimeDetailsPage/AnimeDetailsPage';
 
 function App() {
     return (
@@ -41,6 +42,14 @@ function App() {
                             element={
                                 <>
                                     <FavoritePage />
+                                </>
+                            }
+                        />
+                        <Route
+                            path={`${APP_ROUTES.ANIME_DETAILS}/*`}
+                            element={
+                                <>
+                                    <AnimeDetails />
                                 </>
                             }
                         />
