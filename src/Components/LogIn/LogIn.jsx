@@ -4,12 +4,15 @@ import { useState } from "react";
 import Button from "../Button/Button";
 import Input from "../Input/Input";
 import './LogIn.scss';
+import { useNavigate } from 'react-router-dom';
+import { APP_ROUTES } from "../../constants/routes.constants";
 
 
 
 
 function LogIn() {
 
+    const navigate = useNavigate();
 
     const [form, setForm] = useState({
         email: "",
@@ -39,6 +42,10 @@ function LogIn() {
 
     }
 
+    // Redirection if login
+    const handleRedirect = () => {
+        navigate(APP_ROUTES.FAVORITE, { replace: true });
+    }
 
     return (
         <form className="login__form" onSubmit={handleSubmit}>
@@ -64,6 +71,7 @@ function LogIn() {
             <Button
                 type={"submit"}
                 text={"Log-In"}
+                onClick={handleRedirect}
             />
 
             <p className="text-center m-2">You don't have an account ? <a href="/connexion/sign-up">Sign-up</a></p>

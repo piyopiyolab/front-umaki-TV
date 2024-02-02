@@ -5,7 +5,8 @@ import { signUpThunk } from "../../redux/thunk/thunk.post.signup"
 import { useDispatch, useSelector } from 'react-redux'
 import { useState } from "react";
 import avatar1 from '/images/avatar/avatar1.png';
-
+import { useNavigate } from 'react-router-dom';
+import { APP_ROUTES } from '../../constants/routes.constants';
 
 function SignUp() {
 
@@ -21,11 +22,11 @@ function SignUp() {
 
     const [showAvatar, setShowAvatar] = useState(false);
 
-    //const [loading, setLoading] = useState('false');
-
-
+    const navigate = useNavigate();
     const dispatch = useDispatch();
 
+
+    // Form submission
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -41,6 +42,11 @@ function SignUp() {
             [inputName]: value,
         })
 
+    }
+
+    // Redirecton
+    const handleRedirect = () => {
+        navigate(APP_ROUTES.HOME, { replace: true });
     }
 
     return (
@@ -102,7 +108,8 @@ function SignUp() {
 
             <Button
                 type={"submit"}
-                text={"Log-In"}
+                text={"I Create my account"}
+                onClick={handleRedirect}
             />
 
             <p className='text-center m-2'>You already have an account ? <a href="/connexion/log-in">Log-in</a></p>

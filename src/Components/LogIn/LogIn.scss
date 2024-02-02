@@ -3,4 +3,11 @@
 .login__form {
     max-width: 500px;
     margin: 0 auto;
+
+    p {
+      
+      a {
+        color:var(--purple-light);
+      }
+    }
 }
