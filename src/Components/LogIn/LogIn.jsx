@@ -1,18 +1,15 @@
 import { logInThunk } from "../../redux/thunk/thunk.post.login"
-import { useDispatch } from 'react-redux'
-import { useState } from "react";
+import { useDispatch, useSelector } from 'react-redux'
+import { useEffect, useState } from "react";
 import Button from "../Button/Button";
 import Input from "../Input/Input";
 import './LogIn.scss';
 import { useNavigate } from 'react-router-dom';
 import { APP_ROUTES } from "../../constants/routes.constants";
-
-
+import { addLoading } from "../../redux/reducers/userSlice.reducer";
 
 
 function LogIn() {
-
-    const navigate = useNavigate();
 
     const [form, setForm] = useState({
         email: "",
@@ -20,7 +17,8 @@ function LogIn() {
 
     })
 
-
+    const { loggedIn } = useSelector(states => states.userSlice);
+    const navigate = useNavigate();
     const dispatch = useDispatch();
 
     //Function @params event ==> Sending Form
@@ -28,6 +26,7 @@ function LogIn() {
         e.preventDefault();
 
         dispatch(logInThunk(form))
+
 
 
     }
@@ -41,10 +40,18 @@ function LogIn() {
         })
 
     }
+    useEffect(() => {
+
+    }, [loggedIn])
 
     // Redirection if login
     const handleRedirect = () => {
-        navigate(APP_ROUTES.FAVORITE, { replace: true });
+
+        dispatch(addLoading());
+
+        if (loggedIn) {
+            navigate(APP_ROUTES.HOME, { replace: true });
+        }
     }
 
     return (

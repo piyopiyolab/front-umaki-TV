@@ -19,11 +19,10 @@ export const logInThunk = (form) => async (dispatch, getState) => {
     }
 
 
-    dispatch(setData(data.user));
 
     //get Token from localStorage
     localStorage.setItem('accessToken', data.user.token);
-
+    dispatch(setData(data.user));
 
     // Remove Loading  
     dispatch(removeLoading())

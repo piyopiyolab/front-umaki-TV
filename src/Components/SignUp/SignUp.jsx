@@ -4,7 +4,6 @@ import Input from "../Input/Input";
 import { signUpThunk } from "../../redux/thunk/thunk.post.signup"
 import { useDispatch, useSelector } from 'react-redux'
 import { useState } from "react";
-import avatar1 from '/images/avatar/avatar1.png';
 import { useNavigate } from 'react-router-dom';
 import { APP_ROUTES } from '../../constants/routes.constants';
 
@@ -19,6 +18,7 @@ function SignUp() {
 
     })
 
+    const { loggedIn } = useSelector(states => states.userSlice);
 
     const [showAvatar, setShowAvatar] = useState(false);
 
@@ -26,27 +26,52 @@ function SignUp() {
     const dispatch = useDispatch();
 
 
-    // Form submission
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
-        dispatch(signUpThunk(form))
-
-
-    }
 
     //Function @params value, inputName (obj form) ==> onChange
     const handleChange = (value, inputName) => {
         setForm({
             ...form,
             [inputName]: value,
+
+
         })
+
+
+    }
+
+
+    // Avatar
+    const avatarImages = [
+        '/images/avatarbis/monkey-avatar-1.png',
+        '/images/avatarbis/monkey-avatar-2.png',
+        '/images/avatarbis/monkey-avatar-3.png',
+        '/images/avatarbis/monkey-avatar-4.png',
+        '/images/avatarbis/monkey-avatar-5.png',
+        '/images/avatarbis/monkey-avatar-6.png',
+    ];
+
+    // Form submission
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        dispatch(signUpThunk(form))
+
+        handleRedirect();
 
     }
 
     // Redirecton
     const handleRedirect = () => {
-        navigate(APP_ROUTES.HOME, { replace: true });
+
+        setTimeout(() => {
+            if (loggedIn) {
+                setTimeout(() => {
+                    navigate(APP_ROUTES.HOME, { replace: true });
+                }, 1000);
+            }
+        }, 4000)
+
+
     }
 
     return (
@@ -68,14 +93,6 @@ function SignUp() {
                 onChange={(e) => handleChange(e.target.value, "pseudo")} />
 
 
-            {/* 
-            <Input id={"avatar"}
-                label="Avatar"
-                type={"file"}
-                value={form.avatar}
-                required
-                onChange={(e) => handleChange(e.target.value, "avatar")} /> */}
-
             <Button
                 text="Choose your avatar"
                 onClick={(e) => {
@@ -85,9 +102,16 @@ function SignUp() {
                 value={form.avatar} />
 
             {showAvatar ? (
-                <div className='grid'>
-                    <img src={avatar1} alt="" className='grid-item' />
-
+                <div className='signup__form__avatar__grid'>
+                    {avatarImages.map((avatar, index) => (
+                        <img
+                            key={index}
+                            src={avatar}
+                            alt={`Avatar ${index + 1}`}
+                            className='signup__form__avatar__grid__item'
+                            onClick={() => handleChange(avatar, "avatar")}
+                        />
+                    ))}
                 </div>
             ) : null}
 
@@ -109,7 +133,7 @@ function SignUp() {
             <Button
                 type={"submit"}
                 text={"I Create my account"}
-                onClick={handleRedirect}
+
             />
 
             <p className='text-center m-2'>You already have an account ? <a href="/connexion/log-in">Log-in</a></p>
