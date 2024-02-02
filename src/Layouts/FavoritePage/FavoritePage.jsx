@@ -47,7 +47,7 @@ function FavoritePage() {
     //     return <p>An error has occurred</p>;
     // }
 
-    //Redirect
+    //Redirect if error
     const handleRedirectToSignup = () => {
         navigate(APP_ROUTES.SIGN_UP, { replace: true });
     };
@@ -56,27 +56,23 @@ function FavoritePage() {
         navigate(APP_ROUTES.LOG_IN, { replace: true });
     };
 
+
+    const handleRedirectHomepage = () => {
+        navigate(APP_ROUTES.HOME, { replace: true });
+
+    }
     //No anime in List display 
     let errorAnimeTxt =
         <div className="error-txt">
             <img src={sadChibi} alt='chibi error umaki.tv' />
             <p className="text-center">You don't have any animes in your list yet.</p>
             <Button
-                onClick={() => { }}
+                onClick={handleRedirectHomepage}
                 text="add an anime"
             />
         </div>
 
-    //error display
-    let errorTxt =
-        <div className="error-txt">
-            <img src={sadChibi} alt='chibi error umaki.tv' />
-            <p className="text-center">You don't have any animes in your list yet.</p>
-            <Button
-                onClick={() => { }}
-                text="add an anime"
-            />
-        </div>
+
 
 
 

@@ -36,6 +36,16 @@
  
 
     &__card {
+position:relative;
+
+        &:hover {
+            transition: all 0.2s ease-out;
+            box-shadow: 0px 4px 8px rgba(38, 38, 38, 0.2);
+            top: -4px;
+            background-color: rgba(91, 25, 126, 0.2);
+            transform: translateY(-5px);
+        }
+
         max-width: 28rem;
         width: var(--w-md);
         min-height: 20rem;
@@ -57,7 +67,7 @@
         }
 
         &__animeInfo{
-            padding: var(--p-2);
+         
 
             h1 {
                 padding:0;

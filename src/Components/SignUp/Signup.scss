@@ -3,6 +3,28 @@
     max-width: 500px;
     margin: 0 auto;
 
+    &__avatar__grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--gap-4);
+        
+        max-width: 600px; 
+        margin: var(--m-4) auto; /* Centrez la grille horizontalement */
+
+        &__item {
+            
+        width: 100%;
+        cursor: pointer;
+        transition: transform 0.2s ease-in-out;
+    
+        /* Styles supplémentaires pour chaque image */
+        &:hover {
+        transform: scale(1.1); /* Effet d'échelle sur survol, ajustez selon vos préférences */
+        }
+    
+        }
+    }
+
     p {
       
         a {
@@ -10,3 +32,4 @@
         }
       }
 }
+
