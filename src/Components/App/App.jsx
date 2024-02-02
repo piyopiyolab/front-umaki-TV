@@ -6,6 +6,7 @@ import HomePage from '../../Layouts/HomePage/HomePage';
 import FavoritePage from '../../Layouts/FavoritePage/FavoritePage';
 import { APP_ROUTES } from '../../constants/routes.constants';
 import AnimeDetails from '../../Layouts/AnimeDetailsPage/AnimeDetailsPage';
+import ErrorContent from '../ErrorContent/ErrorContent';
 
 function App() {
     return (
@@ -59,6 +60,7 @@ function App() {
                                 <main style={{ padding: "1rem" }}>
                                     <p>404 error</p>
                                     <p>There's nothing here!</p>
+                                    <ErrorContent />
                                 </main>
                             }
                         />

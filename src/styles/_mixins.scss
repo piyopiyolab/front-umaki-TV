@@ -95,7 +95,10 @@ line-height: 4.2rem;
   transition: $property $duration $timing-function;
 }
 
-
+// Animation bounce
+@mixin bounce {
+  animation: bounce 1s infinite; // You can adjust the duration here
+}
 
 //Media queries
 @mixin media-query($size: "780px") {

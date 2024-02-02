@@ -10,6 +10,7 @@ import sadChibi from "/images/nolist-sad-anime.png"
 import Button from "../../Components/Button/Button"
 import { APP_ROUTES } from "../../constants/routes.constants"
 import { useNavigate } from "react-router-dom";
+import ErrorContent from "../../Components/ErrorContent/ErrorContent"
 
 function FavoritePage() {
 
@@ -19,7 +20,7 @@ function FavoritePage() {
 
     const { data, loading, error, loggedIn } = useSelector((state) => state.userSlice);
 
-    const [selectedFilter, setSelectedFilter] = useState('watched');
+    const [selectedFilter, setSelectedFilter] = useState('on_going');
     const [animeLists, setAnimeLists] = useState([]);
 
 
@@ -132,19 +133,23 @@ function FavoritePage() {
                             </p>
                         </div>
 
-                        {/* Anime State List */}
-                        {filteredAnimeList?.length > 0 ? (
-                            filteredAnimeList.map(anime => (
-                                <article key={anime.anime_id} className="your-collection__lists__card">
-                                    <div className="your-collection__lists__card__banner">
-                                        <img src={anime.media} alt={anime.title} />
-                                    </div>
-                                    <h3 className="text-center">{anime.title}</h3>
-                                </article>
-                            ))
-                        ) : (
-                            errorAnimeTxt
-                        )}
+                        <div>
+                            {/* Anime State List */}
+                            {filteredAnimeList?.length > 0 ? (
+                                filteredAnimeList.map(anime => (
+                                    <article key={anime.anime_id} className="your-collection__lists__card">
+                                        <div className="your-collection__lists__card__banner">
+                                            <img src={anime.media} alt={anime.title} />
+                                        </div>
+                                        <h3 className="text-center">{anime.title}</h3>
+                                    </article>
+                                ))
+                            ) : (
+                                <>
+                                    {errorAnimeTxt}
+                                </>
+                            )}
+                        </div>
                     </div>
                 )}
 

@@ -15,6 +15,7 @@ import { useNavigate } from "react-router-dom"
 import { APP_ROUTES } from "../../constants/routes.constants"
 import { getAnimeIDThunk } from "../../redux/thunk/thunk.get.animeID"
 import { getUserList } from "../../redux/thunk/thunk.get.userList"
+import ErrorContent from "../../Components/ErrorContent/ErrorContent"
 
 
 function HomePage() {
@@ -123,7 +124,10 @@ function HomePage() {
 
 
                     ) : (
-                        errorTxt
+                        <>
+                            {errorTxt}
+
+                        </>
                     )}
 
                 </div>

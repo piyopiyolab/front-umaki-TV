@@ -2,24 +2,45 @@
 
 .anime-details {
     &__hero {
+        @include mxn.flex('column', 'nowrap');
+        @include mxn.flex-p('center', 'start');
 
+
+        @include mxn.media-query('500px') {
+            @include mxn.flex('row', 'nowrap');
+            @include mxn.flex-p('center', 'center');
+            
+        }
+   
+       
                 padding: var(--p-2);
-                @include mxn.flex('row', 'nowrap');
-                @include mxn.flex-p('center', 'center');
-
+            
+            
                 img {
                     max-width: 20rem;
+
+                    @include mxn.media-query('780px') {
+                        max-width: 30rem;
+                    }
                 }
 
                 &__r {
                     @include mxn.flex('column', 'nowrap');
                     @include mxn.flex-p('center', 'center');
                     padding: var(--p-2);
-
+                    @include mxn.media-query('780px') {
+                        padding: var(--p-6);
+                    }
                     &__date-info {
                         width: var(--w-full);
+                        @include mxn.flex('column', "wrap");
+                        @include mxn.flex-p('start', "start"); 
+                        gap: 2rem;
+
+                      @include mxn.media-query('500px') {
                         @include mxn.flex('row', "wrap");
-                        @include mxn.flex-p('space-around', "start"); 
+                        @include mxn.flex-p('space-between', "start"); 
+                      }
     
                         .airing {
                             background-color: var(--green);
@@ -64,19 +85,36 @@
                    
                           span {
                             @include mxn.text-xxs;
+                            @include mxn.media-query('780px') {
+                                @include mxn.text-xs;
+                            }
                            
 
                           }
 
                           h1 {
                             @include mxn.text-2xl;
+                            padding: var(--p-1) 0;
+                          }
+
+                          p{
+                            @include mxn.text-xxs;
+                            font-weight: bold;
+
+                            @include mxn.media-query('780px') {
+                                @include mxn.text-xs;
+                            }
+                          }
+
+                          button {
+                            width: 50%;
                           }
                    }
                     
 
                 }
          
-}
+      }
 
-
+    
 }
