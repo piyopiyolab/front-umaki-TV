@@ -12,12 +12,17 @@
     &__socials {
         @include mxn.flex('row', 'nowrap');
         @include mxn.flex-p('center', 'center');
-        gap: var(--gap-2);
+        gap: var(--gap-3);
+        margin: var(--m-2) 0;
   
         a {
             img {
                 max-width: 3rem;
                 display: block;
+
+                &:hover {
+                    @include mxn.pulse;
+                }
             }
         }
     }
@@ -30,5 +35,44 @@
 
     &:last-child{
         padding-top: 5rem;
+        &:hover {
+            @include mxn.transition(color);
+        color: var(--purple-light);
+        }
+    }
+    & p:nth-child(2) {
+        color:var(--white);
+        
+    @include mxn.text-2xl;
+
+        &:hover {
+            @include mxn.transition(color);
+        color: var(--purple-light);
+        width: fit-content;
+        margin: 0 auto;
+        }
+}
+
+// Credits
+    & p:nth-child(5) {
+        color:var(--white);
+  
+    font-size: var(--text-sm);
+
+
+    &:hover {
+        @include mxn.transition(color);
+    color: var(--purple-light);
+    width: fit-content;
+    margin: 0 auto;
+    }
+}
+    & p:last-child {
+        color:var(--gray);
+        font-size: var(--text-xs);
+        &:hover {
+            @include mxn.transition(color);
+        color: var(--purple-light);
+        }
     }
 }

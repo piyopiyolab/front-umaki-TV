@@ -100,6 +100,11 @@ line-height: 4.2rem;
   animation: bounce 1s infinite; // You can adjust the duration here
 }
 
+// Animation pulse
+@mixin pulse {
+  animation: pulse 1s infinite; // You can adjust the duration here
+}
+
 //Media queries
 @mixin media-query($size: "780px") {
   @media screen and (min-width: #{$size}) {

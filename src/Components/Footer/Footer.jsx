@@ -20,7 +20,8 @@ function Footer() {
 
             </div>
 
-            <p>©Marion Piouceau 2023 All Rights Reserved. Credits Design : <a href="https://www.figma.com/@walmirdecastro">@walmirdecastro</a> <a href="https://www.figma.com/@saishadlak">@saishadlak</a></p>
+            <p>©Marion Piouceau 2023 All Rights Reserved. </p>
+            <p>Credits Design : <a href="https://www.figma.com/@walmirdecastro">@walmirdecastro</a> <a href="https://www.figma.com/@saishadlak">@saishadlak</a></p>
         </footer>
     )
 }
