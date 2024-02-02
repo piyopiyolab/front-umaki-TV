@@ -40,9 +40,12 @@ function LogIn() {
         })
 
     }
-    useEffect(() => {
 
+    useEffect(() => {
+        console.log(loggedIn)
     }, [loggedIn])
+
+
 
     // Redirection if login
     const handleRedirect = () => {
@@ -50,7 +53,7 @@ function LogIn() {
         dispatch(addLoading());
 
         if (loggedIn) {
-            navigate(APP_ROUTES.HOME, { replace: true });
+            navigate(APP_ROUTES.HOME);
         }
     }
 
@@ -81,7 +84,7 @@ function LogIn() {
                 onClick={handleRedirect}
             />
 
-            <p className="text-center m-2">You don't have an account ? <a href="/connexion/sign-up">Sign-up</a></p>
+            <p className="text-center m-2">You don't have an account ? <a href={APP_ROUTES.SIGN_UP}>Sign-up</a></p>
         </form>
     )
 }

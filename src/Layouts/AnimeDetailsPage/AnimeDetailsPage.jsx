@@ -1,23 +1,30 @@
 import './AnimeDetailsPage.scss';
-import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux"
 import { HelmetProvider, Helmet } from "react-helmet-async"
 import Header from '../../Components/Header/Header';
 import Footer from '../../Components/Footer/Footer';
+import { useParams } from "react-router-dom";
+import { useEffect } from 'react';
+import { getAnimeIDThunk } from '../../redux/thunk/thunk.get.animeID';
+import spinner from '../../assets/spinner.svg'
+import Button from '../../Components/Button/Button';
 
 function AnimeDetails() {
 
-
+    const { animeID } = useParams();
+    const dispatch = useDispatch();
 
     const { data, loading } = useSelector((state) => state.animeSlice);
 
+    useEffect(() => {
 
+        dispatch(getAnimeIDThunk(animeID))
+        console.log('dispatch', data)
+    }, [])
 
-    if (!data) {
-        return null;
+    if (loading) {
+        return <img src={spinner} alt="Loading..." className="loader" />;
     }
-    console.log(data)
-
 
     return (
         <>
@@ -31,24 +38,36 @@ function AnimeDetails() {
             {/* Header */}
             <Header />
 
-
-
-
             <div className="anime-details">
-                <h1>Detail</h1>
-                {data && (
-                    Array.isArray(data) && data.length > 0 ? (
-                        data.map((d) => (
-                            <article key={d.mal_id} className="wrapper__card">
-                                <h1>Hello</h1>
-                            </article>
-                        ))
-                    ) : (
-                        <p>Aucune donnée à afficher.</p>
-                    )
-                )}
+                <div className='anime-details__hero'>
+                    <img src={data.images.webp.large_image_url} alt={data.title} />
+                    <div className="anime-details__hero__r">
+                        <div className='anime-details__hero__r__date-info'>
+                            <p className={data.status === 'Currently Airing' ? 'airing' : 'finished'}>
+                                {data.status}
+                            </p>
+                            <p>{`${data.season.charAt(0).toUpperCase() + data.season.slice(1)} ${data.year}`}</p>
+                        </div>
+                        <div className='anime-details__hero__r__main'>
+                            <div>
 
+                                <p>{data.title_japanese}</p>
+                                <p>{data.title}</p>
+
+                            </div>
+                            <span>{data.rating}</span>
+                            <h1>{data.title_english}</h1>
+                            <p>
+                                {data.genres.map((genre) => genre.name).join(', ')}
+                            </p>
+                            <Button text="Add to your list" />
+                        </div>
+                    </div>
+                </div>
             </div>
+
+
+
 
 
             {/* Footer */}

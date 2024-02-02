@@ -63,13 +63,11 @@ function SignUp() {
     // Redirecton
     const handleRedirect = () => {
 
-        setTimeout(() => {
-            if (loggedIn) {
-                setTimeout(() => {
-                    navigate(APP_ROUTES.HOME, { replace: true });
-                }, 1000);
-            }
-        }, 4000)
+        dispatch(addLoading());
+
+        if (loggedIn) {
+            navigate(APP_ROUTES.HOME);
+        }
 
 
     }
@@ -136,7 +134,7 @@ function SignUp() {
 
             />
 
-            <p className='text-center m-2'>You already have an account ? <a href="/connexion/log-in">Log-in</a></p>
+            <p className='text-center m-2'>You already have an account ? <a href={APP_ROUTES.LOG_IN}>Log-in</a></p>
         </form>
     )
 }

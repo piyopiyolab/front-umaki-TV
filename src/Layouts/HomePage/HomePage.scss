@@ -85,21 +85,30 @@ position:relative;
             margin-top: var(--m-3);
             margin-bottom: 1.5rem;
 
+           span {
+            background-color: rgba($color: var(--gray), $alpha: .5);
+            border-radius: var(--rounded);
+            padding: 0 0.2rem;
+           }
           
            }
 
            &__stats {
+        
 
-            @include mxn.flex('row', 'nowrap');
-            @include mxn.flex-p('space-between', 'center');
-            margin-bottom: 1.5rem;
-            font-size: var(--text-sm);
-            
+            div {
 
-            img {
-                max-width: 2rem;
-                display: block;
+                @include mxn.flex('row', 'nowrap');
+
+                img {
+                    max-width: 2rem;
+                    display: block;
+                }
             }
+
+           
+
+           
            }
 
         }
@@ -114,6 +123,7 @@ position:relative;
             img {
                 max-width: 1.5rem;
                 display: block;
+                margin-left: 1rem;
             }
         }
         

@@ -1,1 +1,82 @@
 @use '../../styles/mixins' as mxn;
+
+.anime-details {
+    &__hero {
+
+                padding: var(--p-2);
+                @include mxn.flex('row', 'nowrap');
+                @include mxn.flex-p('center', 'center');
+
+                img {
+                    max-width: 20rem;
+                }
+
+                &__r {
+                    @include mxn.flex('column', 'nowrap');
+                    @include mxn.flex-p('center', 'center');
+                    padding: var(--p-2);
+
+                    &__date-info {
+                        width: var(--w-full);
+                        @include mxn.flex('row', "wrap");
+                        @include mxn.flex-p('space-around', "start"); 
+    
+                        .airing {
+                            background-color: var(--green);
+                        }
+    
+                        .finished {
+                            background-color: var(--red);
+                            
+                        }
+    
+                        .finished, .airing, p:last-child {
+                            font-weight: bold;
+                            border-radius: var(--rounded);
+                            padding:0 var(--p-1) ;
+                            @include mxn.text-xs;
+                        }
+    
+    
+                        p:last-child {
+                        background-color: rgba($color: #ffffff, $alpha: 0.1);
+                    
+                
+    
+                        }
+                    }
+                    
+                   &__main {
+
+                            div {
+                                margin: var(--m-3) 0;
+
+                                p:first-child {
+                                    @include mxn.text-s;
+                                    color: var(--gray);
+
+                                }
+                                p:last-child{
+                                    font-weight: bold;
+                                    @include mxn.text-lg;
+                                }
+                            }
+                   
+                          span {
+                            @include mxn.text-xxs;
+                           
+
+                          }
+
+                          h1 {
+                            @include mxn.text-2xl;
+                          }
+                   }
+                    
+
+                }
+         
+}
+
+
+}

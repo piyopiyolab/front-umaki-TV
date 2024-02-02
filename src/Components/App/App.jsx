@@ -46,7 +46,7 @@ function App() {
                             }
                         />
                         <Route
-                            path={`${APP_ROUTES.ANIME_DETAILS}/*`}
+                            path={`${APP_ROUTES.ANIME_DETAILS}/:animeID`}
                             element={
                                 <>
                                     <AnimeDetails />

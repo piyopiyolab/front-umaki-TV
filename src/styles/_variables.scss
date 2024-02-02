@@ -1,7 +1,8 @@
 :root {
   // Colors
   --gradient-bg: linear-gradient(to bottom, #190420, #060008);
-  // --gradient-bg: linear-gradient(to bottom, #190420, #3a044d);
+  --gradient-bg-2: linear-gradient(to bottom, red, green);
+  // --gradient-bg-2: linear-gradient(to bottom, #190420, #3a044d);
 
   --bg-dark: #190420;
  
@@ -11,6 +12,8 @@
   --purple-light: #E487FB;
   --purple-dark: #3c1053;
   --gray: #ACA6AD;
+  --green :#0CAC39;
+  --red : crimson;
 
 
   //Width
@@ -66,6 +69,8 @@
   --text-lg: calc(1.4rem + 0.6vmin);
   --text-xl: calc(1.8rem + 0.6vmin);
   --text-xxl: calc(2.4rem + 0.6vmin);
+
+
 
   --font-weight-thin: 100;
   --font-weight-extra-light: 200;

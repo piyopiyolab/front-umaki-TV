@@ -25,8 +25,6 @@ function HomePage() {
         () => {
             dispatch(topanimeThunk());
 
-
-
         }, []);
 
     const { data, loading } = useSelector((state) => state.animeSlice);
@@ -60,8 +58,6 @@ function HomePage() {
 
     // Redirection Read More
     const handleReadMoreClick = (animeID) => {
-
-        dispatch(getAnimeIDThunk(animeID))
 
         navigate(`${APP_ROUTES.ANIME_DETAILS}/${animeID}`);
 
@@ -104,12 +100,15 @@ function HomePage() {
                                         ))}
                                     </div>
                                     <div className="wrapper__card__animeInfo__stats">
-                                        <p>  <img src={heartIcon} alt="episodes icon" />
-                                            {d.favorites}</p>
-                                        <p>
+                                        <div>
+                                            <img src={heartIcon} alt="episodes icon" />
+                                            <p>{d.favorites}</p>
+
+                                        </div>
+                                        <div>
                                             <img src={episodesIcon} alt="episodes icon" />
-                                            {d.episodes} episodes
-                                        </p>
+                                            <p>{`${d.episodes} episodes`}</p>
+                                        </div>
                                     </div>
                                     <a
                                         onClick={() => handleReadMoreClick(d.mal_id)}
