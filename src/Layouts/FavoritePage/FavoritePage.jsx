@@ -152,23 +152,31 @@ function FavoritePage() {
                     </div>
                 )}
 
-                {error && (
-                    <p>Error</p>
-                )}
+
 
                 {loggedIn === false && (
 
                     <>
-                        <h3 className="text-center">Ready to start ?</h3>
+
                         <div className="your-collection__lists__log-out">
-                            <Button
-                                onClick={handleRedirectToSignup}
-                                text="Create your account"
-                            />
-                            <Button
-                                onClick={handleRedirectLogIn}
-                                text="Log-in"
-                            />
+                            <div className="your-collection__lists__log-out__info">
+                                <img src={sadChibi} alt='chibi error umaki.tv' />
+
+                                <div>  <p>It looks like you're not connected.</p>
+                                    <h3 className="text-center">Ready to start ?</h3></div>
+
+                            </div>
+                            <div className="your-collection__lists__log-out__btn">
+                                <Button
+                                    onClick={handleRedirectToSignup}
+                                    text="Create your account"
+                                />
+                                <Button
+                                    onClick={handleRedirectLogIn}
+                                    text="Log-in"
+                                />
+
+                            </div>
 
                         </div>
 
