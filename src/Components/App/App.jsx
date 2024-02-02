@@ -8,6 +8,7 @@ import { APP_ROUTES } from '../../constants/routes.constants';
 import AnimeDetails from '../../Layouts/AnimeDetailsPage/AnimeDetailsPage';
 import ErrorContent from '../ErrorContent/ErrorContent';
 
+
 function App() {
     return (
         <div className="app">
@@ -18,6 +19,7 @@ function App() {
                             path={APP_ROUTES.LOG_IN}
                             element={
                                 <>
+
                                     <LogInPage />
                                 </>
                             }

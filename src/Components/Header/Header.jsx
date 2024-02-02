@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react"
 import "./Header.scss"
 import logo from '../../assets/umaki.tv-logo.svg'
 import heartIcon from '../../assets/icons/heart-icon.svg'
@@ -7,52 +8,87 @@ import flammeIcon from '../../assets/icons/flame-icon.svg'
 import hamburger from '../../assets/icons/hamburger-solid.svg'
 import close from '../../assets/icons/close.svg'
 
-import { useState } from "react"
+const Header = () => {
 
-function Header() {
+    const [showMenu, setShowMenu] = useState(false);
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+    const breakpoint = 768;
 
-    const [showMobileNav, setShowMobileNav] = useState(false);
-    const [mobileMenu, setMobileMenu] = useState(true)
-
-    const handleShowMobileNav = () => {
-        console.log('show/hide menumobile')
-        setMobileMenu(!mobileMenu);
+    const handleWindowResize = () => {
+        setWindowWidth(window.innerWidth);
     };
 
+    useEffect(() => {
+
+        window.addEventListener('resize', handleWindowResize);
+
+        return () => {
+            window.removeEventListener('resize', handleWindowResize);
+        };
+    }, []);
 
 
     return (
-        <>
-            <nav className="header__nav">
-                <div className="header__nav__logoContainer">
-                    <a href="/"><img src={logo} className='logo' alt="logo umaki.TV" /></a>
-                </div>
-                <div className="header__nav__menu">
-                    {/* icon mobile menu */}
+        <header>
+            {windowWidth < breakpoint ? (
 
+                //Mobile
+                <nav className="header__nav">
+                    <div className="header__nav__logoContainer">
+                        <a href="/"><img src={logo} className='logo' alt="logo umaki.TV" /></a>
+                    </div>
 
-                    {
-                        !mobileMenu ? (
-                            <img
-                                onClick={handleShowMobileNav}
-                                src={hamburger}
-                                alt="icon mobile"
-                                className="icon header__nav__menu__icon-open"
-                            />
-                        ) : (
-                            <img
-                                onClick={handleShowMobileNav}
-                                src={close}
-                                alt="icon close mobile"
-                                className="icon header__nav__menu__icon-close"
-                            />
-                        )
-                    }
+                    <div>
+                        {!showMenu ? (
+                            <div
+                                onClick={() => setShowMenu(!showMenu)}
+                                className="header__nav__icon">
+                                <img src={hamburger} alt="icon hamburger mobile" />
+                            </div>
+                        ) :
+                            (
+                                <div
+                                    onClick={() => setShowMenu(!showMenu)}
+                                    className="header__nav__icon">
+                                    <img src={close} alt="icon close mobile" />
+                                </div>
+                            )}
+                        <ul className={`header__nav__menu ${showMenu ? 'block' : 'hidden'}`}>
+                            <li>
+                                <a href="/">
+                                    <img src={homeIcon} className="icon" alt="icon home" />
+                                    <span className="active">Home</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/favorite">
+                                    <img src={heartIcon} className="icon" alt="favorite icon" />
+                                    <span>Favorite</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/">
+                                    <img src={genreIcon} className="icon" alt="Genre icon" />
+                                    <span>Genre</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/">
+                                    <img src={flammeIcon} className="icon" alt="latest icon" />
 
+                                    <span>Latest</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
 
-
-
-                    <ul className={mobileMenu ? "" : "hidden"}>
+            ) : (
+                //dsktop
+                <nav className="header__nav">
+                    <div className="header__nav__logoContainer">
+                        <a href="/"><img src={logo} className='logo' alt="logo umaki.TV" /></a>
+                    </div>
+                    <ul className="header__nav__menu">
                         <li>
                             <a href="/">
                                 <img src={homeIcon} className="icon" alt="icon home" />
@@ -78,19 +114,11 @@ function Header() {
                                 <span>Latest</span></a>
                         </li>
                     </ul>
+                </nav>
 
+            )}
+        </header>
+    );
+};
 
-
-                </div>
-                {/* 
-                <button
-                    onClick={() => setShowMenu(!showMenu)}>Clic
-
-                </button> */}
-            </nav>
-
-
-        </>
-    )
-}
-export default Header
+export default Header;
