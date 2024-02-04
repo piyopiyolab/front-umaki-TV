@@ -7,6 +7,7 @@ import FavoritePage from '../../Layouts/FavoritePage/FavoritePage';
 import { APP_ROUTES } from '../../constants/routes.constants';
 import AnimeDetails from '../../Layouts/AnimeDetailsPage/AnimeDetailsPage';
 import ErrorContent from '../ErrorContent/ErrorContent';
+import ErrorPage from '../../Layouts/ErrorPage/ErrorPage';
 
 
 function App() {
@@ -59,11 +60,9 @@ function App() {
                         <Route
                             path={"*"}
                             element={
-                                <main style={{ padding: "1rem" }}>
-                                    <p>404 error</p>
-                                    <p>There's nothing here!</p>
-                                    <ErrorContent />
-                                </main>
+
+                                <ErrorPage />
+
                             }
                         />
                     </Routes>

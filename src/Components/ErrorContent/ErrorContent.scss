@@ -1,2 +1,25 @@
 @use '../../styles/mixins' as mxn;
 
+.errorContentBody {
+    max-width: var(--w-sm);
+    margin: 0 auto;
+    
+    img {
+        max-width: 20rem;
+        display: block;
+        margin: 0 auto;
+    }
+
+    &__btn {
+        @include mxn.flex('row', 'nowrap');
+        gap: 1rem;
+     
+        
+       a {
+        margin-top: var(--m-2);
+        @include mxn.btn;
+        display:block;
+        text-align: center;
+       }
+    }
+}

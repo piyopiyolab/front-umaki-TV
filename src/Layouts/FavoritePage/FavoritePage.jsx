@@ -147,6 +147,8 @@ function FavoritePage() {
                             ) : (
                                 <>
                                     {errorAnimeTxt}
+
+                                    {/* <ErrorContent /> */}
                                 </>
                             )}
                         </div>

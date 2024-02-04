@@ -1,1 +1,8 @@
 @use "../../styles/mixins" as mxn;
+
+
+.errorPageBody {
+
+    @include mxn.flex('column', 'nowrap');
+    @include mxn.flex-p('space-between', 'center');
+}
