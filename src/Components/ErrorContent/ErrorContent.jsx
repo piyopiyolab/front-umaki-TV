@@ -2,28 +2,20 @@ import './ErrorContent.scss';
 import chibi from "/images/chocked-umaki-anime.png"
 import Button from "../../Components/Button/Button"
 
+
+//type "add adnime, 404, 500
 function ErrorContent({ type }) {
 
-    const refreshErrorTxt = <div>
+    const refreshErrorTxt =
+        <div>
 
-        <img src={chibi} alt='chibi error umaki.tv' style={{
-            maxWidth: '20rem',
-            display: 'block',
-            margin: '0 auto'
-        }} />
-        <p className="text-center">Oops, something went wrong...</p>
-        {/* <Button
-onClick={() => {
-setIsButtonEnabled(false);
-dispatch(topanimeThunk())
-
-setTimeout(() => {
-    setIsButtonEnabled(true);
-}, 1200);
-}}
-disabled={!isButtonEnabled}
-text="Please, try again" /> */}
-    </div>
+            <img src={chibi} alt='chibi error umaki.tv' style={{
+                maxWidth: '20rem',
+                display: 'block',
+                margin: '0 auto'
+            }} />
+            <p className="text-center">Oops, something went wrong...</p>
+        </div>
 
     const LogStatusErrorTxt = <div>
         <img src={chibi} alt='chibi error umaki.tv' style={{
