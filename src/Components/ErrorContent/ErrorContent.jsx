@@ -14,18 +14,13 @@ function ErrorContent({ type }) {
 
             content = (
                 <>
-                    <Header />
-                    <h1 className='text-center'>It looked like you are not logged !</h1>
+
+
                     <div className='errorContentBody'>
-                        <img src={chibi} alt='chibi error umaki.tv' />
-
-                        <div className="errorContentBody__btn">
-                            <a href='./connexion/log-in'>Log-In</a>
-                            <a href='./connexion/sign-up'>Sign-up</a>
-                        </div>
-
+                        <h2 className='text-center'>It looked like you are not logged !</h2>
+                        <img src={chibi} alt='chibi error not logged umaki.tv' />
                     </div>
-                    <Footer />
+
                 </>)
             break;
 
@@ -35,35 +30,29 @@ function ErrorContent({ type }) {
 
                 (
                     <>
-                        <div className='errorContentBody'>
 
-                            <img src={chibi} alt='chibi error umaki.tv' />
-                            <p className="text-center">Oops, something went wrong...</p>
-                            <a href='./'>Home</a>
+
+                        <div className='errorContentBody'>
+                            <h2 className='text-center'>It looked like an error has occured...</h2>
+                            <img src={sadChibi} alt='chibi error umaki.tv' />
                         </div>
-                    </>
-                );
+
+                    </>)
             break;
 
         case 'addAnime':
 
             content = (
                 <>
-                    <Header />
-                    <h1 className='text-center'>It looked like you are not logged !</h1>
+
+
                     <div className='errorContentBody'>
+                        <h2 className='text-center'>It looked like you have no animes in your list</h2>
                         <img src={sadChibi} alt='chibi error umaki.tv' />
-
-                        <div className="errorContentBody__btn">
-                            <a href='./connexion/log-in'>Add an Anime</a>
-
-                        </div>
-
                     </div>
-                    <Footer />
 
-                </>
-            )
+                </>)
+            break;
 
 
     }

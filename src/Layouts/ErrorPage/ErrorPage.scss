@@ -5,4 +5,8 @@
 
     @include mxn.flex('column', 'nowrap');
     @include mxn.flex-p('space-between', 'center');
+
+    button {
+        max-width: var(--w-s);
+    }
 }

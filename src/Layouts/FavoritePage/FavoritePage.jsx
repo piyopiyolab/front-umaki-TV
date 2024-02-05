@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from "react-redux"
 import { useEffect, useState } from "react"
 import { getUserList } from "../../redux/thunk/thunk.get.userList"
 import spinner from '../../assets/spinner.svg'
-import sadChibi from "/images/nolist-sad-anime.png"
 import Button from "../../Components/Button/Button"
 import { APP_ROUTES } from "../../constants/routes.constants"
 import { useNavigate } from "react-router-dom";
@@ -44,9 +43,6 @@ function FavoritePage() {
     if (loading) {
         return <img src={spinner} alt="Loading..." className="loader" />;
     }
-    // if (error) {
-    //     return <p>An error has occurred</p>;
-    // }
 
     //Redirect if error
     const handleRedirectToSignup = () => {
@@ -62,20 +58,6 @@ function FavoritePage() {
         navigate(APP_ROUTES.HOME, { replace: true });
 
     }
-    //No anime in List display 
-    let errorAnimeTxt =
-        <div className="error-txt">
-            <img src={sadChibi} alt='chibi error umaki.tv' />
-            <p className="text-center">You don't have any animes in your list yet.</p>
-            <Button
-                onClick={handleRedirectHomepage}
-                text="add an anime"
-            />
-        </div>
-
-
-
-
 
     //Filter function
     const handleFilterChange = (filter) => {
@@ -111,8 +93,7 @@ function FavoritePage() {
 
 
                 {/* DISPLAYED LIST IF LOGGED */}
-
-                {loggedIn && (
+                {loggedIn ? (
                     <div className="your-collection__lists">
                         <div className="your-collection__lists__filters">
                             {/* filters controls */}
@@ -146,40 +127,42 @@ function FavoritePage() {
                                 ))
                             ) : (
                                 <>
-                                    {errorAnimeTxt}
+                                    <ErrorContent type='addAnime' />
+                                    <div className="your-collection__lists__errorBtn">
 
-                                    {/* <ErrorContent /> */}
+                                    </div>
                                 </>
                             )}
                         </div>
                     </div>
+                ) : (
+                    <>
+                        <ErrorContent type='addAnime' />
+                        <div className="your-collection__lists__errorBtn">
+                            <Button text='Add an anime'
+                                onClick={handleRedirectHomepage} />
+
+                        </div>
+                    </>
                 )}
 
 
 
-                {loggedIn === false && (
 
+
+
+
+
+                {filteredAnimeList.length === 0 & (
                     <>
+                        <ErrorContent type="log-out" />
+                        <div className="your-collection__lists__errorBtn">
 
-                        <div className="your-collection__lists__log-out">
-                            <div className="your-collection__lists__log-out__info">
-                                <img src={sadChibi} alt='chibi error umaki.tv' />
-
-                                <div>  <p>It looks like you're not connected.</p>
-                                    <h3 className="text-center">Ready to start ?</h3></div>
-
-                            </div>
-                            <div className="your-collection__lists__log-out__btn">
-                                <Button
-                                    onClick={handleRedirectToSignup}
-                                    text="Create your account"
-                                />
-                                <Button
-                                    onClick={handleRedirectLogIn}
-                                    text="Log-in"
-                                />
-
-                            </div>
+                            <Button text='Log-in'
+                                onClick={handleRedirectLogIn} />
+                            <Button
+                                onClick={handleRedirectToSignup}
+                                text='Create your account' />
 
                         </div>
 
@@ -189,6 +172,16 @@ function FavoritePage() {
 
 
 
+                {filteredAnimeList.length === 0 && loggedIn && (
+                    <>
+                        <ErrorContent type='addAnime' />
+                        <div className="your-collection__lists__errorBtn">
+                            <Button text='Add an anime'
+                                onClick={handleRedirectHomepage} />
+
+                        </div>
+                    </>
+                )}
 
             </section>
             <Footer />
