@@ -4,6 +4,7 @@
     &__hero {
         @include mxn.flex('column', 'nowrap');
         @include mxn.flex-p('center', 'start');
+        background-color: var(--bg-dark);
 
 
         @include mxn.media-query('500px') {
@@ -28,8 +29,9 @@
                     @include mxn.flex('column', 'nowrap');
                     @include mxn.flex-p('center', 'center');
                     padding: var(--p-2);
+                    min-width: 45%;
                     @include mxn.media-query('780px') {
-                        padding: var(--p-6);
+                       
                     }
                     &__date-info {
                         width: var(--w-full);
@@ -68,6 +70,7 @@
                     }
                     
                    &__main {
+                    width: var(--w-full);
 
                             div {
                                 margin: var(--m-3) 0;

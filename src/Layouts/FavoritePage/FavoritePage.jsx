@@ -44,11 +44,25 @@ function FavoritePage() {
         return <img src={spinner} alt="Loading..." className="loader" />;
     }
 
+
+
+    //     // Verif token, use effect, if token return, 
+    // useEffect(() => {
+    //     if(!token) ou loggedIn {
+    // navigate(APP_ROUTES.SIGN_UP)
+
+    // if(!user) {
+    //     navigate(APP_ROUTES.SIGN_UP)
+    // }
+    // return
+    //    
+    //     dispatch(checkToken())
+    // },[])
+
     //Redirect if error
     const handleRedirectToSignup = () => {
         navigate(APP_ROUTES.SIGN_UP, { replace: true });
     };
-
     const handleRedirectLogIn = () => {
         navigate(APP_ROUTES.LOG_IN, { replace: true });
     };
@@ -145,24 +159,6 @@ function FavoritePage() {
 
 
 
-
-
-                {filteredAnimeList.length === 0 & (
-                    <>
-                        <ErrorContent type="log-out" />
-                        <div className="your-collection__lists__errorBtn">
-
-                            <Button text='Log-in'
-                                onClick={handleRedirectLogIn} />
-                            <Button
-                                onClick={handleRedirectToSignup}
-                                text='Create your account' />
-
-                        </div>
-
-                    </>
-
-                )}
 
 
 

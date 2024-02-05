@@ -7,7 +7,7 @@ import './LogIn.scss';
 import { useNavigate } from 'react-router-dom';
 import { APP_ROUTES } from "../../constants/routes.constants";
 import { addLoading } from "../../redux/reducers/userSlice.reducer";
-
+import { isAuth } from "../../utils/isAuth";
 
 function LogIn() {
 
@@ -17,7 +17,7 @@ function LogIn() {
 
     })
 
-    const { loggedIn } = useSelector(states => states.userSlice);
+    const { data, loggedIn } = useSelector(states => states.userSlice);
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -41,21 +41,19 @@ function LogIn() {
 
     }
 
+
+    // Redirection favorite
     useEffect(() => {
-        console.log(loggedIn)
-    }, [loggedIn])
-
-
-
-    // Redirection if login
-    const handleRedirect = () => {
-
-        dispatch(addLoading());
-
-        if (loggedIn) {
-            navigate(APP_ROUTES.HOME);
+        if (isAuth) {
+            navigate(APP_ROUTES.FAVORITE, { replace: true });
+        } else if (!isAuth()) {
+            navigate(APP_ROUTES.LOG_IN, { replace: true });
         }
-    }
+    }, [loggedIn]);
+
+
+
+    console.log('isAuth', isAuth())
 
     return (
         <form className="login__form" onSubmit={handleSubmit}>
@@ -81,7 +79,6 @@ function LogIn() {
             <Button
                 type={"submit"}
                 text={"Log-In"}
-                onClick={handleRedirect}
             />
 
             <p className="text-center m-2">You don't have an account ? <a href={APP_ROUTES.SIGN_UP}>Sign-up</a></p>

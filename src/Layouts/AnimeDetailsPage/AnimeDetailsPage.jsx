@@ -9,6 +9,8 @@ import { getAnimeIDThunk } from '../../redux/thunk/thunk.get.animeID';
 import spinner from '../../assets/spinner.svg'
 import Button from '../../Components/Button/Button';
 
+
+
 function AnimeDetails() {
 
     const { animeID } = useParams();
@@ -72,7 +74,7 @@ function AnimeDetails() {
                                 <p className={data.status === 'Currently Airing' ? 'airing' : 'finished'}>
                                     {data.status}
                                 </p>
-                                <p>{`${data.season.charAt(0).toUpperCase() + data.season.slice(1)} ${data.year}`}</p>
+                                <p>{`${data.season} ${data.year}`}</p>
                             </div>
                             <div className='anime-details__hero__r__main'>
                                 <div>
@@ -84,9 +86,9 @@ function AnimeDetails() {
                                 <span>{data.rating}</span>
                                 <h1>{data.title}</h1>
                                 <p>
-                                    {data.genre.map(genre => (
+                                    {/* {data.genre.map(genre => (
                                         <span key={genre.mal_id}>{genre.name}</span>
-                                    ))}
+                                    ))} */}
                                 </p>
                                 <Button text="Add to your list" />
                             </div>

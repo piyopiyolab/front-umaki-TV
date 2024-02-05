@@ -9,7 +9,6 @@ import spinner from '../../assets/spinner.svg'
 import arrowIcon from "../../assets/icons/arrowr-icon.svg"
 import episodesIcon from "../../assets/icons/episodes-icon.svg"
 import heartIcon from "../../assets/icons/heart-icon.svg"
-import chibi from "/images/chocked-umaki-anime.png"
 import Button from "../../Components/Button/Button"
 import { useNavigate } from "react-router-dom"
 import { APP_ROUTES } from "../../constants/routes.constants"
@@ -105,8 +104,8 @@ function HomePage() {
 
                     ) : (
                         <>
-                            <ErrorContent type='error' />
                             <div className="your-collection__lists__errorBtn">
+                                <ErrorContent type='error' />
                                 <Button
                                     onClick={() => {
                                         setIsButtonEnabled(false);

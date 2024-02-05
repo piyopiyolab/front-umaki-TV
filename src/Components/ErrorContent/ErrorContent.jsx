@@ -31,10 +31,10 @@ function ErrorContent({ type }) {
                 (
                     <>
 
-
+                        <h2 className='text-center'>It looked like an error has occured...</h2>
                         <div className='errorContentBody'>
-                            <h2 className='text-center'>It looked like an error has occured...</h2>
-                            <img src={sadChibi} alt='chibi error umaki.tv' />
+
+                            <img src={chibi} alt='chibi error umaki.tv' />
                         </div>
 
                     </>)
