@@ -2,7 +2,6 @@ import { getRequest } from "../../API/api";
 import { setData, addLoading, removeLoading } from "../reducers/animeSlice.reducer";
 
 
-
 export const getAnimeIDThunk = (animeID) => async (dispatch, getState) => {
 
     const id = animeID;
@@ -26,8 +25,8 @@ export const getAnimeIDThunk = (animeID) => async (dispatch, getState) => {
         genre: data.data.genres,
 
     }
-    console.log(data.data)
-    console.log(animeIDdata)
+    // console.log(data.data)
+    // console.log(animeIDdata)
 
     if (response.error) {
         console.error("error in search anime :", response.error);

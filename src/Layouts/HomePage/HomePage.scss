@@ -74,8 +74,8 @@
             padding: var(--p-2);
            @include mxn.flex('column', 'nowrap');
            @include mxn.flex-p('space-between', 'start');
-           height: 20rem;
-           
+           height: 24rem;
+           width: var(--w-full);
            
             h1 {
                 padding:0;
@@ -119,18 +119,25 @@
            &__stats {
         
             @include mxn.flex('row', 'nowrap');
-            @include mxn.flex-p('space-between', 'center');
+            @include mxn.flex-p('start', 'center');
             width: var(--w-full);
 
             div {
 
                 @include mxn.flex('row', 'nowrap');
                 @include mxn.flex-p('start', 'center');
-                width: inherit;
 
-                p {
-                    padding-left: var(--p-1);
+                &:first-child {
+                 flex:1;
+
                 }
+
+                &:last-child {
+                  flex:2;
+
+                }
+
+              
                
                 &:hover {
             
@@ -138,8 +145,9 @@
                     color:var(--purple-light);
                 }
                 img {
-                    max-width: 2rem;
+                    max-width: 2.5rem;
                     display: block;
+                    padding-right: 0.53rem;
                     
                 }
             }
@@ -162,8 +170,9 @@
           &:hover {
             @include mxn.transition(color);
             color:var(--purple-light);
-            @include mxn.bounce;
-          
+            img {
+                @include mxn.bounce;
+            }
              
 
        
@@ -172,8 +181,10 @@
             max-width: 1.5rem;
             display: block;
             margin-left: 1rem;
-                
+            
+                  
         }
+        
     }
         
 

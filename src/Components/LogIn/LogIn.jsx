@@ -44,16 +44,14 @@ function LogIn() {
 
     // Redirection favorite
     useEffect(() => {
-        if (isAuth) {
+
+        if (isAuth()) { // Corrected to isAuth()
+            console.log('isAuth yes');
             navigate(APP_ROUTES.FAVORITE, { replace: true });
-        } else if (!isAuth()) {
-            navigate(APP_ROUTES.LOG_IN, { replace: true });
         }
+
     }, [loggedIn]);
 
-
-
-    console.log('isAuth', isAuth())
 
     return (
         <form className="login__form" onSubmit={handleSubmit}>

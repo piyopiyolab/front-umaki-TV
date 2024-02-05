@@ -9,6 +9,7 @@ export const logInThunk = (form) => async (dispatch, getState) => {
 
 
     const response = await postRequest("http://localhost:9001/connexion/log-in", form);
+
     const data = response.data;
 
 

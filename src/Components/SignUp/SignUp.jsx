@@ -3,9 +3,12 @@ import Button from "../Button/Button";
 import Input from "../Input/Input";
 import { signUpThunk } from "../../redux/thunk/thunk.post.signup"
 import { useDispatch, useSelector } from 'react-redux'
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import { APP_ROUTES } from '../../constants/routes.constants';
+import { isAuth } from '../../utils/isAuth';
+
+
 
 function SignUp() {
 
@@ -56,21 +59,15 @@ function SignUp() {
 
         dispatch(signUpThunk(form))
 
-        handleRedirect();
-
     }
 
-    // Redirecton
-    const handleRedirect = () => {
-
-        dispatch(addLoading());
-
-        if (loggedIn) {
-            navigate(APP_ROUTES.HOME);
+    // Redirecton Home
+    useEffect(() => {
+        if (isAuth()) { // Corrected to isAuth()
+            navigate(APP_ROUTES.HOME, { replace: true });
         }
+    }, [loggedIn]);
 
-
-    }
 
     return (
         <form className="signup__form" onSubmit={handleSubmit}>

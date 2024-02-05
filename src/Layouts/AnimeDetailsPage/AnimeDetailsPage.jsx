@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 import { getAnimeIDThunk } from '../../redux/thunk/thunk.get.animeID';
 import spinner from '../../assets/spinner.svg'
 import Button from '../../Components/Button/Button';
-
+import { postAnimeThunk } from '../../redux/thunk/thunk.post.addAnime';
 
 
 function AnimeDetails() {
@@ -16,27 +16,24 @@ function AnimeDetails() {
     const { animeID } = useParams();
     const dispatch = useDispatch();
 
-    const [animeDetails, setanimeDetails] = useState([]);
+    const [newAnime, setNewAnime] = useState({
+        anime_id,
+        anime_state,
+        nb_episodes,
+        synopsis,
+        media,
+        title,
+        genre,
+        release_date,
+    });
 
     const { data, loading } = useSelector((state) => state.animeSlice);
 
     useEffect(() => {
 
         dispatch(getAnimeIDThunk(animeID))
-        console.log('dispatch get animeID', animeID)
 
     }, [animeID])
-
-
-    //Set animeList from API Request for filter function
-    useEffect(() => {
-
-        if (!data) return;
-        setanimeDetails(data)
-
-    }, [data]);
-
-
 
 
     if (loading) {
@@ -47,6 +44,12 @@ function AnimeDetails() {
         return <p>Error: Anime details not available.</p>;
     }
 
+
+    // AddAnime
+    const handleAddAnime = () => {
+        dispatch(postAnimeThunk());
+
+    }
 
     return (
         <>
@@ -90,7 +93,9 @@ function AnimeDetails() {
                                         <span key={genre.mal_id}>{genre.name}</span>
                                     ))} */}
                                 </p>
-                                <Button text="Add to your list" />
+                                <Button
+                                    onClick={handleAddAnime}
+                                    text="Add to your list" />
                             </div>
                         </div>
                     </div>

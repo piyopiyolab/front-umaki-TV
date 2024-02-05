@@ -13,7 +13,7 @@ import Button from "../../Components/Button/Button"
 import { useNavigate } from "react-router-dom"
 import { APP_ROUTES } from "../../constants/routes.constants"
 import ErrorContent from "../../Components/ErrorContent/ErrorContent"
-
+import { formatNumber } from "../../utils/formatNumber"
 
 function HomePage() {
     const dispatch = useDispatch();
@@ -82,7 +82,7 @@ function HomePage() {
                                     <div className="wrapper__card__animeInfo__stats">
                                         <div>
                                             <img src={heartIcon} alt="episodes icon" />
-                                            <p>{d.favorites}</p>
+                                            <p>{formatNumber(d.favorites)}</p>
 
                                         </div>
                                         <div>
