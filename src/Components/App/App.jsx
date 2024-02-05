@@ -58,7 +58,7 @@ function App() {
                             }
                         />
                         <Route
-                            path={"/genre"}
+                            path={APP_ROUTES.GENRE}
                             element={
                                 <>
                                     <GenrePage />

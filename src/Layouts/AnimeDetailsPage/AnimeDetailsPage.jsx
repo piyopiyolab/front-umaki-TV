@@ -29,11 +29,9 @@ function AnimeDetails() {
     //Set animeList from API Request for filter function
     useEffect(() => {
 
-
-
+        if (!data) return;
         setanimeDetails(data)
 
-        console.log('animeDetails :', animeDetails)
     }, [data]);
 
 
@@ -61,32 +59,34 @@ function AnimeDetails() {
             <Header />
 
 
-
-            {animeDetails && (
+            {/* Object data */}
+            {data && (
 
                 <div className="anime-details">
                     <div className='anime-details__hero'>
-                        {animeDetails?.images?.webp && (
-                            <img src={animeDetails.images.webp.large_image_url} alt={animeDetails.title} />
-                        )}
+
+                        <img src={data.image} alt={data.title} />
+
                         <div className="anime-details__hero__r">
                             <div className='anime-details__hero__r__date-info'>
-                                <p className={animeDetails.status === 'Currently Airing' ? 'airing' : 'finished'}>
-                                    {animeDetails.status}
+                                <p className={data.status === 'Currently Airing' ? 'airing' : 'finished'}>
+                                    {data.status}
                                 </p>
-                                <p>{`${animeDetails.season.charAt(0).toUpperCase() + animeDetails.season.slice(1)} ${animeDetails.year}`}</p>
+                                <p>{`${data.season.charAt(0).toUpperCase() + data.season.slice(1)} ${data.year}`}</p>
                             </div>
                             <div className='anime-details__hero__r__main'>
                                 <div>
 
-                                    <p>{animeDetails.title_japanese}</p>
-                                    <p>{animeDetails.title}</p>
+                                    <p>{data.title_jap}</p>
+                                    <p>{data.title}</p>
 
                                 </div>
-                                <span>{animeDetails.rating}</span>
-                                <h1>{animeDetails.title_english}</h1>
+                                <span>{data.rating}</span>
+                                <h1>{data.title}</h1>
                                 <p>
-                                    {animeDetails.genres.map((genre) => genre.name).join(', ')}
+                                    {data.genre.map(genre => (
+                                        <span key={genre.mal_id}>{genre.name}</span>
+                                    ))}
                                 </p>
                                 <Button text="Add to your list" />
                             </div>
@@ -95,9 +95,6 @@ function AnimeDetails() {
                 </div>
 
             )}
-
-
-
 
 
 

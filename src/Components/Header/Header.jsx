@@ -7,6 +7,7 @@ import homeIcon from '../../assets/icons/home-icon.svg'
 import flammeIcon from '../../assets/icons/flame-icon.svg'
 import hamburger from '../../assets/icons/hamburger-solid.svg'
 import close from '../../assets/icons/close.svg'
+import { APP_ROUTES } from "../../constants/routes.constants"
 
 const Header = () => {
 
@@ -35,7 +36,7 @@ const Header = () => {
                 //Mobile
                 <nav className="header__nav">
                     <div className="header__nav__logoContainer">
-                        <a href="/"><img src={logo} className='logo' alt="logo umaki.TV" /></a>
+                        <a href={APP_ROUTES.HOME}><img src={logo} className='logo' alt="logo umaki.TV" /></a>
                     </div>
 
                     <div>
@@ -55,25 +56,25 @@ const Header = () => {
                             )}
                         <ul className={`header__nav__menu ${showMenu ? 'block' : 'hidden'}`}>
                             <li>
-                                <a href="/">
+                                <a href={APP_ROUTES.HOME}>
                                     <img src={homeIcon} className="icon" alt="icon home" />
                                     <span className="active">Home</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="/favorite">
+                                <a href={APP_ROUTES.FAVORITE}>
                                     <img src={heartIcon} className="icon" alt="favorite icon" />
                                     <span>Favorite</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="/genre">
+                                <a href={APP_ROUTES.GENRE}>
                                     <img src={genreIcon} className="icon" alt="Genre icon" />
                                     <span>Genre</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="/latest">
+                                <a href={APP_ROUTES.LATEST}>
                                     <img src={flammeIcon} className="icon" alt="latest icon" />
 
                                     <span>Latest</span></a>
@@ -90,25 +91,27 @@ const Header = () => {
                     </div>
                     <ul className="header__nav__menu">
                         <li>
-                            <a href="/">
+                            <a href={APP_ROUTES.HOME}>
                                 <img src={homeIcon} className="icon" alt="icon home" />
                                 <span className="active">Home</span>
                             </a>
                         </li>
                         <li>
-                            <a href="/favorite">
+                            <a href={APP_ROUTES.FAVORITE}>
                                 <img src={heartIcon} className="icon" alt="favorite icon" />
                                 <span>Favorite</span>
                             </a>
                         </li>
                         <li>
-                            <a href="/">
+                            <a href={APP_ROUTES.GENRE}>
+
                                 <img src={genreIcon} className="icon" alt="Genre icon" />
                                 <span>Genre</span>
                             </a>
                         </li>
                         <li>
-                            <a href="/">
+                            <a href={APP_ROUTES.LATEST}>
+
                                 <img src={flammeIcon} className="icon" alt="latest icon" />
 
                                 <span>Latest</span></a>

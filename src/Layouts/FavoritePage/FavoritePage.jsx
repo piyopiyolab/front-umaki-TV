@@ -116,7 +116,7 @@ function FavoritePage() {
 
                         <div>
                             {/* Anime State List */}
-                            {filteredAnimeList?.length > 0 ? (
+                            {filteredAnimeList?.length > 0 && (
                                 filteredAnimeList.map(anime => (
                                     <article key={anime.anime_id} className="your-collection__lists__card">
                                         <div className="your-collection__lists__card__banner">
@@ -125,23 +125,17 @@ function FavoritePage() {
                                         <h3 className="text-center">{anime.title}</h3>
                                     </article>
                                 ))
-                            ) : (
-                                <>
-                                    <ErrorContent type='addAnime' />
-                                    <div className="your-collection__lists__errorBtn">
-
-                                    </div>
-                                </>
                             )}
                         </div>
                     </div>
                 ) : (
                     <>
-                        <ErrorContent type='addAnime' />
+                        <ErrorContent type='log-out' />
                         <div className="your-collection__lists__errorBtn">
-                            <Button text='Add an anime'
-                                onClick={handleRedirectHomepage} />
-
+                            <Button text='Log-in'
+                                onClick={handleRedirectLogIn} />
+                            <Button text='Sign-up'
+                                onClick={handleRedirectToSignup} />
                         </div>
                     </>
                 )}

@@ -5,4 +5,5 @@ export const APP_ROUTES = {
     SIGN_UP: "/connexion/sign-up",
     ANIME_DETAILS: "/anime",
     GENRE: "/genre",
+    LATEST: "/latest",
 };
