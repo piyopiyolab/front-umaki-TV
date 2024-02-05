@@ -1,13 +1,13 @@
 import './App.scss'
+import { APP_ROUTES } from '../../constants/routes.constants';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import LogInPage from '../../Layouts/LogInPage';
 import SignUpPage from '../../Layouts/SignUpPage';
 import HomePage from '../../Layouts/HomePage/HomePage';
 import FavoritePage from '../../Layouts/FavoritePage/FavoritePage';
-import { APP_ROUTES } from '../../constants/routes.constants';
 import AnimeDetails from '../../Layouts/AnimeDetailsPage/AnimeDetailsPage';
-import ErrorContent from '../ErrorContent/ErrorContent';
 import ErrorPage from '../../Layouts/ErrorPage/ErrorPage';
+import GenrePage from '../../Layouts/GenrePage/GenrePage';
 
 
 function App() {
@@ -57,6 +57,16 @@ function App() {
                                 </>
                             }
                         />
+                        <Route
+                            path={"/genre"}
+                            element={
+                                <>
+                                    <GenrePage />
+                                </>
+                            }
+                        />
+
+                        {/* Error page  */}
                         <Route
                             path={"*"}
                             element={

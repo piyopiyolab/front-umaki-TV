@@ -4,4 +4,5 @@ export const APP_ROUTES = {
     LOG_IN: "/connexion/log-in",
     SIGN_UP: "/connexion/sign-up",
     ANIME_DETAILS: "/anime",
+    GENRE: "/genre",
 };

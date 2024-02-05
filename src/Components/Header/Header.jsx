@@ -67,13 +67,13 @@ const Header = () => {
                                 </a>
                             </li>
                             <li>
-                                <a href="/">
+                                <a href="/genre">
                                     <img src={genreIcon} className="icon" alt="Genre icon" />
                                     <span>Genre</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="/">
+                                <a href="/latest">
                                     <img src={flammeIcon} className="icon" alt="latest icon" />
 
                                     <span>Latest</span></a>

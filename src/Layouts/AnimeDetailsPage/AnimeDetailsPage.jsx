@@ -13,6 +13,7 @@ function AnimeDetails() {
 
     const { animeID } = useParams();
     const dispatch = useDispatch();
+
     const [animeDetails, setanimeDetails] = useState([]);
 
     const { data, loading } = useSelector((state) => state.animeSlice);
@@ -20,7 +21,8 @@ function AnimeDetails() {
     useEffect(() => {
 
         dispatch(getAnimeIDThunk(animeID))
-        console.log(data)
+        console.log('dispatch get animeID', animeID)
+
     }, [animeID])
 
 
@@ -28,7 +30,7 @@ function AnimeDetails() {
     useEffect(() => {
 
 
-        if (!data) return;
+
         setanimeDetails(data)
 
         console.log('animeDetails :', animeDetails)
@@ -63,7 +65,6 @@ function AnimeDetails() {
             {animeDetails && (
 
                 <div className="anime-details">
-
                     <div className='anime-details__hero'>
                         {animeDetails?.images?.webp && (
                             <img src={animeDetails.images.webp.large_image_url} alt={animeDetails.title} />

@@ -13,8 +13,6 @@ import chibi from "/images/chocked-umaki-anime.png"
 import Button from "../../Components/Button/Button"
 import { useNavigate } from "react-router-dom"
 import { APP_ROUTES } from "../../constants/routes.constants"
-import { getAnimeIDThunk } from "../../redux/thunk/thunk.get.animeID"
-import { getUserList } from "../../redux/thunk/thunk.get.userList"
 import ErrorContent from "../../Components/ErrorContent/ErrorContent"
 
 
@@ -36,25 +34,6 @@ function HomePage() {
         return <img src={spinner} alt="Loading..." className="loader" />;
     }
 
-
-    //error API
-    let errorTxt =
-        <div>
-
-            <img src={chibi} alt='chibi error umaki.tv' />
-            <p className="text-center">Oops, something went wrong...</p>
-            <Button
-                onClick={() => {
-                    setIsButtonEnabled(false);
-                    dispatch(topanimeThunk())
-
-                    setTimeout(() => {
-                        setIsButtonEnabled(true);
-                    }, 1200);
-                }}
-                disabled={!isButtonEnabled}
-                text="Please, try again" />
-        </div>
 
 
 
@@ -126,8 +105,20 @@ function HomePage() {
 
                     ) : (
                         <>
-                            {errorTxt}
+                            <ErrorContent type='error' />
+                            <div className="your-collection__lists__errorBtn">
+                                <Button
+                                    onClick={() => {
+                                        setIsButtonEnabled(false);
+                                        dispatch(topanimeThunk())
 
+                                        setTimeout(() => {
+                                            setIsButtonEnabled(true);
+                                        }, 1200);
+                                    }}
+                                    disabled={!isButtonEnabled}
+                                    text="Please, try again" />
+                            </div>
                         </>
                     )}
 
