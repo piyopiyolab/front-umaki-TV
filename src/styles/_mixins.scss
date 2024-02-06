@@ -113,6 +113,25 @@ line-height: 4.2rem;
 }
 
 
+//Card
+
+@mixin card($width: var(--w-s)) {
+  width: $width;
+  @content;
+  background:rgba(60, 16, 83, 0.2);
+  border-radius: var(--rounded-md);
+
+  &:hover {
+    transition: all 0.2s ease-out;
+    box-shadow: 0px 4px 8px rgba(38, 38, 38, 0.2);
+    top: -4px;
+    background-color: rgba(91, 25, 126, 0.2);
+    transform: translateY(-5px);
+  }
+}
+
+
+
 //Btn
 
 @mixin btn {
