@@ -1,5 +1,5 @@
 import { postRequest } from "../../API/api";
-import { setData, addLoading, removeLoading, addError, removeError, setLoggedInStatus } from "../reducers/userSlice.reducer";
+import { setUserData, addLoading, removeLoading, addError, removeError, setLoggedInStatus } from "../reducers/userSlice.reducer";
 
 export const signUpThunk = (form) => async (dispatch, getState) => {
 
@@ -18,7 +18,7 @@ export const signUpThunk = (form) => async (dispatch, getState) => {
 
     //set Token from localStorage
     localStorage.setItem('accessToken', data.token);
-    dispatch(setData(data.user))
+    dispatch(setUserData(data.user))
     dispatch(removeLoading());
 
     // Remove Loading  

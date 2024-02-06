@@ -2,7 +2,10 @@
 
 
 
-import { setData, addLoading, removeLoading, addError, removeError, setLoggedInStatus } from "../reducers/userSlice.reducer";
+import { setAnimeData, addLoading, removeLoading, addError, removeError } from "../reducers/animeSlice.reducer";
+import { setUserData, setLoggedInStatus } from "../reducers/userSlice.reducer";
+
+
 import { getRequest } from "../../API/api";
 
 
@@ -26,13 +29,12 @@ export const getUserList = () => async (dispatch, getState) => {
 
 
 
-        dispatch(setData(data))
+        dispatch(setAnimeData(data))
 
 
 
         // Remove Loading
         dispatch(removeLoading())
-
 
     } catch (error) {
         console.error("Failed to fetch user's list:", error);

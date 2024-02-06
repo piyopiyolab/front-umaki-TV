@@ -1,5 +1,5 @@
 import { getRequest } from "../../API/api";
-import { setData, addLoading, removeLoading } from "../reducers/animeSlice.reducer";
+import { setAnimeData, addLoading, removeLoading } from "../reducers/animeSlice.reducer";
 
 export const topanimeThunk = () => async (dispatch, getState) => {
 
@@ -19,7 +19,7 @@ export const topanimeThunk = () => async (dispatch, getState) => {
     // Remove Loading  
     dispatch(removeLoading())
 
-    dispatch(setData(data.data))
+    dispatch(setAnimeData(data.data))
 
 
 

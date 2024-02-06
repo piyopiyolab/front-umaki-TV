@@ -1,5 +1,5 @@
 import { postRequest } from "../../API/api";
-import { setData, addLoading, removeLoading, addError, removeError, setLoggedInStatus } from "../reducers/userSlice.reducer";
+import { setUserData, addLoading, removeLoading, addError, removeError, setLoggedInStatus } from "../reducers/userSlice.reducer";
 
 export const logInThunk = (form) => async (dispatch, getState) => {
 
@@ -20,7 +20,7 @@ export const logInThunk = (form) => async (dispatch, getState) => {
     }
 
 
-    dispatch(setData(data.user));
+    dispatch(setUserData(data.user));
 
     // Remove Loading  
     dispatch(removeLoading())

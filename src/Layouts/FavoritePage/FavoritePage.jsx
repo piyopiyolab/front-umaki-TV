@@ -17,10 +17,11 @@ function FavoritePage() {
     const navigate = useNavigate();
 
 
-    const { data, loading, error, loggedIn } = useSelector((state) => state.userSlice);
+    const { loading, error, loggedIn } = useSelector((state) => state.userSlice);
+    const { data } = useSelector((state) => state.animeSlice);
 
     const [selectedFilter, setSelectedFilter] = useState('on_going');
-    const [animeLists, setAnimeLists] = useState([]);
+    const [animeLists, setAnimeLists] = useState([]); //For filter only
 
 
 
@@ -33,6 +34,7 @@ function FavoritePage() {
 
     //Set animeList from API Request for filter function
     useEffect(() => {
+        console.log("front data:", data);
         if (!data) return;
         setAnimeLists(data)
         console.log('data for filter', animeLists)
@@ -43,21 +45,6 @@ function FavoritePage() {
     if (loading) {
         return <img src={spinner} alt="Loading..." className="loader" />;
     }
-
-
-
-    //     // Verif token, use effect, if token return, 
-    // useEffect(() => {
-    //     if(!token) ou loggedIn {
-    // navigate(APP_ROUTES.SIGN_UP)
-
-    // if(!user) {
-    //     navigate(APP_ROUTES.SIGN_UP)
-    // }
-    // return
-    //    
-    //     dispatch(checkToken())
-    // },[])
 
     //Redirect if error
     const handleRedirectToSignup = () => {
@@ -81,7 +68,7 @@ function FavoritePage() {
 
 
     // const filteredAnimeList = animeLists.filter(anime => anime.anime_state === selectedFilter);
-    const getFilteredList = () => {
+    const getFilteredList = (animeLists) => {
         return animeLists.filter(anime => anime.anime_state === selectedFilter);
     }
 
@@ -132,8 +119,8 @@ function FavoritePage() {
 
                         <div>
                             {/* Anime State List */}
-                            {getFilteredList()?.length > 0 && (
-                                getFilteredList().map(anime => (
+                            {getFilteredList(animeLists)?.length > 0 && (
+                                getFilteredList(animeLists).map(anime => (
                                     <article key={anime.anime_id} className="your-collection__lists__card">
                                         <div className="your-collection__lists__card__banner">
                                             <img loading="lazy" src={anime.media} alt={anime.title} />
@@ -164,7 +151,7 @@ function FavoritePage() {
 
 
 
-                {getFilteredList().length === 0 && loggedIn && (
+                {getFilteredList(animeLists).length === 0 && loggedIn && (
                     <>
                         <ErrorContent type='addAnime' />
                         <div className="your-collection__lists__errorBtn">

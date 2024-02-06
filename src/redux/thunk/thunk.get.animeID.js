@@ -1,5 +1,5 @@
 import { getRequest } from "../../API/api";
-import { setData, addLoading, removeLoading } from "../reducers/animeSlice.reducer";
+import { setAnimeData, addLoading, removeLoading } from "../reducers/animeSlice.reducer";
 
 
 export const getAnimeIDThunk = (animeID) => async (dispatch, getState) => {
@@ -67,7 +67,7 @@ export const getAnimeIDThunk = (animeID) => async (dispatch, getState) => {
         dispatch(addError());
     }
 
-    dispatch(setData(animeIDdata))
+    dispatch(setAnimeData(animeIDdata))
 
     // Remove Loading  
     dispatch(removeLoading())

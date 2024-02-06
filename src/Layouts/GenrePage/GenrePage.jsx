@@ -4,6 +4,10 @@ import './GenrePage.scss';
 import { HelmetProvider, Helmet } from "react-helmet-async"
 import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from 'react';
+
+
+
+
 function GenrePage() {
     const { genre } = useParams();
     const [genreData, setGenreData] = useState(null);

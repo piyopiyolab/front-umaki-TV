@@ -12,7 +12,7 @@ export const animeSlice = createSlice({
     name: "anime",
     initialState,
     reducers: {
-        setData: (state, action) => {
+        setAnimeData: (state, action) => {
             return {
                 ...state, data: action.payload
             }
@@ -50,5 +50,5 @@ export const animeSlice = createSlice({
 
 
 
-export const { setData, addLoading, removeLoading, addError, removeError } = animeSlice.actions
+export const { setAnimeData, addLoading, removeLoading, addError, removeError } = animeSlice.actions
 export default animeSlice.reducer

@@ -1,5 +1,5 @@
 import { postRequest } from "../../API/api";
-import { setData, addLoading, removeLoading } from "../reducers/userSlice.reducer";
+import { addLoading, removeLoading } from "../reducers/userSlice.reducer";
 
 export const postAnimeThunk = () => async (dispatch, getState) => {
 
