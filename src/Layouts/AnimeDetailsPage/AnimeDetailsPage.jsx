@@ -10,6 +10,7 @@ import spinner from '../../assets/spinner.svg'
 import Button from '../../Components/Button/Button';
 import { postAnimeThunk } from '../../redux/thunk/thunk.post.addAnime';
 import { APP_ROUTES } from '../../constants/routes.constants';
+import Input from '../../Components/Input/Input';
 
 
 function AnimeDetails() {
@@ -18,16 +19,18 @@ function AnimeDetails() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    // const [newAnime, setNewAnime] = useState({
-    //     anime_id: animeID,
-    //     anime_state: undefined,
-    //     nb_episodes,
-    //     synopsis,
-    //     media,
-    //     title,
-    //     genre,
-    //     release_date,
-    // });
+
+    const [showList, setShowList] = useState(false)
+    const [newAnime, setNewAnime] = useState({
+        anime_id: animeID,
+        anime_state: "",
+        nb_episodes: "",
+        synopsis: "",
+        media: "",
+        title: "",
+        genre: "",
+        release_date: "",
+    });
 
     const { data, loading } = useSelector((state) => state.animeSlice);
 
@@ -48,11 +51,24 @@ function AnimeDetails() {
 
 
     // AddAnime
-    const handleAddAnime = () => {
-        // dispatch(postAnimeThunk());
-        console.log("add anime");
+    const handleAddAnime = (stateList) => {
 
+        setNewAnime({
+            anime_id: animeID,
+            anime_state: stateList,
+            nb_episodes: data.episodes,
+            synopsis: data.synopsis,
+            media: data.image,
+            title: data.title,
+            genre: data.genre.map(genre => genre.name).join(', '),
+            release_date: data.year,
+        })
+
+        console.log('new anime to list', newAnime);
+        dispatch(postAnimeThunk(newAnime));
     }
+
+
     return (
         <>
             <HelmetProvider>
@@ -64,7 +80,6 @@ function AnimeDetails() {
 
             {/* Header */}
             <Header />
-
 
             {/* Object data Banner hero*/}
             {data && (
@@ -100,9 +115,24 @@ function AnimeDetails() {
                                         ))}
                                     </p>
                                 )}
+
+                                {/* Button Adding to your list */}
                                 <Button
-                                    onClick={handleAddAnime}
+                                    onClick={() => { setShowList(!showList) }}
                                     text="Add to your list" />
+                                <div className={`anime-details__hero__r__main__addingListBtn ${showList ? '' : 'hidden'}`}>
+                                    <button
+                                        onClick={() => handleAddAnime('to_see')} >To See</button>
+                                    <button
+                                        onClick={() => handleAddAnime('watched')}
+                                    >Watched</button>
+                                    <button
+                                        onClick={() => handleAddAnime('on_going')}
+                                    >On Going</button>
+                                </div>
+
+
+
                             </div>
                         </div>
                     </div>

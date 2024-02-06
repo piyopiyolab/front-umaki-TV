@@ -34,7 +34,6 @@ function FavoritePage() {
 
     //Set animeList from API Request for filter function
     useEffect(() => {
-        console.log("front data:", data);
         if (!data) return;
         setAnimeLists(data)
         console.log('data for filter', animeLists)

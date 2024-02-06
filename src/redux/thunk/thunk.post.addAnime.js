@@ -1,7 +1,7 @@
 import { postRequest } from "../../API/api";
-import { addLoading, removeLoading } from "../reducers/userSlice.reducer";
+import { setUserData, addLoading, removeLoading } from "../reducers/userSlice.reducer";
 
-export const postAnimeThunk = () => async (dispatch, getState) => {
+export const postAnimeThunk = (newAnime) => async (dispatch, getState) => {
 
 
 
@@ -13,7 +13,7 @@ export const postAnimeThunk = () => async (dispatch, getState) => {
     //Loading => Await response 
     dispatch(addLoading());
 
-    const response = await postRequest("http://localhost:9001/user/add-anime", token);
+    const response = await postRequest("http://localhost:9001/user/add-anime", newAnime, token);
     const data = response.data;
 
     if (response.error) {

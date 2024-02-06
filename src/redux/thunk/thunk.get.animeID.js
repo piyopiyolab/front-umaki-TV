@@ -57,6 +57,8 @@ export const getAnimeIDThunk = (animeID) => async (dispatch, getState) => {
         streaming: streamingData,
         trailer: data.data.trailer.url,
 
+        episodes: data.data.episodes,
+
     }
     // console.log(data.data)
     // console.log(animeIDdata)
