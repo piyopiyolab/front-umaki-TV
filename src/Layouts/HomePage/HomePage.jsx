@@ -69,7 +69,7 @@ function HomePage() {
 
                             <article key={d.mal_id} className="wrapper__card">
                                 <div className="wrapper__card__animeImg">
-                                    <img src={d.images.webp.large_image_url} alt="" />
+                                    <img loading="lazy" src={d.images.webp.large_image_url} alt="" />
                                 </div>
                                 <div className="wrapper__card__animeInfo">
                                     <h1>{d.title_english}</h1>
@@ -104,16 +104,16 @@ function HomePage() {
 
                     ) : (
                         <>
-                            <div className="your-collection__lists__errorBtn">
+
+                            <div className="wrapper__errorBtn">
                                 <ErrorContent type='error' />
                                 <Button
                                     onClick={() => {
                                         setIsButtonEnabled(false);
                                         dispatch(topanimeThunk())
+                                        setIsButtonEnabled(false);
 
-                                        setTimeout(() => {
-                                            setIsButtonEnabled(true);
-                                        }, 1200);
+
                                     }}
                                     disabled={!isButtonEnabled}
                                     text="Please, try again" />

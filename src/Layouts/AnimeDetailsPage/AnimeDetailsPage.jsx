@@ -16,16 +16,16 @@ function AnimeDetails() {
     const { animeID } = useParams();
     const dispatch = useDispatch();
 
-    const [newAnime, setNewAnime] = useState({
-        anime_id,
-        anime_state,
-        nb_episodes,
-        synopsis,
-        media,
-        title,
-        genre,
-        release_date,
-    });
+    // const [newAnime, setNewAnime] = useState({
+    //     anime_id: animeID,
+    //     anime_state: undefined,
+    //     nb_episodes,
+    //     synopsis,
+    //     media,
+    //     title,
+    //     genre,
+    //     release_date,
+    // });
 
     const { data, loading } = useSelector((state) => state.animeSlice);
 
@@ -50,7 +50,6 @@ function AnimeDetails() {
         dispatch(postAnimeThunk());
 
     }
-
     return (
         <>
             <HelmetProvider>
@@ -64,13 +63,13 @@ function AnimeDetails() {
             <Header />
 
 
-            {/* Object data */}
+            {/* Object data Banner hero*/}
             {data && (
 
-                <div className="anime-details">
+                <section className="anime-details">
                     <div className='anime-details__hero'>
 
-                        <img src={data.image} alt={data.title} />
+                        <img loading="lazy" src={data.image} alt={data.title} />
 
                         <div className="anime-details__hero__r">
                             <div className='anime-details__hero__r__date-info'>
@@ -89,9 +88,12 @@ function AnimeDetails() {
                                 <span>{data.rating}</span>
                                 <h1>{data.title}</h1>
                                 <p>
-                                    {/* {data.genre.map(genre => (
-                                        <span key={genre.mal_id}>{genre.name}</span>
-                                    ))} */}
+                                    {data.genre.map((g, i) => (
+                                        <span key={i}>
+                                            {g.name}
+                                            {i < data.genre.length - 1 && ', '}
+                                        </span>
+                                    ))}
                                 </p>
                                 <Button
                                     onClick={handleAddAnime}
@@ -99,10 +101,71 @@ function AnimeDetails() {
                             </div>
                         </div>
                     </div>
-                </div>
+                </section>
 
             )}
 
+
+
+            {/* Synopsis*/}
+            <section className='anime-details-synopsis'>
+                <article>
+                    <h2>Synopsis</h2>
+                    {data && (
+                        <p>{data.synopsis}</p>
+                    )}
+                </article>
+            </section>
+
+            {/* section more infos 2 articles*/}
+            <section className='anime-details-additionalinfos'>
+                <article>
+                    <h2>More infos</h2>
+                    {data && (
+                        <>
+                            <p>{`title : ${data.title}`}</p>
+                            <p>{`Synonym : ${data.synonym}`}</p>
+                            <p>{`Duration : ${data.duration}`}</p>
+                            <p>{`Source : ${data.source}`}</p>
+                            <p> Producers :
+                                {data.producers.map((p, i) => (
+                                    <span key={i}>
+                                        {p.name}
+                                    </span>
+                                ))}
+
+                            </p>
+
+                            <p> Studio :
+                                {data.studios.map((s, i) => (
+                                    <span key={i}>
+                                        {s.name}
+                                    </span>
+                                ))}
+
+                            </p>
+                        </>
+                    )}
+                </article>
+                <article>
+                    <h2>Watch Episodes</h2>
+                    {data && (
+                        <>
+
+                            {data.streaming.map((studio, index) => (
+                                <div key={index}>
+                                    <a href={studio.url}>{studio.name}</a>
+                                </div>
+                            ))}
+
+                            <a href={data.trailer} className="btn">Watch Trailer</a>
+                        </>
+
+                    )}
+                </article>
+
+                <Button text='Discover more animes' />
+            </section>
 
 
 
