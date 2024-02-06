@@ -80,8 +80,10 @@ function FavoritePage() {
     };
 
 
-    const filteredAnimeList = animeLists.filter(anime => anime.anime_state === selectedFilter);
-
+    // const filteredAnimeList = animeLists.filter(anime => anime.anime_state === selectedFilter);
+    const getFilteredList = () => {
+        return animeLists.filter(anime => anime.anime_state === selectedFilter);
+    }
 
 
     return (
@@ -130,8 +132,8 @@ function FavoritePage() {
 
                         <div>
                             {/* Anime State List */}
-                            {filteredAnimeList?.length > 0 && (
-                                filteredAnimeList.map(anime => (
+                            {getFilteredList()?.length > 0 && (
+                                getFilteredList().map(anime => (
                                     <article key={anime.anime_id} className="your-collection__lists__card">
                                         <div className="your-collection__lists__card__banner">
                                             <img loading="lazy" src={anime.media} alt={anime.title} />
@@ -162,7 +164,7 @@ function FavoritePage() {
 
 
 
-                {filteredAnimeList.length === 0 && loggedIn && (
+                {getFilteredList().length === 0 && loggedIn && (
                     <>
                         <ErrorContent type='addAnime' />
                         <div className="your-collection__lists__errorBtn">

@@ -60,7 +60,7 @@ export const getAnimeIDThunk = (animeID) => async (dispatch, getState) => {
     }
     // console.log(data.data)
     // console.log(animeIDdata)
-    console.log(animeIDdata)
+
 
     if (response.error) {
         console.error("error in search anime :", response.error);

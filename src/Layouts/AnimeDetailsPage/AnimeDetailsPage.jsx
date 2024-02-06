@@ -177,9 +177,9 @@ function AnimeDetails() {
                 </article>
 
                 <Button
-                    // onClick={() => {
-                    //     navigate(APP_ROUTES.HOME, { replace: true })
-                    // }}
+                    onClick={() => {
+                        navigate(APP_ROUTES.HOME, { replace: true })
+                    }}
                     text='Discover more animes' />
             </section>
 
