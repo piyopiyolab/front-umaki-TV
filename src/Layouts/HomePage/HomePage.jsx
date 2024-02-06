@@ -44,6 +44,11 @@ function HomePage() {
     }
 
 
+    // Redirection Genre
+    const handleGenreClick = (genre) => {
+        navigate(`${APP_ROUTES.GENRE}/${genre}`);
+    }
+
     return (
         <>
             <HelmetProvider>
@@ -76,7 +81,9 @@ function HomePage() {
                                     <div className="wrapper__card__animeInfo__tags">
                                         {d.genres.map((genre) => (
                                             // Ajout de la clé ci-dessous
-                                            <span key={genre.mal_id}>{genre.name}</span>
+                                            <span
+                                                onClick={() => handleGenreClick(genre.name)}
+                                                key={genre.mal_id}>{genre.name}</span>
                                         ))}
                                     </div>
                                     <div className="wrapper__card__animeInfo__stats">

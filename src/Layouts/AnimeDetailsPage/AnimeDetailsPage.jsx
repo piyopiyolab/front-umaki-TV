@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { HelmetProvider, Helmet } from "react-helmet-async"
 import Header from '../../Components/Header/Header';
 import Footer from '../../Components/Footer/Footer';
-import { Navigate, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import { getAnimeIDThunk } from '../../redux/thunk/thunk.get.animeID';
 import spinner from '../../assets/spinner.svg'
@@ -49,7 +49,8 @@ function AnimeDetails() {
 
     // AddAnime
     const handleAddAnime = () => {
-        dispatch(postAnimeThunk());
+        // dispatch(postAnimeThunk());
+        console.log("add anime");
 
     }
     return (
@@ -133,7 +134,7 @@ function AnimeDetails() {
                             <p>{`Source : ${data.source}`}</p>
                             {data.producers && data.producers.length > 0 && (
                                 <p> Producers :
-                                    {data.producers.map((p, i) => (
+                                    {data.producers?.map((p, i) => (
                                         <span key={i}>
                                             {p.name}
                                         </span>
@@ -146,7 +147,7 @@ function AnimeDetails() {
                             {data?.studios?.length > 0 && (
 
                                 <p> Studio :
-                                    {data.studios.map((s, i) => (
+                                    {data.studios?.map((s, i) => (
                                         <span key={i}>
                                             {s.name}
                                         </span>
@@ -163,7 +164,7 @@ function AnimeDetails() {
                     {data && (
                         <>
 
-                            {data.streaming.map((studio, index) => (
+                            {data.streaming?.map((studio, index) => (
                                 <div key={index}>
                                     <a href={studio.url}>{studio.name}</a>
                                 </div>

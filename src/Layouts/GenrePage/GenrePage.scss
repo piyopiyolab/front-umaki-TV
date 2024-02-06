@@ -1,1 +1,21 @@
 @use '../../styles/mixins' as mxn;
+
+
+.genre__body {
+
+
+
+    &__wrapper {
+@include mxn.flex('row', 'wrap');
+@include mxn.flex-p('center', 'center');
+gap:1rem;
+
+article {
+    @include mxn.btn;
+    width: 20rem;
+    text-align: center;
+    
+}
+
+    }
+}

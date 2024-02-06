@@ -65,6 +65,14 @@ function App() {
                                 </>
                             }
                         />
+                        <Route
+                            path={`${APP_ROUTES.GENRE}/:genre`}
+                            element={
+                                <>
+                                    <GenrePage />
+                                </>
+                            }
+                        />
 
                         {/* Error page  */}
                         <Route
