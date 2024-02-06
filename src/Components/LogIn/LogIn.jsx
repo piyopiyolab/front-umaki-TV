@@ -46,7 +46,7 @@ function LogIn() {
     useEffect(() => {
 
         if (isAuth()) { // Corrected to isAuth()
-            console.log('isAuth yes');
+
             navigate(APP_ROUTES.FAVORITE, { replace: true });
         }
 

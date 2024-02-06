@@ -14,6 +14,13 @@ function GenrePage() {
             </HelmetProvider>
 
             <Header />
+            <section className="genre__body">
+
+                <h1 className="Choose your theme !"></h1>
+
+
+
+            </section>
             <Footer />
 
         </>
