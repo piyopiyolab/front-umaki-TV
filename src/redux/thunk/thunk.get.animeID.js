@@ -37,7 +37,6 @@ export const getAnimeIDThunk = (animeID) => async (dispatch, getState) => {
     }));
 
 
-
     const animeIDdata = {
         title: data.data.title,
         title_jap: data.data.title_japanese,
@@ -61,7 +60,8 @@ export const getAnimeIDThunk = (animeID) => async (dispatch, getState) => {
     }
     // console.log(data.data)
     // console.log(animeIDdata)
-    console.log(animeIDdata.genre)
+    console.log(animeIDdata)
+
     if (response.error) {
         console.error("error in search anime :", response.error);
         dispatch(addError());

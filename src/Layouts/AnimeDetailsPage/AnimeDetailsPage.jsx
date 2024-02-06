@@ -3,18 +3,20 @@ import { useDispatch, useSelector } from "react-redux"
 import { HelmetProvider, Helmet } from "react-helmet-async"
 import Header from '../../Components/Header/Header';
 import Footer from '../../Components/Footer/Footer';
-import { useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import { getAnimeIDThunk } from '../../redux/thunk/thunk.get.animeID';
 import spinner from '../../assets/spinner.svg'
 import Button from '../../Components/Button/Button';
 import { postAnimeThunk } from '../../redux/thunk/thunk.post.addAnime';
+import { APP_ROUTES } from '../../constants/routes.constants';
 
 
 function AnimeDetails() {
 
     const { animeID } = useParams();
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     // const [newAnime, setNewAnime] = useState({
     //     anime_id: animeID,
@@ -87,14 +89,16 @@ function AnimeDetails() {
                                 </div>
                                 <span>{data.rating}</span>
                                 <h1>{data.title}</h1>
-                                <p>
-                                    {data.genre.map((g, i) => (
-                                        <span key={i}>
-                                            {g.name}
-                                            {i < data.genre.length - 1 && ', '}
-                                        </span>
-                                    ))}
-                                </p>
+                                {data.genre && data.genre.length > 0 && (
+                                    <p>
+                                        {data.genre.map((g, i) => (
+                                            <span key={i}>
+                                                {g.name}
+                                                {i < data.genre.length - 1 && ', '}
+                                            </span>
+                                        ))}
+                                    </p>
+                                )}
                                 <Button
                                     onClick={handleAddAnime}
                                     text="Add to your list" />
@@ -127,23 +131,30 @@ function AnimeDetails() {
                             <p>{`Synonym : ${data.synonym}`}</p>
                             <p>{`Duration : ${data.duration}`}</p>
                             <p>{`Source : ${data.source}`}</p>
-                            <p> Producers :
-                                {data.producers.map((p, i) => (
-                                    <span key={i}>
-                                        {p.name}
-                                    </span>
-                                ))}
+                            {data.producers && data.producers.length > 0 && (
+                                <p> Producers :
+                                    {data.producers.map((p, i) => (
+                                        <span key={i}>
+                                            {p.name}
+                                        </span>
+                                    ))}
 
-                            </p>
+                                </p>
+                            )}
 
-                            <p> Studio :
-                                {data.studios.map((s, i) => (
-                                    <span key={i}>
-                                        {s.name}
-                                    </span>
-                                ))}
 
-                            </p>
+                            {data?.studios?.length > 0 && (
+
+                                <p> Studio :
+                                    {data.studios.map((s, i) => (
+                                        <span key={i}>
+                                            {s.name}
+                                        </span>
+                                    ))}
+
+
+                                </p>
+                            )}
                         </>
                     )}
                 </article>
@@ -164,7 +175,11 @@ function AnimeDetails() {
                     )}
                 </article>
 
-                <Button text='Discover more animes' />
+                <Button
+                    // onClick={() => {
+                    //     navigate(APP_ROUTES.HOME, { replace: true })
+                    // }}
+                    text='Discover more animes' />
             </section>
 
 
