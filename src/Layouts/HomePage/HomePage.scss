@@ -129,6 +129,11 @@
 
                 &:last-child {
                   flex:2;
+                  & img:last-of-type {
+                    max-width: 3.4rem;
+                    
+                    
+                }
 
                 }
 
@@ -145,6 +150,7 @@
                     padding-right: 0.53rem;
                     
                 }
+            
             }
 
            

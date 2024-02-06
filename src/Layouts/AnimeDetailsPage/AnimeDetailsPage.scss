@@ -127,7 +127,7 @@
                              button {
                             @include mxn.btn;
                             width: 10rem;
-                            display: block;
+                            display: inline-block;
                             margin:0.5rem;
                             border:1px solid var(--purple-dark);
                             background-color: transparent;
@@ -161,40 +161,56 @@
 
     &-additionalinfos {
         margin: 8rem 0;
+
+        @include mxn.flex('column', "wrap");
+        @include mxn.flex-p('space-between', "center");
+        gap:2rem;
+
+       @include mxn.media-query('780px'){
         @include mxn.flex('row', "wrap");
         @include mxn.flex-p('space-between', "start");
-        gap:2rem;
+
+       }
 
      article {
       padding: var(--p-2);
       background-color: var(--bg-dark);
       width: var(--w-full);
+      height: 38rem;
+
+
+      @include mxn.media-query('780px'){
+        width: 45%;
+       }
     
       h2 {
    margin-bottom: var(--m-3);
        @include mxn.media-query('500px') {
         text-align: center;
        }
+
+     
             
       }
 
    
-      @include mxn.media-query('1200px') {
-
-        &:first-of-type {
-            width: auto;
-        
-        }
-
-        &:last-of-type {
-            width: 50rem;
-        
-        }
-      }
+   
 
      }
 
-   
+     button {
+        width: var(--w-full);
+ 
+         @include mxn.media-query('565px') {
+             max-width: 30%;
+         margin: 5rem auto;
+         }
+        }
 
     }
+}
+
+
+.btn-added-to-list {
+    background-color: green!important;
 }

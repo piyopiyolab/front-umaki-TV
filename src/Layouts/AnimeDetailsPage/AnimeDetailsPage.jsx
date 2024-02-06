@@ -66,6 +66,8 @@ function AnimeDetails() {
 
         console.log('new anime to list', newAnime);
         dispatch(postAnimeThunk(newAnime));
+
+
     }
 
 
@@ -214,7 +216,9 @@ function AnimeDetails() {
             </section>
 
 
+            <section className='anime-details-characters'>
 
+            </section>
             {/* Footer */}
             <Footer />
 
