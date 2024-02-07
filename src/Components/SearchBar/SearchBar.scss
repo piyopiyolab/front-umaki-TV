@@ -1,0 +1,21 @@
+@use '../../styles/mixins' as mxn;
+
+.searchbar__content {
+    position:relative;
+
+    input {
+        background-color:transparent;
+        border: none;
+        border-bottom: 1px solid var(--gray);
+        border-radius: 0;
+    }
+
+    img {
+        max-width: 2rem;
+        position: absolute;
+        top: 1rem;
+        right:0;
+        cursor: pointer;
+        
+    }
+}

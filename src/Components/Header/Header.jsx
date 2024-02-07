@@ -7,13 +7,15 @@ import homeIcon from '../../assets/icons/home-icon.svg'
 import flammeIcon from '../../assets/icons/flame-icon.svg'
 import hamburger from '../../assets/icons/hamburger-solid.svg'
 import close from '../../assets/icons/close.svg'
+
 import { APP_ROUTES } from "../../constants/routes.constants"
+import SearchBar from "../SearchBar/SearchBar"
 
 const Header = () => {
 
     const [showMenu, setShowMenu] = useState(false);
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-    const breakpoint = 768;
+    const breakpoint = 850;
 
     const handleWindowResize = () => {
         setWindowWidth(window.innerWidth);
@@ -38,7 +40,8 @@ const Header = () => {
                     <div className="header__nav__logoContainer">
                         <a href={APP_ROUTES.HOME}><img src={logo} className='logo' alt="logo umaki.TV" /></a>
                     </div>
-
+                    <SearchBar
+                    />
                     <div>
                         {!showMenu ? (
                             <div
@@ -89,6 +92,9 @@ const Header = () => {
                     <div className="header__nav__logoContainer">
                         <a href="/"><img src={logo} className='logo' alt="logo umaki.TV" /></a>
                     </div>
+
+                    <SearchBar
+                    />
                     <ul className="header__nav__menu">
                         <li>
                             <a href={APP_ROUTES.HOME}>

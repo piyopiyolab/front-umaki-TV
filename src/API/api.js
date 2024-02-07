@@ -10,8 +10,6 @@ const request = async (url, config) => {
         data = await response.json();
         status = response.status;
 
-        console.log('API', response)
-
         if (status >= 400) {
             throw new Error(data.message);
         }
@@ -29,11 +27,6 @@ const request = async (url, config) => {
 };
 
 const postRequest = async (url, body = {}, token = null) => {
-
-    let data = null;
-    let error = null;
-    let status = -1;
-
 
     const config = {
         method: 'POST',

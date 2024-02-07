@@ -12,7 +12,6 @@ export const logInThunk = (form) => async (dispatch, getState) => {
 
     const data = response.data;
 
-    console.log(response);
 
     if (response.error) {
         console.error("Error in Log-in:", response.error,);

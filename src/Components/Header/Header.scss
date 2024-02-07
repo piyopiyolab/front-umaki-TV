@@ -25,9 +25,10 @@
         max-width: 10rem;
         position: relative;
         top: 7px;
-    
+        margin-right: var(--m-5);
+
         @include mxn.media-query('780px') {
-            margin-right: 20rem;
+            margin-right: 10rem;
             height: 10rem;
         }
     

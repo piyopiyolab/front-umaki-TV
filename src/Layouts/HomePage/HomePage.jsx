@@ -80,7 +80,6 @@ function HomePage() {
                                     <h1>{d.title_english}</h1>
                                     <div className="wrapper__card__animeInfo__tags">
                                         {d.genres.map((genre) => (
-                                            // Ajout de la clé ci-dessous
                                             <span
                                                 onClick={() => handleGenreClick(genre.name)}
                                                 key={genre.mal_id}>{genre.name}</span>

@@ -11,18 +11,22 @@ const Input = (props) => {
             return "******";
         } else if (type === "text" && id === "pseudo") {
             return "Captain Nemo";
-        } else {
+        } else if (type === 'search') {
+            return 'search'
+        }
+        else {
             return "";
         }
     };
 
     return (
         <div className="input__wrapper">
-            <label className={`input__label ${className}`}
-                htmlFor={id}>
-                {label || "Input label"}
-            </label>
-
+            {!!label &&
+                <label className={`input__label ${className}`}
+                    htmlFor={id}>
+                    {label || "Input label"}
+                </label>
+            }
             <input
                 id={id}
                 name={id}

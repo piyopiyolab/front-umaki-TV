@@ -60,7 +60,7 @@ export const getAnimeIDThunk = (animeID) => async (dispatch, getState) => {
         episodes: data.data.episodes,
 
     }
-    // console.log(data.data)
+    console.log(data.data)
     // console.log(animeIDdata)
 
 
