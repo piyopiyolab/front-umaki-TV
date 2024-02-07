@@ -10,6 +10,8 @@ import Button from "../../Components/Button/Button"
 import { APP_ROUTES } from "../../constants/routes.constants"
 import { useNavigate } from "react-router-dom";
 import ErrorContent from "../../Components/ErrorContent/ErrorContent"
+import ModalSettings from "../../Components/modalSettings/ModalSettings"
+import { createPortal } from "react-dom"
 
 function FavoritePage() {
 
@@ -72,6 +74,12 @@ function FavoritePage() {
     }
 
 
+
+
+    //Modal
+    const [showModal, setShowModal] = useState(false)
+
+
     return (
         <>
 
@@ -89,6 +97,15 @@ function FavoritePage() {
                 <div className="your-collection__headings">
                     <h1>Your collection</h1>
                     <h2>Check out your favorite animes</h2>
+                    <p
+                        onClick={() => setShowModal(true)}>Update your settings</p>
+
+                    {showModal && createPortal(
+                        <ModalSettings closeModal={() => setShowModal(false)} />,
+                        document.body
+                    )}
+
+
                 </div>
 
 
