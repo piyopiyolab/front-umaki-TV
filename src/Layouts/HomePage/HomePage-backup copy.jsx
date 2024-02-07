@@ -22,6 +22,7 @@ function HomePage() {
     useEffect(
         () => {
             dispatch(topanimeThunk());
+
         }, []);
 
     const { data, loading } = useSelector((state) => state.animeSlice);
@@ -67,8 +68,8 @@ function HomePage() {
                 </div>
 
                 <div className="wrapper">
-                    {data.data?.length > 0 ? (
-                        data.data.map((d) => (
+                    {data?.length > 0 ? (
+                        data.map((d) => (
 
 
                             <article key={d.mal_id} className="wrapper__card">

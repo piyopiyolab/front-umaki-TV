@@ -19,8 +19,8 @@ export const searchAnimeThunk = (anime) => async (dispatch, getState) => {
     // Remove Loading  
     dispatch(removeLoading())
 
-    dispatch(setAnimeData(data.data))
+    dispatch(setAnimeData(data))
 
-
+    console.log(data)
 
 }

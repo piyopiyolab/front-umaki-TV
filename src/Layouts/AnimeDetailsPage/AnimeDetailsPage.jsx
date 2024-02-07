@@ -53,6 +53,7 @@ function AnimeDetails() {
     // AddAnime
     const handleAddAnime = (stateList) => {
 
+
         setNewAnime({
             anime_id: animeID,
             anime_state: stateList,
@@ -63,7 +64,6 @@ function AnimeDetails() {
             genre: data.genre.map(genre => genre.name).join(', '),
             release_date: data.year,
         })
-
         console.log('new anime to list', newAnime);
         dispatch(postAnimeThunk(newAnime));
 

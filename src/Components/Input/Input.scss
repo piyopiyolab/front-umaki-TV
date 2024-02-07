@@ -25,6 +25,7 @@
     padding-left: var(--p-4);
     &:focus{
       outline: none;
+      border-color: var(--purple-light);
     }
   }
 }

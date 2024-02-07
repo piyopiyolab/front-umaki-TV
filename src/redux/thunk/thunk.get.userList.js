@@ -21,7 +21,7 @@ export const getUserList = () => async (dispatch, getState) => {
     try {
 
         const response = await getRequest("http://localhost:9001/user/dashboard", token);
-        console.log(response.status)
+
         //const data = response.data
         const data = response.data.data.response.result
         dispatch(setLoggedInStatus(isLoggedIn));

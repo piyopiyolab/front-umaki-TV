@@ -1,5 +1,5 @@
 import { postRequest } from "../../API/api";
-import { setUserData, addLoading, removeLoading } from "../reducers/userSlice.reducer";
+import { setUserData, addLoading, removeLoading, addError } from "../reducers/userSlice.reducer";
 
 export const postAnimeThunk = (newAnime) => async (dispatch, getState) => {
 
@@ -17,7 +17,7 @@ export const postAnimeThunk = (newAnime) => async (dispatch, getState) => {
     const data = response.data;
 
     if (response.error) {
-        console.error("Error in :", error);
+        console.error("Error in :", response.error);
         dispatch(addError());
     }
 
