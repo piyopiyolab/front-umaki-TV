@@ -4,7 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     loading: false,
     data: undefined,
-    error: false,
+    error: null,
     loggedIn: false,
 }
 
@@ -18,25 +18,25 @@ export const userSlice = createSlice({
                 ...state, data: action.payload
             }
 
-        }, addLoading: (state) => {
+        }, addLoading: (state, action) => {
             return {
                 ...state,
                 loading: true,
             };
         },
-        removeLoading: (state) => {
+        removeLoading: (state, action) => {
             return {
                 ...state,
                 loading: false,
             };
         },
-        addError: (state) => {
+        addError: (state, action) => {
             return {
                 ...state,
-                error: true,
+                error: action.payload.error,
             }
         },
-        removeError: (state) => {
+        removeError: (state, action) => {
             return {
                 ...state,
                 error: false,

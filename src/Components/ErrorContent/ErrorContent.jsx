@@ -44,8 +44,6 @@ function ErrorContent({ type }) {
 
             content = (
                 <>
-
-
                     <div className='errorContentBody'>
                         <h2 className='text-center'>It looked like you have no animes in your list</h2>
                         <img src={sadChibi} alt='chibi error umaki.tv' />
@@ -54,7 +52,32 @@ function ErrorContent({ type }) {
                 </>)
             break;
 
+        case 'failedLog':
 
+            content = (
+                <>
+                    <div className='errorContentBody'>
+                        <p className='text-center'>Authentification failed</p>
+                        <img src={sadChibi} alt='chibi error umaki.tv' />
+                    </div>
+
+                </>)
+            break;
+
+
+        case 'errorMDP':
+            content = (
+                <>
+                    <div className='errorContentBody'>
+                        <p className='text-center'>Your passwords must be the same </p>
+                        <img src={sadChibi} alt='chibi error umaki.tv' />
+                    </div>
+
+                </>
+
+
+            )
+            break;
     }
 
     return (

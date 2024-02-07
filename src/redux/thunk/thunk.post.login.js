@@ -12,11 +12,13 @@ export const logInThunk = (form) => async (dispatch, getState) => {
 
     const data = response.data;
 
-
+    console.log(response);
 
     if (response.error) {
-        console.error("Error in Log-in:", error);
-        dispatch(addError());
+        console.error("Error in Log-in:", response.error,);
+        dispatch(addError({ error: response.error }));
+
+        return;
     }
 
 
@@ -30,6 +32,5 @@ export const logInThunk = (form) => async (dispatch, getState) => {
 
     //Logged user success
     dispatch(setLoggedInStatus(true));
-    console.log(data)
 
 };

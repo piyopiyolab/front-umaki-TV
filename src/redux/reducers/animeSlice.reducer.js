@@ -4,7 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     loading: true,
     data: [],
-    error: false
+    error: null
 }
 
 
@@ -32,7 +32,7 @@ export const animeSlice = createSlice({
         addError: (state) => {
             return {
                 ...state,
-                error: true,
+                error: action.payload.error,
             }
         },
         removeError: (state) => {

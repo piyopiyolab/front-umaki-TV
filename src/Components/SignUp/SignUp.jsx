@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import { APP_ROUTES } from '../../constants/routes.constants';
 import { isAuth } from '../../utils/isAuth';
+import ErrorContent from '../ErrorContent/ErrorContent';
 
 
 
@@ -21,7 +22,7 @@ function SignUp() {
 
     })
 
-    const { loggedIn } = useSelector(states => states.userSlice);
+    const { loggedIn, error } = useSelector(states => states.userSlice);
 
     const [showAvatar, setShowAvatar] = useState(false);
 
@@ -53,6 +54,12 @@ function SignUp() {
         '/images/avatarbis/monkey-avatar-6.png',
     ];
 
+    const [selectedAvatar, setSelectedAvatar] = useState(null);
+
+    const handleAvatarClick = (itemName) => {
+        setSelectedAvatar(itemName);
+    };
+
     // Form submission
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -69,70 +76,89 @@ function SignUp() {
     }, [loggedIn]);
 
 
+    //Error
+    useEffect(() => {
+        console.log(error)
+    }, [error])
+
     return (
-        <form className="signup__form" onSubmit={handleSubmit}>
+
+        <>
+            {error && (
+                <>
+                    <ErrorContent type='errorMDP' />
+
+                </>
+            )}
 
 
-            <Input id={"email"}
-                label="Email"
-                type={"email"}
-                value={form.email}
-                required
-                onChange={(e) => handleChange(e.target.value, "email")} />
-
-            <Input id={"pseudo"}
-                label="Pseudo"
-                type={"text"}
-                value={form.pseudo}
-                required
-                onChange={(e) => handleChange(e.target.value, "pseudo")} />
+            <form className="signup__form" onSubmit={handleSubmit}>
 
 
-            <Button
-                text="Choose your avatar"
-                onClick={(e) => {
-                    handleChange(e.target.value, "avatar");
-                    setShowAvatar(!showAvatar);
-                }}
-                value={form.avatar} />
+                <Input id={"email"}
+                    label="Email"
+                    type={"email"}
+                    value={form.email}
+                    required
+                    onChange={(e) => handleChange(e.target.value, "email")} />
 
-            {showAvatar ? (
-                <div className='signup__form__avatar__grid'>
-                    {avatarImages.map((avatar, index) => (
-                        <img
-                            key={index}
-                            src={avatar}
-                            alt={`Avatar ${index + 1}`}
-                            className='signup__form__avatar__grid__item'
-                            onClick={() => handleChange(avatar, "avatar")}
-                        />
-                    ))}
-                </div>
-            ) : null}
-
-            <Input id={"password"}
-                label="Password"
-                type={"password"}
-                value={form.password}
-                required
-                onChange={(e) => handleChange(e.target.value, "password")} />
-
-            <Input id={"confirmPass"}
-                label="Confirm password"
-                type={"password"}
-                value={form.confirmPass}
-                required
-                onChange={(e) => handleChange(e.target.value, "confirmPass")} />
+                <Input id={"pseudo"}
+                    label="Pseudo"
+                    type={"text"}
+                    value={form.pseudo}
+                    required
+                    onChange={(e) => handleChange(e.target.value, "pseudo")} />
 
 
-            <Button
-                type={"submit"}
-                text={"I Create my account"}
+                <Button
+                    text="Choose your avatar"
+                    onClick={(e) => {
+                        handleChange(e.target.value, "avatar");
+                        setShowAvatar(!showAvatar);
+                    }}
+                    value={form.avatar} />
 
-            />
+                {showAvatar ? (
+                    <div className='signup__form__avatar__grid'>
+                        {avatarImages.map((avatar, index) => (
+                            <img
+                                key={index}
+                                src={avatar}
+                                alt={`Avatar ${index + 1}`}
+                                className={`signup__form__avatar__grid__item ${selectedAvatar === avatar ? "selected" : ""}`}
+                                onClick={() => {
+                                    handleChange(avatar, "avatar")
+                                    handleAvatarClick(avatar)
+                                }}
+                            />
+                        ))}
+                    </div>
+                ) : null}
 
-            <p className='text-center m-2'>You already have an account ? <a href={APP_ROUTES.LOG_IN}>Log-in</a></p>
-        </form>
+                <Input id={"password"}
+                    label="Password"
+                    type={"password"}
+                    value={form.password}
+                    required
+                    onChange={(e) => handleChange(e.target.value, "password")} />
+
+                <Input id={"confirmPass"}
+                    label="Confirm password"
+                    type={"password"}
+                    value={form.confirmPass}
+                    required
+                    onChange={(e) => handleChange(e.target.value, "confirmPass")} />
+
+
+                <Button
+                    type={"submit"}
+                    text={"I Create my account"}
+
+                />
+
+                <p className='text-center m-2'>You already have an account ? <a href={APP_ROUTES.LOG_IN}>Log-in</a></p>
+            </form>
+        </>
     )
 }
 

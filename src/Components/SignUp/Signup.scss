@@ -32,5 +32,11 @@
           color:var(--purple-light);
         }
       }
+
+      .selected {
+        box-shadow: 0 0 0 .5rem var(--purple-light);
+        border-radius: var(--w-full);
+     
+      }
 }
 

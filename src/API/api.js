@@ -3,28 +3,38 @@ const request = async (url, config) => {
 
     let data = null;
     let error = null;
+    let status = -1;
 
     try {
         const response = await fetch(url, config);
         data = await response.json();
+        status = response.status;
 
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
+        console.log('API', response)
+
+        if (status >= 400) {
+            throw new Error(data.message);
         }
 
 
-    } catch (error) {
-        console.log(error.message)
-        error = error.message
+    } catch (e) {
+        error = e.message
+        console.log(error)
 
     } finally {
-        return { data, error }
+        return { data, error, status }
     }
 
 
 };
 
 const postRequest = async (url, body = {}, token = null) => {
+
+    let data = null;
+    let error = null;
+    let status = -1;
+
+
     const config = {
         method: 'POST',
         body: JSON.stringify(body),

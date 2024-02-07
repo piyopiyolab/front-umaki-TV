@@ -32,7 +32,7 @@ function AnimeDetails() {
         release_date: "",
     });
 
-    const { data, loading } = useSelector((state) => state.animeSlice);
+    const { data, loading, error } = useSelector((state) => state.animeSlice);
 
     useEffect(() => {
 
