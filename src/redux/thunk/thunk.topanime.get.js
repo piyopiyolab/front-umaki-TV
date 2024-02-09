@@ -16,17 +16,11 @@ export const topanimeThunk = (page = 1) => async (dispatch, getState) => {
         dispatch(addError());
     }
 
-
     // Remove Loading  
     dispatch(removeLoading())
 
     dispatch(setAnimeData(data))
     // dispatch(setAnimeData(data.data))
-
-    console.log(data);
-
-
-
 
 };
 

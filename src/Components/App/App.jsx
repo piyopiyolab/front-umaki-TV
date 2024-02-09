@@ -8,6 +8,7 @@ import FavoritePage from '../../Layouts/FavoritePage/FavoritePage';
 import AnimeDetails from '../../Layouts/AnimeDetailsPage/AnimeDetailsPage';
 import ErrorPage from '../../Layouts/ErrorPage/ErrorPage';
 import GenrePage from '../../Layouts/GenrePage/GenrePage';
+import SearchPage from '../../Layouts/SearchPage/SearchPage';
 
 
 function App() {
@@ -58,6 +59,14 @@ function App() {
                             }
                         />
                         <Route
+                            path={`${APP_ROUTES.SEARCH}/:query`}
+                            element={
+                                <>
+                                    <SearchPage />
+                                </>
+                            }
+                        />
+                        <Route
                             path={APP_ROUTES.GENRE}
                             element={
                                 <>
@@ -73,6 +82,7 @@ function App() {
                                 </>
                             }
                         />
+
 
                         {/* Error page  */}
                         <Route

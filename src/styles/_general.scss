@@ -178,6 +178,14 @@ h1 {
   padding: var(--m-6);
  }
 
+//Modal
+
+.modal {
+    position:fixed;
+    inset: 0;
+    background-color: rgba(30 41 59 / 0.95);
+    padding: var(--p-5);   
+}
 
 //  Animation
 

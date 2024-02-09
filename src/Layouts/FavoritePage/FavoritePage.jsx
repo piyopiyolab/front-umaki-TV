@@ -10,8 +10,8 @@ import Button from "../../Components/Button/Button"
 import { APP_ROUTES } from "../../constants/routes.constants"
 import { useNavigate } from "react-router-dom";
 import ErrorContent from "../../Components/ErrorContent/ErrorContent"
-import ModalSettings from "../../Components/modalSettings/ModalSettings"
 import { createPortal } from "react-dom"
+import ModalSettings from "../../Components/Modal/ModalSettings"
 
 function FavoritePage() {
 

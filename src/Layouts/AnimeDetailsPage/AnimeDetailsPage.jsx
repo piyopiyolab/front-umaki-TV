@@ -19,7 +19,6 @@ function AnimeDetails() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-
     const [showList, setShowList] = useState(false)
     const [newAnime, setNewAnime] = useState({
         anime_id: animeID,

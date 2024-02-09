@@ -1,4 +1,4 @@
-import "./ModalSettings.scss"
+import "./Modal.scss"
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { getUserInfos } from "../../redux/thunk/thunk.getUserInfo";
@@ -12,16 +12,16 @@ function ModalSettings({ closeModal }) {
 
     useEffect(() => {
 
-        if (loggedIn) {
-            dispatch(getUserInfos())
-        }
-    }, [data, loggedIn]); // Écoutez les changements de données et de connexion
+        // if (loggedIn) {
+        //     dispatch(getUserInfos())
+        // }
+    }, [data, loggedIn]);
 
 
 
     return (
         <div
-            className="modalSettings"
+            className="modal modalSettings"
             onClick={closeModal}>
 
             <h1>User Settings</h1>

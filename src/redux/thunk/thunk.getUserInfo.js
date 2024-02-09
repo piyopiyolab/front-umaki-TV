@@ -5,12 +5,6 @@ export const getUserInfos = () => async (dispatch, getState) => {
 
     const token = localStorage.getItem('accessToken');
 
-
-    // const state = getState();
-
-    // const user_id = state.userSlice.user_id;
-
-
     //Loading => Await response
     dispatch(addLoading());
     try {
