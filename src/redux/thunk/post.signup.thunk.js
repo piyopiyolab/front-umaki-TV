@@ -1,13 +1,14 @@
 import { postRequest } from "../../API/api";
 import { setUserData, addLoading, removeLoading, addError, removeError, setLoggedInStatus } from "../reducers/userSlice.reducer";
-
+import { APP_ROUTES } from "../../constants/routes.constants";
 export const signUpThunk = (form) => async (dispatch, getState) => {
 
 
     //Loading => Await response 
     dispatch(addLoading());
 
-    const response = await postRequest("http://localhost:9001/connexion/sign-up", form)
+
+    const response = await postRequest(`${APP_ROUTES.API_URL}${APP_ROUTES.SIGN_UP}`, form)
     const data = response.data
     console.log('signup tunk', response)
 

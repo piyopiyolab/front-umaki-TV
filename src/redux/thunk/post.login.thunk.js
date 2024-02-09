@@ -1,5 +1,7 @@
 import { postRequest } from "../../API/api";
 import { setUserData, addLoading, removeLoading, addError, removeError, setLoggedInStatus } from "../reducers/userSlice.reducer";
+import { APP_ROUTES } from "../../constants/routes.constants";
+
 
 export const logInThunk = (form) => async (dispatch, getState) => {
 
@@ -8,7 +10,8 @@ export const logInThunk = (form) => async (dispatch, getState) => {
     dispatch(addLoading());
 
 
-    const response = await postRequest("http://localhost:9001/connexion/log-in", form);
+    const response = await postRequest(`${APP_ROUTES.API_URL}${APP_ROUTES.LOG_IN}`, form);
+    // const response = await postRequest("http://localhost:9001/connexion/log-in", form);
 
     const data = response.data;
 

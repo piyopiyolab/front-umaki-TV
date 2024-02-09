@@ -1,5 +1,6 @@
 import { setUserData, setLoggedInStatus, addError, addLoading, removeLoading } from "../reducers/userSlice.reducer";
 import { getRequest } from "../../API/api";
+import { APP_ROUTES } from "../../constants/routes.constants";
 
 export const getUserInfos = () => async (dispatch, getState) => {
 
@@ -9,8 +10,8 @@ export const getUserInfos = () => async (dispatch, getState) => {
     dispatch(addLoading());
     try {
 
-        const response = await getRequest(`http://localhost:9001/dashboard/user`, token);
-        //const data = response.data
+        const response = await getRequest(`${APP_ROUTES.USER}/:userid`, token);
+
         const data = response.data
 
 
