@@ -9,12 +9,13 @@ function ModalSettings({ closeModal }) {
 
 
     //API request
+
     useEffect(() => {
-        dispatch(getUserInfos());
-        console.log(loggedIn, user_id)
 
-
-    }, [data])
+        if (loggedIn) {
+            dispatch(getUserInfos())
+        }
+    }, [data, loggedIn]); // Écoutez les changements de données et de connexion
 
 
 

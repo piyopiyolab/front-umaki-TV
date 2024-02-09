@@ -6,188 +6,196 @@
     gap: var(--gap-3);
     max-width:1200px;
 
- &__headings {
-    h1, h2 {
-        text-align: center;
-        line-height: 0;
-      }
+    &__headings {
+        h1, h2 {
+            text-align: center;
+            line-height: 0;
+        }
 
 
-      h2 {
-        color: var(--gray);
-        font-size: var(--text-sm);
-        line-height: 3;
-      }
- }
-}
+        h2 {
+            color: var(--gray);
+            font-size: var(--text-sm);
+            line-height: 3;
+        }
+    }
 
+    .wrapper {
+        @include mxn.flex('row', 'wrap');
+            @include mxn.flex-p('center', 'center');
+        gap:2rem;
 
-.wrapper {
-    @include mxn.flex('row', 'wrap');
-        @include mxn.flex-p('center', 'center');
-    gap:2rem;
+        @include mxn.media-query('780px') {
 
-    @include mxn.media-query('780px') {
+            @include mxn.flex-p('center', 'start');
+        
 
-        @include mxn.flex-p('center', 'start');
+        }
+
+        &__errorBtn {
+            
+        }
     
 
-    }
+        &__card {
+        position:relative;
+        @include mxn.flex('column', 'wrap');
+        @include mxn.flex-p('space-around', 'start');
+    
 
-    &__errorBtn {
-        
-    }
- 
-
-    &__card {
-      position:relative;
-      @include mxn.flex('column', 'wrap');
-      @include mxn.flex-p('space-around', 'start');
-   
-
-      @include mxn.card;
-        
-        &__animeImg{
-            width: 100%;
-            height: 20rem;
-
-            img {
-                object-fit: cover;
-                width: 100%;
-                height: 100%;
-                object-position: center;
-                border-top-right-radius: var(--rounded-md);
-                border-top-left-radius: var(--rounded-md);
-            }
-        }
-
-        &__animeInfo{
-         
-            padding: var(--p-2);
-           @include mxn.flex('column', 'nowrap');
-           @include mxn.flex-p('space-between', 'start');
-           height: 24rem;
-           width: var(--w-full);
-           
-            h1 {
-                padding:0;
-                margin-bottom: var(--m-1);
-                font-size: var(--text-md);
-
-
-
-                &:hover {
+        @include mxn.card;
             
-                    @include mxn.transition(color);
-                    color:var(--purple-light);
+            &__animeImg{
+                width: 100%;
+                height: 20rem;
+
+                img {
+                    object-fit: cover;
+                    width: 100%;
+                    height: 100%;
+                    object-position: center;
+                    border-top-right-radius: var(--rounded-md);
+                    border-top-left-radius: var(--rounded-md);
+                }
+            }
+
+            &__animeInfo{
+            
+                padding: var(--p-2);
+            @include mxn.flex('column', 'nowrap');
+            @include mxn.flex-p('space-between', 'start');
+            height: 24rem;
+            width: var(--w-full);
+            
+                h1 {
+                    padding:0;
+                    margin-bottom: var(--m-1);
+                    font-size: var(--text-md);
+
+
+
+                    &:hover {
+                
+                        @include mxn.transition(color);
+                        color:var(--purple-light);
+                    }
+
                 }
 
+            &__tags {
+
+
+                @include mxn.flex('row', "wrap");
+            font-size: var(--text-sm);
+                gap:1rem;
+            
+                margin-bottom: 1.5rem;
+
+            span {
+                background-color: rgba(172, 166, 173, .2);
+                border-radius: var(--rounded);
+                padding: 0 .5rem;
+                border: 1px solid transparent;
+                &:hover {
+                
+                    @include mxn.transition(color);
+                    color:var(--purple-light);
+                    background-color: transparent;
+                    border: 1px solid var(--purple-light);
+                    cursor: pointer;
+                }
+                
+            }
+            
             }
 
-           &__tags {
-
-
-            @include mxn.flex('row', "wrap");
-          font-size: var(--text-sm);
-            gap:1rem;
-          
-            margin-bottom: 1.5rem;
-
-           span {
-            background-color: rgba(172, 166, 173, .2);
-            border-radius: var(--rounded);
-            padding: 0 .5rem;
-            border: 1px solid transparent;
-            &:hover {
+            &__stats {
             
-                @include mxn.transition(color);
-                color:var(--purple-light);
-                background-color: transparent;
-                border: 1px solid var(--purple-light);
-                cursor: pointer;
-            }
-            
-           }
-          
-           }
-
-           &__stats {
-        
-            @include mxn.flex('row', 'nowrap');
-            @include mxn.flex-p('start', 'center');
-            width: var(--w-full);
-
-            div {
-
                 @include mxn.flex('row', 'nowrap');
                 @include mxn.flex-p('start', 'center');
+                width: var(--w-full);
 
-                &:first-child {
-                 flex:1;
+                div {
 
+                    @include mxn.flex('row', 'nowrap');
+                    @include mxn.flex-p('start', 'center');
+
+                    &:first-child {
+                    flex:1;
+
+                    }
+
+                    &:last-child {
+                    flex:2;
+                    & img:last-of-type {
+                        max-width: 3.4rem;
+                        
+                        
+                    }
+
+                    }
+
+                
+                
+                    &:hover {
+                
+                        @include mxn.transition(color);
+                        color:var(--purple-light);
+                    }
+                    img {
+                        max-width: 2.5rem;
+                        display: block;
+                        padding-right: 0.53rem;
+                        
+                    }
+                
                 }
 
-                &:last-child {
-                  flex:2;
-                  & img:last-of-type {
-                    max-width: 3.4rem;
-                    
-                    
-                }
-
-                }
-
-              
-               
-                &:hover {
             
-                    @include mxn.transition(color);
-                    color:var(--purple-light);
-                }
+
+            
+            }
+
+            }
+
+            &__btn {
+                font-weight: bold;
+                color: var(--white);
+                @include mxn.flex('row', 'nowrap');
+                @include mxn.flex-p('start', 'center');
+                margin-top: var(--m-1);
+
+
+            &:hover {
+                @include mxn.transition(color);
+                color:var(--purple-light);
                 img {
-                    max-width: 2.5rem;
-                    display: block;
-                    padding-right: 0.53rem;
-                    
+                    @include mxn.bounce;
                 }
-            
+                
+
+        
             }
-
-           
-
-           
-           }
-
-        }
-
-        &__btn {
-            font-weight: bold;
-            color: var(--white);
-            @include mxn.flex('row', 'nowrap');
-            @include mxn.flex-p('start', 'center');
-            margin-top: var(--m-1);
-
-
-          &:hover {
-            @include mxn.transition(color);
-            color:var(--purple-light);
             img {
-                @include mxn.bounce;
+                max-width: 1.5rem;
+                display: block;
+                margin-left: 1rem;
+                
+                    
             }
-             
-
-       
-        }
-        img {
-            max-width: 1.5rem;
-            display: block;
-            margin-left: 1rem;
             
-                  
         }
-        
-    }
-        
+            
 
-        }
+            }
+    }
+
+
+    button:last-of-type {
+        max-width: var(--w-s);
+    }
+
+
 }
+
+

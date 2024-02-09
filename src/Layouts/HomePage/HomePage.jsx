@@ -48,6 +48,21 @@ function HomePage() {
         navigate(`${APP_ROUTES.GENRE}/${genre}`);
     }
 
+
+
+    // Load more Animes
+    const handleLoadMore = (e) => {
+
+        e.preventDefault();
+
+        if (data.pagination && data.pagination.has_next_page) {
+            const nextPage = data.pagination.current_page + 1;
+            console.log(nextPage);
+            // Dispatchez une action pour charger la prochaine page d'animes
+            dispatch(topanimeThunk(nextPage));
+        }
+    }
+
     return (
         <>
             <HelmetProvider>
@@ -69,6 +84,7 @@ function HomePage() {
                 <div className="wrapper">
                     {data.data?.length > 0 ? (
                         data.data.map((d) => (
+
 
 
                             <article key={d.mal_id} className="wrapper__card">
@@ -101,7 +117,9 @@ function HomePage() {
                                         Read More <img src={arrowIcon} alt="read more btn" />
                                     </a>
                                 </div>
+
                             </article>
+
 
 
                         ))
@@ -127,6 +145,11 @@ function HomePage() {
                     )}
 
                 </div>
+
+                <Button
+                    text='Load More Animes'
+                    onClick={(e) => handleLoadMore(e)} />
+
             </section >
 
             <Footer />
