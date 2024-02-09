@@ -4,6 +4,13 @@
 .search-results-page {
 
     width: var(--w-full);
+    margin:  var(--m-4) 0;
+
+    h1 {
+        text-align: center;
+        margin-bottom: var(--m-4);
+
+    }
 
     .wrapper {
      

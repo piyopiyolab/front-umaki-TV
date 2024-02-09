@@ -5,6 +5,10 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux"
 import { APP_ROUTES } from '../../constants/routes.constants';
 import { useNavigate } from 'react-router-dom';
+
+
+
+
 function SearchBar() {
     const [searchValue, setSearchValue] = useState('');
     const dispatch = useDispatch();
@@ -33,6 +37,7 @@ function SearchBar() {
                     type='search'
                     value={searchValue}
                     onChange={handleChange}
+
                 />
                 <img
                     onClick={() => handleClickSearch(searchValue)}

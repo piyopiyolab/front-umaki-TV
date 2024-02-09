@@ -20,7 +20,5 @@ export const topanimeThunk = (page = 1) => async (dispatch, getState) => {
     dispatch(removeLoading())
 
     dispatch(setAnimeData(data))
-    // dispatch(setAnimeData(data.data))
 
 };
-

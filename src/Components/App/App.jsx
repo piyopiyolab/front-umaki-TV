@@ -9,6 +9,7 @@ import AnimeDetails from '../../Layouts/AnimeDetailsPage/AnimeDetailsPage';
 import ErrorPage from '../../Layouts/ErrorPage/ErrorPage';
 import GenrePage from '../../Layouts/GenrePage/GenrePage';
 import SearchPage from '../../Layouts/SearchPage/SearchPage';
+import UserPage from '../../Layouts/UserPage/UserPage';
 
 
 function App() {
@@ -47,6 +48,14 @@ function App() {
                             element={
                                 <>
                                     <FavoritePage />
+                                </>
+                            }
+                        />
+                        <Route
+                            path={`${APP_ROUTES.USER}`}
+                            element={
+                                <>
+                                    <UserPage />
                                 </>
                             }
                         />

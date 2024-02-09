@@ -6,16 +6,18 @@ export const getUserInfos = () => async (dispatch, getState) => {
 
     const token = localStorage.getItem('accessToken');
 
+
     //Loading => Await response
     dispatch(addLoading());
     try {
-
-        const response = await getRequest(`${APP_ROUTES.USER}/:userid`, token);
+        // J'ai ajouté API_URL à la main ici tu verras comme tu pref
+        const response = await getRequest(`${APP_ROUTES.API_URL}${APP_ROUTES.USER}`, token);
 
         const data = response.data
 
 
         dispatch(setUserData(data))
+        console.log(data)
 
 
         // Remove Loading
@@ -26,5 +28,6 @@ export const getUserInfos = () => async (dispatch, getState) => {
         dispatch(removeLoading());
         dispatch(addError());
     }
+
 
 }

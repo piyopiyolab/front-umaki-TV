@@ -7,5 +7,6 @@ export const APP_ROUTES = {
     ANIME_DETAILS: "/anime",
     GENRE: "/genre",
     LATEST: "/latest",
-    SEARCH: "/search"
+    SEARCH: "/search",
+    USER: "/dashboard/user",
 };

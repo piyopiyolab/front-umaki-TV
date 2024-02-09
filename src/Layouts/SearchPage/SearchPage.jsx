@@ -14,7 +14,7 @@ import { formatNumber } from "../../utils/formatNumber"
 import './SearchPage.scss'
 import { APP_ROUTES } from "../../constants/routes.constants";
 import Button from "../../Components/Button/Button"
-
+import { useState } from "react"
 
 
 function SearchPage() {
@@ -22,6 +22,8 @@ function SearchPage() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const { query } = useParams();
+    const [isButtonEnabled, setIsButtonEnabled] = useState(true);
+
 
     useEffect(() => {
 
@@ -88,14 +90,6 @@ function SearchPage() {
             <section className="search-results-page">
                 <h1>Your research : {query} </h1>
 
-
-                {data.data?.length > 0 ? (
-                    <article>
-                        <h1>Manga</h1>
-                    </article>
-                ) : (
-                    <><p>erreur</p></>
-                )}
 
                 <div className="wrapper">
                     {data.data?.length > 0 ? (

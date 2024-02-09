@@ -10,8 +10,6 @@ import Button from "../../Components/Button/Button"
 import { APP_ROUTES } from "../../constants/routes.constants"
 import { useNavigate } from "react-router-dom";
 import ErrorContent from "../../Components/ErrorContent/ErrorContent"
-import { createPortal } from "react-dom"
-import ModalSettings from "../../Components/Modal/ModalSettings"
 
 function FavoritePage() {
 
@@ -19,7 +17,7 @@ function FavoritePage() {
     const navigate = useNavigate();
 
 
-    const { loading, error, loggedIn } = useSelector((state) => state.userSlice);
+    const { loading, loggedIn } = useSelector((state) => state.userSlice);
     const { data } = useSelector((state) => state.animeSlice);
 
     const [selectedFilter, setSelectedFilter] = useState('on_going');
@@ -29,11 +27,13 @@ function FavoritePage() {
     //API request
     useEffect(() => {
         dispatch(getUserList());
+
     }, [])
 
 
     //Set animeList from API Request for filter function
     useEffect(() => {
+
         if (!data) return;
         setAnimeLists(data)
         console.log('data for filter', animeLists)
@@ -56,6 +56,7 @@ function FavoritePage() {
 
 
     const handleRedirectHomepage = () => {
+
         navigate(APP_ROUTES.HOME, { replace: true });
 
     }
@@ -72,11 +73,15 @@ function FavoritePage() {
         return animeLists.filter(anime => anime.anime_state === selectedFilter);
     }
 
+    //Settings redirection
+    const handleClickSettings = (userid) => {
 
+        console.log('navigate /user', data.user_id)
 
+        // navigate(`${APP_ROUTES.USER}/${userid}`, { replace: true });
+        navigate(`${APP_ROUTES.USER}`, { replace: true });
 
-    //Modal
-    const [showModal, setShowModal] = useState(false)
+    }
 
 
     return (
@@ -97,12 +102,11 @@ function FavoritePage() {
                     <h1>Your collection</h1>
                     <h2>Check out your favorite animes</h2>
                     <p
-                        onClick={() => setShowModal(true)}>Update your settings</p>
+                        onClick={handleClickSettings}
+                    >
+                        Update your settings</p>
 
-                    {showModal && createPortal(
-                        <ModalSettings closeModal={() => setShowModal(false)} />,
-                        document.body
-                    )}
+
 
 
                 </div>

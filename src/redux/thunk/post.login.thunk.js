@@ -11,7 +11,7 @@ export const logInThunk = (form) => async (dispatch, getState) => {
 
 
     const response = await postRequest(`${APP_ROUTES.API_URL}${APP_ROUTES.LOG_IN}`, form);
-    // const response = await postRequest("http://localhost:9001/connexion/log-in", form);
+
 
     const data = response.data;
 
