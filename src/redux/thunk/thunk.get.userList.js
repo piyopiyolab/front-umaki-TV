@@ -24,13 +24,12 @@ export const getUserList = () => async (dispatch, getState) => {
 
         //const data = response.data
         const data = response.data.data.response.result
-        dispatch(setLoggedInStatus(isLoggedIn));
-
-
-
 
         dispatch(setAnimeData(data))
 
+        if (isLoggedIn) {
+            dispatch(setLoggedInStatus({ loggedIn: isLoggedIn }));
+        }
 
 
         // Remove Loading

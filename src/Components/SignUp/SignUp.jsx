@@ -78,7 +78,6 @@ function SignUp() {
 
     //Error
     useEffect(() => {
-        console.log(error)
     }, [error])
 
     return (

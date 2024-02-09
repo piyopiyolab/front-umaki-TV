@@ -6,6 +6,7 @@ const initialState = {
     data: undefined,
     error: null,
     loggedIn: false,
+    user_id: undefined,
 }
 
 
@@ -45,9 +46,11 @@ export const userSlice = createSlice({
         setLoggedInStatus: (state, action) => {
             return {
                 ...state,
-                loggedIn: action.payload,
+                loggedIn: action.payload.loggedIn,
+                user_id: action.payload.user_id,
             }
         },
+
 
 
 

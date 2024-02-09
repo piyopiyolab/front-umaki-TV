@@ -43,7 +43,8 @@
 
           p {
             @include mxn.text-xs;
-            color: var(--purple-light)
+            color: var(--purple-light);
+            cursor : pointer;
           }
          
     }

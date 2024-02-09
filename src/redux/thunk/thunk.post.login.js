@@ -26,10 +26,12 @@ export const logInThunk = (form) => async (dispatch, getState) => {
     // Remove Loading  
     dispatch(removeLoading())
 
+
     //get Token from localStorage
     localStorage.setItem('accessToken', data.user.token);
 
+
     //Logged user success
-    dispatch(setLoggedInStatus(true));
+    dispatch(setLoggedInStatus({ loggedIn: true, user_id: data.user.user_id }));
 
 };

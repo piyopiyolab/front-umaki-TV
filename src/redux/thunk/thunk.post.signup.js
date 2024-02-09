@@ -29,7 +29,7 @@ export const signUpThunk = (form) => async (dispatch, getState) => {
     dispatch(removeLoading())
 
     //Logged user success
-    dispatch(setLoggedInStatus(true));
+    dispatch(setLoggedInStatus({ loggedIn: true, user_id: data.user.user_id }));
 
 
 

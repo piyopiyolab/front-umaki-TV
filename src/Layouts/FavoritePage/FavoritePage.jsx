@@ -19,18 +19,16 @@ function FavoritePage() {
     const navigate = useNavigate();
 
 
-    const { loading, error, loggedIn } = useSelector((state) => state.userSlice);
+    const { loading, error, loggedIn, user_id } = useSelector((state) => state.userSlice);
     const { data } = useSelector((state) => state.animeSlice);
 
     const [selectedFilter, setSelectedFilter] = useState('on_going');
     const [animeLists, setAnimeLists] = useState([]); //For filter only
 
 
-
     //API request
     useEffect(() => {
         dispatch(getUserList());
-
     }, [])
 
 
