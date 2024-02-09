@@ -4,7 +4,7 @@ import Header from "../../Components/Header/Header"
 import { HelmetProvider, Helmet } from "react-helmet-async"
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect, useState } from "react"
-import { getUserList } from "../../redux/thunk/thunk.get.userList"
+import { getUserList } from "../../redux/thunk/get.userList.thunk"
 import spinner from '../../assets/spinner.svg'
 import Button from "../../Components/Button/Button"
 import { APP_ROUTES } from "../../constants/routes.constants"

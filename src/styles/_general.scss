@@ -1,5 +1,7 @@
+@use "./mixins" as mxn;
 ///Font
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
 
 
 html {
@@ -186,6 +188,41 @@ h1 {
     background-color: rgba(30 41 59 / 0.95);
     padding: var(--p-5);   
 }
+
+//Wrapper
+.wrapper {
+        @include mxn.flex('row', 'wrap');
+            @include mxn.flex-p('center', 'center');
+        gap:2rem;
+
+        @include mxn.media-query('780px') {
+
+            @include mxn.flex-p('center', 'start');
+        
+
+        }
+
+        &__errorBtn {
+            
+        }
+    
+
+        &__card {
+        position:relative;
+        @include mxn.flex('column', 'wrap');
+        @include mxn.flex-p('space-around', 'start');
+    
+
+        @include mxn.card;
+            
+        
+
+          
+         
+            
+
+            }
+    }
 
 //  Animation
 

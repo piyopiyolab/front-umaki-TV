@@ -1,7 +1,7 @@
 import './Signup.scss'
 import Button from "../Button/Button";
 import Input from "../Input/Input";
-import { signUpThunk } from "../../redux/thunk/thunk.post.signup"
+import { signUpThunk } from '../../redux/thunk/post.signup.thunk';
 import { useDispatch, useSelector } from 'react-redux'
 import { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';

@@ -4,7 +4,7 @@ import Footer from "../../Components/Footer/Footer"
 import Header from "../../Components/Header/Header"
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect, useState } from "react"
-import { topanimeThunk } from '../../redux/thunk/thunk.topanime.get'
+import { topanimeThunk } from "../../redux/thunk/get.topanime.thunk"
 import spinner from '../../assets/spinner.svg'
 import arrowIcon from "../../assets/icons/arrowr-icon.svg"
 import episodesIcon from "../../assets/icons/episodes-icon.svg"
@@ -22,6 +22,8 @@ function HomePage() {
     useEffect(
         () => {
             dispatch(topanimeThunk());
+
+
         }, []);
 
     const { data, loading } = useSelector((state) => state.animeSlice);

@@ -1,4 +1,4 @@
-import { logInThunk } from "../../redux/thunk/thunk.post.login"
+import { logInThunk } from '../../redux/thunk/post.login.thunk';
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from "react";
 import Button from "../Button/Button";

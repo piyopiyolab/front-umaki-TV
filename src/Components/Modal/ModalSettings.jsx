@@ -1,8 +1,7 @@
 import "./Modal.scss"
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { getUserInfos } from "../../redux/thunk/thunk.getUserInfo";
-
+import { getUserInfos } from "../../redux/thunk/get.UserInfo.thunk";
 function ModalSettings({ closeModal }) {
     const dispatch = useDispatch();
     const { data, loading, error, loggedIn, user_id } = useSelector((state) => state.userSlice);

@@ -1,0 +1,18 @@
+@use '../../styles/mixins' as mxn;
+
+
+.search-results-page {
+
+    width: var(--w-full);
+
+    .wrapper {
+     
+        &__card {
+            @include mxn.card;
+
+        
+          
+        }
+    }
+    
+}

@@ -5,12 +5,11 @@ import Header from '../../Components/Header/Header';
 import Footer from '../../Components/Footer/Footer';
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from 'react';
-import { getAnimeIDThunk } from '../../redux/thunk/thunk.get.animeID';
+import { getAnimeIDThunk } from '../../redux/thunk/get.animeID.thunk';
 import spinner from '../../assets/spinner.svg'
 import Button from '../../Components/Button/Button';
-import { postAnimeThunk } from '../../redux/thunk/thunk.post.addAnime';
+import { postAnimeThunk } from '../../redux/thunk/post.addAnime.thunk';
 import { APP_ROUTES } from '../../constants/routes.constants';
-import Input from '../../Components/Input/Input';
 
 
 function AnimeDetails() {

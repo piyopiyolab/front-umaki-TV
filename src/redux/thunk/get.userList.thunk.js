@@ -4,7 +4,7 @@
 
 import { setAnimeData, addLoading, removeLoading, addError, removeError } from "../reducers/animeSlice.reducer";
 import { setUserData, setLoggedInStatus } from "../reducers/userSlice.reducer";
-
+import { APP_ROUTES } from "../../constants/routes.constants";
 
 import { getRequest } from "../../API/api";
 
@@ -20,7 +20,7 @@ export const getUserList = () => async (dispatch, getState) => {
     dispatch(addLoading());
     try {
 
-        const response = await getRequest("http://localhost:9001/user/dashboard", token);
+        const response = await getRequest(`${APP_ROUTES.API_URL}/user/dashboard`, token);
 
         //const data = response.data
         const data = response.data.data.response.result
