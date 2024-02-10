@@ -42,7 +42,7 @@
        margin-bottom: var(--m-1);
 
 
-       @include mxn.media-query('780px') {
+       @include mxn.media-query('850px') {
         display: inline-block;
         margin-left: var(--m-1);
         font-size: var(--text-lg);
