@@ -183,7 +183,6 @@ h1 {
 //Modal
 
 .modal-bg {
-  
   @include mxn.flex('column', 'nowrap');
   @include mxn.flex-p('center', 'center');
   height:100%;
