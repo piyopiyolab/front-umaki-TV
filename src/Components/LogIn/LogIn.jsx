@@ -7,7 +7,6 @@ import './LogIn.scss';
 import { useNavigate } from 'react-router-dom';
 import { APP_ROUTES } from "../../constants/routes.constants";
 import { addLoading } from "../../redux/reducers/userSlice.reducer";
-import { isAuth } from "../../utils/isAuth";
 import ErrorContent from "../ErrorContent/ErrorContent";
 
 function LogIn() {
@@ -47,9 +46,10 @@ function LogIn() {
     // Redirection favorite
     useEffect(() => {
 
-        if (isAuth()) { // Corrected to isAuth()
-
+        const token = localStorage.getItem('accessToken');
+        if (token) {
             navigate(APP_ROUTES.FAVORITE, { replace: true });
+
         }
 
     }, [loggedIn]);

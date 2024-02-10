@@ -39,7 +39,12 @@ function UserPage() {
             <Header />
 
 
+            {/* Content */}
 
+            <section className="user-settings">
+                <h1>Welcome to your profile</h1>
+
+            </section>
 
             <Footer />
 

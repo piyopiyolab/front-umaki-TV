@@ -10,7 +10,6 @@ export const signUpThunk = (form) => async (dispatch, getState) => {
 
     const response = await postRequest(`${APP_ROUTES.API_URL}${APP_ROUTES.SIGN_UP}`, form)
     const data = response.data
-    console.log('signup tunk', response)
 
 
     if (response.error) {

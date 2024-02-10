@@ -88,7 +88,7 @@ function SearchPage() {
             {/* BODY */}
 
             <section className="search-results-page">
-                <h1>Your research : {query} </h1>
+                <h1>Results for your query : {query} </h1>
 
 
                 <div className="wrapper">

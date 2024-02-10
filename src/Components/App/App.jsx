@@ -10,9 +10,25 @@ import ErrorPage from '../../Layouts/ErrorPage/ErrorPage';
 import GenrePage from '../../Layouts/GenrePage/GenrePage';
 import SearchPage from '../../Layouts/SearchPage/SearchPage';
 import UserPage from '../../Layouts/UserPage/UserPage';
-
+import { useEffect } from 'react';
+import { getUserInfos } from '../../redux/thunk/get.UserInfo.thunk';
+import { useDispatch } from 'react-redux';
 
 function App() {
+
+    const dispatch = useDispatch();
+
+
+    useEffect(() => {
+        // reload for userId
+        const token = localStorage.getItem('accessToken')
+
+        if (token) {
+            dispatch(getUserInfos())
+        }
+    }, [])
+
+
     return (
         <div className="app">
             <div className="container">

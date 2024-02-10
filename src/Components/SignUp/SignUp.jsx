@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import { APP_ROUTES } from '../../constants/routes.constants';
-import { isAuth } from '../../utils/isAuth';
 import ErrorContent from '../ErrorContent/ErrorContent';
 
 
@@ -70,9 +69,13 @@ function SignUp() {
 
     // Redirecton Home
     useEffect(() => {
-        if (isAuth()) { // Corrected to isAuth()
+
+        const token = localStorage.getItem('accessToken');
+        if (token) {
             navigate(APP_ROUTES.HOME, { replace: true });
+
         }
+
     }, [loggedIn]);
 
 
