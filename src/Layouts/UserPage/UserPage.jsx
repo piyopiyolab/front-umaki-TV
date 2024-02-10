@@ -10,10 +10,13 @@ import { useState } from "react";
 import offIcon from '../../assets/icons/power-off-solid.svg'
 import trashIcon from '../../assets/icons/trash-solid.svg'
 import penIcon from '../../assets/icons/pencil-solid.svg'
+import closeIcon from '../../assets/icons/close.svg'
 import { clearAccessToken } from "../../utils/clearToken";
+import Input from "../../Components/Input/Input";
+import { createPortal } from 'react-dom';
+import Modal from "../../Components/Modal/Modal";
 import { useNavigate } from "react-router-dom";
 import { APP_ROUTES } from "../../constants/routes.constants";
-import Input from "../../Components/Input/Input";
 
 function UserPage() {
 
@@ -26,10 +29,6 @@ function UserPage() {
 
         if (token) {
             dispatch(getUserInfos())
-            console.log('Profile', data)
-        } else {
-            // navigate(APP_ROUTES.HOME)
-            console.log('token unfined')
         }
     }, [])
 
@@ -50,11 +49,25 @@ function UserPage() {
         setSelectedAvatar(itemName);
     };
 
+
+
+    const [logOutModal, setLogOutModal] = useState(false)
+
     // Deconnexion button => Clear Local Storage
     const handleDeconnexion = () => {
-        console.log('deconnexion')
         clearAccessToken();
+        navigate(APP_ROUTES.HOME);
+
     };
+
+    // Deconnexion button => Clear Local Storage
+    const handleDeleteAccount = () => {
+
+        // navigate(APP_ROUTES.HOME);
+
+    };
+
+    const [toggleIcon, setToggleIcon] = useState(false)
 
     // Modifiy userInfos 
     const [showInput, setShowInputs] = useState({
@@ -64,17 +77,13 @@ function UserPage() {
     })
 
 
-    const [form, setForm] = useState({
-        avatar: "",
-        email: "",
-        pseudo: "",
-    })
-
     const handleToggleInput = (inputName) => {
         setShowInputs(prevState => ({
             ...prevState,
             [inputName]: !prevState[inputName],
         }));
+
+        setToggleIcon(!toggleIcon);
     };
 
 
@@ -94,7 +103,8 @@ function UserPage() {
 
             {/* Content */}
             <section className="user-settings">
-                <h1>Welcome to your profile {data ? data[0].pseudo : ''}</h1>
+                <h1>Welcome to your profile </h1>
+
 
                 {data && data.length > 0 && (
                     <>
@@ -107,15 +117,14 @@ function UserPage() {
                                         setShowAvatar(!showAvatar);
                                     }} />
                                 {showAvatar ? (
-                                    <div className='signup__form__avatar__grid'>
+                                    <div className='avatar-grid'>
                                         {avatarImages.map((avatar, index) => (
                                             <img
                                                 key={index}
                                                 src={avatar}
                                                 alt={`Avatar ${index + 1}`}
-                                                className={`signup__form__avatar__grid__item ${selectedAvatar === avatar ? "selected" : ""}`}
+                                                className={`avatar-grid-item ${selectedAvatar === avatar ? "selected" : ""}`}
                                                 onClick={() => {
-                                                    handleChange(avatar, "avatar")
                                                     handleAvatarClick(avatar)
                                                 }}
                                             />
@@ -127,7 +136,7 @@ function UserPage() {
                                 <p><span>Pseudo : </span>{data[0].pseudo}
                                     <img
                                         onClick={() => handleToggleInput("pseudo")}
-                                        src={penIcon} alt='modify icon' /></p>
+                                        src={toggleIcon ? closeIcon : penIcon} alt='modify icon' /></p>
 
                                 {showInput.pseudo && (
                                     <Input />
@@ -135,7 +144,7 @@ function UserPage() {
                                 <p><span>Email : </span> {data[0].email}
                                     <img
                                         onClick={() => handleToggleInput("email")}
-                                        src={penIcon} alt='modify icon' /></p>
+                                        src={toggleIcon ? closeIcon : penIcon} alt='modify icon' /></p>
                                 {showInput.email && (
                                     <Input />
                                 )}
@@ -146,11 +155,20 @@ function UserPage() {
 
                             <Button text='deconnexion'
                                 icon={offIcon}
-                                onClick={handleDeconnexion} />
+                                onClick={() => setLogOutModal(true)} />
                             <Button
                                 text='delete your account'
                                 icon={trashIcon} />
                         </article>
+
+                        {logOutModal &&
+                            createPortal(
+                                <Modal
+                                    title={`Do you already want to leave us? `} content='If you confirm, you will be redirected to the homepage and will no longer be able to access your favourites unless you log in again.' closeModal={() => setLogOutModal(false)}
+                                    confirm={handleDeconnexion} />,
+                                document.body
+                            )
+                        }
                     </>
                 )}
             </section>

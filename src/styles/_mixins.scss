@@ -274,15 +274,17 @@ img {
 
 
 
+
 //Btn
 
-@mixin btn {
+@mixin btn ($background-color: var(--purple-light), $hover-bg: var(--purple-dark))
+{
   
   &:hover,
   &:focus {
     outline: none;
     @include transition(background-color);
-  background-color: var(--purple-dark);
+  background-color: $hover-bg;
 
   }
   &:active {
@@ -297,12 +299,12 @@ img {
   user-select: none;
   padding: var(--p-1) 12px;
   border-radius: var(--rounded);
-  background: var(--purple-light);
+  background: $background-color;
   border-radius: var(--rounded);
-  width:100%;
   margin: var(--m-1) 0;
   font-weight: bold;
   color: var(--white);
+  min-width: var(--w-s);
 }
 
 

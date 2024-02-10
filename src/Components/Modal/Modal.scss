@@ -1,9 +1,32 @@
 @use '../../styles/mixins' as mxn;
 
-.modalSettings {
-
-
+.modal-content {
+    background-color: #242640;
+    width: var(--w-sm);
+    padding: var(--p-6);
+    @include mxn.flex('column', 'nowrap');
+    @include mxn.flex-p('center', 'center');
+border-radius: var(--rounded);
+    
 h1 {
     text-align: center;
+}
+
+&__controls {
+    @include mxn.flex('row', 'nowrap');
+    @include mxn.flex-p('space-around', 'center');
+    width: var(--w-full);
+    padding-top: var(--p-2);
+
+    button {
+        max-width: var(--w-s);
+    }
+    button:first-child {
+        @include mxn.btn;
+    }
+    button:last-child {
+        @include mxn.btn(var(--purple-dark));
+    }
+    
 }
 }

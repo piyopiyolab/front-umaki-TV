@@ -2,24 +2,29 @@ import './Modal.scss';
 import { useEffect } from 'react';
 
 
-function Modal({ closeModal, searchResults }) {
+function Modal({ closeModal, title, content, confirm }) {
 
-    useEffect(() => {
-
-        console.log('Modal Appear :', searchResults)
-
-    }, [searchResults])
+    const stopPropagation = (e) => {
+        e.stopPropagation();
+    };
 
     return (
-        <div
-            onClick={closeModal}
-            className='modal'>
+        <div className='modal-bg'>
 
-            <h1>Résultat de la recherche pour : {searchResults && searchResults.query}</h1>
-            <ul>
+            <div className='modal-content'
+                onClick={stopPropagation}>
+                <h1>{title}</h1>
+                <p>{content}</p>
 
-            </ul>
+                <div className='modal-content__controls'>
+                    <button onClick={confirm}>Yes I confirm</button>
+                    <button onClick={closeModal}>No, I cancel</button>
+                </div>
+            </div>
+
         </div>
     )
 }
 export default Modal
+
+

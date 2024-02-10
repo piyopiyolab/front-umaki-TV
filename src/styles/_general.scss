@@ -182,7 +182,11 @@ h1 {
 
 //Modal
 
-.modal {
+.modal-bg {
+  
+  @include mxn.flex('column', 'nowrap');
+  @include mxn.flex-p('center', 'center');
+  height:100%;
     position:fixed;
     inset: 0;
     background-color: rgba(30 41 59 / 0.95);
@@ -224,6 +228,35 @@ h1 {
             }
     }
 
+
+
+
+.avatar-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gap-4);
+  
+  max-width: 600px; 
+  margin: var(--m-4) auto; 
+
+  &-item {
+      
+  width: 100%;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+  transform: scale(1.1); 
+  }
+   }
+
+   .selected {
+    box-shadow: 0 0 0 .5rem var(--purple-light);
+    border-radius: var(--w-full);
+ 
+  }
+  
+ }
 //  Animation
 
 @keyframes bounce {

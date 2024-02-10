@@ -28,7 +28,6 @@ function FavoritePage() {
     useEffect(() => {
         dispatch(getUserList());
 
-
     }, [])
 
 
@@ -37,7 +36,6 @@ function FavoritePage() {
 
         if (!data) return;
         setAnimeLists(data)
-        console.log('data for filter', animeLists)
     }, [data]);
 
 

@@ -120,13 +120,13 @@ function SignUp() {
                     value={form.avatar} />
 
                 {showAvatar ? (
-                    <div className='signup__form__avatar__grid'>
+                    <div className='avatar-grid'>
                         {avatarImages.map((avatar, index) => (
                             <img
                                 key={index}
                                 src={avatar}
                                 alt={`Avatar ${index + 1}`}
-                                className={`signup__form__avatar__grid__item ${selectedAvatar === avatar ? "selected" : ""}`}
+                                className={`avatar-grid-item ${selectedAvatar === avatar ? "selected" : ""}`}
                                 onClick={() => {
                                     handleChange(avatar, "avatar")
                                     handleAvatarClick(avatar)
