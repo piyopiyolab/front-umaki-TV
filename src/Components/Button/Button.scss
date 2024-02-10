@@ -4,6 +4,13 @@
 
 .button {
   @include mxn.btn;
+  @include mxn.flex('row', 'nowrap');
+  @include mxn.flex-p('center', 'center');
+
+  img {
+    max-width: 2rem!important;
+    margin-right: 2rem;
+  }
 
   }
   

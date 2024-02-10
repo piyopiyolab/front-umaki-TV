@@ -1,7 +1,12 @@
 import "./button.scss";
 
 const Button = (props) => {
-    const { onClick, text, type, color, disabled } = props;
+    const { onClick, text, type, color, disabled, icon } = props;
+
+    let content;
+    if (icon) {
+        content = <img src={icon} alt="icon" />
+    }
 
     return (
         <button
@@ -11,7 +16,7 @@ const Button = (props) => {
             onClick={onClick}
             style={{ [`--btn-bg`]: color }}
         >
-            {text}
+            {content} {text}
         </button>
     );
 };

@@ -15,10 +15,19 @@ export const getUserInfos = () => async (dispatch, getState) => {
 
         const data = response.data
 
+        const userInfos = data.data.response.result.map((infos) => {
+            const { email, pseudo, avatar, password } = infos;
 
-        dispatch(setUserData(data))
-        console.log(data)
+            return {
 
+                email,
+                pseudo,
+                avatar,
+                password
+
+            }
+        });
+        dispatch(setUserData(userInfos))
 
         // Remove Loading
         dispatch(removeLoading())

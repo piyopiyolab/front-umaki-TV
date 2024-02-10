@@ -23,7 +23,6 @@ function SignUp() {
 
     const { loggedIn, error } = useSelector(states => states.userSlice);
 
-    const [showAvatar, setShowAvatar] = useState(false);
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -54,6 +53,7 @@ function SignUp() {
     ];
 
     const [selectedAvatar, setSelectedAvatar] = useState(null);
+    const [showAvatar, setShowAvatar] = useState(false);
 
     const handleAvatarClick = (itemName) => {
         setSelectedAvatar(itemName);
@@ -115,7 +115,6 @@ function SignUp() {
                 <Button
                     text="Choose your avatar"
                     onClick={(e) => {
-                        handleChange(e.target.value, "avatar");
                         setShowAvatar(!showAvatar);
                     }}
                     value={form.avatar} />
