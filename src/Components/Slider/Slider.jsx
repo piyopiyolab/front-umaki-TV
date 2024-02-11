@@ -6,8 +6,9 @@ import arrowIcon from "../../assets/icons/arrowr-icon.svg"
 import episodesIcon from "../../assets/icons/episodes-icon.svg"
 import heartIcon from "../../assets/icons/heart-icon.svg"
 import { formatNumber } from "../../utils/formatNumber";
+import Button from "../Button/Button";
 
-function Carousel({ sliderData }) {
+function Carousel({ sliderData, onClick }) {
 
     // Slider config
     const settings = {
@@ -44,25 +45,18 @@ function Carousel({ sliderData }) {
                                     </div>
                                     <span>{d.rating}</span>
                                     <h1>{d.title}</h1>
-                                    {d.genre && d.genre.length > 0 && (
-                                        <p>
-                                            {d.genre.map((g, i) => (
-                                                <span key={i}>
-                                                    {g.name}
-                                                    {i < d.genre.length - 1 && ', '}
-                                                </span>
-                                            ))}
-                                        </p>
-                                    )}
+                                    <div className="synopsis">
+                                        <p>{d.synopsis}</p><span>[...]</span>
+
+                                    </div>
 
 
+                                    <Button onClick={() => onClick(d.mal_id)} text='Read more' />
                                 </div>
                             </div>
 
 
                         </article>
-
-
 
                     ))
 

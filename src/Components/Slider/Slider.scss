@@ -2,18 +2,49 @@
 
 
 .slider-container {
-    width: 84vw;
-    height:63vh;
+    max-width: 65vw;
+    height:110vh;
     padding: 0px var(--p-5);
     background-image: -webkit-linear-gradient(90deg, rgb(37, 6, 48) 0%, #25041f 100%);
 
 
 
+    @include mxn.media-query('640px') {
+      height:105vh;
 
+    }
 
 
     .anime-details__hero{
     
       display: flex!important;
+     
+
+      @include mxn.media-query('500px') {
+        @include mxn.flex('row', 'wrap');
+
+        @include mxn.flex-p('space-around', 'center');
+
+      }
+      &__r {
+
+          .synopsis {
+
+            @include mxn.flex('row', 'wrap');
+            @include mxn.flex-p('normal', 'end');
+color: var(--gray);
+            p {
+              @include mxn.text-xs;
+              line-height: 1.8;
+              height: 15rem;
+              width: 95%;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            }
+
+          }
+
+
+       }
     }
 }

@@ -97,7 +97,7 @@ function HomePage() {
                 </div>
 
 
-                <Carousel sliderData={data} />
+                <Carousel sliderData={data} onClick={handleReadMoreClick} />
 
 
 

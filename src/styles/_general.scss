@@ -39,6 +39,14 @@ a {
   }
 }
 
+
+// Light/dark mode
+.light-mode {
+
+  background-color: white;
+  color: var(--purple-light);
+
+}
 body {
   flex: 1 0;
   display: flex;
