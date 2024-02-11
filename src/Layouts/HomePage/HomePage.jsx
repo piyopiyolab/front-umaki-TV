@@ -14,9 +14,6 @@ import { useNavigate } from "react-router-dom"
 import { APP_ROUTES } from "../../constants/routes.constants"
 import ErrorContent from "../../Components/ErrorContent/ErrorContent"
 import { formatNumber } from "../../utils/formatNumber"
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import Carousel from "../../Components/Slider/Slider"
 
 
@@ -100,10 +97,8 @@ function HomePage() {
                 </div>
 
 
-                {/* Slider */}
-                {/* <Carousel sliderData={data} /> */}
-                <Slider sliderData={data} />
-                {/* {/* End slider/ */}
+                <Carousel sliderData={data} />
+
 
 
 

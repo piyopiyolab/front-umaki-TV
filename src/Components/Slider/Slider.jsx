@@ -1,21 +1,28 @@
-
+import Slider from "react-slick"
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import './Slider.scss'
 import arrowIcon from "../../assets/icons/arrowr-icon.svg"
 import episodesIcon from "../../assets/icons/episodes-icon.svg"
 import heartIcon from "../../assets/icons/heart-icon.svg"
 import { formatNumber } from "../../utils/formatNumber";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Carousel } from 'react-responsive-carousel';
 
+function Carousel({ sliderData }) {
 
-function Slider({ sliderData }) {
-
-
+    // Slider config
+    const settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+    };
 
     console.log('carousel', sliderData)
 
     return (
         <div className="slider-container">
-            <Carousel>
+            <Slider {...settings}>
                 {sliderData.sliderData?.length > 0 && (
                     sliderData.sliderData.map((d) => (
                         <article key={d.mal_id} className="anime-details__hero">
@@ -61,10 +68,7 @@ function Slider({ sliderData }) {
 
 
                 )}
-
-                <div>
-                    <h1>Test</h1>
-                </div>            </Carousel>
+            </Slider>
 
 
 
@@ -72,4 +76,4 @@ function Slider({ sliderData }) {
         </div >
     )
 }
-export default Slider
+export default Carousel
