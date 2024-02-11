@@ -16,9 +16,20 @@ export const topanimeThunk = (page = 1) => async (dispatch, getState) => {
         dispatch(addError());
     }
 
+
+    const sliderData = data.data.slice(0, 3);
+    const restData = data.data.slice(3);
+    const pagination = data.pagination;
+    const rawData = {
+        sliderData,
+        restData,
+        pagination,
+    }
+
     // Remove Loading  
     dispatch(removeLoading())
 
-    dispatch(setAnimeData(data))
+    // dispatch(setAnimeData(data))
+    dispatch(setAnimeData(rawData))
 
 };

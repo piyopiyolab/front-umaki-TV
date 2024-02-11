@@ -34,7 +34,7 @@ export const userSlice = createSlice({
         addError: (state, action) => {
             return {
                 ...state,
-                error: action.payload.error,
+                error: action.payload,
             }
         },
         removeError: (state, action) => {

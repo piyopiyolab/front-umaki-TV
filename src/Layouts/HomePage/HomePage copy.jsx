@@ -14,18 +14,10 @@ import { useNavigate } from "react-router-dom"
 import { APP_ROUTES } from "../../constants/routes.constants"
 import ErrorContent from "../../Components/ErrorContent/ErrorContent"
 import { formatNumber } from "../../utils/formatNumber"
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import Carousel from "../../Components/Slider/Slider"
-
 
 function HomePage() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-
-
-
 
     useEffect(
         () => {
@@ -72,15 +64,6 @@ function HomePage() {
         }
     }
 
-    // 
-    const settings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-    };
-
     return (
         <>
             <HelmetProvider>
@@ -99,17 +82,11 @@ function HomePage() {
                     <h2> Check out latest and trending animes today ! </h2>
                 </div>
 
-
-                {/* Slider */}
-                {/* <Carousel sliderData={data} /> */}
-                <Slider sliderData={data} />
-                {/* {/* End slider/ */}
-
-
-
                 <div className="wrapper">
-                    {data.restData?.length > 0 ? (
-                        data.restData.map((d) => (
+                    {data.data?.length > 0 ? (
+                        data.data.map((d) => (
+
+
 
                             <article key={d.mal_id} className="wrapper__card">
                                 <div className="wrapper__card__animeImg">
