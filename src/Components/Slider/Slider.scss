@@ -8,12 +8,11 @@
     background-image: -webkit-linear-gradient(90deg, rgb(37, 6, 48) 0%, #25041f 100%);
 
     @include mxn.media-query('1040px') {
-      height:65svh;
-
+      height:96svh;
     }
 
     @include mxn.media-query('1250px') {
-      height:63svh;
+      height:96svh;
 
     }
 

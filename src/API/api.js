@@ -17,17 +17,18 @@ const request = async (url, config) => {
 
     } catch (e) {
         error = e.message
-        console.log(error)
+
 
     } finally {
+
         return { data, error, status }
+
     }
 
 
 };
 
 const postRequest = async (url, body = {}, token = null) => {
-
     const config = {
         method: 'POST',
         body: JSON.stringify(body),

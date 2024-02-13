@@ -10,6 +10,9 @@ import Button from "../../Components/Button/Button"
 import { APP_ROUTES } from "../../constants/routes.constants"
 import { useNavigate } from "react-router-dom";
 import ErrorContent from "../../Components/ErrorContent/ErrorContent"
+import trashIcon from '../../assets/icons/trash-solid.svg'
+import { deleteAnimeFromUserList } from "../../redux/thunk/delete.animeFromUserList.thunk"
+
 
 function FavoritePage() {
 
@@ -22,7 +25,7 @@ function FavoritePage() {
 
     const [selectedFilter, setSelectedFilter] = useState('on_going');
     const [animeLists, setAnimeLists] = useState([]); //For filter only
-
+    const [deleteAnimeId, setDeleteAnimeId] = useState(0);
 
     //API request
     useEffect(() => {
@@ -81,6 +84,18 @@ function FavoritePage() {
         navigate(`${APP_ROUTES.USER}`, { replace: true });
 
     }
+
+    //Remove from list
+    const handleRemoveAnime = (anime_id, e) => {
+        e.preventDefault();
+        setDeleteAnimeId(anime_id);
+
+
+        dispatch(deleteAnimeFromUserList(deleteAnimeId))
+
+    }
+
+
 
 
     return (
@@ -145,6 +160,12 @@ function FavoritePage() {
 
                                         <div>
                                             <h3 className="text-center">{anime.title}</h3>
+                                            <Button
+                                                icon={trashIcon}
+                                                text='Remove from list'
+                                                onClick={(e) => handleRemoveAnime(anime.anime_id, e)}
+
+                                            />
                                         </div>
                                     </article>
                                 ))
