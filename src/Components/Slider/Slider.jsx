@@ -7,8 +7,16 @@ import episodesIcon from "../../assets/icons/episodes-icon.svg"
 import heartIcon from "../../assets/icons/heart-icon.svg"
 import { formatNumber } from "../../utils/formatNumber";
 import Button from "../Button/Button";
+import { useState } from "react";
+
 
 function Carousel({ sliderData, onClick }) {
+
+
+    const breakpoint = 850;
+
+
+
 
     // Slider config
     const settings = {

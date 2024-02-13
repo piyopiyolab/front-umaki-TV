@@ -1,3 +1,4 @@
+
 @mixin container() {
   width: 100%;
   margin: 0 auto;
@@ -273,6 +274,27 @@ img {
 }
 
 
+//anime details
+@mixin anime-details-card{
+ display:flex;
+ flex-flow: column ,wrap;
+justify-content: start;
+align-items: start;
+  background-color: var(--bg-dark);
+  margin: 4rem 0;
+  padding: var(--p-3);
+
+  @media screen and (min-width: 500px) {
+  
+    flex-flow: row ,nowrap;
+    justify-content: end;
+    align-items: center;
+
+    }
+
+  
+              }
+            
 
 
 //Btn

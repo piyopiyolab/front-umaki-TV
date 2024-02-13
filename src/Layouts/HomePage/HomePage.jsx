@@ -21,6 +21,22 @@ function HomePage() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+    const breakpoint = 850;
+
+    const handleWindowResize = () => {
+        setWindowWidth(window.innerWidth);
+    };
+
+    useEffect(() => {
+
+        window.addEventListener('resize', handleWindowResize);
+
+        return () => {
+            window.removeEventListener('resize', handleWindowResize);
+        };
+    }, []);
+
 
 
 
@@ -69,14 +85,7 @@ function HomePage() {
         }
     }
 
-    // 
-    const settings = {
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-    };
+
 
     return (
         <>
@@ -97,12 +106,54 @@ function HomePage() {
                 </div>
 
 
-                <Carousel sliderData={data} onClick={handleReadMoreClick} />
-
+                {windowWidth < breakpoint ? '' : <Carousel sliderData={data} onClick={handleReadMoreClick} />
+                }
 
 
 
                 <div className="wrapper">
+
+                    {windowWidth < breakpoint && (
+                        data.sliderData.map((d) => (
+
+                            <article key={d.mal_id} className="wrapper__card">
+                                <div className="wrapper__card__animeImg">
+                                    <img loading="lazy" src={d.images.webp.large_image_url} alt="" />
+                                </div>
+                                <div className="wrapper__card__animeInfo">
+                                    <h1>{d.title_english}</h1>
+                                    <div className="wrapper__card__animeInfo__tags">
+                                        {d.genres.map((genre) => (
+                                            <span
+                                                onClick={() => handleGenreClick(genre.name)}
+                                                key={genre.mal_id}>{genre.name}</span>
+                                        ))}
+                                    </div>
+                                    <div className="wrapper__card__animeInfo__stats">
+                                        <div>
+                                            <img src={heartIcon} alt="episodes icon" />
+                                            <p>{formatNumber(d.favorites)}</p>
+
+                                        </div>
+                                        <div>
+                                            <img src={episodesIcon} alt="episodes icon" />
+                                            <p>{`${d.episodes} episodes`}</p>
+                                        </div>
+                                    </div>
+                                    <a
+                                        onClick={() => handleReadMoreClick(d.mal_id)}
+                                        className="wrapper__card__btn">
+                                        Read More <img src={arrowIcon} alt="read more btn" />
+                                    </a>
+                                </div>
+
+                            </article>
+
+
+
+                        ))
+                    )
+                    }
                     {data.restData?.length > 0 ? (
                         data.restData.map((d) => (
 
