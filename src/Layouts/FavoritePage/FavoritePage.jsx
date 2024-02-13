@@ -135,15 +135,17 @@ function FavoritePage() {
                             </p>
                         </div>
 
-                        <div>
+                        <div className="your-collection__lists__content">
                             {/* Anime State List */}
                             {getFilteredList(animeLists)?.length > 0 && (
                                 getFilteredList(animeLists).map(anime => (
                                     <article key={anime.anime_id} className="your-collection__lists__card">
-                                        <div className="your-collection__lists__card__banner">
-                                            <img loading="lazy" src={anime.media} alt={anime.title} />
+
+                                        <img loading="lazy" src={anime.media} alt={anime.title} />
+
+                                        <div>
+                                            <h3 className="text-center">{anime.title}</h3>
                                         </div>
-                                        <h3 className="text-center">{anime.title}</h3>
                                     </article>
                                 ))
                             )}
