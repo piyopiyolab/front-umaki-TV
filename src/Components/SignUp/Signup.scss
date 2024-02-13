@@ -1,3 +1,5 @@
+@use '../../styles/mixins' as mxn;
+
 
 .signup__form {
     max-width: 500px;
@@ -11,6 +13,9 @@
         }
       }
 
-     
+      button {
+        margin : 0 auto;
+      }
+    
 }
 

@@ -19,18 +19,10 @@ function AnimeDetails() {
     const navigate = useNavigate();
 
     const [showList, setShowList] = useState(false)
-    const [newAnime, setNewAnime] = useState({
-        anime_id: animeID,
-        anime_state: "",
-        nb_episodes: "",
-        synopsis: "",
-        media: "",
-        title: "",
-        genre: "",
-        release_date: "",
-    });
+
 
     const { data, loading, error } = useSelector((state) => state.animeSlice);
+    const { user_id } = useSelector((state) => state.userSlice);
 
     useEffect(() => {
 
@@ -118,18 +110,34 @@ function AnimeDetails() {
 
                                 {/* Button Adding to your list */}
                                 <Button
-                                    onClick={() => { setShowList(!showList) }}
-                                    text="Add to your list" />
-                                <div className={`anime-details__hero__r__main__addingListBtn ${showList ? '' : 'hidden'}`}>
-                                    <button
-                                        onClick={() => handleAddAnime('to_see')} >To See</button>
-                                    <button
-                                        onClick={() => handleAddAnime('watched')}
-                                    >Watched</button>
-                                    <button
-                                        onClick={() => handleAddAnime('on_going')}
-                                    >On Going</button>
-                                </div>
+                                    onClick={() => {
+                                        if (user_id) {
+                                            setShowList(!showList)
+                                        }
+                                        else {
+                                            navigate(APP_ROUTES.SIGN_UP, { replace: true });
+                                        }
+
+                                    }}
+                                    text={user_id ? 'Add to your list' : 'Log-in to save it !'} />
+
+
+
+                                {user_id && (
+                                    <div className={`anime-details__hero__r__main__addingListBtn ${showList ? '' : 'hidden'}`}>
+                                        <button
+                                            onClick={() => handleAddAnime('to_see')} >To See</button>
+                                        <button
+                                            onClick={() => handleAddAnime('watched')}
+                                        >Watched</button>
+                                        <button
+                                            onClick={() => handleAddAnime('on_going')}
+                                        >On Going</button>
+                                    </div>
+                                )}
+
+
+
 
 
 
