@@ -6,7 +6,7 @@ import { APP_ROUTES } from "../../constants/routes.constants";
 export const deleteAnimeFromUserList = (anime_id) => async (dispatch, getState) => {
 
     const token = localStorage.getItem('accessToken');
-    console.log(token, anime_id)
+
     //Loading => Await response
     dispatch(addLoading());
 
