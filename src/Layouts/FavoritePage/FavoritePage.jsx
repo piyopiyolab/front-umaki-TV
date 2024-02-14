@@ -44,7 +44,7 @@ function FavoritePage() {
     useEffect(() => {
         if (!data) return;
         setAnimeLists(data)
-
+        console.log(data)
     }, [data]);
 
     useEffect(() => {
@@ -76,7 +76,6 @@ function FavoritePage() {
     //Filter function
     const handleFilterChange = (filter) => {
         setSelectedFilter(filter);
-
     };
 
 
@@ -95,6 +94,7 @@ function FavoritePage() {
 
     //Remove from list
     const handleRemoveAnime = (id, state, userId) => {
+
         userId = userData.user_id
 
         setDeleteAnimeId({ ...deleteAnimeId, anime_id: id, anime_state: state });
@@ -167,7 +167,7 @@ function FavoritePage() {
                                             <Button
                                                 icon={trashIcon}
                                                 text='Remove from list'
-                                                onClick={(e) => handleRemoveAnime(anime.anime_id, anime.anime_state)}
+                                                onClick={() => handleRemoveAnime(anime.anime_id, anime.anime_state)}
 
                                             />
                                         </div>

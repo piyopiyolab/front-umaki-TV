@@ -26,12 +26,10 @@ export const getUserInfos = () => async (dispatch, getState) => {
                 pseudo,
                 avatar,
                 password,
-                user_id: data.data.userId
 
             }
 
         });
-
 
         dispatch(setUserData({ ...userInfos, user_id: data.data.userId }))
 

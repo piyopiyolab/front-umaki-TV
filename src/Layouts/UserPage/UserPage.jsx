@@ -21,7 +21,7 @@ import { AVATAR_IMAGES } from "../../constants/avatar.constants";
 
 function UserPage() {
 
-    const { data } = useSelector(states => states.userSlice);
+    const { data, userData } = useSelector(states => states.userSlice);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -30,8 +30,10 @@ function UserPage() {
 
         if (token) {
             dispatch(getUserInfos())
+
+
         }
-    }, [])
+    }, [userData])
 
     // Avatar 
 
@@ -55,7 +57,7 @@ function UserPage() {
 
     };
 
-    // Deconnexion button => Clear Local Storage
+    // Deconnexion button => Delete account
     const handleDeleteAccount = () => {
 
         // navigate(APP_ROUTES.HOME);
@@ -99,9 +101,13 @@ function UserPage() {
             {/* Content */}
             <section className="user-settings">
                 <h1>Welcome to your profile </h1>
+                {userData && userData.length > 0 && (
+                    userData.map((i) => (
+                        <p key={1}>{i.email}</p>
+                    ))
+                )}
 
-
-                {data && data.length > 0 && (
+                {userData && userData.length > 0 && (
                     <>
                         <article>
                             <div>
