@@ -7,10 +7,11 @@ import { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import { APP_ROUTES } from '../../constants/routes.constants';
 import ErrorContent from '../ErrorContent/ErrorContent';
-
+import { AVATAR_IMAGES } from '../../constants/avatar.constants';
 
 
 function SignUp() {
+
 
     const [form, setForm] = useState({
         email: "",
@@ -41,16 +42,6 @@ function SignUp() {
 
     }
 
-
-    // Avatar
-    const avatarImages = [
-        '/images/avatarbis/monkey-avatar-1.png',
-        '/images/avatarbis/monkey-avatar-2.png',
-        '/images/avatarbis/monkey-avatar-3.png',
-        '/images/avatarbis/monkey-avatar-4.png',
-        '/images/avatarbis/monkey-avatar-5.png',
-        '/images/avatarbis/monkey-avatar-6.png',
-    ];
 
     const [selectedAvatar, setSelectedAvatar] = useState(null);
     const [showAvatar, setShowAvatar] = useState(false);
@@ -127,7 +118,7 @@ function SignUp() {
 
                 {showAvatar ? (
                     <div className='avatar-grid'>
-                        {avatarImages.map((avatar, index) => (
+                        {AVATAR_IMAGES.map((avatar, index) => (
                             <img
                                 key={index}
                                 src={avatar}

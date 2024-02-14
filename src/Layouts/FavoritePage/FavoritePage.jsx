@@ -20,27 +20,29 @@ function FavoritePage() {
     const navigate = useNavigate();
 
 
-    const { loading, loggedIn } = useSelector((state) => state.userSlice);
+    const { user_id, loading, loggedIn } = useSelector((state) => state.userSlice);
     const { data } = useSelector((state) => state.animeSlice);
 
     const [selectedFilter, setSelectedFilter] = useState('on_going');
     const [animeLists, setAnimeLists] = useState([]); //For filter only
     const [deleteAnimeId, setDeleteAnimeId] = useState({
         anime_id: undefined,
+        anime_state: undefined,
     });
 
     //API request
     useEffect(() => {
         dispatch(getUserList());
 
+
     }, [])
 
 
     //Set animeList from API Request for filter function
     useEffect(() => {
-
         if (!data) return;
         setAnimeLists(data)
+
     }, [data]);
 
     useEffect(() => {
@@ -91,10 +93,10 @@ function FavoritePage() {
     }
 
     //Remove from list
-    const handleRemoveAnime = (id) => {
-        console.log('id', id)
-        setDeleteAnimeId({ ...deleteAnimeId, anime_id: id });
-        dispatch(deleteAnimeFromUserList(id))
+    const handleRemoveAnime = (id, state) => {
+
+        setDeleteAnimeId({ ...deleteAnimeId, anime_id: id, anime_state: state });
+        dispatch(deleteAnimeFromUserList(id, state))
     }
 
 
@@ -163,7 +165,7 @@ function FavoritePage() {
                                             <Button
                                                 icon={trashIcon}
                                                 text='Remove from list'
-                                                onClick={(e) => handleRemoveAnime(anime.anime_id)}
+                                                onClick={(e) => handleRemoveAnime(anime.anime_id, anime.anime_state)}
 
                                             />
                                         </div>

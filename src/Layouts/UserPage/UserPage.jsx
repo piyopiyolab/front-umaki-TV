@@ -17,6 +17,7 @@ import { createPortal } from 'react-dom';
 import Modal from "../../Components/Modal/Modal";
 import { useNavigate } from "react-router-dom";
 import { APP_ROUTES } from "../../constants/routes.constants";
+import { AVATAR_IMAGES } from "../../constants/avatar.constants";
 
 function UserPage() {
 
@@ -35,14 +36,8 @@ function UserPage() {
     // Avatar 
 
     const [selectedAvatar, setSelectedAvatar] = useState("");
-    const avatarImages = [
-        '/images/avatarbis/monkey-avatar-1.png',
-        '/images/avatarbis/monkey-avatar-2.png',
-        '/images/avatarbis/monkey-avatar-3.png',
-        '/images/avatarbis/monkey-avatar-4.png',
-        '/images/avatarbis/monkey-avatar-5.png',
-        '/images/avatarbis/monkey-avatar-6.png',
-    ];
+
+
     const [showAvatar, setShowAvatar] = useState(false);
 
     const handleAvatarClick = (itemName) => {
@@ -118,7 +113,7 @@ function UserPage() {
                                     }} />
                                 {showAvatar ? (
                                     <div className='avatar-grid'>
-                                        {avatarImages.map((avatar, index) => (
+                                        {AVATAR_IMAGES.map((avatar, index) => (
                                             <img
                                                 key={index}
                                                 src={avatar}
