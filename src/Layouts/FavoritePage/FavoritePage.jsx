@@ -12,7 +12,8 @@ import { useNavigate } from "react-router-dom";
 import ErrorContent from "../../Components/ErrorContent/ErrorContent"
 import trashIcon from '../../assets/icons/trash-solid.svg'
 import { deleteAnimeFromUserList } from "../../redux/thunk/delete.animeFromUserList.thunk"
-
+import { getUserInfos } from "../../redux/thunk/get.UserInfo.thunk"
+getUserInfos
 
 function FavoritePage() {
 
@@ -20,7 +21,7 @@ function FavoritePage() {
     const navigate = useNavigate();
 
 
-    const { user_id, loading, loggedIn } = useSelector((state) => state.userSlice);
+    const { userData, loading, loggedIn } = useSelector((state) => state.userSlice);
     const { data } = useSelector((state) => state.animeSlice);
 
     const [selectedFilter, setSelectedFilter] = useState('on_going');
@@ -34,8 +35,9 @@ function FavoritePage() {
     useEffect(() => {
         dispatch(getUserList());
 
+    }, [userData])
 
-    }, [])
+
 
 
     //Set animeList from API Request for filter function
@@ -86,17 +88,17 @@ function FavoritePage() {
     //Settings redirection
     const handleClickSettings = () => {
 
-        console.log('navigate /user', data.user_id)
 
         navigate(`${APP_ROUTES.USER}`, { replace: true });
 
     }
 
     //Remove from list
-    const handleRemoveAnime = (id, state) => {
+    const handleRemoveAnime = (id, state, userId) => {
+        userId = userData.user_id
 
         setDeleteAnimeId({ ...deleteAnimeId, anime_id: id, anime_state: state });
-        dispatch(deleteAnimeFromUserList(id, state))
+        dispatch(deleteAnimeFromUserList(id, state, userId))
     }
 
 

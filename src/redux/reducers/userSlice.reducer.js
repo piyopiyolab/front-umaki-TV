@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     loading: false,
-    data: undefined,
+    userData: undefined,
     error: null,
     loggedIn: false,
     user_id: undefined,
@@ -16,7 +16,7 @@ export const userSlice = createSlice({
     reducers: {
         setUserData: (state, action) => {
             return {
-                ...state, data: action.payload
+                ...state, userData: action.payload
             }
 
         }, addLoading: (state, action) => {
