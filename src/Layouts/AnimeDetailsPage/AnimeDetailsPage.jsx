@@ -20,14 +20,15 @@ function AnimeDetails() {
 
     const [showList, setShowList] = useState(false)
 
+    const [newAnime, setNewAnime] = useState('')
 
     const { data, loading, error } = useSelector((state) => state.animeSlice);
-    const { user_id } = useSelector((state) => state.userSlice);
+
+    const token = localStorage.getItem('accessToken');
 
     useEffect(() => {
 
         dispatch(getAnimeIDThunk(animeID))
-
     }, [animeID])
 
 
@@ -111,7 +112,7 @@ function AnimeDetails() {
                                 {/* Button Adding to your list */}
                                 <Button
                                     onClick={() => {
-                                        if (user_id) {
+                                        if (token) {
                                             setShowList(!showList)
                                         }
                                         else {
@@ -119,11 +120,11 @@ function AnimeDetails() {
                                         }
 
                                     }}
-                                    text={user_id ? 'Add to your list' : 'Log-in to save it !'} />
+                                    text={token ? 'Add to your list' : 'Log-in to save it !'} />
 
 
 
-                                {user_id && (
+                                {token && (
                                     <div className={`anime-details__hero__r__main__addingListBtn ${showList ? '' : 'hidden'}`}>
                                         <button
                                             onClick={() => handleAddAnime('to_see')} >To See</button>

@@ -25,7 +25,9 @@ function FavoritePage() {
 
     const [selectedFilter, setSelectedFilter] = useState('on_going');
     const [animeLists, setAnimeLists] = useState([]); //For filter only
-    const [deleteAnimeId, setDeleteAnimeId] = useState(0);
+    const [deleteAnimeId, setDeleteAnimeId] = useState({
+        anime_id: undefined,
+    });
 
     //API request
     useEffect(() => {
@@ -40,6 +42,10 @@ function FavoritePage() {
         if (!data) return;
         setAnimeLists(data)
     }, [data]);
+
+    useEffect(() => {
+
+    }, [deleteAnimeId]);
 
 
 
@@ -76,26 +82,20 @@ function FavoritePage() {
     }
 
     //Settings redirection
-    const handleClickSettings = (userid) => {
+    const handleClickSettings = () => {
 
         console.log('navigate /user', data.user_id)
 
-        // navigate(`${APP_ROUTES.USER}/${userid}`, { replace: true });
         navigate(`${APP_ROUTES.USER}`, { replace: true });
 
     }
 
     //Remove from list
-    const handleRemoveAnime = (anime_id, e) => {
-        e.preventDefault();
-        setDeleteAnimeId(anime_id);
-
-
-        dispatch(deleteAnimeFromUserList(deleteAnimeId))
-
+    const handleRemoveAnime = (id) => {
+        console.log('id', id)
+        setDeleteAnimeId({ ...deleteAnimeId, anime_id: id });
+        dispatch(deleteAnimeFromUserList(id))
     }
-
-
 
 
     return (
@@ -163,7 +163,7 @@ function FavoritePage() {
                                             <Button
                                                 icon={trashIcon}
                                                 text='Remove from list'
-                                                onClick={(e) => handleRemoveAnime(anime.anime_id, e)}
+                                                onClick={(e) => handleRemoveAnime(anime.anime_id)}
 
                                             />
                                         </div>
