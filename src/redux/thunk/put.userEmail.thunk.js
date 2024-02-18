@@ -6,25 +6,20 @@ export const updateEmailThunk = (email) => async (dispatch, getState) => {
 
     const token = localStorage.getItem('accessToken');
 
-    //Loading => Await response 
-    dispatch(addLoading());
+    console.log(`url : ${APP_ROUTES.API_URL}/dashboard/update-email`)
+    console.log('email :', email)
+    console.log('token :', token)
 
     const response = await putRequest(`${APP_ROUTES.API_URL}/dashboard/update-email`, email, token);
 
-
     const data = response.data;
-    console.log(email)
-    console.log(response, data);
+
 
     if (response.error) {
         console.error("Error in update email : ", response.error);
-        dispatch(addError({ error: response.error }));
-
         return;
     }
 
-    console.log(data);
-    // Remove Loading  
-    dispatch(removeLoading())
+    // console.log(data);
 
 }

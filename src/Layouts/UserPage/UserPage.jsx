@@ -122,13 +122,17 @@ function UserPage() {
                 {userData && Object.keys(userData).length > 0 && (
                     <>
                         <article>
-                            <div>
-                                <span>Your avatar :</span>
-                                <img src={userData[0].avatar} className="avatar" alt='avatar' />
-                                <Button text='Change your avatar'
-                                    onClick={(e) => {
-                                        setShowAvatar(!showAvatar);
-                                    }} />
+
+                            <div className="user-settings__article-avatar">
+                                <div>
+                                    <span>Your avatar :</span>
+                                    <img src={userData[0].avatar} className="avatar" alt='avatar' />
+                                    <Button text='Change your avatar'
+                                        onClick={(e) => {
+                                            setShowAvatar(!showAvatar);
+                                        }} />
+                                </div>
+
                                 {showAvatar ? (
                                     <div className='avatar-grid'>
                                         {AVATAR_IMAGES.map((avatar, index) => (
@@ -173,13 +177,13 @@ function UserPage() {
                                     </>
                                 )}
                             </div>
-
-
-
-
-
-                            {/* Account */}
                         </article>
+
+
+
+
+                        {/* Account */}
+
                         <h2>Account Settings</h2>
                         <div className="user-settings__account-controls">
 
