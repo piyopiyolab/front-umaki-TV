@@ -3,16 +3,16 @@
 
 .slider-container {
     max-width: 65vw;
-    height:110vh;
+    height:112svh;
     padding: 0px var(--p-5);
     background-image: -webkit-linear-gradient(90deg, rgb(37, 6, 48) 0%, #25041f 100%);
 
     @include mxn.media-query('1040px') {
-      height:96svh;
+      height:65svh;
     }
 
     @include mxn.media-query('1250px') {
-      height:96svh;
+      height:63svh;
 
     }
 
@@ -35,7 +35,7 @@
     
       &__r {
 
-      
+      max-width: 100%;
           .synopsis {
 
             @include mxn.flex('row', 'wrap');

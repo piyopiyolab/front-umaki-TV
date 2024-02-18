@@ -27,7 +27,6 @@ function Carousel({ sliderData, onClick }) {
         slidesToScroll: 1,
     };
 
-    console.log('carousel', sliderData)
 
     return (
         <div className="slider-container">
