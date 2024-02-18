@@ -12,7 +12,7 @@ export const updateEmailThunk = (email) => async (dispatch, getState) => {
 
     const response = await putRequest(`${APP_ROUTES.API_URL}/dashboard/update-email`, email, token);
 
-    const data = response.data;
+    // dispatch(setUserData(data.user));
 
 
     if (response.error) {
@@ -20,6 +20,5 @@ export const updateEmailThunk = (email) => async (dispatch, getState) => {
         return;
     }
 
-    // console.log(data);
 
 }
