@@ -5,17 +5,20 @@
 
     max-width: var(--w-sm);
     margin: 0 auto;
-
-    button {
-        max-width: var(--w-s);       
-    }
-
-   
     h1 {
         text-align: center;
         text-decoration: wavy;
         
     }
+
+
+    
+    button {
+        max-width: var(--w-s);       
+    }
+
+   
+  
 
     article {
         @include mxn.flex('column', 'wrap');

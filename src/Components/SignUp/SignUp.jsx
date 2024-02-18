@@ -22,7 +22,7 @@ function SignUp() {
 
     })
 
-    const { user_id, loggedIn, error } = useSelector(states => states.userSlice);
+    const { userData, user_id, loggedIn, error } = useSelector(states => states.userSlice);
 
 
     const navigate = useNavigate();
@@ -62,18 +62,18 @@ function SignUp() {
     useEffect(() => {
 
         const token = localStorage.getItem('accessToken');
-
-        if (user_id) {
+        console.log('userData', userData)
+        if (userData.user_id) {
             navigate(APP_ROUTES.HOME, { replace: true });
 
-        } else if (token && !user_id) {
+        } else if (token && !userData.user_id) {
             console.log(' token expired/invalid, please log-in')
         }
         else {
             console.log('no user_id, no token, please sign-up')
         }
 
-    }, [user_id]);
+    }, [userData]);
 
 
     //Error
