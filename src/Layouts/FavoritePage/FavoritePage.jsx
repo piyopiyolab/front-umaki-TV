@@ -24,8 +24,7 @@ function FavoritePage() {
     const { userData, loading, loggedIn } = useSelector((state) => state.userSlice);
     const { data } = useSelector((state) => state.animeSlice);
 
-    const [selectedFilter, setSelectedFilter] = useState('on_going');
-    const [animeLists, setAnimeLists] = useState([]); //For filter only
+    const [selectedList, setSelectedList] = useState('on_going');
     const [deleteAnimeId, setDeleteAnimeId] = useState({
         anime_id: undefined,
         anime_state: undefined,
@@ -38,19 +37,9 @@ function FavoritePage() {
     }, [userData])
 
 
-
-
-    //Set animeList from API Request for filter function
-    useEffect(() => {
-        if (!data) return;
-        setAnimeLists(data)
-        console.log(data)
-    }, [data]);
-
     useEffect(() => {
 
     }, [deleteAnimeId]);
-
 
 
     //Error handler
@@ -66,25 +55,16 @@ function FavoritePage() {
         navigate(APP_ROUTES.LOG_IN, { replace: true });
     };
 
-
     const handleRedirectHomepage = () => {
 
         navigate(APP_ROUTES.HOME, { replace: true });
 
     }
 
-    //Filter function
-    const handleFilterChange = (filter) => {
-        setSelectedFilter(filter);
-    };
 
 
-    // const filteredAnimeList = animeLists.filter(anime => anime.anime_state === selectedFilter);
-    const getFilteredList = (animeLists) => {
-        return animeLists.filter(anime => anime.anime_state === selectedFilter);
-    }
 
-    //Settings redirection
+    //Settings redirection UseSettings
     const handleClickSettings = () => {
 
 
@@ -101,6 +81,10 @@ function FavoritePage() {
         dispatch(deleteAnimeFromUserList(id, state, userId))
     }
 
+    //Filter function
+    const handleFilterChange = (filter) => {
+        setSelectedList(filter);
+    };
 
     return (
         <>
@@ -125,10 +109,7 @@ function FavoritePage() {
                         Update your settings</p>
 
 
-
-
                 </div>
-
 
 
 
@@ -136,46 +117,109 @@ function FavoritePage() {
                 {loggedIn ? (
                     <div className="your-collection__lists">
                         <div className="your-collection__lists__filters">
-                            {/* filters controls */}
                             <p
-                                className={selectedFilter === 'on_going' ? 'filtered' : ''}
                                 onClick={() => handleFilterChange('on_going')}>
                                 Continue
                             </p>
                             <p
-                                className={selectedFilter === 'watched' ? 'filtered' : ''}
-                                onClick={() => handleFilterChange('watched')}>
-                                Watched
+                                onClick={() => handleFilterChange('to_see')}>
+                                To see
                             </p>
                             <p
-                                className={selectedFilter === 'to_see' ? 'filtered' : ''}
-                                onClick={() => handleFilterChange('to_see')}>
-                                To See
+                                onClick={() => handleFilterChange('watched')}>
+                                Watched
                             </p>
                         </div>
 
                         <div className="your-collection__lists__content">
-                            {/* Anime State List */}
-                            {getFilteredList(animeLists)?.length > 0 && (
-                                getFilteredList(animeLists).map(anime => (
-                                    <article key={anime.anime_id} className="your-collection__lists__card">
 
-                                        <img loading="lazy" src={anime.media} alt={anime.title} />
 
-                                        <div>
-                                            <h3 className="text-center">{anime.title}</h3>
-                                            <Button
-                                                icon={trashIcon}
-                                                text='Remove from list'
-                                                onClick={() => handleRemoveAnime(anime.anime_id, anime.anime_state)}
+                            {/* On going userList*/}
 
-                                            />
-                                        </div>
-                                    </article>
-                                ))
+                            {selectedList === 'on_going' && (
+                                <>
+                                    {data.to_see?.length > 0 && (
+                                        data.to_see.map((anime, index) => (
+                                            <article className="your-collection__lists__card" key={index}>
+                                                <img loading="lazy" src={anime.media} alt={anime.title} />
+                                                <div>
+                                                    <h3>{anime.title}</h3>
+                                                    <Button
+                                                        icon={trashIcon}
+                                                        text='Remove from list'
+                                                        onClick={() => handleRemoveAnime(anime.anime_id, anime.anime_state)}
+                                                    />
+                                                </div>
+                                            </article>
+                                        ))
+                                    )}
+                                </>
+                            )}
+
+
+                            {/* to_see userList */}
+
+                            {selectedList === 'to_see' && (
+                                <>
+                                    {data.to_see?.length > 0 && (
+                                        data.to_see.map((anime, index) => (
+                                            <article className="your-collection__lists__card" key={index}>
+                                                <img loading="lazy" src={anime.media} alt={anime.title} />
+                                                <div>
+                                                    <h3>{anime.title}</h3>
+                                                    <Button
+                                                        icon={trashIcon}
+                                                        text='Remove from list'
+                                                        onClick={() => handleRemoveAnime(anime.anime_id, anime.anime_state)}
+                                                    />
+                                                </div>
+                                            </article>
+                                        ))
+                                    )}
+                                </>
+                            )}
+
+
+
+                            {/* watched userList */}
+
+                            {selectedList === 'watched' && (
+                                <>
+                                    {data.watched?.length > 0 && (
+                                        data.watched.map((anime, index) => (
+                                            <article className="your-collection__lists__card" key={index}>
+                                                <img loading="lazy" src={anime.media} alt={anime.title} />
+                                                <div>
+                                                    <h3>{anime.title}</h3>
+                                                    <Button
+                                                        icon={trashIcon}
+                                                        text='Remove from list'
+                                                        onClick={() => handleRemoveAnime(anime.anime_id, anime.anime_state)}
+                                                    />
+                                                </div>
+                                            </article>
+                                        ))
+                                    )}
+                                </>
+                            )}
+
+
+                            {/* Check if data is empty and show "Add anime" */}
+                            {Object.keys(data).length === 0 && (
+                                <>
+                                    <ErrorContent type='addAnime' />
+                                    <div className="your-collection__lists__errorBtn">
+                                        <Button text='Add an anime'
+                                            onClick={handleRedirectHomepage} />
+
+                                    </div>
+                                </>
                             )}
                         </div>
+
+
                     </div>
+
                 ) : (
                     <>
                         <ErrorContent type='log-out' />
@@ -196,7 +240,7 @@ function FavoritePage() {
 
 
 
-                {getFilteredList(animeLists).length === 0 && loggedIn && (
+                {data.length === 0 && loggedIn && (
                     <>
                         <ErrorContent type='addAnime' />
                         <div className="your-collection__lists__errorBtn">

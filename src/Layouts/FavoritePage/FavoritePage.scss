@@ -128,12 +128,7 @@ gap: 1rem;
        
 
 
-              @include mxn.media-query('750px') {
-                  @include mxn.flex('row', 'wrap');
-                  @include mxn.flex-p('start', 'start');
-
-                  gap: 2rem;
-              }
+             
             
 
 

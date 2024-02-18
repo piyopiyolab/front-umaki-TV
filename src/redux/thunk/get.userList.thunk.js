@@ -25,15 +25,28 @@ export const getUserList = () => async (dispatch, getState) => {
         //const data = response.data
         const data = response.data.data.response.result
 
-        dispatch(setAnimeData(data))
 
         if (isLoggedIn) {
             dispatch(setLoggedInStatus({ loggedIn: isLoggedIn }));
         }
 
+        const groupedByState = data.reduce((acc, curr) => {
+            if (!acc[curr.anime_state]) {
+                acc[curr.anime_state] = [];
+            }
+            acc[curr.anime_state].push(curr);
+            return acc;
+        }, {});
+
+
 
         // Remove Loading
         dispatch(removeLoading())
+
+
+        dispatch(setAnimeData(groupedByState))
+        console.log(groupedByState)
+
 
     } catch (error) {
         console.error("Failed to fetch user's list:", error);
