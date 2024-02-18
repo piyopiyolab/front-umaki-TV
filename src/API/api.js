@@ -10,6 +10,7 @@ const request = async (url, config) => {
         data = await response.json();
         status = response.status;
 
+
         if (status >= 400) {
             throw new Error(data.message);
         }

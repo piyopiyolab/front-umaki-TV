@@ -20,9 +20,14 @@
     article {
         @include mxn.flex('column', 'wrap');
         @include mxn.flex-p('center', 'space-between');
+        padding: var(--p-2);
+      
+
 
         .avatar {
             max-width: 30rem;
+            margin-top: var(--m-4);
+
             &:hover {
                 filter: drop-shadow(20px 5px 10px var(--purple-light));
                 @include mxn.transition(filter);
@@ -57,11 +62,7 @@
 
         }
 
-       @include mxn.media-query('780px') {
 
-        @include mxn.flex('row', 'nowrap');
-        @include mxn.flex-p('space-around', 'center');
-       }
 
 
     
@@ -73,6 +74,29 @@
         text-align: center;
     }
 
+     &__updates {
+     
+
+       input {
+        margin-bottom: 0;
+       }
+
+       img {
+        max-width: 3rem;
+        background-color: var(--purple-light);
+        padding: .5rem;
+        border-radius: var(--rounded);
+        cursor: pointer;
+        
+       }
+
+       &__email {
+        @include mxn.flex('row', 'nowrap');
+       }
+
+
+       
+     }
     &__account-controls {
 
         margin: 0 auto;

@@ -11,6 +11,7 @@ import offIcon from '../../assets/icons/power-off-solid.svg'
 import trashIcon from '../../assets/icons/trash-solid.svg'
 import penIcon from '../../assets/icons/pencil-solid.svg'
 import closeIcon from '../../assets/icons/close.svg'
+import okIcon from '../../assets/icons/check-solid.svg'
 import { clearAccessToken } from "../../utils/clearToken";
 import Input from "../../Components/Input/Input";
 import { createPortal } from 'react-dom';
@@ -18,10 +19,11 @@ import Modal from "../../Components/Modal/Modal";
 import { useNavigate } from "react-router-dom";
 import { APP_ROUTES } from "../../constants/routes.constants";
 import { AVATAR_IMAGES } from "../../constants/avatar.constants";
+import { updateEmailThunk } from "../../redux/thunk/put.userEmail.thunk";
 
 function UserPage() {
 
-    const { data, userData } = useSelector(states => states.userSlice);
+    const { userData } = useSelector(states => states.userSlice);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -30,25 +32,34 @@ function UserPage() {
 
         if (token) {
             dispatch(getUserInfos())
-
-
         }
-    }, [userData])
+
+    }, [])
 
     // Avatar 
 
     const [selectedAvatar, setSelectedAvatar] = useState("");
-
-
     const [showAvatar, setShowAvatar] = useState(false);
 
     const handleAvatarClick = (itemName) => {
         setSelectedAvatar(itemName);
     };
 
-
-
     const [logOutModal, setLogOutModal] = useState(false)
+
+    const [pseudoValue, setPseudoValue] = useState("");
+    const [emailValue, setEmailValue] = useState("");
+
+
+    const handleUpdatePseudo = (pseudo) => {
+        console.log(pseudo)
+    }
+    // Update Email
+    const handleUpdateEmail = (email) => {
+        console.log(email);
+        dispatch(updateEmailThunk(email));
+    }
+
 
     // Deconnexion button => Clear Local Storage
     const handleDeconnexion = () => {
@@ -84,6 +95,7 @@ function UserPage() {
     };
 
 
+
     return (
         <>
 
@@ -107,12 +119,12 @@ function UserPage() {
                     ))
                 )}
 
-                {userData && userData.length > 0 && (
+                {userData && Object.keys(userData).length > 0 && (
                     <>
                         <article>
                             <div>
-                                <span >Your avatar :</span>
-                                <img src={data[0].avatar} className="avatar" alt='avatar' />
+                                <span>Your avatar :</span>
+                                <img src={userData[0].avatar} className="avatar" alt='avatar' />
                                 <Button text='Change your avatar'
                                     onClick={(e) => {
                                         setShowAvatar(!showAvatar);
@@ -133,26 +145,43 @@ function UserPage() {
                                     </div>
                                 ) : null}
                             </div>
-                            <div>
-                                <p><span>Pseudo : </span>{data[0].pseudo}
-                                    <img
-                                        onClick={() => handleToggleInput("pseudo")}
-                                        src={toggleIcon ? closeIcon : penIcon} alt='modify icon' /></p>
 
-                                {showInput.pseudo && (
-                                    <Input />
-                                )}
-                                <p><span>Email : </span> {data[0].email}
+                            <div className="user-settings__updates">
+
+                                <p>
+                                    <span>Email : </span> {userData[0].email}
                                     <img
                                         onClick={() => handleToggleInput("email")}
-                                        src={toggleIcon ? closeIcon : penIcon} alt='modify icon' /></p>
+                                        src={toggleIcon ? closeIcon : penIcon} alt='modify icon' />
+                                </p>
                                 {showInput.email && (
-                                    <Input />
+                                    <>
+
+
+                                        <div className="user-settings__updates__email">
+                                            <Input
+                                                type='email'
+                                                onChange={(e) => setEmailValue(e.target.value)}
+                                                value={emailValue}
+                                            />
+
+                                            <img
+                                                onClick={() => handleUpdateEmail(emailValue)}
+                                                className='icon' src={okIcon} />
+
+                                        </div>
+                                    </>
                                 )}
                             </div>
+
+
+
+
+
+                            {/* Account */}
                         </article>
                         <h2>Account Settings</h2>
-                        <article className="user-settings__account-controls">
+                        <div className="user-settings__account-controls">
 
                             <Button text='deconnexion'
                                 icon={offIcon}
@@ -160,7 +189,8 @@ function UserPage() {
                             <Button
                                 text='delete your account'
                                 icon={trashIcon} />
-                        </article>
+                        </div>
+
 
                         {logOutModal &&
                             createPortal(
@@ -172,7 +202,8 @@ function UserPage() {
                         }
                     </>
                 )}
-            </section>
+
+            </section >
 
             <Footer />
 

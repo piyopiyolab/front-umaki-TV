@@ -17,7 +17,7 @@ export const postAnimeThunk = (newAnime) => async (dispatch, getState) => {
     const data = response.data;
 
     if (response.error) {
-        console.error("Error in signup : ", response.error);
+        console.error("Error in adding anime: ", response.error);
         dispatch(addError({ error: response.error }));
 
         return;

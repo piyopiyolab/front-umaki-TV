@@ -42,7 +42,7 @@ export const getAnimeIDThunk = (animeID) => async (dispatch, getState) => {
         title_jap: data.data.title_japanese,
         image: data.data.images.webp.large_image_url,
         status: data.data.status,
-        season: data.data.season.charAt(0).toUpperCase() + data.data.season.slice(1),
+        season: data.data.season ? data.data.season.charAt(0).toUpperCase() + data.data.season.slice(1) : null,
         year: data.data.year,
         rating: data.data.rating,
         genre: genresData,
