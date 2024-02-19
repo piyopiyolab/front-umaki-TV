@@ -27,7 +27,7 @@
       
 
 
-        .avatar {
+        .updates-avatar {
             max-width: 30rem;
             margin-top: var(--m-4);
 
@@ -37,14 +37,8 @@
             }
            }
         
-         
-        div:first-child  {
-            text-align: center;
-            @include mxn.flex('column', 'wrap');
-            @include mxn.flex-p('center', 'center');
-            
-        }
-        span{
+        
+             span{
             font-weight: bold;
         
         }
@@ -93,7 +87,7 @@
         
        }
 
-       &__email {
+       &__email__inputs,&__pseudo__inputs {
         @include mxn.flex('row', 'nowrap');
        }
 

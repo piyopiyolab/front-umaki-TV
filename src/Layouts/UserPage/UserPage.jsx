@@ -21,6 +21,7 @@ import { APP_ROUTES } from "../../constants/routes.constants";
 import { AVATAR_IMAGES } from "../../constants/avatar.constants";
 import { updateEmailThunk } from "../../redux/thunk/put.userEmail.thunk";
 import DarkMode from "../../Components/DarkMode/DarkMode";
+import { updatePseudoThunk } from "../../redux/thunk/put.userPseudothunk";
 
 function UserPage() {
 
@@ -35,7 +36,7 @@ function UserPage() {
             dispatch(getUserInfos())
         }
 
-    }, [])
+    }, [userData])
 
     // Avatar 
 
@@ -52,15 +53,15 @@ function UserPage() {
     const [emailValue, setEmailValue] = useState("");
 
 
-    const handleUpdatePseudo = (pseudo) => {
-        console.log(pseudo)
-    }
+
     // Update Email
     const handleUpdateEmail = (email) => {
-        console.log(email);
         dispatch(updateEmailThunk(email));
     }
 
+    const handleUpdatePseudo = (pseudo) => {
+        dispatch(updatePseudoThunk(pseudo));
+    }
 
     // Deconnexion button => Clear Local Storage
     const handleDeconnexion = () => {
@@ -79,7 +80,7 @@ function UserPage() {
     const [toggleIcon, setToggleIcon] = useState(false)
 
     // Modifiy userInfos 
-    const [showInput, setShowInputs] = useState({
+    const [showInputs, setShowInputs] = useState({
         pseudo: false,
         email: false,
         avatar: false,
@@ -87,12 +88,10 @@ function UserPage() {
 
 
     const handleToggleInput = (inputName) => {
-        setShowInputs(prevState => ({
-            ...prevState,
-            [inputName]: !prevState[inputName],
-        }));
 
+        setShowInputs({ ...showInputs, [inputName]: !showInputs[inputName] });
         setToggleIcon(!toggleIcon);
+        console.log('value to change :', inputName, showInputs)
     };
 
 
@@ -120,15 +119,14 @@ function UserPage() {
                     <>
                         <article>
 
-                            <div className="user-settings__article-avatar">
-                                <div>
-                                    <span>Your avatar :</span>
-                                    <img src={userData[0].avatar} className="avatar" alt='avatar' />
-                                    <Button text='Change your avatar'
-                                        onClick={(e) => {
-                                            setShowAvatar(!showAvatar);
-                                        }} />
-                                </div>
+                            <div className="user-settings__updates-avatar">
+
+                                <span>Your avatar :</span>
+                                <img src={userData[0].avatar} className="avatar" alt='avatar' />
+                                <Button text='Change your avatar'
+                                    onClick={(e) => {
+                                        setShowAvatar(!showAvatar);
+                                    }} />
 
                                 {showAvatar ? (
                                     <div className='avatar-grid'>
@@ -148,31 +146,69 @@ function UserPage() {
                             </div>
 
                             <div className="user-settings__updates">
+                                {/* Updates Email */}
 
-                                <p>
-                                    <span>Email : </span> {userData[0].email}
-                                    <img
-                                        onClick={() => handleToggleInput("email")}
-                                        src={toggleIcon ? closeIcon : penIcon} alt='modify icon' />
-                                </p>
-                                {showInput.email && (
-                                    <>
+                                <div className="user-settings__updates__email">
 
 
-                                        <div className="user-settings__updates__email">
-                                            <Input
-                                                type='email'
-                                                onChange={(e) => setEmailValue(e.target.value)}
-                                                value={emailValue}
-                                            />
+                                    <p>
+                                        <span>Email : </span> {userData[0].email}
+                                        <img
+                                            onClick={() => handleToggleInput("email")}
+                                            src={toggleIcon ? closeIcon : penIcon} alt='modify icon' />
+                                    </p>
+                                    {showInputs.email && (
+                                        <>
 
-                                            <img
-                                                onClick={() => handleUpdateEmail(emailValue)}
-                                                className='icon' src={okIcon} />
 
-                                        </div>
-                                    </>
-                                )}
+                                            <div className="user-settings__updates__email__inputs">
+                                                <Input
+                                                    type='email'
+                                                    onChange={(e) => setEmailValue(e.target.value)}
+                                                    value={emailValue}
+                                                />
+
+                                                <img
+                                                    onClick={() => handleUpdateEmail(emailValue)}
+                                                    className='icon' src={okIcon} />
+
+                                            </div>
+                                        </>
+                                    )}
+
+                                </div>
+
+                                {/* Updates Pseudo */}
+
+                                <div className="user-settings__updates__pseudo">
+
+
+                                    <p>
+                                        <span>pseudo : </span> {userData[0].pseudo}
+                                        <img
+                                            onClick={() => handleToggleInput("pseudo")}
+                                            src={toggleIcon ? closeIcon : penIcon} alt='modify icon' />
+                                    </p>
+                                    {showInputs.pseudo && (
+                                        <>
+
+
+                                            <div className="user-settings__updates__pseudo__inputs">
+                                                <Input
+                                                    type='text'
+                                                    onChange={(e) => setPseudoValue(e.target.value)}
+                                                    value={pseudoValue}
+                                                />
+
+                                                <img
+                                                    onClick={() => handleUpdatePseudo(pseudoValue)}
+                                                    className='icon' src={okIcon} />
+
+                                            </div>
+                                        </>
+                                    )}
+
+                                </div>
                             </div>
                         </article>
 
