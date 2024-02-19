@@ -87,8 +87,10 @@
         
        }
 
-       &__email__inputs,&__pseudo__inputs {
+       &__email__inputs,&__pseudo__inputs, &__password__inputs {
         @include mxn.flex('row', 'nowrap');
+
+   
        }
 
 

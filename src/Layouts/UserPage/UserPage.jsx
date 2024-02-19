@@ -22,6 +22,7 @@ import { AVATAR_IMAGES } from "../../constants/avatar.constants";
 import { updateEmailThunk } from "../../redux/thunk/put.userEmail.thunk";
 import DarkMode from "../../Components/DarkMode/DarkMode";
 import { updatePseudoThunk } from "../../redux/thunk/put.userPseudothunk";
+import { updatePasswordThunk } from "../../redux/thunk/put.userPassword.thunk";
 
 function UserPage() {
 
@@ -49,8 +50,17 @@ function UserPage() {
 
     const [logOutModal, setLogOutModal] = useState(false)
 
-    const [pseudoValue, setPseudoValue] = useState("");
     const [emailValue, setEmailValue] = useState("");
+    const [pseudoValue, setPseudoValue] = useState("");
+    const [passwordValue, setPasswordValue] = useState("");
+
+
+
+    // Update avatar
+    const handleUpdateAvatar = (avatar) => {
+        console.log(avatar)
+        // dispatch(updateAvatarThunk(avatar));
+    }
 
 
 
@@ -58,9 +68,14 @@ function UserPage() {
     const handleUpdateEmail = (email) => {
         dispatch(updateEmailThunk(email));
     }
-
+    // Update Pseudo
     const handleUpdatePseudo = (pseudo) => {
         dispatch(updatePseudoThunk(pseudo));
+    }
+    // Update password
+    const handleUpdatePassword = (password) => {
+        console.log(password)
+        dispatch(updatePasswordThunk(password));
     }
 
     // Deconnexion button => Clear Local Storage
@@ -77,20 +92,19 @@ function UserPage() {
 
     };
 
-    const [toggleIcon, setToggleIcon] = useState(false)
 
     // Modifiy userInfos 
     const [showInputs, setShowInputs] = useState({
         pseudo: false,
         email: false,
         avatar: false,
+        password: false,
     })
 
 
     const handleToggleInput = (inputName) => {
 
         setShowInputs({ ...showInputs, [inputName]: !showInputs[inputName] });
-        setToggleIcon(!toggleIcon);
         console.log('value to change :', inputName, showInputs)
     };
 
@@ -155,7 +169,7 @@ function UserPage() {
                                         <span>Email : </span> {userData[0].email}
                                         <img
                                             onClick={() => handleToggleInput("email")}
-                                            src={toggleIcon ? closeIcon : penIcon} alt='modify icon' />
+                                            src={showInputs.email ? closeIcon : penIcon} alt='modify icon' />
                                     </p>
                                     {showInputs.email && (
                                         <>
@@ -184,10 +198,10 @@ function UserPage() {
 
 
                                     <p>
-                                        <span>pseudo : </span> {userData[0].pseudo}
+                                        <span>Pseudo : </span> {userData[0].pseudo}
                                         <img
                                             onClick={() => handleToggleInput("pseudo")}
-                                            src={toggleIcon ? closeIcon : penIcon} alt='modify icon' />
+                                            src={showInputs.pseudo ? closeIcon : penIcon} alt='modify icon' />
                                     </p>
                                     {showInputs.pseudo && (
                                         <>
@@ -202,6 +216,39 @@ function UserPage() {
 
                                                 <img
                                                     onClick={() => handleUpdatePseudo(pseudoValue)}
+                                                    className='icon' src={okIcon} />
+
+                                            </div>
+                                        </>
+                                    )}
+
+                                </div>
+
+
+                                {/* Updates Password */}
+
+                                <div className="user-settings__updates__password">
+
+
+                                    <p>
+                                        <span>Passsword :  </span> *********
+                                        <img
+                                            onClick={() => handleToggleInput("password")}
+                                            src={showInputs.password ? closeIcon : penIcon} alt='modify icon' />
+                                    </p>
+                                    {showInputs.password && (
+                                        <>
+
+
+                                            <div className="user-settings__updates__password__inputs">
+                                                <Input
+                                                    type='password'
+                                                    onChange={(e) => setPasswordValue(e.target.value)}
+                                                    value={passwordValue}
+                                                />
+
+                                                <img
+                                                    onClick={() => handleUpdatePassword(passwordValue)}
                                                     className='icon' src={okIcon} />
 
                                             </div>
