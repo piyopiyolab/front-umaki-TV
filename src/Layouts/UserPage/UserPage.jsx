@@ -23,6 +23,7 @@ import { updateEmailThunk } from "../../redux/thunk/put.userEmail.thunk";
 import DarkMode from "../../Components/DarkMode/DarkMode";
 import { updatePseudoThunk } from "../../redux/thunk/put.userPseudothunk";
 import { updatePasswordThunk } from "../../redux/thunk/put.userPassword.thunk";
+import { updateAvatarThunk } from "../../redux/thunk/put.userAvatar.thunk";
 
 function UserPage() {
 
@@ -42,8 +43,6 @@ function UserPage() {
     // Avatar 
 
     const [selectedAvatar, setSelectedAvatar] = useState("");
-    const [showAvatar, setShowAvatar] = useState(false);
-
     const handleAvatarClick = (itemName) => {
         setSelectedAvatar(itemName);
     };
@@ -53,13 +52,14 @@ function UserPage() {
     const [emailValue, setEmailValue] = useState("");
     const [pseudoValue, setPseudoValue] = useState("");
     const [passwordValue, setPasswordValue] = useState("");
+    const [avatarValue, setAvatarValue] = useState("");
 
 
 
     // Update avatar
     const handleUpdateAvatar = (avatar) => {
         console.log(avatar)
-        // dispatch(updateAvatarThunk(avatar));
+        dispatch(updateAvatarThunk(avatar));
     }
 
 
@@ -105,7 +105,6 @@ function UserPage() {
     const handleToggleInput = (inputName) => {
 
         setShowInputs({ ...showInputs, [inputName]: !showInputs[inputName] });
-        console.log('value to change :', inputName, showInputs)
     };
 
 
@@ -133,28 +132,36 @@ function UserPage() {
                     <>
                         <article>
 
-                            <div className="user-settings__updates-avatar">
+                            <div className="user-settings__updates__avatar">
 
-                                <span>Your avatar :</span>
-                                <img src={userData[0].avatar} className="avatar" alt='avatar' />
-                                <Button text='Change your avatar'
-                                    onClick={(e) => {
-                                        setShowAvatar(!showAvatar);
-                                    }} />
+                                <div>
+                                    <span>Your avatar :</span>
+                                    <img src={userData[0].avatar} className="avatar" alt='avatar' />
+                                    <div className="user-settings__updates__avatar__controls">
+                                        <Button text='Change your avatar'
+                                            onClick={() => handleToggleInput("avatar")} />
 
-                                {showAvatar ? (
-                                    <div className='avatar-grid'>
-                                        {AVATAR_IMAGES.map((avatar, index) => (
-                                            <img
-                                                key={index}
-                                                src={avatar}
-                                                alt={`Avatar ${index + 1}`}
-                                                className={`avatar-grid-item ${selectedAvatar === avatar ? "selected" : ""}`}
-                                                onClick={() => {
-                                                    handleAvatarClick(avatar)
-                                                }}
-                                            />
-                                        ))}
+                                    </div>
+                                </div>
+
+
+                                {showInputs.avatar ? (
+                                    <div>
+                                        <div className='avatar-grid'>
+                                            {AVATAR_IMAGES.map((avatar, index) => (
+                                                <img
+                                                    key={index}
+                                                    src={avatar}
+                                                    alt={`Avatar ${index + 1}`}
+                                                    className={`avatar-grid-item ${selectedAvatar === avatar ? "selected" : ""}`}
+                                                    onClick={() => {
+                                                        handleAvatarClick(avatar)
+                                                    }}
+                                                />
+                                            ))}
+                                        </div>
+
+
                                     </div>
                                 ) : null}
                             </div>

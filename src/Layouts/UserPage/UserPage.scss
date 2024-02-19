@@ -30,6 +30,7 @@
         .updates-avatar {
             max-width: 30rem;
             margin-top: var(--m-4);
+            margin-bottom: var(--m-4);
 
             &:hover {
                 filter: drop-shadow(20px 5px 10px var(--purple-light));
@@ -71,9 +72,18 @@
         text-align: center;
     }
 
+
      &__updates {
      
+        margin-top: 5rem;
 
+        
+        @include mxn.media-query('400px'){
+            margin-top: 15rem;
+        }
+        @include mxn.media-query{
+            margin-top: 0;
+        }
        input {
         margin-bottom: 0;
        }
@@ -84,16 +94,68 @@
         padding: .5rem;
         border-radius: var(--rounded);
         cursor: pointer;
+
+       
         
        }
 
        &__email__inputs,&__pseudo__inputs, &__password__inputs {
         @include mxn.flex('row', 'nowrap');
-
-   
+       
        }
+// AVATAR DIV
+       &__avatar {
+@include mxn.media-query{
+    @include mxn.flex('row', 'nowrap');
 
+}
+        img { max-width: 20rem;
+        
+        }
+        div:nth-child(2) {
+            .icon {
+                max-width: 3rem;
+                background-color: var(--purple-light);
+                padding: .5rem;
+                border-radius: var(--rounded);
+                cursor: pointer;
+                margin: 3rem auto 0;
 
+                @include mxn.media-query{
+                    margin: 13rem auto 0rem;
+
+                }
+               }
+
+            .avatar-grid {
+                gap:1rem;
+                height: 10rem;
+                display: grid!important;
+    
+                img { 
+                    max-width: 15rem;
+                   
+                }
+
+        
+        }
+        gap:2rem;
+      
+        
+        }
+        &>div {
+            @include mxn.flex('column', 'nowrap');
+
+        }
+
+        &__controls {
+            @include mxn.flex('row', 'nowrap');
+            @include mxn.flex-p('start', 'center');
+            gap: 1rem;
+            margin-right: 2rem;
+          
+        }
+       }
        
      }
     &__account-controls {
