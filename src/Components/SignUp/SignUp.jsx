@@ -22,7 +22,7 @@ function SignUp() {
 
     })
 
-    const { userData, user_id, loggedIn, error } = useSelector(states => states.userSlice);
+    const { userData, loggedIn, error } = useSelector(states => states.userSlice);
 
 
     const navigate = useNavigate();
@@ -58,22 +58,23 @@ function SignUp() {
 
     }
 
-    // Redirecton Home
-    useEffect(() => {
+    // // Redirecton Home
+    // useEffect(() => {
 
-        const token = localStorage.getItem('accessToken');
-        console.log('userData', userData)
-        if (userData.user_id) {
-            navigate(APP_ROUTES.HOME, { replace: true });
+    //     const token = localStorage.getItem('accessToken');
+    //     console.log('userData', userData)
 
-        } else if (token && !userData.user_id) {
-            console.log(' token expired/invalid, please log-in')
-        }
-        else {
-            console.log('no user_id, no token, please sign-up')
-        }
+    //     if (userData.user_id) {
+    //         navigate(APP_ROUTES.HOME, { replace: true });
 
-    }, [userData]);
+    //     } else if (token && !userData.user_id) {
+    //         console.log(' token expired/invalid, please log-in')
+    //     }
+    //     else {
+    //         console.log('no user_id, no token, please sign-up')
+    //     }
+
+    // }, [userData]);
 
 
     //Error

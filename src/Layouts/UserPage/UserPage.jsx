@@ -20,6 +20,7 @@ import { useNavigate } from "react-router-dom";
 import { APP_ROUTES } from "../../constants/routes.constants";
 import { AVATAR_IMAGES } from "../../constants/avatar.constants";
 import { updateEmailThunk } from "../../redux/thunk/put.userEmail.thunk";
+import DarkMode from "../../Components/DarkMode/DarkMode";
 
 function UserPage() {
 
@@ -113,11 +114,7 @@ function UserPage() {
             {/* Content */}
             <section className="user-settings">
                 <h1>Welcome to your profile </h1>
-                {userData && userData.length > 0 && (
-                    userData.map((i) => (
-                        <p key={1}>{i.email}</p>
-                    ))
-                )}
+                <DarkMode />
 
                 {userData && Object.keys(userData).length > 0 && (
                     <>

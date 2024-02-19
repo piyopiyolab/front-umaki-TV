@@ -10,7 +10,6 @@ const request = async (url, config) => {
         data = await response.json();
         status = response.status;
 
-        console.log(response)
         if (status >= 400) {
             throw new Error(data.message);
         }
@@ -63,7 +62,8 @@ const putRequest = async (url, body = {}, token) => {
     }
 
     if (token) config.headers.Authorization = token;
-    console.log(config)
+    console.log(url, config)
+
     return await request(url, config)
 }
 

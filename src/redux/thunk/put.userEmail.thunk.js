@@ -10,7 +10,7 @@ export const updateEmailThunk = (email) => async (dispatch, getState) => {
     console.log('email :', email)
     console.log('token :', token)
 
-    const response = await putRequest(`${APP_ROUTES.API_URL}/dashboard/update-email`, email, token);
+    const response = await putRequest(`${APP_ROUTES.API_URL}/dashboard/update-email`, { email }, token);
 
     // dispatch(setUserData(data.user));
 

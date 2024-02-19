@@ -1,2 +1,23 @@
 @use '../../styles/mixins' as mxn;
 
+#darkmode {
+    width: 15rem;
+    margin: 0 auto;
+    border:none;
+    padding:10px;
+    border-radius:5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--purple-dark);
+    color:#f1f1f1;
+    cursor:pointer;
+
+    img { max-width: 5rem;}
+}
+
+/* light mode */
+body.light .toggle-theme-btn {
+    background-color: var(--purple-light);
+    color: var(--white);
+}
