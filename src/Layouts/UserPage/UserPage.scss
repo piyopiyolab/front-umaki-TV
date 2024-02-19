@@ -22,7 +22,7 @@
 
     article {
         @include mxn.flex('column', 'wrap');
-        @include mxn.flex-p('center', 'space-between');
+        @include mxn.flex-p('center', 'start');
         padding: var(--p-2);
       
 

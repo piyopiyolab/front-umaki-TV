@@ -13,8 +13,12 @@ import UserPage from '../../Layouts/UserPage/UserPage';
 import { useEffect } from 'react';
 import { getUserInfos } from '../../redux/thunk/get.UserInfo.thunk';
 import { useDispatch } from 'react-redux';
+import ThemeProvider from '../../context/ThemeProvider'; // darkmode
+
 
 function App() {
+
+
 
     const dispatch = useDispatch();
 
@@ -26,103 +30,107 @@ function App() {
         if (token) {
             dispatch(getUserInfos())
         }
+
     }, [])
 
 
+
     return (
-        <div className="app">
-            <div className="container">
-                <BrowserRouter>
-                    <Routes>
-                        <Route
-                            path={APP_ROUTES.LOG_IN}
-                            element={
-                                <>
+        <ThemeProvider>
+            <div className="app">
+                <div className="container">
+                    <BrowserRouter>
+                        <Routes>
+                            <Route
+                                path={APP_ROUTES.LOG_IN}
+                                element={
+                                    <>
 
-                                    <LogInPage />
-                                </>
-                            }
-                        />
-                        <Route
-                            path={APP_ROUTES.SIGN_UP}
-                            element={
-                                <>
-                                    <SignUpPage />
-                                </>
-                            }
-                        />
-                        <Route
-                            path={APP_ROUTES.HOME}
-                            element={
-                                <>
-                                    <HomePage />
-                                </>
-                            }
-                        />
-                        <Route
-                            path={APP_ROUTES.FAVORITE}
-                            element={
-                                <>
-                                    <FavoritePage />
-                                </>
-                            }
-                        />
-                        <Route
-                            path={`${APP_ROUTES.USER}`}
-                            element={
-                                <>
-                                    <UserPage />
-                                </>
-                            }
-                        />
-                        <Route
-                            path={`${APP_ROUTES.ANIME_DETAILS}/:animeID`}
-                            element={
-                                <>
-                                    <AnimeDetails />
-                                </>
-                            }
-                        />
-                        <Route
-                            path={`${APP_ROUTES.SEARCH}/:query`}
-                            element={
-                                <>
-                                    <SearchPage />
-                                </>
-                            }
-                        />
-                        <Route
-                            path={APP_ROUTES.GENRE}
-                            element={
-                                <>
-                                    <GenrePage />
-                                </>
-                            }
-                        />
-                        <Route
-                            path={`${APP_ROUTES.GENRE}/:genre`}
-                            element={
-                                <>
-                                    <GenrePage />
-                                </>
-                            }
-                        />
+                                        <LogInPage />
+                                    </>
+                                }
+                            />
+                            <Route
+                                path={APP_ROUTES.SIGN_UP}
+                                element={
+                                    <>
+                                        <SignUpPage />
+                                    </>
+                                }
+                            />
+                            <Route
+                                path={APP_ROUTES.HOME}
+                                element={
+                                    <>
+                                        <HomePage />
+                                    </>
+                                }
+                            />
+                            <Route
+                                path={APP_ROUTES.FAVORITE}
+                                element={
+                                    <>
+                                        <FavoritePage />
+                                    </>
+                                }
+                            />
+                            <Route
+                                path={`${APP_ROUTES.USER}`}
+                                element={
+                                    <>
+                                        <UserPage />
+                                    </>
+                                }
+                            />
+                            <Route
+                                path={`${APP_ROUTES.ANIME_DETAILS}/:animeID`}
+                                element={
+                                    <>
+                                        <AnimeDetails />
+                                    </>
+                                }
+                            />
+                            <Route
+                                path={`${APP_ROUTES.SEARCH}/:query`}
+                                element={
+                                    <>
+                                        <SearchPage />
+                                    </>
+                                }
+                            />
+                            <Route
+                                path={APP_ROUTES.GENRE}
+                                element={
+                                    <>
+                                        <GenrePage />
+                                    </>
+                                }
+                            />
+                            <Route
+                                path={`${APP_ROUTES.GENRE}/:genre`}
+                                element={
+                                    <>
+                                        <GenrePage />
+                                    </>
+                                }
+                            />
 
 
-                        {/* Error page  */}
-                        <Route
-                            path={"*"}
-                            element={
+                            {/* Error page  */}
+                            <Route
+                                path={"*"}
+                                element={
 
-                                <ErrorPage />
+                                    <ErrorPage />
 
-                            }
-                        />
-                    </Routes>
-                </BrowserRouter>
+                                }
+                            />
+                        </Routes>
+                    </BrowserRouter>
 
+                </div>
             </div>
-        </div>
+        </ThemeProvider>
     );
 }
 

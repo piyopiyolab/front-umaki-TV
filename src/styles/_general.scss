@@ -41,10 +41,18 @@ a {
 
 
 // Light/dark mode
-.light-mode {
+.lightmode {
+  background: white;
+  color: black;
+ 
+  p {
+    color:black;
+  }
 
-  background-color: white;
-  color: var(--purple-light);
+  footer {
+    background: var(--purple-dark);
+    p { color:white;}
+  }
 
 }
 
