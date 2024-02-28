@@ -10,6 +10,7 @@ import close from '../../assets/icons/close.svg'
 
 import { APP_ROUTES } from "../../constants/routes.constants"
 import SearchBar from "../SearchBar/SearchBar"
+import { NavLink } from "react-router-dom"
 
 const Header = () => {
 
@@ -59,28 +60,28 @@ const Header = () => {
                             )}
                         <ul className={`header__nav__menu ${showMenu ? 'block' : 'hidden'}`}>
                             <li>
-                                <a href={APP_ROUTES.HOME}>
+                                <NavLink to={APP_ROUTES.HOME} end>
                                     <img src={homeIcon} className="icon" alt="icon home" />
-                                    <span className="active">Home</span>
-                                </a>
+                                    <span>Home</span>
+                                </NavLink>
                             </li>
                             <li>
-                                <a href={APP_ROUTES.FAVORITE}>
+                                <NavLink to={APP_ROUTES.FAVORITE} end>
                                     <img src={heartIcon} className="icon" alt="favorite icon" />
                                     <span>Favorite</span>
-                                </a>
+                                </NavLink>
                             </li>
                             <li>
-                                <a href={APP_ROUTES.GENRE}>
+                                <NavLink to={APP_ROUTES.GENRE} end>
                                     <img src={genreIcon} className="icon" alt="Genre icon" />
                                     <span>Genre</span>
-                                </a>
+                                </NavLink>
                             </li>
                             <li>
-                                <a href={APP_ROUTES.LATEST}>
+                                <NavLink to={APP_ROUTES.LATEST} end>
                                     <img src={flammeIcon} className="icon" alt="latest icon" />
-
-                                    <span>Latest</span></a>
+                                    <span>Latest</span>
+                                </NavLink>
                             </li>
                         </ul>
                     </div>
@@ -97,30 +98,28 @@ const Header = () => {
                     />
                     <ul className="header__nav__menu">
                         <li>
-                            <a href={APP_ROUTES.HOME}>
+                            <NavLink to={APP_ROUTES.HOME} end>
                                 <img src={homeIcon} className="icon" alt="icon home" />
-                                <span className="active">Home</span>
-                            </a>
+                                <span>Home</span>
+                            </NavLink>
                         </li>
                         <li>
-                            <a href={APP_ROUTES.FAVORITE}>
+                            <NavLink to={APP_ROUTES.FAVORITE} end>
                                 <img src={heartIcon} className="icon" alt="favorite icon" />
                                 <span>Favorite</span>
-                            </a>
+                            </NavLink>
                         </li>
                         <li>
-                            <a href={APP_ROUTES.GENRE}>
-
+                            <NavLink to={APP_ROUTES.GENRE} end>
                                 <img src={genreIcon} className="icon" alt="Genre icon" />
                                 <span>Genre</span>
-                            </a>
+                            </NavLink>
                         </li>
                         <li>
-                            <a href={APP_ROUTES.LATEST}>
-
+                            <NavLink to={APP_ROUTES.LATEST} end>
                                 <img src={flammeIcon} className="icon" alt="latest icon" />
-
-                                <span>Latest</span></a>
+                                <span>Latest</span>
+                            </NavLink>
                         </li>
                     </ul>
                 </nav>
