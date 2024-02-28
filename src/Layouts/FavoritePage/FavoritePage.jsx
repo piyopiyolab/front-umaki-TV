@@ -47,6 +47,8 @@ function FavoritePage() {
         return <img src={spinner} alt="Loading..." className="loader" />;
     }
 
+    const token = localStorage.getItem('accessToken');
+
     //Redirect if error
     const handleRedirectToSignup = () => {
         navigate(APP_ROUTES.SIGN_UP, { replace: true });
@@ -86,6 +88,8 @@ function FavoritePage() {
         setSelectedList(filter);
     };
 
+
+
     return (
         <>
 
@@ -103,11 +107,13 @@ function FavoritePage() {
                 <div className="your-collection__headings">
                     <h1>Your collection</h1>
                     <h2>Check out your favorite animes</h2>
-                    <p
-                        onClick={handleClickSettings}
-                    >
-                        Update your settings</p>
+                    {token && (
+                        <p
+                            onClick={handleClickSettings}
+                        >
+                            Update your settings</p>
 
+                    )}
 
                 </div>
 

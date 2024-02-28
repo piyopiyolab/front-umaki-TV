@@ -61,20 +61,12 @@ function SignUp() {
     // Redirecton Home
     useEffect(() => {
 
-        const token = localStorage.getItem('accessToken');
-        console.log('userData', userData)
 
-        if (token) {
-            if (userData.user_id) {
-                navigate(APP_ROUTES.HOME, { replace: true });
+        if (userData.user_id) {
+            navigate(APP_ROUTES.HOME, { replace: true });
 
-            } else if (token && !userData.user_id) {
-                console.log(' token expired/invalid, please log-in')
-            }
-            else {
-                console.log('no user_id, no token, please sign-up')
-            }
         }
+
 
     }, [userData]);
 
