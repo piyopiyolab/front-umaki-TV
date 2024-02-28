@@ -76,10 +76,27 @@ gap: 1rem;
             margin-bottom: var(--m-6);
 
             &:hover {
-                @include mxn.transition(color);
-                color:var(--purple-light);               
-               }
+              @include mxn.transition(color);
+              color:var(--purple-light);               
+             }
 
+            &::after {
+              content: '';
+              width: 0;
+              height: 2px;
+              display: block;
+              background:  var(--purple-light) ;
+              transition: 200ms;
+            }
+
+            &:hover::after {
+              width: 100%;    
+                    }
+
+           
+           &.active::after {
+            width: 100%;
+           }
               
           }
         }

@@ -124,14 +124,18 @@ function FavoritePage() {
                     <div className="your-collection__lists">
                         <div className="your-collection__lists__filters">
                             <p
+                                className={selectedList === 'on_going' ? 'active' : ''}
+
                                 onClick={() => handleFilterChange('on_going')}>
                                 Continue
                             </p>
                             <p
+                                className={selectedList === 'to_see' ? 'active' : ''}
                                 onClick={() => handleFilterChange('to_see')}>
                                 To see
                             </p>
                             <p
+                                className={selectedList === 'watched' ? 'active' : ''}
                                 onClick={() => handleFilterChange('watched')}>
                                 Watched
                             </p>
