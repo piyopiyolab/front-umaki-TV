@@ -14,6 +14,7 @@ import { useEffect } from 'react';
 import { getUserInfos } from '../../redux/thunk/get.UserInfo.thunk';
 import { useDispatch } from 'react-redux';
 import ThemeProvider from '../../context/ThemeProvider'; // darkmode
+import LatestPage from '../../Layouts/LatestPage/LatestPage';
 
 
 function App() {
@@ -112,6 +113,14 @@ function App() {
                                 element={
                                     <>
                                         <GenrePage />
+                                    </>
+                                }
+                            />
+                            <Route
+                                path={`${APP_ROUTES.LATEST}`}
+                                element={
+                                    <>
+                                        <LatestPage />
                                     </>
                                 }
                             />
