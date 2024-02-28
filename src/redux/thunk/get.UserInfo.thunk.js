@@ -11,7 +11,6 @@ export const getUserInfos = () => async (dispatch, getState) => {
     dispatch(addLoading());
 
     try {
-        // J'ai ajouté API_URL à la main ici tu verras comme tu pref
         const response = await getRequest(`${APP_ROUTES.API_URL}${APP_ROUTES.USER}`, token);
 
         const data = response.data
@@ -38,7 +37,7 @@ export const getUserInfos = () => async (dispatch, getState) => {
         dispatch(removeLoading())
     } catch (error) {
         console.error("Failed to fetch user's infos:", error);
-
+        token = localStorage.removeItem('accessToken')
         dispatch(removeLoading());
         dispatch(addError());
     }

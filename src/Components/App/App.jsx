@@ -29,6 +29,7 @@ function App() {
 
         if (token) {
             dispatch(getUserInfos())
+
         }
 
     }, [])
