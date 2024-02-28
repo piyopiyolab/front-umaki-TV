@@ -33,6 +33,7 @@ function FavoritePage() {
     //API request
     useEffect(() => {
         dispatch(getUserList());
+        console.log(data)
 
     }, [userData])
 
@@ -145,10 +146,9 @@ function FavoritePage() {
 
 
                             {/* On going userList*/}
-
                             {selectedList === 'on_going' && (
                                 <>
-                                    {data.to_see?.length > 0 && (
+                                    {data.on_going?.length > 0 ? (
                                         data.to_see.map((anime, index) => (
                                             <article className="your-collection__lists__card" key={index}>
                                                 <img loading="lazy" src={anime.media} alt={anime.title} />
@@ -162,16 +162,28 @@ function FavoritePage() {
                                                 </div>
                                             </article>
                                         ))
+                                    ) : (
+                                        <>
+                                            <ErrorContent type='addAnime' />
+                                            <div className="your-collection__lists__errorBtn">
+                                                <Button text='Add an anime'
+                                                    onClick={handleRedirectHomepage} />
+
+                                            </div>
+                                        </>
                                     )}
                                 </>
                             )}
+
+
+
 
 
                             {/* to_see userList */}
 
                             {selectedList === 'to_see' && (
                                 <>
-                                    {data.to_see?.length > 0 && (
+                                    {data.to_see?.length > 0 ? (
                                         data.to_see.map((anime, index) => (
                                             <article className="your-collection__lists__card" key={index}>
                                                 <img loading="lazy" src={anime.media} alt={anime.title} />
@@ -185,6 +197,15 @@ function FavoritePage() {
                                                 </div>
                                             </article>
                                         ))
+                                    ) : (
+                                        <>
+                                            <ErrorContent type='addAnime' />
+                                            <div className="your-collection__lists__errorBtn">
+                                                <Button text='Add an anime'
+                                                    onClick={handleRedirectHomepage} />
+
+                                            </div>
+                                        </>
                                     )}
                                 </>
                             )}
@@ -195,7 +216,7 @@ function FavoritePage() {
 
                             {selectedList === 'watched' && (
                                 <>
-                                    {data.watched?.length > 0 && (
+                                    {data.watched?.length > 0 ? (
                                         data.watched.map((anime, index) => (
                                             <article className="your-collection__lists__card" key={index}>
                                                 <img loading="lazy" src={anime.media} alt={anime.title} />
@@ -209,6 +230,15 @@ function FavoritePage() {
                                                 </div>
                                             </article>
                                         ))
+                                    ) : (
+                                        <>
+                                            <ErrorContent type='addAnime' />
+                                            <div className="your-collection__lists__errorBtn">
+                                                <Button text='Add an anime'
+                                                    onClick={handleRedirectHomepage} />
+
+                                            </div>
+                                        </>
                                     )}
                                 </>
                             )}

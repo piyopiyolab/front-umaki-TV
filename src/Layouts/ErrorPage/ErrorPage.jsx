@@ -16,6 +16,10 @@ function ErrorPage() {
 
         navigate(APP_ROUTES.HOME, { replace: true });
     }
+    const handleRedirectFavorite = () => {
+
+        navigate(APP_ROUTES.FAVORITE, { replace: true });
+    }
 
 
     return (
@@ -33,11 +37,15 @@ function ErrorPage() {
 
             {/* Content */}
             <div className='errorPageBody'>
+                <h1>You seem lost...</h1>
 
-
-                <ErrorContent type='error' />
-                <Button text='Home'
-                    onClick={handleRedirectHome} />
+                <ErrorContent type='404' />
+                <div className='errorPageBody__controls'>
+                    <Button text='Home'
+                        onClick={handleRedirectHome} />
+                    <Button text='Favorite'
+                        onClick={handleRedirectFavorite} />
+                </div>
             </div>
             <Footer />
 

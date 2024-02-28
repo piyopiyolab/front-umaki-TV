@@ -45,7 +45,6 @@ export const getUserList = () => async (dispatch, getState) => {
 
 
         dispatch(setAnimeData(groupedByState))
-        console.log(groupedByState)
 
 
     } catch (error) {

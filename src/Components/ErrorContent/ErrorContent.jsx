@@ -1,7 +1,5 @@
 import './ErrorContent.scss';
 import chibi from "/images/chocked-umaki-anime.png"
-import Header from '../Header/Header';
-import Footer from '../Footer/Footer';
 import sadChibi from "/images/nolist-sad-anime.png"
 
 //type "add adnime, 404, 500
@@ -71,6 +69,20 @@ function ErrorContent({ type }) {
                     <div className='errorContentBody'>
                         <p className='text-center'>Your passwords must be the same </p>
                         <img src={sadChibi} alt='chibi error umaki.tv' />
+                    </div>
+
+                </>
+
+
+            )
+            break;
+
+        case '404':
+            content = (
+                <>
+                    <div className='errorContentBody'>
+                        <p className='text-center'>The page that you're looking for doesn't exist </p>
+                        <img src={chibi} alt='chibi error umaki.tv' />
                     </div>
 
                 </>

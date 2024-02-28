@@ -6,6 +6,12 @@
     @include mxn.flex('column', 'nowrap');
     @include mxn.flex-p('space-between', 'center');
 
+
+    &__controls {
+        @include mxn.flex('row', 'nowrap');
+        gap:2rem;
+    }
+
     button {
         max-width: var(--w-s);
     }
