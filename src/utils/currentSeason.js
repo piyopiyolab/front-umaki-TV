@@ -19,6 +19,5 @@ export const dateForCurrentSeason = () => {
         season = "Fall";
     }
 
-    // return `${season} ${currentYear}`;
     return { currentYear, season }
 }

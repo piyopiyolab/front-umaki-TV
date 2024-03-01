@@ -5,13 +5,20 @@ import { HelmetProvider, Helmet } from "react-helmet-async"
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect } from 'react'
 import { animeSeasonThunk } from '../../redux/thunk/get.animeSeason.thunk'
+import spinner from '../../assets/spinner.svg'
+import ErrorContent from '../../Components/ErrorContent/ErrorContent'
+import Button from '../../Components/Button/Button'
 
 function LatestPage() {
 
     const dispatch = useDispatch();
     const { data, loading, error } = useSelector((state) => state.animeSlice);
 
-    useEffect(() => { dispatch(animeSeasonThunk()) }, [data])
+    useEffect(() => {
+        dispatch(animeSeasonThunk())
+        console.log(data)
+    }, [data])
+
     return (
         <>
             <HelmetProvider>
@@ -23,7 +30,19 @@ function LatestPage() {
 
 
             <Header />
+            <section className="latest-animes">
+                <h1>The latest Anime for the XXX</h1>
 
+                {data.animeDetail?.length > 0 && (
+
+
+                    data.animeDetail.map((d) => {
+                        <article key={d.mal_id}>{d.title}</article>
+                    })
+                )}
+
+
+            </section>
 
             <Footer />
         </>

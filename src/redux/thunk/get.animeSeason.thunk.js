@@ -14,35 +14,35 @@ export const animeSeasonThunk = () => async (dispatch, getState) => {
     const data = response.data
 
 
+    const pagination = data.pagination
+
     const animeDetail = data.data.map(data => ({
+        mal_id: data.mal_id,
         title: data.title,
         title_jap: data.title_japanese,
         image: data.images.webp.large_image_url,
         status: data.status,
         rating: data.rating,
-
         synopsis: data.synopsis,
-
         synonym: data.synonyms,
         duration: data.duration,
         source: data.source,
         episodes: data.episodes,
     }));
 
-    console.log(animeDetail)
-
-
-    if (response.error) {
-        console.error("Error favorite user's List:", error);
-        dispatch(addError());
+    const formatedData = {
+        animeDetail,
+        pagination,
     }
 
+    if (response.error) {
+        console.error("Error in fetching anime from the current season:", error);
+        dispatch(addError());
+    }
 
     // Remove Loading  
     dispatch(removeLoading())
 
-    // dispatch(setAnimeData(data))
-
-    dispatch(setAnimeData())
+    dispatch(setAnimeData(formatedData))
 
 }
