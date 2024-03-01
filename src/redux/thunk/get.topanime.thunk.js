@@ -12,7 +12,7 @@ export const topanimeThunk = (page = 1) => async (dispatch, getState) => {
 
 
     if (response.error) {
-        console.error("Error favorite user's List:", error);
+        console.error("Error in fetch url", error);
         dispatch(addError());
     }
 
