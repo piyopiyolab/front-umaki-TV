@@ -8,16 +8,34 @@ import { animeSeasonThunk } from '../../redux/thunk/get.animeSeason.thunk'
 import spinner from '../../assets/spinner.svg'
 import ErrorContent from '../../Components/ErrorContent/ErrorContent'
 import Button from '../../Components/Button/Button'
+import arrowIcon from "../../assets/icons/arrowr-icon.svg"
+import episodesIcon from "../../assets/icons/episodes-icon.svg"
+import heartIcon from "../../assets/icons/heart-icon.svg"
+import { useNavigate } from "react-router-dom"
+import { APP_ROUTES } from '../../constants/routes.constants'
+import { dateForCurrentSeason } from "../../utils/currentSeason";
 
 function LatestPage() {
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const { data, loading, error } = useSelector((state) => state.animeSlice);
 
     useEffect(() => {
         dispatch(animeSeasonThunk())
-        console.log(data)
+
     }, [data])
+
+    // if (loading) return <img src={spinner} alt="Loading..." className="loader" />;
+
+
+
+    // Redirection Read More
+    const handleReadMoreClick = (animeID) => {
+
+        navigate(`${APP_ROUTES.ANIME_DETAILS}/${animeID}`);
+
+    }
 
     return (
         <>
@@ -30,18 +48,61 @@ function LatestPage() {
 
 
             <Header />
+
+
+            <h1>The latest Anime for {data.dateString}</h1>
             <section className="latest-animes">
-                <h1>The latest Anime for the XXX</h1>
-
                 {data.animeDetail?.length > 0 && (
+                    data.animeDetail.map((d) => (
+                        <article key={d.mal_id}>
+
+                            <div className="wrapper__card__animeImg">
+                                <img loading="lazy" src={d.image} alt={`${d.title} image`} />
+                            </div>
+                            <div className='wrapper__card__animeInfo'>
+                                <h1>{d.title}</h1>
+                                <div className="wrapper__card__animeInfo__tags">
+                                    {/* 
+                                     GENRE INFOS ADD INFOS
+                                    {d.genres.map((genre) => (
+                                            <span
+                                                onClick={() => handleGenreClick(genre.name)}
+                                                key={genre.mal_id}>{genre.name}</span>
+                                        ))} */}
+                                </div>
+                                <div className="wrapper__card__animeInfo__stats">
+                                    <div>
+                                        <img src={heartIcon} alt="episodes icon" />
+                                        {/* <p>{formatNumber(d.favorites)}</p> */}
+                                        <p>12K</p>
+
+                                    </div>
+                                    <div>
+                                        <img src={episodesIcon} alt="episodes icon" />
+                                        <p>{`${d.episodes} episodes`}</p>
+                                    </div>
+                                </div>
+                                <a
+                                    onClick={() => handleReadMoreClick(d.mal_id)}
+                                    className="wrapper__card__btn">
+                                    Read More <img src={arrowIcon} alt="read more btn" />
+                                </a>
 
 
-                    data.animeDetail.map((d) => {
-                        <article key={d.mal_id}>{d.title}</article>
-                    })
+
+                            </div>
+
+
+
+
+
+
+
+
+
+                        </article>
+                    ))
                 )}
-
-
             </section>
 
             <Footer />

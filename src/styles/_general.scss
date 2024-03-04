@@ -110,6 +110,10 @@ p {
 h1 {
   font-size: var(--text-xl);
   padding-bottom: var(--p-3);
+  text-align: center;
+}
+article h1 {
+  text-align: left;
 }
 
 .button,

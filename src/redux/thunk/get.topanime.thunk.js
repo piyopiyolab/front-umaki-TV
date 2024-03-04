@@ -9,9 +9,9 @@ export const topanimeThunk = (page = 1) => async (dispatch, getState) => {
 
     const response = await getRequest(`https://api.jikan.moe/v4/top/anime?page=${page}`)
     const data = response.data
+    const responseError = response.error
 
-
-    if (response.error) {
+    if (responseError) {
         console.error("Error in fetch url", error);
         dispatch(addError());
     }
@@ -29,7 +29,7 @@ export const topanimeThunk = (page = 1) => async (dispatch, getState) => {
     // Remove Loading  
     dispatch(removeLoading())
 
-    // dispatch(setAnimeData(data))
+    console.log(formatedData)
     dispatch(setAnimeData(formatedData))
 
 };

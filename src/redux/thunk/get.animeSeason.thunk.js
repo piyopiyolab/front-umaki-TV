@@ -5,6 +5,8 @@ import { dateForCurrentSeason } from "../../utils/currentSeason";
 export const animeSeasonThunk = () => async (dispatch, getState) => {
 
     const dateFromNow = dateForCurrentSeason();
+    const { currentYear, season } = dateFromNow;
+    const dateString = `${season} ${currentYear}`;
 
     //Loading => Await response 
     dispatch(addLoading());
@@ -33,6 +35,7 @@ export const animeSeasonThunk = () => async (dispatch, getState) => {
     const formatedData = {
         animeDetail,
         pagination,
+        dateString
     }
 
     if (response.error) {
@@ -40,9 +43,8 @@ export const animeSeasonThunk = () => async (dispatch, getState) => {
         dispatch(addError());
     }
 
+    console.log(formatedData)
+    dispatch(setAnimeData(formatedData))
     // Remove Loading  
     dispatch(removeLoading())
-
-    dispatch(setAnimeData(formatedData))
-
 }

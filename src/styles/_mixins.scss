@@ -118,6 +118,10 @@ line-height: 4.2rem;
 
 @mixin card($width: var(--w-s)) {
 
+
+  a {
+    cursor: pointer;
+}
   width: $width;
   @content;
   background:rgba(60, 16, 83, 0.2);

@@ -1,1 +1,16 @@
 @use "../../styles/mixins" as mxn;
+
+
+.latest-animes {
+    @include mxn.flex('row', 'wrap');
+    @include mxn.flex-p('center', 'center');
+    gap: var(--gap-3);
+  
+    
+    article {
+        @include mxn.card;
+     
+
+     
+    }
+}
