@@ -61,10 +61,14 @@ function SignUp() {
     // Redirecton Home
     useEffect(() => {
 
+        console.log(userData)
 
-        if (userData.user_id) {
-            navigate(APP_ROUTES.HOME, { replace: true });
+        if (userData) {
+            if (userData.user_id) {
 
+                navigate(APP_ROUTES.HOME, { replace: true });
+
+            }
         }
 
 

@@ -25,6 +25,7 @@ export const animeSeasonThunk = () => async (dispatch, getState) => {
 
     const pagination = data.pagination
 
+
     const animeDetail = data.data.map(data => ({
         mal_id: data.mal_id,
         title: data.title,
@@ -36,7 +37,8 @@ export const animeSeasonThunk = () => async (dispatch, getState) => {
         synonym: data.synonyms,
         duration: data.duration,
         source: data.source,
-        episodes: data.episodes,
+        episodes: data.episodes != null ? data.episodes : 'unknown',
+        genres: data.genres ? data.genres.map(g => ({ name: g.name })) : [{ name: 'Unknown' }]
     }));
 
     const formatedData = {
@@ -49,6 +51,8 @@ export const animeSeasonThunk = () => async (dispatch, getState) => {
     // Remove Loading  
     dispatch(removeLoading())
 
+
+    console.log(formatedData.animeDetail[0])
     dispatch(setAnimeData(formatedData))
 
 }
