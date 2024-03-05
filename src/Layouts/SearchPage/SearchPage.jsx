@@ -51,22 +51,11 @@ function SearchPage() {
         navigate(`${APP_ROUTES.GENRE}/${genre}`);
     }
 
+    // Redirection Home
+    const handleHomeRedirect = () => {
+        navigate(`${APP_ROUTES.HOME}`);
 
-
-    // Load more Animes
-    const handleLoadMore = (e) => {
-
-        e.preventDefault();
-
-        if (data.pagination && data.pagination.has_next_page) {
-            const nextPage = data.pagination.current_page + 1;
-            console.log(nextPage);
-            // Dispatchez une action pour charger la prochaine page d'animes
-            dispatch(topanimeThunk(nextPage));
-        }
     }
-
-
 
     if (loading) {
         return <img src={spinner} alt="Loading..." className="loader" />;
@@ -141,14 +130,8 @@ function SearchPage() {
                             <div className="wrapper__errorBtn">
                                 <ErrorContent type='error' />
                                 <Button
-                                    onClick={() => {
-                                        setIsButtonEnabled(false);
-                                        dispatch(topanimeThunk())
-                                        setIsButtonEnabled(false);
+                                    onClick={() => { handleHomeRedirect() }}
 
-
-                                    }}
-                                    disabled={!isButtonEnabled}
                                     text="Please, try again" />
                             </div>
                         </>
