@@ -2,9 +2,19 @@
 
 
 .latest-animes {
-    @include mxn.flex('row', 'wrap');
-    @include mxn.flex-p('center', 'center');
-    gap: var(--gap-3);
+
+  &>h1 {
+
+        margin: var(--m-4) ;
+   
+  }
+    &__wrapper {
+
+        @include mxn.flex('row', 'wrap');
+        @include mxn.flex-p('center', 'center');
+        gap: var(--gap-3);
+    }
+
   
     
     article {
@@ -12,5 +22,9 @@
      
 
      
+    }
+
+    button {
+        margin:  var(--m-5)  auto 0;
     }
 }

@@ -79,8 +79,6 @@ function HomePage() {
 
         if (data.pagination && data.pagination.has_next_page) {
             const nextPage = data.pagination.current_page + 1;
-            console.log(nextPage);
-            // Dispatchez une action pour charger la prochaine page d'animes
             dispatch(topanimeThunk(nextPage));
         }
     }

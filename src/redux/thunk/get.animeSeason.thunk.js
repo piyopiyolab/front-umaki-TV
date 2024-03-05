@@ -1,8 +1,8 @@
 import { getRequest } from "../../API/api";
 import { setAnimeData, addLoading, removeLoading, addError } from "../reducers/animeSlice.reducer";
 import { dateForCurrentSeason } from "../../utils/currentSeason";
-
-export const animeSeasonThunk = () => async (dispatch, getState) => {
+import { formatNumber } from "../../utils/formatNumber";
+export const animeSeasonThunk = (page = 1) => async (dispatch, getState) => {
 
     const dateFromNow = dateForCurrentSeason();
     const { currentYear, season } = dateFromNow;
@@ -11,7 +11,7 @@ export const animeSeasonThunk = () => async (dispatch, getState) => {
     //Loading => Await response 
     dispatch(addLoading());
 
-    const response = await getRequest(`https://api.jikan.moe/v4/seasons/${dateFromNow.currentYear}/${dateFromNow.season}`)
+    const response = await getRequest(`https://api.jikan.moe/v4/seasons/${dateFromNow.currentYear}/${dateFromNow.season}?page=${page}`)
 
     const data = response.data;
     const responseError = response.error;
@@ -38,6 +38,7 @@ export const animeSeasonThunk = () => async (dispatch, getState) => {
         duration: data.duration,
         source: data.source,
         episodes: data.episodes != null ? data.episodes : 'unknown',
+        favorites: formatNumber(data.favorites),
         genres: data.genres ? data.genres.map(g => ({ name: g.name })) : [{ name: 'Unknown' }]
     }));
 
@@ -51,8 +52,6 @@ export const animeSeasonThunk = () => async (dispatch, getState) => {
     // Remove Loading  
     dispatch(removeLoading())
 
-
-    console.log(formatedData.animeDetail[0])
     dispatch(setAnimeData(formatedData))
 
 }
