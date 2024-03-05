@@ -1,5 +1,5 @@
 import { getRequest } from "../../API/api";
-import { setAnimeData, addLoading, removeLoading } from "../reducers/animeSlice.reducer";
+import { setAnimeData, addLoading, removeLoading, addError } from "../reducers/animeSlice.reducer";
 import { dateForCurrentSeason } from "../../utils/currentSeason";
 
 export const animeSeasonThunk = () => async (dispatch, getState) => {
@@ -13,8 +13,15 @@ export const animeSeasonThunk = () => async (dispatch, getState) => {
 
     const response = await getRequest(`https://api.jikan.moe/v4/seasons/${dateFromNow.currentYear}/${dateFromNow.season}`)
 
-    const data = response.data
+    const data = response.data;
+    const responseError = response.error;
 
+    if (responseError) {
+        console.error("Error in fetch", responseError);
+        dispatch(removeLoading());
+        dispatch(addError());
+
+    }
 
     const pagination = data.pagination
 
@@ -38,13 +45,10 @@ export const animeSeasonThunk = () => async (dispatch, getState) => {
         dateString
     }
 
-    if (response.error) {
-        console.error("Error in fetching anime from the current season:", error);
-        dispatch(addError());
-    }
 
-    console.log(formatedData)
-    dispatch(setAnimeData(formatedData))
     // Remove Loading  
     dispatch(removeLoading())
+
+    dispatch(setAnimeData(formatedData))
+
 }

@@ -12,7 +12,7 @@ export const topanimeThunk = (page = 1) => async (dispatch, getState) => {
     const responseError = response.error
 
     if (responseError) {
-        console.error("Error in fetch url", error);
+        console.error("Error in fetch", responseError);
         dispatch(addError());
     }
 
@@ -29,7 +29,6 @@ export const topanimeThunk = (page = 1) => async (dispatch, getState) => {
     // Remove Loading  
     dispatch(removeLoading())
 
-    console.log(formatedData)
     dispatch(setAnimeData(formatedData))
 
 };

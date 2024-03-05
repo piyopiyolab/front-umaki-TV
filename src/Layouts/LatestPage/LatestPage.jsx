@@ -23,10 +23,7 @@ function LatestPage() {
 
     useEffect(() => {
         dispatch(animeSeasonThunk())
-
-    }, [data])
-
-    // if (loading) return <img src={spinner} alt="Loading..." className="loader" />;
+    }, [])
 
 
 
@@ -36,6 +33,7 @@ function LatestPage() {
         navigate(`${APP_ROUTES.ANIME_DETAILS}/${animeID}`);
 
     }
+
 
     return (
         <>
@@ -51,46 +49,55 @@ function LatestPage() {
 
 
             <h1>The latest Anime for {data.dateString}</h1>
-            <section className="latest-animes">
-                {data.animeDetail?.length > 0 && (
-                    data.animeDetail.map((d) => (
-                        <article key={d.mal_id}>
 
-                            <div className="wrapper__card__animeImg">
-                                <img loading="lazy" src={d.image} alt={`${d.title} image`} />
-                            </div>
-                            <div className='wrapper__card__animeInfo'>
-                                <h1>{d.title}</h1>
-                                <div className="wrapper__card__animeInfo__tags">
-                                    {/* 
+            {/*  Loading content */}
+            {loading && (
+                <img src={spinner} alt="Loading..." className="loader" />
+            )}
+
+            {error ? (
+                <ErrorContent type='error' />
+            ) : (
+                <section className="latest-animes">
+                    {data.animeDetail?.length > 0 && (
+                        data.animeDetail.map((d) => (
+                            <article key={d.mal_id}>
+
+                                <div className="wrapper__card__animeImg">
+                                    <img loading="lazy" src={d.image} alt={`${d.title} image`} />
+                                </div>
+                                <div className='wrapper__card__animeInfo'>
+                                    <h1>{d.title}</h1>
+                                    <div className="wrapper__card__animeInfo__tags">
+                                        {/* 
                                      GENRE INFOS ADD INFOS
                                     {d.genres.map((genre) => (
                                             <span
                                                 onClick={() => handleGenreClick(genre.name)}
                                                 key={genre.mal_id}>{genre.name}</span>
                                         ))} */}
-                                </div>
-                                <div className="wrapper__card__animeInfo__stats">
-                                    <div>
-                                        <img src={heartIcon} alt="episodes icon" />
-                                        {/* <p>{formatNumber(d.favorites)}</p> */}
-                                        <p>12K</p>
-
                                     </div>
-                                    <div>
-                                        <img src={episodesIcon} alt="episodes icon" />
-                                        <p>{`${d.episodes} episodes`}</p>
+                                    <div className="wrapper__card__animeInfo__stats">
+                                        <div>
+                                            <img src={heartIcon} alt="episodes icon" />
+                                            {/* <p>{formatNumber(d.favorites)}</p> */}
+                                            <p>12K</p>
+
+                                        </div>
+                                        <div>
+                                            <img src={episodesIcon} alt="episodes icon" />
+                                            <p>{`${d.episodes} episodes`}</p>
+                                        </div>
                                     </div>
+                                    <a
+                                        onClick={() => handleReadMoreClick(d.mal_id)}
+                                        className="wrapper__card__btn">
+                                        Read More <img src={arrowIcon} alt="read more btn" />
+                                    </a>
+
+
+
                                 </div>
-                                <a
-                                    onClick={() => handleReadMoreClick(d.mal_id)}
-                                    className="wrapper__card__btn">
-                                    Read More <img src={arrowIcon} alt="read more btn" />
-                                </a>
-
-
-
-                            </div>
 
 
 
@@ -100,10 +107,13 @@ function LatestPage() {
 
 
 
-                        </article>
-                    ))
-                )}
-            </section>
+                            </article>
+                        ))
+                    )}
+                </section>
+            )}
+
+
 
             <Footer />
         </>
