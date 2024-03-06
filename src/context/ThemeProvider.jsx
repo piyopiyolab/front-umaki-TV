@@ -23,6 +23,7 @@ export default function ThemeProvider(props) {
     localStorage.setItem('darkMode', darkMode)
 
     if (!darkMode) {
+
         document.body.classList.add('lightmode')
 
     }
@@ -30,6 +31,7 @@ export default function ThemeProvider(props) {
         document.body.classList.remove('lightmode')
 
     }
+
 
     return (
         <ThemeContext.Provider value={{ toggleTheme, darkMode }}>
