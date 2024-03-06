@@ -10,8 +10,8 @@ export const getAnimeIDThunk = (animeID) => async (dispatch, getState) => {
     dispatch(addLoading());
 
 
-    const response = await getRequest(`https://api.jikan.moe/v4/anime/${id}/full`)
-    const data = response.data
+    const responseAnimeDetail = await getRequest(`https://api.jikan.moe/v4/anime/${id}/full`)
+    const data = responseAnimeDetail.data
 
     //genre Format
     const genresData = data.data.genres.map(genre => ({
@@ -36,9 +36,9 @@ export const getAnimeIDThunk = (animeID) => async (dispatch, getState) => {
         name: studio.name,
     }));
 
-
     const animeIDdata = {
         title: data.data.title,
+        title_eng: data.data.title_english,
         title_jap: data.data.title_japanese,
         image: data.data.images.webp.large_image_url,
         status: data.data.status,
@@ -47,7 +47,6 @@ export const getAnimeIDThunk = (animeID) => async (dispatch, getState) => {
         rating: data.data.rating,
         genre: genresData,
         synopsis: data.data.synopsis,
-
         synonym: data.data.synonyms,
         duration: data.data.duration,
         source: data.data.source,
@@ -61,8 +60,8 @@ export const getAnimeIDThunk = (animeID) => async (dispatch, getState) => {
 
     }
 
-    if (response.error) {
-        console.error("error in search anime :", response.error);
+    if (responseAnimeDetail.error) {
+        console.error("error in anime infos :", responseAnimeDetail.error);
         dispatch(addError());
     }
 

@@ -1,4 +1,4 @@
-@use '../../styles/mixins' as mxn;
+@use '../../styles/mixins'as mxn;
 
 
 
@@ -6,5 +6,36 @@
 .anime-details {
     h1 {
         text-align: left;
+    }
+
+
+    &-additionalinfos {
+
+        span {
+            font-weight: bold;
+
+
+
+        }
+
+        p {
+            margin-top: 1rem;
+        }
+
+        ul {
+            @include mxn.flex('row', 'wrap');
+
+        }
+
+        li {
+            display: inline-block;
+        }
+
+        article:nth-child(2) {
+            a {
+                margin-left: .3rem;
+            }
+        }
+
     }
 }

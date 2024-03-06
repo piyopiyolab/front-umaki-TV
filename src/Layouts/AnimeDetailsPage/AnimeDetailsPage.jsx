@@ -10,7 +10,7 @@ import spinner from '../../assets/spinner.svg'
 import Button from '../../Components/Button/Button';
 import { postAnimeThunk } from '../../redux/thunk/post.addAnime.thunk';
 import { APP_ROUTES } from '../../constants/routes.constants';
-
+import React from 'react';
 
 function AnimeDetails() {
 
@@ -45,7 +45,7 @@ function AnimeDetails() {
     const handleAddAnime = (stateList) => {
 
 
-        setNewAnime({
+        dispatch(postAnimeThunk({
             anime_id: animeID,
             anime_state: stateList,
             nb_episodes: data.episodes,
@@ -54,9 +54,8 @@ function AnimeDetails() {
             title: data.title,
             genre: data.genre.map(genre => genre.name).join(', '),
             release_date: data.year,
-        })
-        console.log('new anime to list', newAnime);
-        dispatch(postAnimeThunk(newAnime));
+        }));
+        console.log('new anime to list', animeID, stateList, data.episodes, data.synopsis, data.image, data.title, data.genre.map(genre => genre.name).join(' ,'), data.year);
 
 
     }
@@ -167,29 +166,37 @@ function AnimeDetails() {
                     <h2>More infos</h2>
                     {data && (
                         <>
-                            <p>{`title : ${data.title}`}</p>
-                            <p>{`Synonym : ${data.synonym}`}</p>
-                            <p>{`Duration : ${data.duration}`}</p>
-                            <p>{`Source : ${data.source}`}</p>
+                            <p><span>English title : </span>{`${data.title_eng}`}</p>
+                            <p><span>Title : </span>{`${data.title}`}</p>
+                            {data.synonym == [] && (
+                                <p><span>Synonym : </span>{`${data.synonym}`}</p>
+                            )}
+                            <p><span>Duration : </span>{`${data.duration}`}</p>
+                            <p><span>Source : </span>{`${data.source}`}</p>
                             {data.producers && data.producers.length > 0 && (
-                                <p> Producers :
-                                    {data.producers?.map((p, i) => (
-                                        <span key={i}>
-                                            {p.name}
-                                        </span>
-                                    ))}
+                                <>
 
-                                </p>
+                                    <p> <span>Producers :</span>
+
+                                        {data.producers && data.producers.length > 1 && (
+                                            data.producers.map((producer, index) => (
+                                                ` ${producer.name}${index < data.producers.length - 1 ? ', ' : ''}`
+
+                                            ))
+                                        )}
+                                    </p>
+                                </>
+
+
                             )}
 
 
                             {data?.studios?.length > 0 && (
 
-                                <p> Studio :
+                                <p><span> Studio :</span>
                                     {data.studios?.map((s, i) => (
-                                        <span key={i}>
-                                            {s.name}
-                                        </span>
+                                        ` ${s.name}${i < data.studios.length - 1 ? ', ' : ''}`
+
                                     ))}
 
 
@@ -202,14 +209,21 @@ function AnimeDetails() {
                     <h2>Watch Episodes</h2>
                     {data && (
                         <>
+                            <>
+                                {
+                                    data.streaming?.map((studio, index) => (
+                                        <React.Fragment key={index}>
+                                            <a href={studio.url}>{studio.name}</a>
+                                            {index < data.streaming.length - 1 && ', '}
+                                        </React.Fragment>
+                                    ))
+                                }
+                            </>
 
-                            {data.streaming?.map((studio, index) => (
-                                <div key={index}>
-                                    <a href={studio.url}>{studio.name}</a>
-                                </div>
-                            ))}
+                            <Button text="Watch Trailer"
+                                onClick={() => window.open(data.trailer, '_blank')}
 
-                            <a href={data.trailer} className="btn">Watch Trailer</a>
+                            />
                         </>
 
                     )}
