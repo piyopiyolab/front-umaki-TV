@@ -57,6 +57,8 @@
       &__errorBtn {
 @include mxn.flex('row', 'wrap');
 @include mxn.flex-p('center', 'center');
+max-width: 50%;
+    margin: 0 auto;
 gap: 1rem;
         button {
             max-width: var(--w-s);
