@@ -37,7 +37,11 @@ function LatestPage() {
         navigate(`${APP_ROUTES.GENRE}/${genre}`);
     }
 
+    // HandleRefresh
+    const handleRefresh = () => {
+        window.location.reload();
 
+    }
 
 
     // Load more Animes
@@ -71,9 +75,14 @@ function LatestPage() {
             )}
 
             {error ? (
-                <ErrorContent type='error' />
+                <>
+                    <ErrorContent type='error' />
+                    <Button text='Try again'
+                        onClick={() => handleRefresh()} />
+                </>
             ) : (
                 <section className="latest-animes">
+
                     <h1>The latest Anime for {data.dateString}</h1>
 
                     <div className="latest-animes__wrapper">
