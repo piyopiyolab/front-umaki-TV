@@ -15,6 +15,7 @@ import { getUserInfos } from '../../redux/thunk/get.UserInfo.thunk';
 import { useDispatch } from 'react-redux';
 import ThemeProvider from '../../context/ThemeProvider'; // darkmode
 import LatestPage from '../../Layouts/LatestPage/LatestPage';
+import GenrePageDetails from '../../Layouts/GenrePageDetails/GenrePageDetails';
 
 
 function App() {
@@ -112,7 +113,7 @@ function App() {
                                 path={`${APP_ROUTES.GENRE}/:genre`}
                                 element={
                                     <>
-                                        <GenrePage />
+                                        <GenrePageDetails />
                                     </>
                                 }
                             />

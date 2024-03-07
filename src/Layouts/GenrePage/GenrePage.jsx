@@ -4,13 +4,14 @@ import './GenrePage.scss';
 import { HelmetProvider, Helmet } from "react-helmet-async"
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from 'react';
-import { getRequest } from '../../API/api';
-
+import { APP_ROUTES } from '../../constants/routes.constants';
 
 
 function GenrePage() {
 
     const [genreData, setGenreData] = useState(null);
+    const navigate = useNavigate();
+
 
     // API Genre
     useEffect(() => {
@@ -32,8 +33,10 @@ function GenrePage() {
 
     }, []);
 
-    console.log(genreData);
-
+    // Redirection Genre
+    const handleGenreClick = (genre) => {
+        navigate(`${APP_ROUTES.GENRE}/${genre}`);
+    }
     return (
         <>
             <HelmetProvider>
@@ -53,7 +56,10 @@ function GenrePage() {
                     {genreData && (
                         <>
                             {genreData.map((g, index) => (
-                                <article key={index}>
+                                <article
+                                    key={index}
+                                    onClick={() => handleGenreClick(g.name)}
+                                >
 
                                     <h3>{g.name}</h3>
                                 </article>
