@@ -66,8 +66,8 @@ function HomePage() {
 
 
     // Redirection Genre
-    const handleGenreClick = (genre) => {
-        navigate(`${APP_ROUTES.GENRE}/${genre}`);
+    const handleGenreClick = (genreID) => {
+        navigate(`${APP_ROUTES.GENRE}/${genreID}`);
     }
 
 
@@ -112,7 +112,7 @@ function HomePage() {
                 <div className="wrapper">
 
                     {windowWidth < breakpoint && (
-                        data.sliderData.map((d) => (
+                        data?.sliderData?.map((d) => (
 
                             <article key={d.mal_id} className="wrapper__card">
                                 <div className="wrapper__card__animeImg">
@@ -123,7 +123,7 @@ function HomePage() {
                                     <div className="wrapper__card__animeInfo__tags">
                                         {d.genres.map((genre) => (
                                             <span
-                                                onClick={() => handleGenreClick(genre.name)}
+                                                onClick={() => handleGenreClick(genre.mal_id)}
                                                 key={genre.mal_id}>{genre.name}</span>
                                         ))}
                                     </div>

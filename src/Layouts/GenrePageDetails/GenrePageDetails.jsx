@@ -15,14 +15,15 @@ import { APP_ROUTES } from '../../constants/routes.constants';
 
 function GenrePageDetails() {
 
-    const animeGenre = useParams();
+    const { genreID } = useParams();
     const dispatch = useDispatch();
     const { data, loading, error } = useSelector((state) => state.animeSlice);
     const navigate = useNavigate();
 
     useEffect(() => {
-        dispatch(getAnimeGenreThunk(animeGenre.genre))
-    }, [])
+        dispatch(getAnimeGenreThunk(genreID))
+        console.log(data)
+    }, [genreID])
 
     if (loading) {
         return <img src={spinner} alt="Loading..." className="loader" />;
@@ -52,9 +53,8 @@ function GenrePageDetails() {
                 {error ? (
                     <>
                         <div className='ErrorContent-wrapper'>
-                            <ErrorContent type='dev' />
-                            <p>We're preparing the best  <span>{animeGenre.genre} </span>anime compilation...</p>
-                            <p> In the meantime you can...</p>
+                            <ErrorContent type='error' />
+
                             <div>
 
                                 <Button
@@ -71,7 +71,7 @@ function GenrePageDetails() {
 
                 ) : (
                     <>
-                        <h1 className='text-center'>Choose your favorite <span>{animeGenre.genre} </span>anime !</h1>
+                        <h1 className='text-center'>Choose your favorite <span> </span>anime !</h1>
                         <div className='genre__body__wrapper'>
                         </div>
                     </>

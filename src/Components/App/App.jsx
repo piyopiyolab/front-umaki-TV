@@ -110,7 +110,7 @@ function App() {
                                 }
                             />
                             <Route
-                                path={`${APP_ROUTES.GENRE}/:genre`}
+                                path={`${APP_ROUTES.GENRE}/:genreID`}
                                 element={
                                     <>
                                         <GenrePageDetails />

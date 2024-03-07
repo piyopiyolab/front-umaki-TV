@@ -22,7 +22,6 @@ function GenrePage() {
                     throw new Error('Failed to fetch data');
                 }
                 const data = await response.json();
-                // Mettre à jour le state avec les données récupérées
                 setGenreData(data.data);
 
             } catch (error) {
