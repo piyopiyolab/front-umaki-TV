@@ -2,19 +2,37 @@ import Footer from '../../Components/Footer/Footer';
 import Header from '../../Components/Header/Header';
 import './GenrePage.scss';
 import { HelmetProvider, Helmet } from "react-helmet-async"
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from 'react';
-
+import { getRequest } from '../../API/api';
 
 
 
 function GenrePage() {
-    const { genre } = useParams();
+
     const [genreData, setGenreData] = useState(null);
 
+    // API Genre
+    useEffect(() => {
+        const fetchGenres = async () => {
+            try {
+                const response = await fetch('https://api.jikan.moe/v4/genres/anime');
+                if (!response.ok) {
+                    throw new Error('Failed to fetch data');
+                }
+                const data = await response.json();
+                // Mettre à jour le state avec les données récupérées
+                setGenreData(data.data);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
 
+        fetchGenres();
 
+    }, []);
 
+    console.log(genreData);
 
     return (
         <>
@@ -32,13 +50,16 @@ function GenrePage() {
 
                 <div className='genre__body__wrapper'>
 
-                    <article><h3>Shonen</h3></article>
-                    <article><h3>Shojo</h3></article>
-                    <article><h3>Isekai</h3></article>
-                    <article><h3>Romance</h3></article>
-                    <article><h3>Fantaisy</h3></article>
-                    <article><h3>Adventure</h3></article>
-                    <article><h3>Action</h3></article>
+                    {genreData && (
+                        <>
+                            {genreData.map((g, index) => (
+                                <article key={index}>
+
+                                    <h3>{g.name}</h3>
+                                </article>
+                            ))}
+                        </>
+                    )}
 
                 </div>
 

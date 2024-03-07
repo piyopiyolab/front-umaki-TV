@@ -1,4 +1,4 @@
-@use '../../styles/mixins' as mxn;
+@use '../../styles/mixins'as mxn;
 
 
 .genre__body {
@@ -6,16 +6,22 @@
 
 
     &__wrapper {
-@include mxn.flex('row', 'wrap');
-@include mxn.flex-p('center', 'center');
-gap:1rem;
+        @include mxn.flex('row', 'wrap');
+        @include mxn.flex-p('center', 'center');
+        gap: 1.5rem;
 
-article {
-    @include mxn.btn;
-    width: 20rem;
-    text-align: center;
-    
-}
+        @include mxn.media-query('750px') {
+            gap: 4rem;
+
+        }
+
+        article {
+            @include mxn.btn;
+            padding: var(--p-2) var(--p-3);
+            width: 30rem;
+            text-align: center;
+
+        }
 
     }
 }
