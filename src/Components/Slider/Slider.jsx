@@ -2,12 +2,7 @@ import Slider from "react-slick"
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import './Slider.scss'
-import arrowIcon from "../../assets/icons/arrowr-icon.svg"
-import episodesIcon from "../../assets/icons/episodes-icon.svg"
-import heartIcon from "../../assets/icons/heart-icon.svg"
-import { formatNumber } from "../../utils/formatNumber";
 import Button from "../Button/Button";
-import { useState } from "react";
 
 
 function Carousel({ sliderData, onClick }) {
@@ -41,7 +36,7 @@ function Carousel({ sliderData, onClick }) {
                                     <p className={d.status === 'Currently Airing' ? 'airing' : 'finished'}>
                                         {d.status}
                                     </p>
-                                    <p>{`${d.season} ${d.year}`}</p>
+                                    <p>{`${d.season ? d.season.charAt(0).toUpperCase() + d.season.slice(1) : null} ${d.year}`}</p>
                                 </div>
                                 <div className='anime-details__hero__r__main'>
                                     <div>

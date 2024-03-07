@@ -1,16 +1,39 @@
+import { useEffect } from 'react';
 import Footer from '../../Components/Footer/Footer';
 import Header from '../../Components/Header/Header';
 import './GenrePageDetails.scss';
 import { HelmetProvider, Helmet } from "react-helmet-async"
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAnimeGenreThunk } from '../../redux/thunk/get.animeGenre.thunk';
+import spinner from '../../assets/spinner.svg'
+import ErrorContent from '../../Components/ErrorContent/ErrorContent';
+import Button from '../../Components/Button/Button';
+import { APP_ROUTES } from '../../constants/routes.constants';
 
 
 
 function GenrePageDetails() {
 
-    const genre = useParams();
+    const animeGenre = useParams();
+    const dispatch = useDispatch();
+    const { data, loading, error } = useSelector((state) => state.animeSlice);
+    const navigate = useNavigate();
 
+    useEffect(() => {
+        dispatch(getAnimeGenreThunk(animeGenre.genre))
+    }, [])
 
+    if (loading) {
+        return <img src={spinner} alt="Loading..." className="loader" />;
+    }
+
+    const handleRedirectHome = () => {
+        navigate(APP_ROUTES.HOME)
+    }
+    const handleRedirectFavorite = () => {
+        navigate(APP_ROUTES.FAVORITE)
+    }
     return (
         <>
             <HelmetProvider>
@@ -23,13 +46,39 @@ function GenrePageDetails() {
             <Header />
             <section className="genre__body">
 
-                <h1 className='text-center'>Choose your favorite <span>{genre.genre} </span>anime !</h1>
-
-                <div className='genre__body__wrapper'>
 
 
 
-                </div>
+                {error ? (
+                    <>
+                        <div className='ErrorContent-wrapper'>
+                            <ErrorContent type='dev' />
+                            <p>We're preparing the best  <span>{animeGenre.genre} </span>anime compilation...</p>
+                            <p> In the meantime you can...</p>
+                            <div>
+
+                                <Button
+                                    onClick={() => handleRedirectHome()}
+                                    text='come back home' />
+                                <Button
+                                    onClick={() => handleRedirectFavorite()}
+                                    text='go to favorite' />
+
+                            </div>
+
+                        </div>
+                    </>
+
+                ) : (
+                    <>
+                        <h1 className='text-center'>Choose your favorite <span>{animeGenre.genre} </span>anime !</h1>
+                        <div className='genre__body__wrapper'>
+                        </div>
+                    </>
+
+                )}
+
+
 
             </section>
             <Footer />

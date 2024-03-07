@@ -24,4 +24,21 @@
         }
 
     }
+
+    text-align: center;
+
+    .ErrorContent-wrapper {
+        text-align: center;
+
+
+
+        &>div:last-child {
+            max-width: 50%;
+            margin: 0 auto;
+            @include mxn.flex('row', 'nowrap');
+            @include mxn.flex-p('center', 'center');
+
+
+        }
+    }
 }

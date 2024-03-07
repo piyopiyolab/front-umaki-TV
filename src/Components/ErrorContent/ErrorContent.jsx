@@ -1,6 +1,7 @@
 import './ErrorContent.scss';
 import chibi from "/images/chocked-umaki-anime.png"
 import sadChibi from "/images/nolist-sad-anime.png"
+import waitChibi from "/images/chibi_wait.png"
 
 //type "add adnime, 404, 500
 function ErrorContent({ type }) {
@@ -90,6 +91,22 @@ function ErrorContent({ type }) {
 
             )
             break;
+
+
+        case 'dev':
+            content = (
+                <>
+                    <div className='errorContentBody'>
+                        <h1 className='text-center'>It's not ready yet... </h1>
+                        <img src={waitChibi} alt='chibi error umaki.tv' />
+                    </div>
+
+                </>
+
+
+            )
+            break;
+
     }
 
     return (

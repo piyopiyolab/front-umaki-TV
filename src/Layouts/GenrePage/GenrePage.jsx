@@ -24,12 +24,14 @@ function GenrePage() {
                 const data = await response.json();
                 // Mettre à jour le state avec les données récupérées
                 setGenreData(data.data);
+
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
         };
 
         fetchGenres();
+        console.log(genreData)
 
     }, []);
 
