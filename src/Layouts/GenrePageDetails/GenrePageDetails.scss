@@ -17,6 +17,7 @@
 
         article {
             @include mxn.btn;
+            @include mxn.card;
             padding: var(--p-2) var(--p-3);
             width: 30rem;
             text-align: center;

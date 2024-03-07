@@ -2,18 +2,17 @@ import { getRequest } from "../../API/api";
 import { setAnimeData, addLoading, removeLoading, addError } from "../reducers/animeSlice.reducer";
 import { formatNumber } from "../../utils/formatNumber";
 
-export const getAnimeGenreThunk = (genreID) => async (dispatch, getState) => {
+export const getAnimeGenreThunk = (genreID, page = 1) => async (dispatch, getState) => {
 
     const id = genreID;
 
     //Loading => Await response 
     dispatch(addLoading());
+    console.log(`https://api.jikan.moe/v4/anime?genres=${id}?page=${page}`)
 
-
-    const response = await getRequest(`https://api.jikan.moe/v4/anime?genres=${id}/`)
+    const response = await getRequest(`https://api.jikan.moe/v4/anime?genres=${id}?page=${page}`)
     const data = response.data
 
-    const pagination = data.pagination;
     const animeDetail = data.data.map(data => ({
         mal_id: data.mal_id,
         title: data.title,
@@ -29,6 +28,7 @@ export const getAnimeGenreThunk = (genreID) => async (dispatch, getState) => {
         favorites: formatNumber(data.favorites),
         genres: data.genres ? data.genres.map(g => ({ name: g.name })) : [{ name: 'Unknown' }]
     }));
+    const pagination = data.pagination;
 
     const formatedData = { animeDetail, pagination }
 
