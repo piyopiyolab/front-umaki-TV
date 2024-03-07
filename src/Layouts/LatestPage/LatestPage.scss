@@ -1,15 +1,17 @@
-@use "../../styles/mixins" as mxn;
+@use "../../styles/mixins"as mxn;
+
 .button {
     margin: var(--m-4) auto;
 }
 
 .latest-animes {
 
-  &>h1 {
+    &>h1 {
 
-        margin: var(--m-4) ;
-   
-  }
+        margin: var(--m-4);
+
+    }
+
     &__wrapper {
 
         @include mxn.flex('row', 'wrap');
@@ -17,18 +19,18 @@
         gap: var(--gap-3);
     }
 
-  
-    
+
+
     article {
         @include mxn.card;
-     
 
-     
+
+
     }
 
     button {
-        margin:  var(--m-5)  auto 0;
+        margin: var(--m-5) auto var(--m-4);
     }
 
-   
+
 }

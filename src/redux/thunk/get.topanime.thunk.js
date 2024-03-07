@@ -1,5 +1,5 @@
 import { getRequest } from "../../API/api";
-import { setAnimeData, addLoading, removeLoading } from "../reducers/animeSlice.reducer";
+import { setAnimeData, addLoading, removeLoading, addError } from "../reducers/animeSlice.reducer";
 
 export const topanimeThunk = (page = 1) => async (dispatch, getState) => {
 
