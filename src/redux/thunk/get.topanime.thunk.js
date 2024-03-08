@@ -28,7 +28,7 @@ export const topanimeThunk = (page = 1) => async (dispatch, getState) => {
 
     // Remove Loading  
     dispatch(removeLoading())
-
+    console.log(restData[0].genres)
     dispatch(setAnimeData(formatedData))
 
 };

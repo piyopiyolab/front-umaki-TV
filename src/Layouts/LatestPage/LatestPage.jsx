@@ -13,7 +13,6 @@ import episodesIcon from "../../assets/icons/episodes-icon.svg"
 import heartIcon from "../../assets/icons/heart-icon.svg"
 import { useNavigate } from "react-router-dom"
 import { APP_ROUTES } from '../../constants/routes.constants'
-import { dateForCurrentSeason } from "../../utils/currentSeason";
 
 function LatestPage() {
 

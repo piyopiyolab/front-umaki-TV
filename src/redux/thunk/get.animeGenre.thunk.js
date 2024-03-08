@@ -8,8 +8,6 @@ export const getAnimeGenreThunk = (genreID, page = 1) => async (dispatch, getSta
 
     //Loading => Await response 
     dispatch(addLoading());
-    console.log(`https://api.jikan.moe/v4/anime?genres=${id}?page=${page}`)
-
     const response = await getRequest(`https://api.jikan.moe/v4/anime?genres=${id}?page=${page}`)
     const data = response.data
 

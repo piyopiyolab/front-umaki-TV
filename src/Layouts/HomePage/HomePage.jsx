@@ -164,7 +164,7 @@ function HomePage() {
                                     <div className="wrapper__card__animeInfo__tags">
                                         {d.genres.map((genre) => (
                                             <span
-                                                onClick={() => handleGenreClick(genre.name)}
+                                                onClick={() => handleGenreClick(genre.mal_id)}
                                                 key={genre.mal_id}>{genre.name}</span>
                                         ))}
                                     </div>
