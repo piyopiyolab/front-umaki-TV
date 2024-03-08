@@ -1,4 +1,3 @@
-
 @mixin container() {
   width: 100%;
   margin: 0 auto;
@@ -9,57 +8,77 @@
 //FONTS
 
 @mixin text-xxs {
-  font-size: 1rem; /* 10px */
-  line-height: 1.4rem; /* 14px */
+  font-size: 1rem;
+  /* 10px */
+  line-height: 1.4rem;
+  /* 14px */
 }
 
 
 @mixin text-xs {
-  font-size: 1.2rem; /* 12px */
-line-height: 1.6rem; /* 16px */
+  font-size: 1.2rem;
+  /* 12px */
+  line-height: 1.6rem;
+  /* 16px */
 }
 
 
 
 @mixin text-s {
-  font-size: 1.4rem; /* 14px */
-  line-height: 2rem; /* 20px */
+  font-size: 1.4rem;
+  /* 14px */
+  line-height: 2rem;
+  /* 20px */
 }
 
 
 @mixin text-lg {
-  font-size: 1.8rem; /* 18px */
-  line-height: 2.8rem; /* 28px */
+  font-size: 1.8rem;
+  /* 18px */
+  line-height: 2.8rem;
+  /* 28px */
 }
 
 @mixin text-xl {
-  font-size: 2rem; /* 20px */
-  line-height: 2.8rem; /* 28px */
+  font-size: 2rem;
+  /* 20px */
+  line-height: 2.8rem;
+  /* 28px */
 }
 
 
 @mixin text-2xl {
-	font-size: 2.4rem; /* 24px */
-line-height: 3.2rem; /* 32px */
+  font-size: 2.4rem;
+  /* 24px */
+  line-height: 3.2rem;
+  /* 32px */
 }
 
 @mixin text-3xl {
-	font-size:3rem; /* 30px */
-line-height: 3.6rem; /* 36px */
+  font-size: 3rem;
+  /* 30px */
+  line-height: 3.6rem;
+  /* 36px */
 }
 
 @mixin text-4xl {
-  font-size: 3.6rem; /* 36px */
-  line-height: 4rem; /* 40px */
+  font-size: 3.6rem;
+  /* 36px */
+  line-height: 4rem;
+  /* 40px */
 }
 
 @mixin text-5xl {
-	font-size: 4.8rem; /* 48px */
-line-height: 4.2rem;
+  font-size: 4.8rem;
+  /* 48px */
+  line-height: 4.2rem;
 }
+
 @mixin text-sm {
-  font-size: 1.6rem; /* 16px */
-  line-height: 2.4rem; /* 24px */
+  font-size: 1.6rem;
+  /* 16px */
+  line-height: 2.4rem;
+  /* 24px */
 }
 
 
@@ -121,7 +140,8 @@ line-height: 4.2rem;
 
   a {
     cursor: pointer;
-}
+  }
+
   width: $width;
   @content;
   background:rgba(60, 16, 83, 0.2);
@@ -135,117 +155,122 @@ line-height: 4.2rem;
     transform: translateY(-5px);
   }
 
-  &__animeImg{
+  &__animeImg {
+    width: 100%;
+    height: 20rem;
+
+    img {
+      object-fit: cover;
       width: 100%;
-      height: 20rem;
-
-      img {
-          object-fit: cover;
-          width: 100%;
-          height: 100%;
-          object-position: center;
-          border-top-right-radius: var(--rounded-md);
-          border-top-left-radius: var(--rounded-md);
-      }
+      height: 100%;
+      object-position: center;
+      border-top-right-radius: var(--rounded-md);
+      border-top-left-radius: var(--rounded-md);
+    }
   }
-  &__animeInfo{
-              
+
+  &__animeInfo {
+
     padding: var(--p-2);
-  @include flex('column', 'nowrap');
-  @include flex-p('space-between', 'start');
-  height: 24rem;
-  width: var(--w-full);
-
-    h1 {
-        padding:0;
-        margin-bottom: var(--m-1);
-        font-size: var(--text-md);
-
-
-
-        &:hover {
-    
-            @include transition(color);
-            color:var(--purple-light);
-        }
-
-    }
-
-  &__tags {
-
-
-    @include flex('row', "wrap");
-  font-size: var(--text-sm);
-    gap:1rem;
-
-    margin-bottom: 1.5rem;
-
-  span {
-    background-color: rgba(172, 166, 173, .2);
-    border-radius: var(--rounded);
-    padding: 0 .5rem;
-    border: 1px solid transparent;
-    &:hover {
-    
-        @include transition(color);
-        color:var(--purple-light);
-        background-color: transparent;
-        border: 1px solid var(--purple-light);
-        cursor: pointer;
-    }
-    
-  }
-
-  }
-
-  &__stats {
-
-    @include flex('row', 'nowrap');
-    @include flex-p('start', 'center');
+    @include flex('column', 'nowrap');
+    @include flex-p('space-between', 'start');
+    height: 24rem;
     width: var(--w-full);
 
-    div {
+    h1 {
+      padding: 0;
+      margin-bottom: var(--m-1);
+      font-size: var(--text-md);
+
+
+
+      &:hover {
+
+        @include transition(color);
+        color: var(--purple-light);
+      }
+
+    }
+
+    &__tags {
+
+
+      @include flex('row', "wrap");
+      font-size: var(--text-sm);
+      gap: 1rem;
+
+      margin-bottom: 1.5rem;
+
+      span {
+        background-color: rgba(172, 166, 173, .2);
+        border-radius: var(--rounded);
+        padding: 0 .5rem;
+        border: 1px solid transparent;
+
+        &:hover {
+
+          @include transition(color);
+          color: var(--purple-light);
+          background-color: transparent;
+          border: 1px solid var(--purple-light);
+          cursor: pointer;
+        }
+
+      }
+
+    }
+
+    &__stats {
+
+      @include flex('row', 'nowrap');
+      @include flex-p('start', 'center');
+      width: var(--w-full);
+
+      div {
 
         @include flex('row', 'nowrap');
         @include flex-p('start', 'center');
 
         &:first-child {
-        flex:1;
+          flex: 1;
 
         }
 
         &:last-child {
-        flex:2;
-        & img:last-of-type {
+          flex: 2;
+
+          & img:last-of-type {
             max-width: 3.4rem;
-            
-            
-        }
+
+
+          }
 
         }
 
-    
-    
+
+
         &:hover {
-    
-            @include transition(color);
-            color:var(--purple-light);
+
+          @include transition(color);
+          color: var(--purple-light);
         }
+
         img {
-            max-width: 2.5rem;
-            display: block;
-            padding-right: 0.53rem;
-            
+          max-width: 2.5rem;
+          display: block;
+          padding-right: 0.53rem;
+
         }
-    
+
+      }
+
+
+
+
     }
 
-
-
-
   }
 
-  }
   &__btn {
     font-weight: bold;
     color: var(--white);
@@ -254,65 +279,67 @@ line-height: 4.2rem;
     margin-top: var(--m-1);
 
 
-&:hover {
-    @include transition(color);
-    color:var(--purple-light);
-    img {
+    &:hover {
+      @include transition(color);
+      color: var(--purple-light);
+
+      img {
         @include bounce;
+      }
+
+
+
     }
-    
+
+    img {
+      max-width: 1.5rem;
+      display: block;
+      margin-left: 1rem;
 
 
-}
-img {
-    max-width: 1.5rem;
-    display: block;
-    margin-left: 1rem;
-    
-        
-}
+    }
 
-}
-  
+  }
+
 
 }
 
 
 //anime details
-@mixin anime-details-card{
- display:flex;
- flex-flow: column ,wrap;
-justify-content: start;
-align-items: start;
+@mixin anime-details-card {
+  display: flex;
+  flex-flow: column, wrap;
+  justify-content: start;
+  align-items: start;
   background-color: var(--bg-dark);
   margin: 4rem 0;
   padding: var(--p-3);
 
   @media screen and (min-width: 500px) {
-  
-    flex-flow: row ,nowrap;
+
+    flex-flow: row, nowrap;
     justify-content: end;
     align-items: center;
 
-    }
+  }
 
-  
-              }
-            
+
+}
+
 
 
 //Btn
 
-@mixin btn ($background-color: var(--purple-light), $hover-bg: var(--purple-dark))
-{
-  
+@mixin btn ($background-color: var(--purple-light), $hover-bg: var(--purple-dark)) {
+
   &:hover,
   &:focus {
     outline: none;
     @include transition(background-color);
-  background-color: $hover-bg;
+    background-color: $hover-bg;
 
   }
+
   &:active {
     transform: translateY(2px);
   }
@@ -320,6 +347,7 @@ align-items: start;
   &:focus-within {
     transform: translateY(2px);
   }
+
   border: none;
   cursor: pointer;
   user-select: none;
@@ -328,7 +356,6 @@ align-items: start;
   background: $background-color;
   border-radius: var(--rounded);
   margin: var(--m-1) 0;
-  font-weight: bold;
   color: var(--white);
   min-width: 20rem;
 }
@@ -369,6 +396,7 @@ align-items: start;
 
 //Reset input
 @mixin input-reseter {
+
   &:-webkit-autofill,
   &:-webkit-autofill:hover,
   &:-webkit-autofill:focus {
@@ -377,25 +405,30 @@ align-items: start;
     -webkit-box-shadow: 0 0 0px 1000px transparent inset;
     -webkit-text-fill-color: var(--input-color, var(--black-2));
   }
+
   &:-webkit-outer-spin-button,
   &:-webkit-inner-spin-button {
     margin: 0;
     -webkit-appearance: none;
   }
+
   /* Firefox */
   &[type="number"] {
     -moz-appearance: textfield;
     appearance: textfiled;
   }
+
   /* Safari */
   &[type="number"]::-webkit-inner-spin-button,
   &[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
   }
+
   &[type="date"] {
     --input-pad-right: 40px;
   }
+
   &::-webkit-calendar-picker-indicator {
     top: 0;
     left: 0;
@@ -407,6 +440,7 @@ align-items: start;
     cursor: pointer;
     position: absolute;
   }
+
   border: none;
   outline: none;
   appearance: none;

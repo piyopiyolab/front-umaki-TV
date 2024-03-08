@@ -26,7 +26,7 @@ export const getAnimeGenreThunk = (genreID, page = 1) => async (dispatch, getSta
         source: data.source,
         episodes: data.episodes != null ? data.episodes : 'unknown',
         favorites: formatNumber(data.favorites),
-        genres: data.genres ? data.genres.map(g => ({ name: g.name })) : [{ name: 'Unknown' }]
+        genres: data.genres ? data.genres.map(g => ({ id: g.mal_id, name: g.name })) : [{ name: 'Unknown' }]
     }));
     const pagination = data.pagination;
 
@@ -37,6 +37,8 @@ export const getAnimeGenreThunk = (genreID, page = 1) => async (dispatch, getSta
         console.error("error in genre anime infos :", response.error);
         dispatch(addError());
     }
+
+    console.log("thunk", formatedData)
 
     dispatch(setAnimeData(formatedData))
 

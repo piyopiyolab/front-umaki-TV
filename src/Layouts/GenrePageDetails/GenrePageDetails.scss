@@ -4,29 +4,24 @@
 .genre__body {
 
 
-
     &__wrapper {
+
         @include mxn.flex('row', 'wrap');
         @include mxn.flex-p('center', 'center');
-        gap: 1.5rem;
+        gap: var(--gap-3);
 
-        @include mxn.media-query('750px') {
-            gap: 4rem;
 
-        }
-
-        article {
-            @include mxn.btn;
-            @include mxn.card;
-            padding: var(--p-2) var(--p-3);
-            width: 30rem;
-            text-align: center;
-
-        }
 
     }
 
-    text-align: center;
+    article {
+        @include mxn.card;
+
+
+
+    }
+
+
 
     .ErrorContent-wrapper {
         text-align: center;
