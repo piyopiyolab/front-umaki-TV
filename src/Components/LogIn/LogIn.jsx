@@ -73,7 +73,7 @@ function LogIn() {
             )}
 
 
-            <form className="login__form" onSubmit={handleSubmit}>
+            <form className="login__form" onSubmit={handleSubmit} autoComplete='on'>
 
 
                 <Input id={"email"}

@@ -25,6 +25,18 @@ function SearchBar() {
 
     }
 
+    // Key down Listener
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter') {
+            console.log('enter pressed')
+        }
+    };
+
+    useEffect(() => {
+        window.addEventListener("keydown", handleKeyDown);
+
+        return () => window.removeEventListener("keydown", handleKeyDown);
+    }, []);
 
     return (
         <>
@@ -33,9 +45,11 @@ function SearchBar() {
 
             <div className="searchbar__content">
                 <Input
+                    onKeyDown={() => handleClickSearch(searchValue)}
                     role="search"
                     type='search'
                     value={searchValue}
+                    autoComplete='off'
                     onChange={handleChange}
 
                 />
