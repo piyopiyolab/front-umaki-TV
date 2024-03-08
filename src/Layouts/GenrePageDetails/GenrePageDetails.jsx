@@ -18,7 +18,9 @@ import { APP_ROUTES } from '../../constants/routes.constants';
 
 function GenrePageDetails() {
 
-    const { genreID } = useParams();
+
+    const { genreID, genreName } = useParams();
+
     const dispatch = useDispatch();
     const { data, loading, error } = useSelector((state) => state.animeSlice);
     const navigate = useNavigate();
@@ -65,9 +67,11 @@ function GenrePageDetails() {
     }
 
     // Redirection Genre
-    const handleGenreClick = (genreId) => {
-        navigate(`${APP_ROUTES.GENRE}/${genreId}`);
+    const handleGenreClick = (genreId, genreName) => {
+        navigate(`${APP_ROUTES.GENRE}/${genreId}/${genreName}`);
     }
+
+
     return (
         <>
             <HelmetProvider>
@@ -105,48 +109,49 @@ function GenrePageDetails() {
 
                 ) : (
                     <>
-                        <h1 className='text-center'>Choose your favorite <span> </span>anime !</h1>
+                        <h1 className='text-center'>Discover more animes in {genreName.toLowerCase()} theme </h1>
                         <div className='genre__body__wrapper'>
                             {data.animeDetail?.length > 0 && (
                                 data.animeDetail.map((d) => (
-                                    <article key={d.mal_id}>
+                                    <>
+                                        <article key={d.mal_id}>
 
-                                        <div className="wrapper__card__animeImg">
-                                            <img loading="lazy" src={d.image} alt={`${d.title} image`} />
-                                        </div>
-                                        <div className='wrapper__card__animeInfo'>
-                                            <h1>{d.title}</h1>
-                                            <div className="wrapper__card__animeInfo__tags">
-
-                                                {d.genres.map((genre, index) => (
-                                                    <span
-                                                        key={`${genre.mal_id}-${index}`}
-                                                        onClick={() => handleGenreClick(genre.id)}
-                                                    >{genre.name}</span>
-                                                ))}
-
+                                            <div className="wrapper__card__animeImg">
+                                                <img loading="lazy" src={d.image} alt={`${d.title} image`} />
                                             </div>
-                                            <div className="wrapper__card__animeInfo__stats">
-                                                <div>
-                                                    <img src={heartIcon} alt="episodes icon" />
-                                                    <p>{d.favorites}</p>
+                                            <div className='wrapper__card__animeInfo'>
+                                                <h1>{d.title}</h1>
+                                                <div className="wrapper__card__animeInfo__tags">
 
+                                                    {d.genres.map((genre, index) => (
+                                                        <span
+                                                            key={`${genre.mal_id}-${index}`}
+                                                            onClick={() => handleGenreClick(genre.id, genre.name)}
+                                                        >{genre.name}</span>
+                                                    ))}
 
                                                 </div>
-                                                <div>
-                                                    <img src={episodesIcon} alt="episodes icon" />
-                                                    <p>{`${d.episodes} episodes`}</p>
+                                                <div className="wrapper__card__animeInfo__stats">
+                                                    <div>
+                                                        <img src={heartIcon} alt="episodes icon" />
+                                                        <p>{d.favorites}</p>
+
+
+                                                    </div>
+                                                    <div>
+                                                        <img src={episodesIcon} alt="episodes icon" />
+                                                        <p>{`${d.episodes} episodes`}</p>
+                                                    </div>
                                                 </div>
+                                                <a
+                                                    onClick={() => handleReadMoreClick(d.mal_id)}
+                                                    className="wrapper__card__btn">
+                                                    Read More <img src={arrowIcon} alt="read more btn" />
+                                                </a>
+
+
+
                                             </div>
-                                            <a
-                                                onClick={() => handleReadMoreClick(d.mal_id)}
-                                                className="wrapper__card__btn">
-                                                Read More <img src={arrowIcon} alt="read more btn" />
-                                            </a>
-
-
-
-                                        </div>
 
 
 
@@ -156,18 +161,25 @@ function GenrePageDetails() {
 
 
 
-                                    </article>
+                                        </article>
+
+
+                                    </>
                                 ))
                             )}
+
                         </div>
+
+                        <Button
+                            text='Load More Animes'
+                            onClick={(e) => handleLoadMore(e)} />
                     </>
 
                 )}
 
 
-                <Button
-                    text='Load More Animes'
-                    onClick={(e) => handleLoadMore(e)} />
+
+
 
 
             </section>

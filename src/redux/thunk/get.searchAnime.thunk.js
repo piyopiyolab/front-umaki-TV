@@ -21,6 +21,6 @@ export const searchAnimeThunk = (anime) => async (dispatch, getState) => {
 
     dispatch(setAnimeData(data))
 
-    console.log(data)
+
 
 }

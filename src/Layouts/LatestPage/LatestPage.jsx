@@ -32,8 +32,8 @@ function LatestPage() {
     }
 
     // Redirection Genre
-    const handleGenreClick = (genre) => {
-        navigate(`${APP_ROUTES.GENRE}/${genre}`);
+    const handleGenreClick = (genreId, genreName) => {
+        navigate(`${APP_ROUTES.GENRE}/${genreId}/${genreName}`);
     }
 
     // HandleRefresh
@@ -98,8 +98,8 @@ function LatestPage() {
 
                                             {d.genres.map((genre, index) => (
                                                 <span
-                                                    key={`${genre.mal_id}-${index}`}
-                                                    onClick={() => handleGenreClick(genre.name)}
+                                                    key={`${genre.id}-${index}`}
+                                                    onClick={() => handleGenreClick(genre.id, genre.name)}
                                                 >{genre.name}</span>
                                             ))}
 

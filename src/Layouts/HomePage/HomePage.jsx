@@ -66,8 +66,8 @@ function HomePage() {
 
 
     // Redirection Genre
-    const handleGenreClick = (genreID) => {
-        navigate(`${APP_ROUTES.GENRE}/${genreID}`);
+    const handleGenreClick = (genreID, genreName) => {
+        navigate(`${APP_ROUTES.GENRE}/${genreID}/${genreName}`);
     }
 
 
@@ -164,7 +164,7 @@ function HomePage() {
                                     <div className="wrapper__card__animeInfo__tags">
                                         {d.genres.map((genre) => (
                                             <span
-                                                onClick={() => handleGenreClick(genre.mal_id)}
+                                                onClick={() => handleGenreClick(genre.mal_id, genre.name)}
                                                 key={genre.mal_id}>{genre.name}</span>
                                         ))}
                                     </div>

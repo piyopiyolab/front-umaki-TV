@@ -39,7 +39,8 @@ export const animeSeasonThunk = (page = 1) => async (dispatch, getState) => {
         source: data.source,
         episodes: data.episodes != null ? data.episodes : 'unknown',
         favorites: formatNumber(data.favorites),
-        genres: data.genres ? data.genres.map(g => ({ name: g.name })) : [{ name: 'Unknown' }]
+        genres: data.genres ? data.genres.map(g => ({ id: g.mal_id, name: g.name })) : [{ name: 'Unknown' }]
+
     }));
 
     const formatedData = {

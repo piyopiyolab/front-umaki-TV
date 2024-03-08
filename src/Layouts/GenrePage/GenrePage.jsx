@@ -35,8 +35,9 @@ function GenrePage() {
     }, []);
 
     // Redirection Genre
-    const handleGenreClick = (genreId) => {
-        navigate(`${APP_ROUTES.GENRE}/${genreId}`);
+    const handleGenreClick = (genreId, genreName) => {
+        navigate(`${APP_ROUTES.GENRE}/${genreId}/${genreName}`);
+
     }
     return (
         <>
@@ -59,7 +60,7 @@ function GenrePage() {
                             {genreData.map((g, index) => (
                                 <article
                                     key={index}
-                                    onClick={() => handleGenreClick(g.mal_id)}
+                                    onClick={() => handleGenreClick(g.mal_id, g.name)}
                                 >
 
                                     <h3>{g.name}</h3>
