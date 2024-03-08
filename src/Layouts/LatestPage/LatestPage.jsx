@@ -22,6 +22,8 @@ function LatestPage() {
 
     useEffect(() => {
         dispatch(animeSeasonThunk())
+        console.log('data :', data)
+        console.log('loading :', loading, 'error :', error)
     }, [])
 
 

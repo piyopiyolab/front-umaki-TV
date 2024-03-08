@@ -1,5 +1,4 @@
-@use "./mixins"as mxn;
-///Font
+@use "./mixins"as mxn;///Font
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
 
@@ -40,6 +39,7 @@ a {
     max-width: 50%;
     margin: 0 auto;
     display: block;
+    
   }
 }
 

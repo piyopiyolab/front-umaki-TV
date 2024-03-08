@@ -1,183 +1,186 @@
-@use "../../styles/mixins" as mxn;
+@use "../../styles/mixins"as mxn;
 
 
 .filtered {
-    position: relative;
-    &:before {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 2px;
-      background-color: var(--purple-light);
-      @include mxn.transition(width, 0.1s, ease-in-out);
-    }
-    &:hover {
-        &:before {
-          width: 0%;
-        }
-      }
-  
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--purple-light);
+    @include mxn.transition(width, 0.1s, ease-in-out);
   }
-  
+
+  &:hover {
+    &:before {
+      width: 0%;
+    }
+  }
+
+}
+
 
 .your-collection {
- 
-    &__headings {
-        @include mxn.flex('column', 'wrap');
-        @include mxn.flex-p('center', 'center');
-        margin-bottom: var(--m-6);
-      
-        h1, h2 {
-            text-align: center;
-            line-height: 0;
-          }
-    
-    
-          h2 {
-            color: var(--gray);
-            font-size: var(--text-sm);
-            line-height: 3;
-          }
 
-          p {
-            @include mxn.text-xs;
-            color: var(--purple-light);
-            cursor : pointer;
-          }
-         
+  &__headings {
+    @include mxn.flex('column', 'wrap');
+    @include mxn.flex-p('center', 'center');
+    margin-bottom: var(--m-6);
+
+    h1,
+    h2 {
+      text-align: center;
+      line-height: 0;
     }
 
 
-    &__lists {
+    h2 {
+      color: var(--gray);
+      font-size: var(--text-sm);
+      line-height: 3;
+    }
 
-     
+    p {
+      @include mxn.text-xs;
+      color: var(--purple-light);
+      cursor: pointer;
+    }
 
-      &__errorBtn {
-@include mxn.flex('row', 'wrap');
-@include mxn.flex-p('center', 'center');
-max-width: 50%;
-    margin: 0 auto;
-gap: 1rem;
-        button {
-            max-width: var(--w-s);
+  }
+
+
+  &__lists {
+
+
+
+    &__errorBtn {
+      @include mxn.flex('row', 'nowrap');
+      @include mxn.flex-p('center', 'center');
+      max-width: 50%;
+      margin: 0 auto;
+      gap: 1rem;
+
+      button {
+        max-width: var(--w-s);
+      }
+    }
+
+
+    &__filters {
+      @include mxn.flex('row');
+
+
+      gap: var(--gap-3);
+      cursor: pointer;
+
+      p {
+        border-bottom: 2px solid transparent;
+        margin-bottom: var(--m-6);
+
+        &:hover {
+          @include mxn.transition(color);
+          color: var(--purple-light);
+        }
+
+        &::after {
+          content: '';
+          width: 0;
+          height: 2px;
+          display: block;
+          background: var(--purple-light);
+          transition: 200ms;
+        }
+
+        &:hover::after {
+          width: 100%;
+        }
+
+
+        &.active::after {
+          width: 100%;
+        }
+
+      }
+    }
+
+
+    &__card {
+      @include mxn.card;
+
+      img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        object-position: center;
+        border-top-right-radius: var(--rounded-md);
+        border-top-left-radius: var(--rounded-md);
+      }
+
+
+
+
+      &__infos {
+
+        h3 {
+          text-align: center;
+          color: red;
+
+          &:hover {
+
+            @include mxn.transition(color);
+            color: var(--purple-light);
+          }
         }
       }
 
-     
-        &__filters {
-           @include mxn.flex('row');
-         
-        
-           gap: var(--gap-3);
-           cursor: pointer;
 
-          p {
-            border-bottom: 2px solid transparent;
-            margin-bottom: var(--m-6);
 
-            &:hover {
-              @include mxn.transition(color);
-              color:var(--purple-light);               
-             }
 
-            &::after {
-              content: '';
-              width: 0;
-              height: 2px;
-              display: block;
-              background:  var(--purple-light) ;
-              transition: 200ms;
-            }
 
-            &:hover::after {
-              width: 100%;    
-                    }
+    }
 
-           
-           &.active::after {
-            width: 100%;
-           }
-              
+    &__content {
+
+
+      @include mxn.flex('column', 'wrap');
+      @include mxn.flex-p('center', 'center');
+      gap: 2rem;
+
+
+
+
+
+
+
+      div:last-child {
+        padding: var(--p-2);
+        min-height: 8rem;
+        @include mxn.flex('column', 'wrap');
+        @include mxn.flex-p('start', 'center');
+
+
+
+
+
+
+        h3 {
+
+          margin-bottom: var(--m-4);
+
+          &:hover {
+            color: var(--purple-light);
+            @include mxn.transition(color);
           }
         }
+      }
+    }
 
-
-        &__card {
-          @include mxn.card;
-          
-            img {
-                object-fit: cover;
-                width: 100%;
-                height: 100%;
-                object-position: center;
-                border-top-right-radius: var(--rounded-md);
-                border-top-left-radius: var(--rounded-md);
-            }
-     
-
-        
-
-           &__infos{
-
-            h3 {
-              text-align: center;
-              color:red;
-              &:hover {
-          
-                  @include mxn.transition(color);
-                  color:var(--purple-light);
-              }
-          }
-           }
-            
-
-
-        
-
-        }
-
-        &__content {
-
-       
-              @include mxn.flex('column', 'wrap');
-              @include mxn.flex-p('center', 'center');
-              gap: 2rem;
-       
-
-
-             
-            
-
-
-              div:last-child {
-                padding: var(--p-2);
-                min-height: 8rem;
-                @include mxn.flex('column', 'wrap');
-                @include mxn.flex-p('start', 'center');
-
-              
-
-               
-
-
-                h3 {
-
-                  margin-bottom: var(--m-4);
-                  &:hover {
-                    color: var(--purple-light);
-                    @include mxn.transition(color);
-                  }
-                }
-              }
-  }
-   
   }
 
 
 
 }
- 
-
-

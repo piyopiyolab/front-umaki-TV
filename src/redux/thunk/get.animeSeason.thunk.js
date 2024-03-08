@@ -23,8 +23,9 @@ export const animeSeasonThunk = (page = 1) => async (dispatch, getState) => {
 
     }
 
-    const pagination = data.pagination
 
+
+    const pagination = data.pagination
 
     const animeDetail = data.data.map(data => ({
         mal_id: data.mal_id,
@@ -54,5 +55,6 @@ export const animeSeasonThunk = (page = 1) => async (dispatch, getState) => {
     dispatch(removeLoading())
 
     dispatch(setAnimeData(formatedData))
+    console.log(formatedData)
 
 }

@@ -1,16 +1,16 @@
-@use "../../styles/mixins" as mxn;
+@use "../../styles/mixins"as mxn;
 
 
 
 .button {
   @include mxn.btn;
+  font-weight: bold;
   @include mxn.flex('row', 'nowrap');
   @include mxn.flex-p('center', 'center');
 
   img {
-    max-width: 2rem!important;
+    max-width: 2rem !important;
     margin-right: 2rem;
   }
 
-  }
-  
+}

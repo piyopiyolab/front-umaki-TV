@@ -29,6 +29,7 @@
         &>div:last-child {
             max-width: 50%;
             margin: 0 auto;
+            gap: var(--gap-2);
             @include mxn.flex('row', 'nowrap');
             @include mxn.flex-p('center', 'center');
 
