@@ -66,9 +66,7 @@ function GenrePageDetails() {
 
     // Redirection Genre
     const handleGenreClick = (genreId) => {
-        console.log(genreId)
-        console.log(`${APP_ROUTES.GENRE}/${genreId}`);
-        // navigate(`${APP_ROUTES.GENRE}/${genreId}`);
+        navigate(`${APP_ROUTES.GENRE}/${genreId}`);
     }
     return (
         <>
@@ -123,7 +121,7 @@ function GenrePageDetails() {
                                                 {d.genres.map((genre, index) => (
                                                     <span
                                                         key={`${genre.mal_id}-${index}`}
-                                                        onClick={() => handleGenreClick(genre.mal_id)}
+                                                        onClick={() => handleGenreClick(genre.id)}
                                                     >{genre.name}</span>
                                                 ))}
 
