@@ -54,6 +54,8 @@ function LatestPage() {
             const nextPage = data.pagination.current_page + 1;
             dispatch(animeSeasonThunk(nextPage));
         }
+        window.scrollTo({ top: 5, behavior: 'smooth' });
+
     }
 
     return (

@@ -67,7 +67,9 @@ function HomePage() {
 
     // Redirection Genre
     const handleGenreClick = (genreID, genreName) => {
-        navigate(`${APP_ROUTES.GENRE}/${genreID}/${genreName}`);
+        const formatedGenreName = genreName.replace(/\s+/g, '-');
+
+        navigate(`${APP_ROUTES.GENRE}/${genreID}/${formatedGenreName}`);
     }
 
 
@@ -81,6 +83,7 @@ function HomePage() {
             const nextPage = data.pagination.current_page + 1;
             dispatch(topanimeThunk(nextPage));
         }
+        window.scrollTo({ top: 5, behavior: 'smooth' });
     }
 
 

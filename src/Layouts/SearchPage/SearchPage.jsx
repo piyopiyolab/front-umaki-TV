@@ -22,14 +22,13 @@ function SearchPage() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const { query } = useParams();
-    const [isButtonEnabled, setIsButtonEnabled] = useState(true);
+    const formatQuery = query.replace('-', ' ');
 
 
     useEffect(() => {
 
 
         dispatch(searchAnimeThunk(query))
-        console.log('anime', query)
 
 
     }, [query])
@@ -77,7 +76,7 @@ function SearchPage() {
             {/* BODY */}
 
             <section className="search-results-page">
-                <h1>Results for your query : {query} </h1>
+                <h1>Results for your query : {formatQuery} </h1>
 
 
                 <div className="wrapper">
@@ -91,7 +90,7 @@ function SearchPage() {
                                     <img loading="lazy" src={d.images.webp.large_image_url} alt="" />
                                 </div>
                                 <div className="wrapper__card__animeInfo">
-                                    <h1>{d.title}</h1>
+                                    <h2>{d.title}</h2>
                                     <div className="wrapper__card__animeInfo__tags">
                                         {d.genres.map((genre) => (
                                             <span

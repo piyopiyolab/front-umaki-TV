@@ -34,9 +34,15 @@ function GenrePage() {
 
     }, []);
 
+
+
     // Redirection Genre
     const handleGenreClick = (genreId, genreName) => {
-        navigate(`${APP_ROUTES.GENRE}/${genreId}/${genreName}`);
+
+        const formatedGenreName = genreName.replace(/\s+/g, '-');
+
+
+        navigate(`${APP_ROUTES.GENRE}/${genreId}/${formatedGenreName}`);
 
     }
     return (

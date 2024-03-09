@@ -11,7 +11,6 @@ import { useNavigate } from 'react-router-dom';
 
 function SearchBar() {
     const [searchValue, setSearchValue] = useState('');
-    const dispatch = useDispatch();
 
     const handleChange = (e) => {
         setSearchValue(e.target.value)
@@ -20,8 +19,8 @@ function SearchBar() {
     const navigate = useNavigate();
 
     const handleClickSearch = (anime) => {
-
-        navigate(`${APP_ROUTES.SEARCH}/${anime}`);
+        const formatedAnime = anime.replace(/\s+/g, '-');
+        navigate(`${APP_ROUTES.SEARCH}/${formatedAnime}`);
 
     }
 
