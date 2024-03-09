@@ -160,7 +160,7 @@ function HomePage() {
                                     <img loading="lazy" src={d.images.webp.large_image_url} alt="" />
                                 </div>
                                 <div className="wrapper__card__animeInfo">
-                                    <h1>{d.title_english}</h1>
+                                    <h3>{d.title_english}</h3>
                                     <div className="wrapper__card__animeInfo__tags">
                                         {d.genres.map((genre) => (
                                             <span

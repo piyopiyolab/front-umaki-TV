@@ -51,7 +51,8 @@ function GenrePage() {
             <Header />
             <section className="genre__body">
 
-                <h1 className='text-center'>Choose your theme !</h1>
+                <h1 className='text-center'>Exploring Anime Genres</h1>
+                <h2>Discover the Diversity of Japanese Animation</h2>
 
                 <div className='genre__body__wrapper'>
 

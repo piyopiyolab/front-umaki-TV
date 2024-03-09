@@ -1,15 +1,18 @@
 @use "../../styles/mixins"as mxn;
 
-.button {
-    margin: var(--m-4) auto;
-}
+
 
 .latest-animes {
+    h1 {
+        margin-bottom: 0;
+    }
 
-    &>h1 {
+    h2 {
 
-        margin: var(--m-4);
-
+        color: var(--gray);
+        font-size: var(--text-sm);
+        line-height: 3;
+        text-align: center;
     }
 
     &__wrapper {
@@ -17,16 +20,22 @@
         @include mxn.flex('row', 'wrap');
         @include mxn.flex-p('center', 'center');
         gap: var(--gap-3);
+
+        article {
+            @include mxn.card;
+
+            h1 {
+                margin-top: 0;
+            }
+
+
+
+        }
     }
 
 
 
-    article {
-        @include mxn.card;
 
-
-
-    }
 
     button {
         margin: var(--m-5) auto var(--m-4);

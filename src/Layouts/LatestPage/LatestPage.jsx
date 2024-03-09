@@ -75,7 +75,7 @@ function LatestPage() {
                 <img src={spinner} alt="Loading..." className="loader" />
             )}
 
-            {error ? (
+            {error & !data ? (
                 <>
                     <ErrorContent type='error' />
                     <Button text='Try again'
@@ -85,6 +85,7 @@ function LatestPage() {
                 <section className="latest-animes">
 
                     <h1>The latest Anime for {data.dateString}</h1>
+                    <h2>Check out simulcasts for the season</h2>
 
                     <div className="latest-animes__wrapper">
                         {data.animeDetail?.length > 0 && (
@@ -95,7 +96,7 @@ function LatestPage() {
                                         <img loading="lazy" src={d.image} alt={`${d.title} image`} />
                                     </div>
                                     <div className='wrapper__card__animeInfo'>
-                                        <h1>{d.title}</h1>
+                                        <h3>{d.title}</h3>
                                         <div className="wrapper__card__animeInfo__tags">
 
                                             {d.genres.map((genre, index) => (

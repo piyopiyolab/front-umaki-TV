@@ -46,7 +46,7 @@ function Carousel({ sliderData, onClick }) {
 
                                     </div>
                                     <span>{d.rating}</span>
-                                    <h1>{d.title}</h1>
+                                    <h3>{d.title}</h3>
                                     <div className="synopsis">
                                         <p>{d.synopsis}</p><span>[...]</span>
 

@@ -15,6 +15,38 @@
     height: 66svh;
   }
 
+  .slick-dots li.slick-active button:before {
+    color: var(--purple-light);
+  }
+
+  .slick-dots li button:before {
+    color: var(--purple-light);
+  }
+
+  .slick-dots {
+    margin-bottom: 2rem;
+  }
+
+  @include mxn.media-query('1040px') {
+    .slick-dots {
+      margin-bottom: 8rem;
+    }
+
+  }
+
+  @include mxn.media-query('1200px') {
+    .slick-dots {
+      margin-bottom: 6rem;
+    }
+
+  }
+
+  @include mxn.media-query('1300px') {
+    .slick-dots {
+      margin-bottom: 2rem;
+    }
+
+  }
 
   .anime-details__hero {
 

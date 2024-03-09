@@ -109,7 +109,10 @@ function GenrePageDetails() {
 
                 ) : (
                     <>
-                        <h1 className='text-center'>Discover more animes in {genreName.toLowerCase()} theme </h1>
+                        <h1 className='text-center'>Animes for {genreName.toLowerCase()} theme </h1>
+                        <h2>Discover animes in your favorite theme</h2>
+
+
                         <div className='genre__body__wrapper'>
                             {data.animeDetail?.length > 0 && (
                                 data.animeDetail.map((d) => (

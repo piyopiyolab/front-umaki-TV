@@ -4,6 +4,19 @@
 .genre__body {
 
 
+    h1,
+    h2 {
+        text-align: center;
+        line-height: 0;
+    }
+
+
+    h2 {
+        color: var(--gray);
+        font-size: var(--text-sm);
+        line-height: 3;
+        margin-bottom: var(--m-5);
+    }
 
     &__wrapper {
         @include mxn.flex('row', 'wrap');

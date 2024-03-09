@@ -54,7 +54,8 @@ export const animeSeasonThunk = (page = 1) => async (dispatch, getState) => {
     // Remove Loading  
     dispatch(removeLoading())
 
+    console.log('thunk', formatedData)
     dispatch(setAnimeData(formatedData))
-    console.log(formatedData)
+
 
 }
