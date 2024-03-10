@@ -7,7 +7,6 @@ export const deleteAnimeFromUserList = (anime_state, anime_id, userId) => async 
 
     const token = localStorage.getItem('accessToken');
 
-    console.log(`${APP_ROUTES.API_URL}/user/delete-anime/${userId}/${anime_state}/${anime_id}`)
 
     //Loading => Await response
     dispatch(addLoading());

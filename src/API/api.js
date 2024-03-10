@@ -62,7 +62,6 @@ const putRequest = async (url, body = {}, token) => {
     }
 
     if (token) config.headers.Authorization = token;
-    console.log(url, config)
 
     return await request(url, config)
 }

@@ -10,7 +10,6 @@ export const updateAvatarThunk = (avatar) => async (dispatch, getState) => {
 
     // dispatch(setUserData(data.user));
 
-
     if (response.error) {
         console.error("Error in avatar email : ", response.error);
         return;

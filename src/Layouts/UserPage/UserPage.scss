@@ -1,117 +1,54 @@
-@use '../../styles/mixins' as mxn;
+@use '../../styles/mixins'as mxn;
 
 
 .user-settings {
 
     max-width: var(--w-sm);
     margin: 0 auto;
+
     h1 {
         text-align: center;
         text-decoration: wavy;
-        
-    }
 
-
-    
-    button {
-        max-width: var(--w-s);       
-    }
-
-   
-  
-
-    article {
-        @include mxn.flex('column', 'wrap');
-        @include mxn.flex-p('center', 'start');
-        padding: var(--p-2);
-      
-
-
-        .updates-avatar {
-            max-width: 30rem;
-            margin-top: var(--m-4);
-            margin-bottom: var(--m-4);
-
-            &:hover {
-                filter: drop-shadow(20px 5px 10px var(--purple-light));
-                @include mxn.transition(filter);
-            }
-           }
-        
-        
-             span{
-            font-weight: bold;
-        
-        }
-
-        p>img {
-            max-width: 3rem;
-            margin-left: 1rem;
-            padding: 0.5rem;
-            background-color: var(--purple-light);
-            border-radius: var(--rounded);
-          
-        }
-
-        p {
-        @include mxn.flex('row', 'nowrap');
-        @include mxn.flex-p('start', 'center');
-        margin: 1rem 0;
-
-        }
-
-
-
-
-    
     }
 
     h2 {
-        margin-top: var(--m-6) ;
-        margin-bottom: var(--m-4) ;
-        text-align: center;
+        margin: var(--m-3) 0px;
     }
 
 
-     &__updates {
-     
-        margin-top: 5rem;
+    button {
+        max-width: var(--w-s);
+    }
 
-        
-        @include mxn.media-query('400px'){
-            margin-top: 15rem;
+    article {
+        margin: var(--m-1) 0;
+    }
+
+    &__updates__avatar {
+
+        width: 100%;
+        margin-top: var(--m-4);
+        margin-bottom: var(--m-4);
+
+
+
+        @include mxn.media-query('760px') {
+            @include mxn.flex('row', 'nowrap');
+
         }
-        @include mxn.media-query{
-            margin-top: 0;
+
+        &>div>img {
+            max-width: 18rem;
+            margin-bottom: var(--m-2);
+
+            &:hover {
+                transform: scale(1.1);
+                @include mxn.transition(transform);
+            }
+
         }
-       input {
-        margin-bottom: 0;
-       }
 
-       img {
-        max-width: 3rem;
-        background-color: var(--purple-light);
-        padding: .5rem;
-        border-radius: var(--rounded);
-        cursor: pointer;
-
-       
-        
-       }
-
-       &__email__inputs,&__pseudo__inputs, &__password__inputs {
-        @include mxn.flex('row', 'nowrap');
-       
-       }
-// AVATAR DIV
-       &__avatar {
-@include mxn.media-query{
-    @include mxn.flex('row', 'nowrap');
-
-}
-        img { max-width: 20rem;
-        
-        }
         div:nth-child(2) {
             .icon {
                 max-width: 3rem;
@@ -121,60 +58,85 @@
                 cursor: pointer;
                 margin: 3rem auto 0;
 
-                @include mxn.media-query{
+                @include mxn.media-query {
                     margin: 13rem auto 0rem;
 
                 }
-               }
+            }
 
             .avatar-grid {
-                gap:1rem;
+                gap: 1rem;
                 height: 10rem;
-                display: grid!important;
-    
-                img { 
+                display: grid !important;
+
+                img {
                     max-width: 15rem;
-                   
+
                 }
 
-        
-        }
-        gap:2rem;
-      
-        
-        }
-        &>div {
-            @include mxn.flex('column', 'nowrap');
+
+            }
+
+            gap:2rem;
+
 
         }
 
-        &__controls {
-            @include mxn.flex('row', 'nowrap');
-            @include mxn.flex-p('start', 'center');
+        // Avatar grid
+
+        .avatar-grid {
             gap: 1rem;
-            margin-right: 2rem;
-          
-        }
-       }
-       
-     }
-    &__account-controls {
+            height: 10rem;
+            display: grid !important;
 
-        margin: 0 auto;
+            img {
+                max-width: 15rem;
 
-        width: var(--w-full);
-        @include mxn.flex('row', 'nowrap');
-        @include mxn.flex-p('space-around', 'center');
-     gap:2rem;
+            }
 
-     button:last-child {
-        background-color: var(--purple-dark)!important;
-   
-        &:hover {
-            background-color: red!important;
 
         }
-     }
-     
+
+        gap:2rem;
     }
+
+    &__updates__infos {
+
+        h3 {
+            display: inline-block;
+            margin-bottom: var(--m-1);
+
+            img {
+                margin-left: 1rem;
+            }
+        }
+
+        img {
+            max-width: 3rem;
+            background-color: var(--purple-light);
+            padding: 0.5rem;
+            border-radius: 1rem;
+            margin-left: 1rem;
+            display: inline-block;
+            position: relative;
+            top: 1rem;
+        }
+
+
+        .mobile-margin {
+            margin-top: 14rem;
+
+
+            @include mxn.media-query('400px') {
+                margin-top: 22rem;
+
+            }
+        }
+    }
+
+
+
+
+
+
 }

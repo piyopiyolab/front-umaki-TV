@@ -30,14 +30,15 @@ export const getUserInfos = () => async (dispatch, getState) => {
 
         });
 
+        // Remove Loading
+        dispatch(removeLoading())
         dispatch(setUserData({ ...userInfos, user_id: data.data.userId }))
 
 
-        // Remove Loading
-        dispatch(removeLoading())
+
     } catch (error) {
         console.error("Failed to fetch user's infos:", error);
-        token = localStorage.removeItem('accessToken')
+        // token = localStorage.removeItem('accessToken')
         dispatch(removeLoading());
         dispatch(addError());
     }
