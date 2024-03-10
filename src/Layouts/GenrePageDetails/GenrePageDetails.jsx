@@ -52,11 +52,13 @@ function GenrePageDetails() {
     // Load more Animes
     const handleLoadMore = (e) => {
 
+
         e.preventDefault();
 
         if (data.pagination && data.pagination.has_next_page) {
+
             const nextPage = data.pagination.current_page + 1;
-            console.log(data.pagination, 'page suivante : page ', nextPage)
+
             dispatch(getAnimeGenreThunk(genreID, nextPage))
         }
         window.scrollTo({ top: 5, behavior: 'smooth' });

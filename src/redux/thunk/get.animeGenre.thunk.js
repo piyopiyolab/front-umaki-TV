@@ -5,7 +5,7 @@ import { formatNumber } from "../../utils/formatNumber";
 export const getAnimeGenreThunk = (genreID, page = 1) => async (dispatch, getState) => {
 
     const id = genreID;
-
+    console.log(`https://api.jikan.moe/v4/anime?genres=${id}?page=${page}`)
     //Loading => Await response 
     dispatch(addLoading());
     const response = await getRequest(`https://api.jikan.moe/v4/anime?genres=${id}?page=${page}`)

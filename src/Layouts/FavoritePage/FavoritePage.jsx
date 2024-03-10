@@ -149,7 +149,7 @@ function FavoritePage() {
                             {selectedList === 'on_going' && (
                                 <>
                                     {data.on_going?.length > 0 ? (
-                                        data.to_see.map((anime, index) => (
+                                        data.on_going.map((anime, index) => (
                                             <article className="your-collection__lists__card" key={index}>
                                                 <img loading="lazy" src={anime.media} alt={anime.title} />
                                                 <div>
