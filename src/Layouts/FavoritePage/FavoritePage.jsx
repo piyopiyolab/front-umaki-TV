@@ -11,6 +11,7 @@ import { APP_ROUTES } from "../../constants/routes.constants"
 import { useNavigate } from "react-router-dom";
 import ErrorContent from "../../Components/ErrorContent/ErrorContent"
 import trashIcon from '../../assets/icons/trash-solid.svg'
+import arrowIcon from "../../assets/icons/arrowr-icon white.svg"
 import { deleteAnimeFromUserList } from "../../redux/thunk/delete.animeFromUserList.thunk"
 import { getUserInfos } from "../../redux/thunk/get.UserInfo.thunk"
 getUserInfos
@@ -61,6 +62,12 @@ function FavoritePage() {
     const handleRedirectHomepage = () => {
 
         navigate(APP_ROUTES.HOME, { replace: true });
+
+    }
+    // Redirection Read More
+    const handleReadMoreClick = (animeID) => {
+
+        navigate(`${APP_ROUTES.ANIME_DETAILS}/${animeID}`);
 
     }
 
@@ -152,25 +159,36 @@ function FavoritePage() {
                                         data.on_going.map((anime, index) => (
                                             <article className="your-collection__lists__card" key={index}>
                                                 <img loading="lazy" src={anime.media} alt={anime.title} />
+
+                                                <>  <h3>{anime.title}</h3></>
                                                 <div>
-                                                    <h3>{anime.title}</h3>
-                                                    <Button
-                                                        icon={trashIcon}
-                                                        text='Remove from list'
-                                                        onClick={() => handleRemoveAnime(anime.anime_id, anime.anime_state)}
-                                                    />
+
+
+                                                    <div>
+                                                        <Button
+                                                            icon={arrowIcon}
+                                                            text={` Read more `}
+                                                            onClick={() => handleReadMoreClick()}
+                                                        />
+                                                        <Button
+                                                            icon={trashIcon}
+                                                            text={` Remove from list `}
+                                                            onClick={() => handleRemoveAnime(anime.anime_id, anime.anime_state)}
+                                                        />
+                                                    </div>
                                                 </div>
                                             </article>
                                         ))
                                     ) : (
 
 
-                                        <>
+                                        <div className="wrapper-error">
+
                                             <ErrorContent type='addAnime' />
                                             <Button
                                                 onClick={() => handleRedirectHomepage()}
                                                 text='add an anime' />
-                                        </>
+                                        </div>
 
                                     )}
                                 </>
@@ -201,12 +219,14 @@ function FavoritePage() {
                                     ) : (
 
 
-                                        <>
+                                        <div className="wrapper-error">
+
                                             <ErrorContent type='addAnime' />
                                             <Button
                                                 onClick={() => handleRedirectHomepage()}
                                                 text='add an anime' />
-                                        </>
+                                        </div>
+
                                     )}
                                 </>
                             )}
@@ -233,12 +253,14 @@ function FavoritePage() {
                                         ))
                                     ) : (
 
-                                        <>
+                                        <div className="wrapper-error">
+
                                             <ErrorContent type='addAnime' />
                                             <Button
                                                 onClick={() => handleRedirectHomepage()}
                                                 text='add an anime' />
-                                        </>
+                                        </div>
+
                                     )}
                                 </>
                             )}
@@ -276,6 +298,7 @@ function FavoritePage() {
                         <div className="your-collection__lists__errorBtn">
                             <Button text='Add an anime'
                                 onClick={handleRedirectHomepage} />
+
 
                         </div>
                     </>
