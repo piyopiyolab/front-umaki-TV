@@ -1,12 +1,16 @@
 import { useState, useEffect } from "react"
 import "./Header.scss"
 import logo from '../../assets/umaki.tv-logo.svg'
+import logoLight from '/images/logo-umaki-light.png'
+import logoDark from '/images/logo-umaki-dark.png'
 import heartIcon from '../../assets/icons/heart-icon.svg'
 import genreIcon from '../../assets/icons/genre-icon.svg'
 import homeIcon from '../../assets/icons/home-icon.svg'
 import flammeIcon from '../../assets/icons/flame-icon.svg'
 import hamburger from '../../assets/icons/hamburger-solid.svg'
 import close from '../../assets/icons/close.svg'
+import hamburgerDark from '../../assets/icons/hamburger-solid-dark.svg'
+import closeDark from '../../assets/icons/close-dark.svg'
 
 import { APP_ROUTES } from "../../constants/routes.constants"
 import SearchBar from "../SearchBar/SearchBar"
@@ -39,7 +43,7 @@ const Header = () => {
                 //Mobile
                 <nav className="header__nav">
                     <div className="header__nav__logoContainer">
-                        <a href={APP_ROUTES.HOME}><img src={logo} className='logo' alt="logo umaki.TV" /></a>
+                        <a href={APP_ROUTES.HOME}><img src={logoLight} className='logo' alt="logo umaki.TV" /></a>
                     </div>
                     <SearchBar
                     />
@@ -91,7 +95,7 @@ const Header = () => {
                 //dsktop
                 <nav className="header__nav">
                     <div className="header__nav__logoContainer">
-                        <a href="/"><img src={logo} className='logo' alt="logo umaki.TV" /></a>
+                        <a href="/"><img src={logoLight} className='logo' alt="logo umaki.TV" /></a>
                     </div>
 
                     <SearchBar

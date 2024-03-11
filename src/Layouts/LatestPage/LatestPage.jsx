@@ -20,6 +20,9 @@ function LatestPage() {
     const navigate = useNavigate();
     const { data, loading, error } = useSelector((state) => state.animeSlice);
 
+    // Check if body has lightmode class'
+    const isLightMode = document.body.classList.contains('lightmode');
+
     useEffect(() => {
         dispatch(animeSeasonThunk())
         console.log('data :', data)
@@ -84,7 +87,7 @@ function LatestPage() {
                         onClick={() => handleRefresh()} />
                 </>
             ) : (
-                <section className="latest-animes">
+                <section className={`latest-animes ${isLightMode ? 'lightmode' : ''}`}>
 
                     <h1>The latest Anime for {data.dateString}</h1>
                     <h2>Check out simulcasts for the season</h2>
@@ -105,6 +108,11 @@ function LatestPage() {
                                                 <span
                                                     key={`${genre.id}-${index}`}
                                                     onClick={() => handleGenreClick(genre.id, genre.name)}
+                                                    tabIndex="0"
+                                                    role="button"
+                                                    onKeyDown={(e) => {
+                                                        if (e.key === 'Enter') handleGenreClick(genre.id, genre.name);
+                                                    }}
                                                 >{genre.name}</span>
                                             ))}
 
@@ -124,7 +132,14 @@ function LatestPage() {
                                         <a
                                             onClick={() => handleReadMoreClick(d.mal_id)}
                                             className="wrapper__card__btn">
-                                            Read More <img src={arrowIcon} alt="read more btn" />
+                                            Read More <img src={arrowIcon} alt="read more btn"
+                                                tabIndex="0"
+                                                role="button"
+                                                onClick={() => handleReadMoreClick(d.mal_id)}
+                                                onKeyDown={(e) => {
+                                                    if (e.key === 'Enter') handleReadMoreClick(d.mal_id);
+                                                }} />
+
                                         </a>
 
 
@@ -146,8 +161,14 @@ function LatestPage() {
 
 
                     <Button
+                        tabIndex="0"
+                        role="button"
                         text='Load More Animes'
-                        onClick={(e) => handleLoadMore(e)} />
+                        onClick={(e) => handleLoadMore(e)}
+                        onKeyDown={(e) => {
+                            if (e.key === 'Enter') handleLoadMore(e);
+                        }}
+                    />
 
 
                 </section>

@@ -89,3 +89,19 @@
     }
   }
 }
+
+.slider-container.lightmode {
+  background: var(--purple-light);
+
+  .slick-dots li button:before {
+    color: var(--purple-dark);
+  }
+
+  article {
+    h3 {
+      color: black;
+    }
+
+    background-color: #d1d8e0;
+  }
+}

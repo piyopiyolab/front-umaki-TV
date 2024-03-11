@@ -199,6 +199,16 @@
       }
     }
 
+    &__content.lightmode {
+      article {
+
+        h3:hover {
+          color: var(--purple-dark)
+        }
+
+        background-color: #d1d8e0;
+      }
+    }
   }
 
 

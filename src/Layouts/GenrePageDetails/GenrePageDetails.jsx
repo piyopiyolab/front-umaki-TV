@@ -35,6 +35,9 @@ function GenrePageDetails() {
     }
 
 
+    // Check if body has lightmode class'
+    const isLightMode = document.body.classList.contains('lightmode');
+
     //  Handle Redirect home
 
     const handleRedirectHome = () => {
@@ -87,8 +90,7 @@ function GenrePageDetails() {
             </HelmetProvider>
 
             <Header />
-            <section className="genre__body">
-
+            <section className={`genre__body`}>
 
 
 
@@ -118,8 +120,7 @@ function GenrePageDetails() {
                         <h1 className='text-center'>Animes for {genreName !== undefined ? genreName.toLowerCase() : 'the chosen'} theme </h1>
                         <h2>Discover animes in your favorite theme</h2>
 
-
-                        <div className="latest-animes__wrapper">
+                        <div className={`latest-animes__wrapper ${isLightMode ? 'lightmode' : ''}`}>
                             {data.animeDetail?.length > 0 && (
                                 data.animeDetail.map((d) => (
                                     <article key={d.mal_id}>
@@ -135,6 +136,11 @@ function GenrePageDetails() {
                                                     <span
                                                         key={`${genre.id}-${index}`}
                                                         onClick={() => handleGenreClick(genre.id, genre.name)}
+                                                        tabIndex="0"
+                                                        role="button"
+                                                        onKeyDown={(e) => {
+                                                            if (e.key === 'Enter') handleGenreClick(genre.id, genre.name);
+                                                        }}
                                                     >{genre.name}</span>
                                                 ))}
 
@@ -152,6 +158,11 @@ function GenrePageDetails() {
                                                 </div>
                                             </div>
                                             <a
+                                                tabIndex="0"
+                                                role="button"
+                                                onKeyDown={(e) => {
+                                                    if (e.key === 'Enter') handleReadMoreClick(d.mal_id);
+                                                }}
                                                 onClick={() => handleReadMoreClick(d.mal_id)}
                                                 className="wrapper__card__btn">
                                                 Read More <img src={arrowIcon} alt="read more btn" />
@@ -173,10 +184,15 @@ function GenrePageDetails() {
                                 ))
                             )}
                         </div>
-
                         <Button
+                            tabIndex="0"
+                            role="button"
                             text='Load More Animes'
-                            onClick={(e) => handleLoadMore(e)} />
+                            onClick={(e) => handleLoadMore(e)}
+                            onKeyDown={(e) => {
+                                if (e.key === 'Enter') handleLoadMore(e);
+                            }}
+                        />
                     </>
 
                 )}

@@ -34,7 +34,22 @@
             width: 30rem;
             text-align: center;
 
+            &:focus {
+                border: 1px solid white;
+            }
+
         }
 
+    }
+}
+
+
+.genre__body.lightmode {
+    article {
+        background-color: var(--purple-light);
+    }
+
+    article:hover {
+        background-color: var(--purple-dark);
     }
 }

@@ -1,112 +1,117 @@
-@use "../../styles/mixins" as mxn;
+@use "../../styles/mixins"as mxn;
 
 
 .hidden {
-    display: none!important;;
+    display: none !important;
+    ;
 }
 
-.header__nav  {
+.header__nav {
     .logo {
         width: 20rem;
-            max-width: 20rem;
+        max-width: 13rem;
 
+    }
+
+    @include mxn.flex('row', 'nowrap');
+    @include mxn.flex-p('space-between', 'center');
+
+    @include mxn.media-query(780px) {
+
+        @include mxn.flex-p('space-between', 'center');
+        gap: var(--gap-2);
+
+    }
+
+
+    &__logoContainer {
+        max-width: 10rem;
+        position: relative;
+        top: 7px;
+        margin-right: var(--m-5);
+
+        @include mxn.media-query('780px') {
+            margin-right: 10rem;
+            height: 10rem;
         }
-     @include mxn.flex('row', 'nowrap');
-     @include mxn.flex-p('space-between', 'center');
-     
-    @include mxn.media-query(780px){
 
-            @include mxn.flex-p('space-between', 'center');
-            gap: var(--gap-2);
+    }
 
-        }
-     
+    &__icon {
+        max-width: 2rem;
+    }
 
-        &__logoContainer {
-            max-width: 10rem;
-            position: relative;
-            top: 7px;
-            margin-right: var(--m-5);
-
-            @include mxn.media-query('780px') {
-                margin-right: 10rem;
-                height: 10rem;
-            }
-        
-        }
-        &__icon {
-            max-width: 2rem;
-        }
-        &__menu {
+    &__menu {
 
         li {
-        margin-bottom: var(--m-1);
-        
-        a {
-            @include mxn.flex('row', 'nowrap');
-            @include mxn.flex-p('start', 'center');
-            @include mxn.transition(color);
-        
-            
-        
-        
-            &:hover {
-                color: var(--purple-light)!important;
-        
-            }
-        
-             span {
-                &::after {
-                    content: '';
-                    width: 0;
-                    height: 2px;
-                    display: block;
-                    background:  var(--purple-light) ;
-                    transition: 200ms;
+            margin-bottom: var(--m-1);
+
+            a {
+                @include mxn.flex('row', 'nowrap');
+                @include mxn.flex-p('start', 'center');
+                @include mxn.transition(color);
+
+
+
+
+                &:hover {
+                    color: var(--purple-light) !important;
+
                 }
-            
-                &:hover::after {
-                    width: 100%;   
-            
-                        }
-                     
-            }
-            
-        
-        
-            img {
-                max-width: 2rem;
-                display: block;
-                margin-right: 1rem;
-            }
-        }
 
-    
-        @include mxn.media-query('850px') {
-            display: inline-block;
-            margin-left: var(--m-1);
-            font-size: var(--text-lg);
+                span {
+                    &::after {
+                        content: '';
+                        width: 0;
+                        height: 2px;
+                        display: block;
+                        background: var(--purple-light);
+                        transition: 200ms;
+                    }
+
+                    &:hover::after {
+                        width: 100%;
+
+                    }
+
+                }
 
 
-          
-        
 
-        }
-    
-        
-
-        
-
-        
-        }
-            &__icon-close {
-                @include mxn.media-query('768px') {
-                    display: none!important;
-                
-        
-                
-                }   
+                img {
+                    max-width: 2rem;
+                    display: block;
+                    margin-right: 1rem;
+                }
             }
 
+
+            @include mxn.media-query('850px') {
+                display: inline-block;
+                margin-left: var(--m-1);
+                font-size: var(--text-lg);
+
+
+
+
+
+            }
+
+
+
+
+
+
         }
+
+        &__icon-close {
+            @include mxn.media-query('768px') {
+                display: none !important;
+
+
+
+            }
+        }
+
+    }
 }

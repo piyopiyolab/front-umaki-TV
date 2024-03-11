@@ -39,3 +39,26 @@
 
     }
 }
+
+.anime-details.lightmode>*,
+.anime-details-synopsis.lightmode,
+.anime-details-synopsis.lightmode>* {
+
+    h3 {
+        color: black;
+    }
+
+    background-color: #d1d8e0
+}
+
+
+
+
+
+.anime-details-additionalinfos.lightmode>article {
+    h3 {
+        color: black;
+    }
+
+    background-color: #d1d8e0 !important;
+}

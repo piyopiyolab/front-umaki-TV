@@ -14,7 +14,6 @@ import trashIcon from '../../assets/icons/trash-solid.svg'
 import arrowIcon from "../../assets/icons/arrowr-icon white.svg"
 import { deleteAnimeFromUserList } from "../../redux/thunk/delete.animeFromUserList.thunk"
 import { getUserInfos } from "../../redux/thunk/get.UserInfo.thunk"
-getUserInfos
 
 function FavoritePage() {
 
@@ -30,6 +29,8 @@ function FavoritePage() {
         anime_id: undefined,
         anime_state: undefined,
     });
+    // Check if body has lightmode class'
+    const isLightMode = document.body.classList.contains('lightmode');
 
     //API request
     useEffect(() => {
@@ -149,7 +150,7 @@ function FavoritePage() {
                             </p>
                         </div>
 
-                        <div className="your-collection__lists__content">
+                        <div className={`your-collection__lists__content ${isLightMode ? 'lightmode' : ''}`}>
 
 
                             {/* On going userList*/}
@@ -165,11 +166,7 @@ function FavoritePage() {
 
 
                                                     <div>
-                                                        <Button
-                                                            icon={arrowIcon}
-                                                            text={` Read more `}
-                                                            onClick={() => handleReadMoreClick()}
-                                                        />
+
                                                         <Button
                                                             icon={trashIcon}
                                                             text={` Remove from list `}

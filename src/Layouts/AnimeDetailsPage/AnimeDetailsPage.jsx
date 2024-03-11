@@ -26,6 +26,11 @@ function AnimeDetails() {
 
     const token = localStorage.getItem('accessToken');
 
+
+    // Check if body has lightmode class'
+    const isLightMode = document.body.classList.contains('lightmode');
+
+
     useEffect(() => {
 
         dispatch(getAnimeIDThunk(animeID))
@@ -76,7 +81,7 @@ function AnimeDetails() {
             {/* Object data Banner hero*/}
             {data && (
 
-                <section className="anime-details">
+                <section className={`anime-details ${isLightMode ? 'lightmode' : ''}`}>
                     <div className='anime-details__hero'>
 
                         <img loading="lazy" src={data.image} alt={data.title} />
@@ -151,7 +156,7 @@ function AnimeDetails() {
 
 
             {/* Synopsis*/}
-            <section className='anime-details-synopsis'>
+            <section className={`anime-details-synopsis ${isLightMode ? 'lightmode' : ''}`}>
                 <article>
                     <h2>Synopsis</h2>
                     {data && (
@@ -161,7 +166,7 @@ function AnimeDetails() {
             </section>
 
             {/* section more infos 2 articles*/}
-            <section className='anime-details-additionalinfos'>
+            <section className={`anime-details-additionalinfos ${isLightMode ? 'lightmode' : ''}`}>
                 <article>
                     <h2>More infos</h2>
                     {data && (

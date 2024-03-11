@@ -21,9 +21,7 @@
         max-width: var(--w-s);
     }
 
-    article {
-        margin: var(--m-1) 0;
-    }
+
 
     &__updates__avatar {
 
@@ -83,7 +81,6 @@
         }
 
         // Avatar grid
-
         .avatar-grid {
             gap: 1rem;
             height: 10rem;
@@ -132,9 +129,69 @@
 
             }
         }
+
+        &__email__inputs {
+            @include mxn.flex('row', 'nowrap');
+            @include mxn.flex-p('start', 'center');
+
+            .icon {
+                top: -1rem;
+            }
+
+
+
+        }
+
+        &__pseudo__inputs {
+            @include mxn.flex('row', 'nowrap');
+            @include mxn.flex-p('start', 'center');
+
+            .icon {
+                top: -1rem;
+            }
+
+
+
+        }
+
+        &__pass__inputs {
+            @include mxn.flex('row', 'nowrap');
+            @include mxn.flex-p('start', 'center');
+
+            .icon {
+                top: -1rem;
+            }
+
+
+
+        }
+
+
+
     }
 
+    &__account {
+        margin-top: var(--m-5);
+        background-color: rgba(60, 16, 83, .4);
+        border-radius: 1rem;
+        padding: var(--p-2);
+        width: var(--w-full);
 
+        h2 {
+            text-align: center
+        }
+
+        &__controls {
+
+            @include mxn.flex('row', 'wrap');
+            gap: var(--gap-2);
+            @include mxn.flex-p('center', 'center');
+
+            @include mxn.media-query('520px') {
+                @include mxn.flex-p('space-between', 'center');
+            }
+        }
+    }
 
 
 

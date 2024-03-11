@@ -1,13 +1,15 @@
-@use "../../styles/mixins" as mxn;
+@use "../../styles/mixins"as mxn;
 
 .trending-animes {
     @include mxn.flex('column', 'wrap');
     @include mxn.flex-p('center', 'center');
     gap: var(--gap-3);
-    max-width:1200px;
+    max-width: 1200px;
 
     &__headings {
-        h1, h2 {
+
+        h1,
+        h2 {
             text-align: center;
             line-height: 0;
         }
@@ -20,7 +22,7 @@
         }
     }
 
-    
+
 
 
     button:last-of-type {
@@ -28,6 +30,5 @@
     }
 
 
+
 }
-
-

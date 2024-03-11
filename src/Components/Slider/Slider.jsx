@@ -11,7 +11,8 @@ function Carousel({ sliderData, onClick }) {
     const breakpoint = 850;
 
 
-
+    // Check if body has lightmode class'
+    const isLightMode = document.body.classList.contains('lightmode');
 
     // Slider config
     const settings = {
@@ -24,7 +25,7 @@ function Carousel({ sliderData, onClick }) {
 
 
     return (
-        <div className="slider-container">
+        <div className={`slider-container ${isLightMode ? 'lightmode' : ''}`}>
             <Slider {...settings}>
                 {sliderData.sliderData?.length > 0 && (
                     sliderData.sliderData.map((d) => (

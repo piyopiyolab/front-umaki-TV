@@ -210,7 +210,7 @@ function UserPage() {
                                     <>
 
 
-                                        <div className="user-settings__updates__email__inputs">
+                                        <div className="user-settings__updates__infos__email__inputs">
                                             <Input
                                                 type='email'
                                                 onChange={(e) => setEmailValue(e.target.value)}
@@ -243,7 +243,7 @@ function UserPage() {
                                     <>
 
 
-                                        <div className="user-settings__updates__pseudo__inputs">
+                                        <div className="user-settings__updates__infos__pseudo__inputs">
                                             <Input
                                                 type='text'
                                                 onChange={(e) => setPseudoValue(e.target.value)}
@@ -276,7 +276,7 @@ function UserPage() {
                                     <>
 
 
-                                        <div className="user-settings__updates__password__inputs">
+                                        <div className="user-settings__updates__infos__pass__inputs">
                                             <Input
                                                 type='password'
                                                 onChange={(e) => setPasswordValue(e.target.value)}
@@ -297,16 +297,18 @@ function UserPage() {
 
                         {/* Account */}
 
-                        <h2>Account Settings</h2>
-                        <div className="user-settings__account-controls">
+                        <article className="user-settings__account">
+                            <h2>Account Settings</h2>
+                            <div className="user-settings__account__controls">
 
-                            <Button text='deconnexion'
-                                icon={offIcon}
-                                onClick={() => setLogOutModal(true)} />
-                            <Button
-                                text='delete your account'
-                                icon={trashIcon} />
-                        </div>
+                                <Button text='deconnexion'
+                                    icon={offIcon}
+                                    onClick={() => setLogOutModal(true)} />
+                                <Button
+                                    text='delete your account'
+                                    icon={trashIcon} />
+                            </div>
+                        </article>
 
 
                         {logOutModal &&
