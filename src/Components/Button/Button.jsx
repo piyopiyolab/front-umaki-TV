@@ -1,4 +1,4 @@
-import "./button.scss";
+import "./Button.scss";
 
 const Button = (props) => {
     const { onClick, text, type, color, disabled, icon } = props;

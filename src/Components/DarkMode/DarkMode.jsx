@@ -1,4 +1,4 @@
-import './darkMode.scss';
+import './DarkMode.scss';
 import moonIcon from '../../assets/icons/moon.svg'
 import sunIcon from '../../assets/icons/sun.svg'
 import { ThemeContext } from '../../context/ThemeProvider';
