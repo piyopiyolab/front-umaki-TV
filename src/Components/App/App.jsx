@@ -34,25 +34,27 @@ function App() {
 
     // Déterminer le type de contenu en fonction de l'URL
     let contentType = "";
-    if (path.startsWith("/dashboard")) {
+    if (path.startsWith("/favorite")) {
       contentType = "account";
     } else if (path.startsWith("/anime")) {
-      contentType = "anime";
+      contentType = "anime details";
     } else if (path.startsWith("/genre")) {
       contentType = "genre";
+    } else if (path.startsWith("/connexion")) {
+      contentType = "connexion";
     }
 
     // Pousser les informations dans le DataLayer
     if (window.dataLayer) {
       window.dataLayer.push({
-        event: "contentTypeChange",
+        event: "contentType",
         contentType: contentType,
         pagePath: path,
       });
     } else {
       window.dataLayer = [
         {
-          event: "contentTypeChange",
+          event: "contentType",
           contentType: contentType,
           pagePath: path,
         },
